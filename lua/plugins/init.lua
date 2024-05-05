@@ -6,6 +6,7 @@ return {
       require "configs.conform"
     end,
   },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -74,17 +75,23 @@ return {
       },
     },
   },
+
   {
     "wakatime/vim-wakatime",
     lazy = false,
   },
+
+  {
+    "fladson/vim-kitty",
+    event = "BufEnter */kitty.conf",
+  },
+
   {
     "michaelrommel/nvim-silicon",
-    lazy = true,
     cmd = "Silicon",
     config = function()
       require("silicon").setup {
-        font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+        font = "JetBrains Mono=34;Noto Color Emoji=34",
         to_clipboard = true,
         theme = "Nord",
         pad_horiz = 50,
