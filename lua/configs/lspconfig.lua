@@ -20,20 +20,20 @@ lspconfig.tsserver.setup {
 }
 
 lspconfig.pyright.setup {
-  cmd = { "pyright-langserver", "--stdio" },
+  -- cmd = { "pyright-langserver", "--stdio" },
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
-  root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = "basic",
-        stubPath = "./typings",
-      },
-    },
-  },
+  -- root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
+  -- settings = {
+  --   python = {
+  --     analysis = {
+  --       autoSearchPaths = true,
+  --       diagnosticMode = "workspace",
+  --       useLibraryCodeForTypes = true,
+  --       typeCheckingMode = "basic",
+  --       stubPath = "./typings",
+  --     },
+  --   },
+  -- },
 }
