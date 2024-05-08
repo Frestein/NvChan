@@ -1,28 +1,46 @@
 -- vim:fileencoding=utf-8:foldmethod=marker
 require "nvchad.mappings"
 
-local map = vim.keymap.set
+local map = require("langmapper").map
 
--- file {{{
+-- Split {{{
 
-map("n", "<leader>sh", ":vsplit<CR>", { desc = "Vertical sptlt" })
-map("n", "<leader>sv", ":split<CR>", { desc = "Horizontal sptlt" })
-map("n", "<leader>cw", ":close<CR>", { desc = "Close window" })
+local split_toggle = false
+local function toggle_split(direction)
+  if split_toggle then
+    vim.cmd "q"
+    split_toggle = false
+  else
+    if direction == "v" then
+      vim.cmd "vsplit"
+    elseif direction == "h" then
+      vim.cmd "split"
+    end
+    split_toggle = true
+  end
+end
+
+map("n", "<D-h>", function()
+  toggle_split "h"
+end, { desc = "Toggle horizontal sptlt" })
+map("n", "<D-v>", function()
+  toggle_split "v"
+end, { desc = "Toggle vertical sptlt" })
 
 -- }}}
--- tabufline {{{
-
-map("n", "<C-]>", function()
-  require("nvchad.tabufline").next()
-end, { desc = "buffer goto next" })
+-- Tabufline {{{
 
 map("n", "<C-[>", function()
   require("nvchad.tabufline").prev()
-end, { desc = "buffer goto prev" })
+end, { desc = "Goto prev" })
+
+map("n", "<C-]>", function()
+  require("nvchad.tabufline").next()
+end, { desc = "Goto next" })
 
 -- }}}
--- snapshot {{{
+-- Snapshot {{{
 
-map("v", "<leader>sc", ":Silicon<CR>", { desc = "Snapshot code" })
+map("v", "<leader>sc", "<CMD>Silicon<CR>", { desc = "Snapshot code" })
 
 -- }}}
