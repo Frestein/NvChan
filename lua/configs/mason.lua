@@ -1,4 +1,4 @@
-local opts = {
+local options = {
   ensure_installed = {
     -- lua
     "lua-language-server",
@@ -12,8 +12,10 @@ local opts = {
     -- python
     "pyright",
     "black",
-    "mypy",
     "ruff",
+
+    -- JVM
+    "kotlin-language-server",
 
     -- shell
     "shellharden",
@@ -21,4 +23,4 @@ local opts = {
   },
 }
 
-return opts
+return options

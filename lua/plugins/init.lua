@@ -6,24 +6,12 @@ return {
     end,
   },
 
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   opts = function()
-  --     return require "configs.null-ls"
-  --   end,
-  --   requires = { "nvim-lua/plenary.nvim" },
-  -- },
-
   {
     "williamboman/mason.nvim",
     opts = function()
       return require "configs.mason"
     end,
   },
-
-  -- {
-  --   "williamboman/mason-lspconfig.nvim",
-  -- },
 
   {
     "neovim/nvim-lspconfig",
@@ -36,7 +24,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
-      require "configs.treesitter"
+      return require "configs.treesitter"
     end,
   },
 

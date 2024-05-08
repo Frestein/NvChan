@@ -1,4 +1,4 @@
-local opts = {
+local options = {
   ensure_installed = {
     -- vim
     "vim",
@@ -32,4 +32,4 @@ local opts = {
   },
 }
 
-return opts
+return options

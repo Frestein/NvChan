@@ -3,7 +3,7 @@ local options = {
     -- scripts
     lua = { "stylua" },
     bash = { "shellharden" },
-    python = { "black" },
+    python = { "black", "ruff" },
 
     -- web
     scss = { "prettier" },
@@ -17,12 +17,6 @@ local options = {
     -- docs
     markdown = { "prettier" },
   },
-
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
 }
 
 require("conform").setup(options)
