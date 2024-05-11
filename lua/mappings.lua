@@ -3,6 +3,17 @@ require "nvchad.mappings"
 
 local map = require("langmapper").map
 
+-- Format{{{
+
+map({ "n", "v" }, "<leader>fm", function()
+  if vim.fn.visualmode() ~= "" then
+    vim.cmd "'<,'>ConformFormat"
+  else
+    vim.cmd "ConformFormat"
+  end
+end, { desc = "Format file or selected text" })
+
+-- }}}
 -- Split {{{
 
 local split_toggle = false
