@@ -29,13 +29,23 @@ return {
   },
 
   {
+    "NeogitOrg/neogit",
+    cmd = "Neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true
+  },
+
+  {
     "wakatime/vim-wakatime",
     lazy = false,
   },
 
   {
     "fladson/vim-kitty",
-    event = "BufEnter */kitty.conf",
+    event = "BufEnter kitty.conf",
   },
 
   {
