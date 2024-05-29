@@ -17,6 +17,13 @@ local options = {
     -- JVM
     "kotlin-language-server",
 
+    -- yaml
+    "yaml-language-server",
+
+    -- c
+    "clangd",
+    "clang-format",
+
     -- shell
     "shfmt",
     "bash-language-server",

@@ -14,6 +14,9 @@ local options = {
     yaml = { "prettier" },
     json = { "prettier" },
 
+    -- c
+    c = { "clang-format" },
+
     -- docs
     markdown = { "prettier" },
   },

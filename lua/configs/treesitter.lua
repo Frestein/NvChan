@@ -5,7 +5,6 @@ local options = {
     "vimdoc",
 
     -- scripts
-    "c",
     "lua",
     "bash",
     "python",
@@ -19,6 +18,9 @@ local options = {
 
     -- JVM
     "kotlin",
+
+    -- c
+    "c",
 
     -- hyprland
     "hyprlang",

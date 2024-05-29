@@ -8,6 +8,8 @@ local servers = {
   "cssls",
   "bashls",
   "ruff",
+  "yamlls",
+  "clangd",
   "kotlin_language_server",
 }
 
