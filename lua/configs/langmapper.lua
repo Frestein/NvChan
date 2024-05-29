@@ -14,4 +14,4 @@ local options = {
 }
 
 require("langmapper").setup(options)
-require('langmapper').hack_get_keymap()
+require("langmapper").hack_get_keymap()

@@ -3,7 +3,7 @@ require "nvchad.mappings"
 
 local map = require("langmapper").map
 
--- Format{{{
+-- Format {{{
 
 map({ "n", "v" }, "<leader>fm", function()
   if vim.fn.visualmode() ~= "" then

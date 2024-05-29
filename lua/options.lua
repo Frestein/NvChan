@@ -27,11 +27,11 @@ vim.api.nvim_create_user_command("ConformFormat", function(args)
       ["end"] = { args.line2, end_line:len() },
     }
   end
-  require("conform").format({ async = true, lsp_fallback = true, range = range })
+  require("conform").format { async = true, lsp_fallback = true, range = range }
 end, { range = true })
 
 -- }}}
--- Langmap{{{
+-- Langmap {{{
 
 local function escape(str)
   local escape_chars = [[;,."|\]]
@@ -45,7 +45,7 @@ local ru_shift = [[ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЯЧСМИТЬБ�
 o.langmap = vim.fn.join({ escape(ru_shift) .. ";" .. escape(en_shift), escape(ru) .. ";" .. escape(en) }, ",")
 
 -- }}}
--- Dynamic terminal padding{{{
+-- Dynamic terminal padding {{{
 
 autocmd("VimEnter", {
   command = ":silent !kitty @ set-spacing padding=0 margin=0",
@@ -56,7 +56,7 @@ autocmd("VimLeavePre", {
 })
 
 -- }}}
--- Restore cursor position{{{
+-- Restore cursor position {{{
 
 autocmd("BufReadPost", {
   pattern = "*",
@@ -70,17 +70,6 @@ autocmd("BufReadPost", {
     then
       vim.cmd 'normal! g`"'
     end
-  end,
-})
-
--- }}}
--- Show only modified buffers{{{
-
-autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
-  callback = function()
-    vim.t.bufs = vim.tbl_filter(function(bufnr)
-      return vim.api.nvim_buf_get_option(bufnr, "modified")
-    end, vim.t.bufs)
   end,
 })
 
