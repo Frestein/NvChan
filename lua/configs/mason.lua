@@ -18,7 +18,7 @@ local options = {
     "kotlin-language-server",
 
     -- shell
-    "shellharden",
+    "shfmt",
     "bash-language-server",
   },
 }

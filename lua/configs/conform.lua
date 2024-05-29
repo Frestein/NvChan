@@ -2,7 +2,7 @@ local options = {
   formatters_by_ft = {
     -- scripts
     lua = { "stylua" },
-    bash = { "shellharden" },
+    bash = { "shfmt" },
     python = { "black", "ruff" },
 
     -- web
