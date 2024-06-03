@@ -50,6 +50,11 @@ map("n", "<C-]>", function()
 end, { desc = "Goto next" })
 
 -- }}}
+-- Neogit {{{
+
+map("n", "<leader>ng", "<CMD>Neogit<CR>", { desc = "Open Neogit" })
+
+-- }}}
 -- Snapshot {{{
 
 map("v", "<leader>sc", "<CMD>Silicon<CR>", { desc = "Snapshot code" })
