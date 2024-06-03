@@ -15,6 +15,12 @@ M.ui = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
   },
+
+M.base46 = {
+  integrations = {
+    "notify",
+    "neogit",
+  }
 }
 
 return M
