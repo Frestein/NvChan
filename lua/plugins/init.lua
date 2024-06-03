@@ -45,6 +45,19 @@ return {
   },
 
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    opts = function()
+      dofile(vim.g.base46_cache .. "notify")
+      return require "configs.noice"
+    end,
+  },
+
+  {
     "wakatime/vim-wakatime",
     lazy = false,
   },

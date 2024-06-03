@@ -16,6 +16,11 @@ M.ui = {
     ["@comment"] = { italic = true },
   },
 
+  lsp = {
+    signature = false,
+  },
+}
+
 M.base46 = {
   integrations = {
     "notify",
