@@ -31,6 +31,9 @@ local options = {
 
     -- rofi
     "rasi",
+
+    -- foile/noice.nvim
+    "regex",
   },
 }
 
