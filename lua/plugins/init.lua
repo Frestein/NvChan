@@ -35,6 +35,9 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      require "configs.nvim-tree"
     end,
   },
 
