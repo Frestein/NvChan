@@ -1,5 +1,11 @@
 return {
   {
+    "NvChad/nvcommunity",
+    { import = "nvcommunity.git.diffview" },
+    { import = "nvcommunity.git.neogit" },
+  },
+
+  {
     "stevearc/conform.nvim",
     config = function()
       require "configs.conform"
@@ -29,18 +35,6 @@ return {
   },
 
   {
-    "NeogitOrg/neogit",
-    cmd = "Neogit",
-    ft = { "diff" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "sindrets/diffview.nvim",
-    },
-    config = function()
-      dofile(vim.g.base46_cache .. "git")
-      dofile(vim.g.base46_cache .. "neogit")
-      require "configs.neogit"
     end,
   },
 
