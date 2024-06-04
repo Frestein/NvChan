@@ -62,6 +62,8 @@ map("n", "<leader>ng", "<CMD>Neogit<CR>", { desc = "Open Neogit" })
 -- }}}
 -- Snapshot {{{
 
-map("v", "<leader>sc", "<CMD>Silicon<CR>", { desc = "Snapshot code" })
+map("v", "<leader>ss", function() require("nvim-silicon").shoot() end, { desc = "Snapshot code screenshot" })
+map("v", "<leader>sf", function() require("nvim-silicon").file() end, { desc = "Snapshot code screenshot as file" })
+map("v", "<leader>sc", function() require("nvim-silicon").clip() end, { desc = "Snapshot code screenshot to clipboard" })
 
 -- }}}

@@ -55,6 +55,13 @@ return {
   },
 
   {
+    "michaelrommel/nvim-silicon",
+    config = function()
+      require "configs.nvim-silicon"
+    end,
+  },
+
+  {
     "aznhe21/actions-preview.nvim",
     config = function()
       require "configs.actions-preview"
@@ -69,14 +76,6 @@ return {
   {
     "fladson/vim-kitty",
     event = "BufEnter */kitty/*.conf",
-  },
-
-  {
-    "michaelrommel/nvim-silicon",
-    cmd = "Silicon",
-    config = function()
-      require "configs.silicon"
-    end,
   },
 
   {
