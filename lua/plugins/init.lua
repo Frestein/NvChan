@@ -1,8 +1,13 @@
 return {
   {
     "NvChad/nvcommunity",
+    { import = "nvcommunity.completion.tabnine" },
+    { import = "nvcommunity.diagnostics.trouble" },
+    { import = "nvcommunity.editor.telescope-undo" },
+    { import = "nvcommunity.editor.autosave" },
     { import = "nvcommunity.git.diffview" },
     { import = "nvcommunity.git.neogit" },
+    { import = "nvcommunity.motion.neoscroll" },
   },
 
   {
