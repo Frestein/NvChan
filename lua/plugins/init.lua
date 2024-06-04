@@ -55,6 +55,13 @@ return {
   },
 
   {
+    "aznhe21/actions-preview.nvim",
+    config = function()
+      require "configs.actions-preview"
+    end,
+  },
+
+  {
     "wakatime/vim-wakatime",
     lazy = false,
   },

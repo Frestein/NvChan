@@ -3,6 +3,11 @@ require "nvchad.mappings"
 
 local map = require("langmapper").map
 
+-- LSP {{{
+
+map({ "n", "v" }, "<leader>tf", require("actions-preview").code_actions, { desc = "LSP actions preview" })
+
+-- }}}
 -- Format {{{
 
 map({ "n", "v" }, "<leader>fm", function()
