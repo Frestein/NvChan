@@ -3,7 +3,7 @@ local options = {
     -- scripts
     lua = { "stylua" },
     bash = { "shfmt" },
-    python = { "black", "ruff" },
+    python = { "ruff_format", "black" },
 
     -- web
     scss = { "prettier" },

@@ -22,20 +22,23 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.pyright.setup {
-  cmd = { "pyright-langserver", "--stdio" },
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "python" },
   root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
   settings = {
     python = {
       analysis = {
         autoSearchPaths = true,
         diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true,
         typeCheckingMode = "off",
-        stubPath = "./typings",
       },
     },
   },
+}
+
+
+lspconfig.ruff.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
 }
