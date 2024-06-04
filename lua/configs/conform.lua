@@ -14,6 +14,9 @@ local options = {
     yaml = { "prettier" },
     json = { "prettier" },
 
+    -- jvm
+    kotlin = { "ktlint" },
+
     -- c
     c = { "clang-format" },
 

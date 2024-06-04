@@ -15,6 +15,7 @@ local options = {
     "ruff",
 
     -- JVM
+    "ktlint",
     "kotlin-language-server",
 
     -- yaml
