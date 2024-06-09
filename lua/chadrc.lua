@@ -25,7 +25,7 @@ M.base46 = {
   integrations = {
     "notify",
     "neogit",
-  }
+  },
 }
 
 return M
