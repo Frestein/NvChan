@@ -11,11 +11,7 @@ map({ "n", "v" }, "<leader>tf", require("actions-preview").code_actions, { desc 
 -- Format {{{
 
 map({ "n", "v" }, "<leader>fm", function()
-  if vim.fn.visualmode() ~= "" then
-    vim.cmd "'<,'>ConformFormat"
-  else
-    vim.cmd "ConformFormat"
-  end
+  require("conform").format()
 end, { desc = "Format file or selected text" })
 
 -- }}}
