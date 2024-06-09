@@ -5,6 +5,13 @@ return {
     { import = "nvcommunity.diagnostics.trouble" },
     { import = "nvcommunity.editor.telescope-undo" },
     { import = "nvcommunity.editor.autosave" },
+    { import = "nvcommunity.file-explorer.oil-nvim" },
+    {
+      "stevearc/oil.nvim",
+      config = function()
+        require "configs.oil"
+      end,
+    },
     { import = "nvcommunity.git.diffview" },
     { import = "nvcommunity.git.neogit" },
     { import = "nvcommunity.motion.neoscroll" },
