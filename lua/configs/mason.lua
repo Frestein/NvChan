@@ -8,8 +8,6 @@ local options = {
     "pyright",
     "black",
     "ruff",
-    "ktlint",
-    "kotlin-language-server",
     "yaml-language-server",
     "clangd",
     "clang-format",

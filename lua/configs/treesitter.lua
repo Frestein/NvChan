@@ -10,7 +10,6 @@ local options = {
     "html",
     "json",
     "jsonc",
-    "kotlin",
     "c",
     "hyprlang",
     "markdown",
