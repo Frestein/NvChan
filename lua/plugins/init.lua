@@ -4,6 +4,7 @@ return {
     { import = "nvcommunity.completion.tabnine" },
     { import = "nvcommunity.diagnostics.trouble" },
     { import = "nvcommunity.editor.telescope-undo" },
+    { import = "nvcommunity.editor.treesittercontext" },
     { import = "nvcommunity.editor.autosave" },
     {
       "okuuva/auto-save.nvim",
