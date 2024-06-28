@@ -5,6 +5,12 @@ return {
     { import = "nvcommunity.diagnostics.trouble" },
     { import = "nvcommunity.editor.telescope-undo" },
     { import = "nvcommunity.editor.autosave" },
+    {
+      "okuuva/auto-save.nvim",
+      opts = {
+        debounce_delay = 30000,
+      },
+    },
     { import = "nvcommunity.file-explorer.oil-nvim" },
     {
       "stevearc/oil.nvim",
