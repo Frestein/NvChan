@@ -32,10 +32,10 @@ local function toggle_split(direction)
   end
 end
 
-map("n", "<D-h>", function()
+map("n", "<leader>h", function()
   toggle_split "h"
 end, { desc = "Toggle horizontal sptlt" })
-map("n", "<D-v>", function()
+map("n", "<leader>v", function()
   toggle_split "v"
 end, { desc = "Toggle vertical sptlt" })
 
@@ -53,7 +53,9 @@ end, { desc = "Goto next" })
 -- }}}
 -- Neogit {{{
 
-map("n", "<leader>ng", "<CMD>Neogit<CR>", { desc = "Neogit open" })
+map("n", "<leader>ng", function()
+  require("neogit").open()
+end, { desc = "Neogit open" })
 
 -- }}}
 -- Snapshot {{{
