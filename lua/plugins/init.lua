@@ -98,6 +98,39 @@ return {
   },
 
   {
+    "folke/zen-mode.nvim",
+    opts = function()
+      return require "configs.zen-mode"
+    end,
+  },
+
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+
+  {
+    "nvim-neorg/neorg",
+    dependencies = {
+      "luarocks.nvim",
+      "nvim-neorg/neorg-telescope",
+    },
+    lazy = false,
+    version = "*",
+    opts = function()
+      return require "configs.neorg"
+    end,
+  },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    opts = {},
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1, -- High priority is needed if you will use `autoremap()`

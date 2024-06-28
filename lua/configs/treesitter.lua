@@ -12,10 +12,16 @@ local options = {
     "jsonc",
     "c",
     "hyprlang",
+    "norg",
     "markdown",
     "markdown_inline",
     "rasi",
     "regex",
+    "gitcommit",
+    "gitignore",
+  },
+  highlight = {
+    enable = true,
   },
 }
 
