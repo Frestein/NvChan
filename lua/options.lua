@@ -114,3 +114,11 @@ autocmd("BufReadPost", {
 })
 
 -- }}}
+-- Noice {{{
+
+-- Transparency fix
+-- require("notify").setup {
+--   background_colour = "#000000",
+-- }
+
+-- }}}
