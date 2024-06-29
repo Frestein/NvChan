@@ -25,6 +25,11 @@ local options = {
   },
 }
 
-vim.wo.foldlevel = 99
-vim.wo.conceallevel = 2
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "norg",
+  callback = function()
+    vim.wo.foldlevel = 99
+    vim.wo.conceallevel = 2
+  end
+})
 return options
