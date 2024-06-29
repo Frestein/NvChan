@@ -36,6 +36,9 @@ vim.api.nvim_create_autocmd("BufRead", {
   end,
 })
 
+-- }}}
+-- nvim-cmp {{{
+
 local cmp = require "cmp"
 local compare = require "cmp.config.compare"
 cmp.setup {
@@ -52,6 +55,15 @@ cmp.setup {
       compare.length,
       compare.order,
     },
+  },
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
+    { name = "neorg" },
+    { name = "cmp_tabnine" },
   },
 }
 
