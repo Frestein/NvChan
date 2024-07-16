@@ -28,44 +28,44 @@ vim.filetype.add {
 
 -- Tabnine {{{
 
-vim.api.nvim_create_autocmd("BufRead", {
-  group = vim.api.nvim_create_augroup("prefetch", { clear = true }),
-  pattern = "*",
-  callback = function()
-    require("cmp_tabnine"):prefetch(vim.fn.expand "%:p")
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufRead", {
+--   group = vim.api.nvim_create_augroup("prefetch", { clear = true }),
+--   pattern = "*",
+--   callback = function()
+--     require("cmp_tabnine"):prefetch(vim.fn.expand "%:p")
+--   end,
+-- })
 
 -- }}}
 -- nvim-cmp {{{
-
-local cmp = require "cmp"
-local compare = require "cmp.config.compare"
-cmp.setup {
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      require "cmp_tabnine.compare",
-      compare.offset,
-      compare.exact,
-      compare.score,
-      compare.recently_used,
-      compare.kind,
-      compare.sort_text,
-      compare.length,
-      compare.order,
-    },
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "nvim_lua" },
-    { name = "path" },
-    { name = "neorg" },
-    { name = "cmp_tabnine" },
-  },
-}
+--
+-- local cmp = require "cmp"
+-- local compare = require "cmp.config.compare"
+-- cmp.setup {
+--   sorting = {
+--     priority_weight = 2,
+--     comparators = {
+--       require "cmp_tabnine.compare",
+--       compare.offset,
+--       compare.exact,
+--       compare.score,
+--       compare.recently_used,
+--       compare.kind,
+--       compare.sort_text,
+--       compare.length,
+--       compare.order,
+--     },
+--   },
+--   sources = {
+--     { name = "nvim_lsp" },
+--     { name = "luasnip" },
+--     { name = "buffer" },
+--     { name = "nvim_lua" },
+--     { name = "path" },
+--     { name = "neorg" },
+--     { name = "cmp_tabnine" },
+--   },
+-- }
 
 -- }}}
 -- Format {{{

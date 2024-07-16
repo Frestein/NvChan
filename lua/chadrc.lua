@@ -16,9 +16,9 @@ M.ui = {
     ["@comment"] = { italic = true },
   },
 
-  lsp = {
-    signature = false,
-  },
+  -- lsp = {
+    -- signature = false,
+  -- },
 }
 
 M.base46 = {
