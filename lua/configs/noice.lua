@@ -5,7 +5,7 @@ local options = {
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
     },
-    -- signature = { enabled = false },
+    signature = { enabled = false },
     -- hover = { enabled = false },
   },
   presets = {
