@@ -16,6 +16,10 @@ M.ui = {
     ["@comment"] = { italic = true },
   },
 
+  border = {
+    style = "rounded",
+  },
+
   -- lsp = {
   --   signature = false,
   -- },

@@ -69,7 +69,6 @@ return {
       "rcarriga/nvim-notify",
     },
     opts = function()
-      dofile(vim.g.base46_cache .. "notify")
       return require "configs.noice"
     end,
   },

@@ -1,3 +1,5 @@
+dofile(vim.g.base46_cache .. "notify")
+
 local options = {
   lsp = {
     override = {
