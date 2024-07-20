@@ -14,6 +14,13 @@ local options = {
     "shfmt",
     "bash-language-server",
   },
+  ui = {
+    icons = {
+      package_pending = " ",
+      package_installed = " ",
+      package_uninstalled = " ",
+    },
+  },
 }
 
 return options
