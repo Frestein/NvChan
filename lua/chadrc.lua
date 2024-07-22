@@ -7,8 +7,16 @@ M.ui = {
   theme_toggle = { "nord", "onedark" },
 
   statusline = {
-    theme = "default",
+    theme = "minimal",
     separator_style = "block",
+  },
+
+  cmp = {
+    style = "flat_light",
+  },
+
+  telescope = {
+    style = "bordered"
   },
 
   hl_override = {
