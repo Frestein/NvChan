@@ -3,9 +3,6 @@
 local M = {}
 
 M.ui = {
-  theme = "nord",
-  theme_toggle = { "nord", "onedark" },
-
   statusline = {
     theme = "minimal",
     separator_style = "block",
@@ -16,12 +13,7 @@ M.ui = {
   },
 
   telescope = {
-    style = "bordered"
-  },
-
-  hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
+    style = "bordered",
   },
 
   border = {
@@ -34,6 +26,14 @@ M.ui = {
 }
 
 M.base46 = {
+  theme = "nord",
+  theme_toggle = { "nord", "onedark" },
+
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
+
   integrations = {
     "notify",
     "neogit",
