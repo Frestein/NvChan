@@ -17,6 +17,14 @@ local options = {
     inc_rename = false,
     lsp_doc_border = true,
   },
+  -- Transparency fix
+  views = {
+    mini = {
+      win_options = {
+        winblend = 0,
+      },
+    },
+  },
 }
 
 return options

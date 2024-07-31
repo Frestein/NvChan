@@ -131,6 +131,21 @@ return {
   },
 
   {
+    "SmiteshP/nvim-navic",
+    event = "LspAttach",
+    config = function()
+      dofile(vim.g.base46_cache .. "navic")
+
+      require("nvim-navic").setup {
+        highlight = true,
+        lsp = { auto_attach = true },
+      }
+
+      vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    end,
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1, -- High priority is needed if you will use `autoremap()`

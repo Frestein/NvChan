@@ -32,14 +32,29 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    ["TbFill"] = {
+      bg = "NONE",
+    },
+  },
+
+  hl_add = {
+    ["WinBar"] = {
+      fg = "light_grey",
+      bg = "NONE",
+    },
+    ["WinBarNC"] = {
+      fg = "light_grey",
+      bg = "NONE",
+    },
   },
 
   integrations = {
     "notify",
     "neogit",
+    "navic",
   },
 
-  transparency = false,
+  transparency = true,
 }
 
 return M
