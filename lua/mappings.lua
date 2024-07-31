@@ -34,21 +34,10 @@ end
 
 map("n", "<leader>h", function()
   toggle_split "h"
-end, { desc = "sptlt (horizontal) toggle" })
+end, { desc = "split toggle horizontal " })
 map("n", "<leader>v", function()
   toggle_split "v"
-end, { desc = "split (vertical) toggle" })
-
--- }}}
--- Tabufline {{{
-
-map("n", "<C-[>", function()
-  require("nvchad.tabufline").prev()
-end, { desc = "goto prev" })
-
-map("n", "<C-]>", function()
-  require("nvchad.tabufline").next()
-end, { desc = "goto next" })
+end, { desc = "split toggle vertical" })
 
 -- }}}
 -- Neogit {{{

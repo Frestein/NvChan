@@ -4,20 +4,15 @@ local options = {
     lua = { "stylua" },
     bash = { "shfmt" },
     python = { "ruff_format", "black" },
-
-    -- web
+    c = { "clang-format" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
     scss = { "prettier" },
     css = { "prettier" },
     html = { "prettier" },
-    javascript = { "prettier" },
-    typescript = { "prettier" },
     yaml = { "prettier" },
     json = { "prettier" },
-
-    -- c
-    c = { "clang-format" },
-
-    -- docs
+    jsonc = { "prettier" },
     markdown = { "prettier" },
   },
 }

@@ -130,7 +130,7 @@ autocmd("BufReadPost", {
 
 -- Transparency fix
 -- require("notify").setup {
---   background_colour = "#000000",
+--   background_colour = "#2e3440",
 -- }
 
 -- }}}

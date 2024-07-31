@@ -38,6 +38,8 @@ M.base46 = {
     "notify",
     "neogit",
   },
+
+  transparency = false,
 }
 
 return M
