@@ -67,6 +67,32 @@ map({ "n" }, "<leader>mz", function()
 end, { desc = "zen-mode toggle" })
 
 -- }}}
+-- Lazy {{{
+
+local lazy = require("lazy")
+
+map({ "n" }, "<leader>lh", function()
+  lazy.home()
+end, { desc = "lazy home" })
+
+map({ "n" }, "<leader>lc", function()
+  lazy.check()
+end, { desc = "lazy check updates" })
+
+map({ "n" }, "<leader>lu", function()
+  lazy.update()
+end, { desc = "lazy update" })
+
+map({ "n" }, "<leader>ls", function()
+  lazy.sync()
+end, { desc = "lazy sync" })
+
+-- }}}
+-- Mason {{{
+
+map({ "n" }, "<leader>mm", "<CMD>Mason<CR>", { desc = "mason home" })
+
+-- }}}
 -- Neorg {{{
 
 local neorg_callbacks = require "neorg.core.callbacks"
