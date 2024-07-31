@@ -1,5 +1,5 @@
 local options = {
-  font = "JetBrains Mono=34",
+  font = "Maple Mono=34;FontAwesome;JetBrainsMono Nerd Font",
   to_clipboard = true,
   theme = "Nord",
   pad_horiz = 50,
