@@ -3,18 +3,6 @@ require "nvchad.mappings"
 
 local map = require("langmapper").map
 
--- LSP {{{
-
-map({ "n", "v" }, "<leader>tf", require("actions-preview").code_actions, { desc = "LSP actions preview" })
-
--- }}}
--- Format {{{
-
-map({ "n", "v" }, "<leader>fm", function()
-  require("conform").format()
-end, { desc = "format file or selected text" })
-
--- }}}
 -- Split {{{
 
 local split_toggle = false
@@ -40,36 +28,21 @@ map("n", "<leader>v", function()
 end, { desc = "split toggle vertical" })
 
 -- }}}
--- Neogit {{{
+-- Actions-preview {{{
 
-map("n", "<leader>ng", function()
-  require("neogit").open()
-end, { desc = "neogit open" })
+map({ "n", "v" }, "<leader>tf", require("actions-preview").code_actions, { desc = "LSP actions preview" })
 
 -- }}}
--- Snapshot {{{
+-- Conform {{{
 
-map("v", "<leader>ss", function()
-  require("nvim-silicon").shoot()
-end, { desc = "snapshot code screenshot" })
-map("v", "<leader>sf", function()
-  require("nvim-silicon").file()
-end, { desc = "snapshot code screenshot as file" })
-map("v", "<leader>sc", function()
-  require("nvim-silicon").clip()
-end, { desc = "snapshot code screenshot to clipboard" })
-
--- }}}
--- Zen-mode {{{
-
-map({ "n" }, "<leader>mz", function()
-  require("zen-mode").toggle()
-end, { desc = "zen-mode toggle" })
+map({ "n", "v" }, "<leader>fm", function()
+  require("conform").format()
+end, { desc = "format file or selected text" })
 
 -- }}}
 -- Lazy {{{
 
-local lazy = require("lazy")
+local lazy = require "lazy"
 
 map({ "n" }, "<leader>lh", function()
   lazy.home()
@@ -93,6 +66,13 @@ end, { desc = "lazy sync" })
 map({ "n" }, "<leader>mm", "<CMD>Mason<CR>", { desc = "mason home" })
 
 -- }}}
+-- Neogit {{{
+
+map("n", "<leader>ng", function()
+  require("neogit").open()
+end, { desc = "neogit open" })
+
+-- }}}
 -- Neorg {{{
 
 local neorg_callbacks = require "neorg.core.callbacks"
@@ -107,5 +87,25 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
     noremap = true,
   })
 end)
+
+-- }}}
+-- Nvim-silicon {{{
+
+map("v", "<leader>ss", function()
+  require("nvim-silicon").shoot()
+end, { desc = "snapshot code screenshot" })
+map("v", "<leader>sf", function()
+  require("nvim-silicon").file()
+end, { desc = "snapshot code screenshot as file" })
+map("v", "<leader>sc", function()
+  require("nvim-silicon").clip()
+end, { desc = "snapshot code screenshot to clipboard" })
+
+-- }}}
+-- Zen-mode {{{
+
+map({ "n" }, "<leader>mz", function()
+  require("zen-mode").toggle()
+end, { desc = "zen-mode toggle" })
 
 -- }}}

@@ -1,6 +1,5 @@
 local options = {
   formatters_by_ft = {
-    -- scripts
     lua = { "stylua" },
     bash = { "shfmt" },
     python = { "ruff_format", "black" },

@@ -71,7 +71,6 @@ end
 
 local options = {
   keymaps = {
-    ["<C-v>"] = "actions.select_vsplit",
     ["<Tab>"] = "actions.select",
   },
   view_options = {

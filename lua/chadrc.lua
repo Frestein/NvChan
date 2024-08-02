@@ -6,6 +6,30 @@ M.ui = {
   statusline = {
     theme = "minimal",
     separator_style = "block",
+    modules = {
+      navic_statusline = function()
+        local navic = require "nvim-navic"
+
+        if navic.is_available() then
+          return navic.get_location()
+        else
+          return " "
+        end
+      end,
+    },
+    order = {
+      "mode",
+      "file",
+      "git",
+      "%=",
+      "lsp_msg",
+      "navic_statusline",
+      "%=",
+      "diagnostics",
+      "lsp",
+      "cwd",
+      "cursor",
+    },
   },
 
   cmp = {

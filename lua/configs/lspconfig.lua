@@ -26,10 +26,10 @@ local servers = {
   },
 }
 
-for name, opts in pairs(servers) do
-  opts.on_init = on_init
-  opts.on_attach = on_attach
-  opts.capabilities = capabilities
+for name, options in pairs(servers) do
+  options.on_init = on_init
+  options.on_attach = on_attach
+  options.capabilities = capabilities
 
-  require("lspconfig")[name].setup(opts)
+  require("lspconfig")[name].setup(options)
 end
