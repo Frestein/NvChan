@@ -8,7 +8,7 @@ local map = require("langmapper").map
 local split_toggle = false
 local function toggle_split(direction)
   if split_toggle then
-    vim.cmd "q"
+    vim.cmd "close"
     split_toggle = false
   else
     if direction == "v" then
@@ -43,27 +43,73 @@ end, { desc = "format file or selected text" })
 -- Lazy {{{
 
 local lazy = require "lazy"
+local lazy_toggle = false
 
-map({ "n" }, "<leader>lh", function()
-  lazy.home()
+local function toggle_lazy(direction)
+  if lazy_toggle then
+    vim.cmd "close"
+    lazy_toggle = false
+  else
+    if direction == "home" then
+      lazy.home()
+    elseif direction == "check" then
+      lazy.check()
+    elseif direction == "update" then
+      lazy.update()
+    elseif direction == "sync" then
+      lazy.sync()
+    end
+    lazy_toggle = true
+  end
+end
+
+map({ "n" }, "<leader>ll", function()
+  toggle_lazy "home"
 end, { desc = "lazy home" })
 
 map({ "n" }, "<leader>lc", function()
-  lazy.check()
+  toggle_lazy "check"
 end, { desc = "lazy check updates" })
 
 map({ "n" }, "<leader>lu", function()
-  lazy.update()
+  toggle_lazy "update"
 end, { desc = "lazy update" })
 
 map({ "n" }, "<leader>ls", function()
-  lazy.sync()
+  toggle_lazy "sync"
 end, { desc = "lazy sync" })
 
 -- }}}
 -- Mason {{{
 
-map({ "n" }, "<leader>mm", "<CMD>Mason<CR>", { desc = "mason home" })
+local mason_toggle = false
+
+local function toggle_mason(direction)
+  if mason_toggle then
+    vim.cmd "close"
+    mason_toggle = false
+  else
+    if direction == "home" then
+      vim.cmd "Mason"
+      mason_toggle = true
+    elseif direction == "install_all" then
+      vim.cmd "MasonInstallAll"
+      mason_toggle = true
+    elseif direction == "update" then
+      vim.cmd "MasonUpdate"
+    end
+  end
+end
+
+map({ "n" }, "<leader>mm", function()
+  toggle_mason "home"
+end, { desc = "mason home" })
+map({ "n" }, "<leader>mi", function()
+  toggle_mason "install_all"
+end, { desc = "mason update" })
+map({ "n" }, "<leader>mu", function()
+  toggle_mason "update"
+end, { desc = "mason update" })
 
 -- }}}
 -- Neogit {{{
