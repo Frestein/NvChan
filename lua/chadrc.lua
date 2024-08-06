@@ -13,13 +13,22 @@ M.ui = {
         if navic.is_available() then
           return navic.get_location()
         else
-          return " "
+          return ""
+        end
+      end,
+      lazy = function()
+        local lazy_status = require "lazy.status"
+        if lazy_status.has_updates() then
+          return ("%#LazyUpdates#" .. " " .. lazy_status.updates() .. " ")
+        else
+          return ""
         end
       end,
     },
     order = {
       "mode",
       "file",
+      "lazy",
       "git",
       "%=",
       "lsp_msg",
@@ -191,6 +200,10 @@ M.base46 = {
   },
 
   hl_add = {
+    ["LazyUpdates"] = {
+      fg = "green",
+      bg = "NONE",
+    },
     ["WinBar"] = {
       fg = "light_grey",
       bg = "NONE",
