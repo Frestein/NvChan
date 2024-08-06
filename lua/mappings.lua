@@ -112,11 +112,34 @@ map({ "n" }, "<leader>mu", function()
 end, { desc = "mason update" })
 
 -- }}}
+-- Noice {{{
+
+local noice = require "noice"
+
+map("n", "<leader>nd", function()
+  noice.cmd("dismiss")
+end, { desc = "noice dismiss all visible messages" })
+map("n", "<leader>nl", function()
+  noice.cmd("last")
+end, { desc = "noice show the last message" })
+map("n", "<leader>nh", function()
+  noice.cmd("history")
+end, { desc = "noice show the message history" })
+map("n", "<leader>nt", function()
+  noice.cmd("telescope")
+end, { desc = "noice open message history in telescope" })
+
+-- }}}
 -- Neogit {{{
 
+local neogit = require "neogit"
+
 map("n", "<leader>ng", function()
-  require("neogit").open()
-end, { desc = "neogit open" })
+  neogit.open()
+end, { desc = "neogit open neogit" })
+map("n", "<leader>nl", function()
+  neogit.open({ "log" })
+end, { desc = "neogit open neogit log" })
 
 -- }}}
 -- Neorg {{{
@@ -152,6 +175,6 @@ end, { desc = "snapshot code screenshot to clipboard" })
 
 map({ "n" }, "<leader>mz", function()
   require("zen-mode").toggle()
-end, { desc = "zen-mode toggle" })
+end, { desc = "zen-mode toggle zen-mode" })
 
 -- }}}
