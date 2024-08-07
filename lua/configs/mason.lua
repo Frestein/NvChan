@@ -13,6 +13,8 @@ local options = {
     "clang-format",
     "shfmt",
     "bash-language-server",
+    "hyprls",
+    "taplo",
   },
   ui = {
     icons = {

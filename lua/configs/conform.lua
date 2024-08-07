@@ -13,6 +13,7 @@ local options = {
     json = { "prettier" },
     jsonc = { "prettier" },
     markdown = { "prettier" },
+    toml = { "taplo" },
   },
 }
 

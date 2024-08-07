@@ -8,6 +8,7 @@ local options = {
     "css",
     "scss",
     "html",
+    "toml",
     "json",
     "jsonc",
     "c",
