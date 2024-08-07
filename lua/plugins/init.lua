@@ -2,7 +2,6 @@ return {
   {
     "NvChad/nvcommunity",
     { import = "nvcommunity.completion.codeium" },
-    -- { import = "nvcommunity.completion.tabnine" },
     { import = "nvcommunity.diagnostics.trouble" },
     { import = "nvcommunity.editor.telescope-undo" },
     { import = "nvcommunity.editor.treesittercontext" },

@@ -43,72 +43,31 @@ end, { desc = "format file or selected text" })
 -- Lazy {{{
 
 local lazy = require "lazy"
-local lazy_toggle = false
-
-local function toggle_lazy(direction)
-  if lazy_toggle then
-    vim.cmd "close"
-    lazy_toggle = false
-  else
-    if direction == "home" then
-      lazy.home()
-    elseif direction == "check" then
-      lazy.check()
-    elseif direction == "update" then
-      lazy.update()
-    elseif direction == "sync" then
-      lazy.sync()
-    end
-    lazy_toggle = true
-  end
-end
 
 map({ "n" }, "<leader>ll", function()
-  toggle_lazy "home"
+  lazy.home()
 end, { desc = "lazy home" })
-
 map({ "n" }, "<leader>lc", function()
-  toggle_lazy "check"
+  lazy.check()
 end, { desc = "lazy check updates" })
-
 map({ "n" }, "<leader>lu", function()
-  toggle_lazy "update"
+  lazy.update()
 end, { desc = "lazy update" })
-
 map({ "n" }, "<leader>ls", function()
-  toggle_lazy "sync"
+  lazy.sync()
 end, { desc = "lazy sync" })
 
 -- }}}
 -- Mason {{{
 
-local mason_toggle = false
-
-local function toggle_mason(direction)
-  if mason_toggle then
-    vim.cmd "close"
-    mason_toggle = false
-  else
-    if direction == "home" then
-      vim.cmd "Mason"
-      mason_toggle = true
-    elseif direction == "install_all" then
-      vim.cmd "MasonInstallAll"
-      mason_toggle = true
-    elseif direction == "update" then
-      vim.cmd "MasonUpdate"
-    end
-  end
-end
-
 map({ "n" }, "<leader>mm", function()
-  toggle_mason "home"
+  vim.cmd "Mason"
 end, { desc = "mason home" })
 map({ "n" }, "<leader>mi", function()
-  toggle_mason "install_all"
+  vim.cmd "MasonInstallAll"
 end, { desc = "mason update" })
 map({ "n" }, "<leader>mu", function()
-  toggle_mason "update"
+  vim.cmd "MasonUpdate"
 end, { desc = "mason update" })
 
 -- }}}
@@ -117,16 +76,16 @@ end, { desc = "mason update" })
 local noice = require "noice"
 
 map("n", "<leader>nd", function()
-  noice.cmd("dismiss")
+  noice.cmd "dismiss"
 end, { desc = "noice dismiss all visible messages" })
 map("n", "<leader>nl", function()
-  noice.cmd("last")
+  noice.cmd "last"
 end, { desc = "noice show the last message" })
 map("n", "<leader>nh", function()
-  noice.cmd("history")
+  noice.cmd "history"
 end, { desc = "noice show the message history" })
 map("n", "<leader>nt", function()
-  noice.cmd("telescope")
+  noice.cmd "telescope"
 end, { desc = "noice open message history in telescope" })
 
 -- }}}
@@ -138,7 +97,7 @@ map("n", "<leader>ng", function()
   neogit.open()
 end, { desc = "neogit open neogit" })
 map("n", "<leader>nl", function()
-  neogit.open({ "log" })
+  neogit.open { "log" }
 end, { desc = "neogit open neogit log" })
 
 -- }}}
