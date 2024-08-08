@@ -12,6 +12,7 @@ local options = {
     "yamllint",
     "clangd",
     "clang-format",
+    "shfmt",
     "shellharden",
     "shellcheck",
     "bash-language-server",
