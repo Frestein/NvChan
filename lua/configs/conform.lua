@@ -1,7 +1,9 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    bash = { "shfmt" },
+    bash = { "shellharden" },
+    dash = { "shellharden" },
+    sh = { "shellharden" },
     python = { "ruff_format", "black" },
     c = { "clang-format" },
     javascript = { "prettier" },

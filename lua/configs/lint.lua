@@ -3,6 +3,7 @@ local lint = require "lint"
 lint.linters_by_ft = {
   python = { "ruff" },
   yaml = { "yamllint" },
+  bash = { "shellharden", "shellcheck" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("nvim_lint_au", { clear = true })
