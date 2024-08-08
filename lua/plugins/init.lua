@@ -47,6 +47,14 @@ return {
   },
 
   {
+    "mfussenegger/nvim-lint",
+    event = "LspAttach",
+    config = function()
+      require "configs.lint"
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
       return require "configs.treesitter"
@@ -56,7 +64,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = function()
-      require "configs.nvim-tree"
+      require "configs.tree"
     end,
   },
 
@@ -75,7 +83,7 @@ return {
   {
     "michaelrommel/nvim-silicon",
     config = function()
-      require "configs.nvim-silicon"
+      require "configs.silicon"
     end,
   },
 
@@ -133,7 +141,7 @@ return {
     "SmiteshP/nvim-navic",
     event = "LspAttach",
     config = function()
-      require "configs.nvim-navic"
+      require "configs.navic"
     end,
   },
 

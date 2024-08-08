@@ -9,6 +9,7 @@ local options = {
     "black",
     "ruff",
     "yaml-language-server",
+    "yamllint",
     "clangd",
     "clang-format",
     "shfmt",
