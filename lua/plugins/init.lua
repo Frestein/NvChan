@@ -66,6 +66,13 @@ return {
   },
 
   {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      require "configs.telescope"
+    end,
+  },
+
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
