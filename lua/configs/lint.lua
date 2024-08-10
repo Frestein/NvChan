@@ -31,14 +31,16 @@ local function find_selene_config(root)
   return nil
 end
 
-local lua_root = get_lsp_root()
-if lua_root then
-  local config_path = find_selene_config(lua_root)
-  if config_path then
-    local selene = lint.linters.selene
-    selene.args = { "--config", config_path, "--display-style", "json", "-" }
-  else
-    vim.notify("Configuration file for selene not found.", "ERROR", { title = "Linter" })
+local function setup_linting()
+  local lua_root = get_lsp_root()
+  if lua_root then
+    local config_path = find_selene_config(lua_root)
+    if config_path then
+      local selene = lint.linters.selene
+      selene.args = { "--config", config_path, "--display-style", "json", "-" }
+    else
+      vim.notify("Configuration file for selene not found.", "ERROR", { title = "Linter" })
+    end
   end
 end
 
@@ -54,6 +56,13 @@ local lint_augroup = vim.api.nvim_create_augroup("nvim_lint_au", { clear = true 
 vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter", "TextChanged" }, {
   group = lint_augroup,
   callback = function()
+    local clients = vim.lsp.get_clients()
+    for _, client in ipairs(clients) do
+      if client.name == "lua_ls" then
+        setup_linting()
+        break
+      end
+    end
     lint.try_lint()
   end,
 })
