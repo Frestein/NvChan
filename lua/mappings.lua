@@ -86,7 +86,7 @@ end, { desc = "mason home" })
 
 map({ "n" }, "<leader>mi", function()
   vim.cmd "MasonInstallAll"
-end, { desc = "mason update" })
+end, { desc = "mason install all" })
 
 map({ "n" }, "<leader>mu", function()
   vim.cmd "MasonUpdate"
