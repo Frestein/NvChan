@@ -31,9 +31,7 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = function()
-      return require "configs.mason"
-    end,
+    opts = require "configs.mason",
   },
 
   {
@@ -53,23 +51,17 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function()
-      return require "configs.treesitter"
-    end,
+    opts = require "configs.treesitter",
   },
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = function()
-      require "configs.tree"
-    end,
+    opts = require "configs.tree",
   },
 
   {
     "nvim-telescope/telescope.nvim",
-    opts = function()
-      require "configs.telescope"
-    end,
+    opts = require "configs.telescope",
   },
 
   {
@@ -79,9 +71,7 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
-    opts = function()
-      return require "configs.noice"
-    end,
+    opts = require "configs.noice",
   },
 
   {
@@ -110,9 +100,7 @@ return {
 
   {
     "folke/zen-mode.nvim",
-    opts = function()
-      return require "configs.zen-mode"
-    end,
+    opts = require "configs.zen-mode",
   },
 
   {
@@ -129,9 +117,7 @@ return {
     },
     lazy = false,
     version = "*",
-    opts = function()
-      return require "configs.neorg"
-    end,
+    opts = require "configs.neorg",
   },
 
   {
@@ -144,9 +130,7 @@ return {
   {
     "SmiteshP/nvim-navic",
     event = "LspAttach",
-    opts = function()
-      return require "configs.navic"
-    end,
+    opts = require "configs.navic",
   },
 
   {
