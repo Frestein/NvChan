@@ -1,6 +1,7 @@
 local options = require "nvchad.configs.treesitter"
 
 options.ensure_installed = {
+  "ini",
   "vim",
   "vimdoc",
   "lua",
