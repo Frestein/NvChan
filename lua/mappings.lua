@@ -79,7 +79,11 @@ end, { desc = "lazy sync" })
 
 map({ "n" }, "<leader>lt", function()
   vim.cmd "Telescope lazy"
-end, { desc = "lazy telescope" })
+end, { desc = "lazy view installed plugins" })
+
+map({ "n" }, "<leader>lp", function()
+  vim.cmd "Telescope lazy_plugins"
+end, { desc = "lazy view plugin configurations" })
 
 -- }}}
 -- Mason {{{

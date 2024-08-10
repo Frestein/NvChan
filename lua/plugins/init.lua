@@ -61,7 +61,10 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = "tsakirist/telescope-lazy.nvim",
+    dependencies = {
+      { "tsakirist/telescope-lazy.nvim" },
+      { "polirritmico/telescope-lazy-plugins.nvim" },
+    },
     opts = require "configs.telescope",
   },
 
