@@ -26,9 +26,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    config = function()
-      require "configs.conform"
-    end,
+    opts = require "configs.conform",
   },
 
   {
@@ -41,7 +39,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -82,8 +79,8 @@ return {
 
   {
     "michaelrommel/nvim-silicon",
-    config = function()
-      require "configs.silicon"
+    opts = function()
+      return require "configs.silicon"
     end,
   },
 
@@ -140,8 +137,8 @@ return {
   {
     "SmiteshP/nvim-navic",
     event = "LspAttach",
-    config = function()
-      require "configs.navic"
+    opts = function()
+      return require "configs.navic"
     end,
   },
 
@@ -149,8 +146,8 @@ return {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1,
-    config = function()
-      require "configs.langmapper"
+    opts = function()
+      return require "configs.langmapper"
     end,
   },
 }

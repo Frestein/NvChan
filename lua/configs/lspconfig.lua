@@ -1,6 +1,6 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+require("nvchad.configs.lspconfig").defaults()
+
+local defaults = require "nvchad.configs.lspconfig"
 
 local lspconfig = require "lspconfig"
 local servers = {
@@ -29,9 +29,9 @@ local servers = {
 }
 
 for name, options in pairs(servers) do
-  options.on_init = on_init
-  options.on_attach = on_attach
-  options.capabilities = capabilities
+  options.on_init = defaults.on_init
+  options.on_attach = defaults.on_attach
+  options.capabilities = defaults.capabilities
 
   require("lspconfig")[name].setup(options)
 end

@@ -30,7 +30,9 @@ end, { desc = "split toggle vertical" })
 -- }}}
 -- Actions-preview {{{
 
-map({ "n", "v" }, "<leader>tf", require("actions-preview").code_actions, { desc = "LSP actions preview" })
+map({ "n", "v" }, "<leader>tf", function()
+  require("actions-preview").code_actions()
+end, { desc = "LSP actions preview" })
 
 -- }}}
 -- Conform {{{
@@ -47,12 +49,15 @@ local lazy = require "lazy"
 map({ "n" }, "<leader>ll", function()
   lazy.home()
 end, { desc = "lazy home" })
+
 map({ "n" }, "<leader>lc", function()
   lazy.check()
 end, { desc = "lazy check updates" })
+
 map({ "n" }, "<leader>lu", function()
   lazy.update()
 end, { desc = "lazy update" })
+
 map({ "n" }, "<leader>ls", function()
   lazy.sync()
 end, { desc = "lazy sync" })
@@ -63,9 +68,11 @@ end, { desc = "lazy sync" })
 map({ "n" }, "<leader>mm", function()
   vim.cmd "Mason"
 end, { desc = "mason home" })
+
 map({ "n" }, "<leader>mi", function()
   vim.cmd "MasonInstallAll"
 end, { desc = "mason update" })
+
 map({ "n" }, "<leader>mu", function()
   vim.cmd "MasonUpdate"
 end, { desc = "mason update" })
@@ -78,12 +85,15 @@ local noice = require "noice"
 map("n", "<leader>nd", function()
   noice.cmd "dismiss"
 end, { desc = "noice dismiss all visible messages" })
+
 map("n", "<leader>nl", function()
   noice.cmd "last"
 end, { desc = "noice show the last message" })
+
 map("n", "<leader>nh", function()
   noice.cmd "history"
 end, { desc = "noice show the message history" })
+
 map("n", "<leader>nt", function()
   noice.cmd "telescope"
 end, { desc = "noice open message history in telescope" })
@@ -95,10 +105,11 @@ local neogit = require "neogit"
 
 map("n", "<leader>ng", function()
   neogit.open()
-end, { desc = "neogit open neogit" })
+end, { desc = "neogit open" })
+
 map("n", "<leader>nl", function()
   neogit.open { "log" }
-end, { desc = "neogit open neogit log" })
+end, { desc = "neogit log" })
 
 -- }}}
 -- Neorg {{{
@@ -122,9 +133,11 @@ end)
 map("v", "<leader>ss", function()
   require("nvim-silicon").shoot()
 end, { desc = "snapshot code screenshot" })
+
 map("v", "<leader>sf", function()
   require("nvim-silicon").file()
 end, { desc = "snapshot code screenshot as file" })
+
 map("v", "<leader>sc", function()
   require("nvim-silicon").clip()
 end, { desc = "snapshot code screenshot to clipboard" })

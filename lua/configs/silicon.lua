@@ -18,4 +18,4 @@ local options = {
   end,
 }
 
-require("nvim-silicon").setup(options)
+return options

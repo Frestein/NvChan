@@ -6,4 +6,4 @@ local options = {
   lsp = { auto_attach = true },
 }
 
-require("nvim-navic").setup(options)
+return options
