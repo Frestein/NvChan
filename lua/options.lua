@@ -95,7 +95,7 @@ require("notify").setup {
 -- Neorg {{{
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "norg",
+  pattern = { "norg", "markdown" },
   callback = function()
     vim.wo.foldlevel = 99
     vim.wo.conceallevel = 2

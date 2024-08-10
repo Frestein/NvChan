@@ -11,6 +11,7 @@ local servers = {
   taplo = {},
   yamlls = {},
   clangd = {},
+  marksman = {},
   pyright = {
     root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
     settings = {

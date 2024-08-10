@@ -20,6 +20,7 @@ options.ensure_installed = {
   "hyprls",
   "taplo",
   "selene",
+  "marksman",
 }
 
 return options
