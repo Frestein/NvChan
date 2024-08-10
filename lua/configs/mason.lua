@@ -19,6 +19,7 @@ options.ensure_installed = {
   "bash-language-server",
   "hyprls",
   "taplo",
+  "selene",
 }
 
 return options
