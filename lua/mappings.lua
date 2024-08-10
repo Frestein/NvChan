@@ -3,29 +3,44 @@ require "nvchad.mappings"
 
 local map = require("langmapper").map
 
+-- File {{{
+
+map("n", "<leader>cf", function()
+  vim.fn.setreg("+", vim.fn.expand "%:t")
+end, { desc = "file copy name" })
+
+map("n", "<leader>cp", function()
+  vim.fn.setreg("+", vim.fn.expand "%:p")
+end, { desc = "file copy path" })
+
+-- }}}
 -- Split {{{
 
-local split_toggle = false
-local function toggle_split(direction)
-  if split_toggle then
-    vim.cmd "close"
-    split_toggle = false
-  else
-    if direction == "v" then
-      vim.cmd "vsplit"
-    elseif direction == "h" then
-      vim.cmd "split"
-    end
-    split_toggle = true
-  end
-end
-
+-- Split window
 map("n", "<leader>h", function()
-  toggle_split "h"
+  vim.cmd "split"
 end, { desc = "split toggle horizontal " })
+
 map("n", "<leader>v", function()
-  toggle_split "v"
+  vim.cmd "vsplit"
 end, { desc = "split toggle vertical" })
+
+-- Resize split window
+map("n", "<C-S-Down>", function()
+  vim.cmd "resize +2"
+end, { desc = "split resize horizontal down" })
+
+map("n", "<C-S-Up>", function()
+  vim.cmd "resize -2"
+end, { desc = "split resize horizontal up" })
+
+map("n", "<C-S-Left>", function()
+  vim.cmd "vertical resize -2"
+end, { desc = "split resize vertical down" })
+
+map("n", "<C-S-Right>", function()
+  vim.cmd "vertical resize +2"
+end, { desc = "split resize vertical up" })
 
 -- }}}
 -- Actions-preview {{{
