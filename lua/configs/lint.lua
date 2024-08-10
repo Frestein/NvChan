@@ -31,6 +31,8 @@ local function find_selene_config(root)
   return nil
 end
 
+local linter_error_notify = nil
+
 local function setup_linting()
   local lua_root = get_lsp_root()
   if lua_root then
@@ -39,7 +41,11 @@ local function setup_linting()
       local selene = lint.linters.selene
       selene.args = { "--config", config_path, "--display-style", "json", "-" }
     else
-      vim.notify("Configuration file for selene not found.", "ERROR", { title = "Linter" })
+      linter_error_notify = vim.notify(
+        "Configuration file for selene not found.",
+        "ERROR",
+        { title = "Linter", replace = linter_error_notify }
+      )
     end
   end
 end
