@@ -77,6 +77,10 @@ map({ "n" }, "<leader>ls", function()
   lazy.sync()
 end, { desc = "lazy sync" })
 
+map({ "n" }, "<leader>lt", function()
+  vim.cmd "Telescope lazy"
+end, { desc = "lazy telescope" })
+
 -- }}}
 -- Mason {{{
 
