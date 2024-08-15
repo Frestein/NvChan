@@ -1,4 +1,3 @@
--- vim:fileencoding=utf-8:foldmethod=marker
 require "nvchad.options"
 
 local o = vim.o
@@ -28,13 +27,13 @@ vim.filetype.add {
 
 -- Dynamic terminal padding {{{
 
-autocmd("VimEnter", {
-  command = ":silent !kitty @ set-spacing padding=0 margin=0",
-})
-
-autocmd("VimLeavePre", {
-  command = ":silent !kitty @ set-spacing padding=10 margin=0",
-})
+-- autocmd("VimEnter", {
+--   command = ":silent !kitty @ set-spacing padding=0 margin=0",
+-- })
+--
+-- autocmd("VimLeavePre", {
+--   command = ":silent !kitty @ set-spacing padding=10 margin=0",
+-- })
 
 -- }}}
 -- Restore cursor position {{{
@@ -103,3 +102,4 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- }}}
+-- vim:fileencoding=utf-8:foldmethod=marker

@@ -62,8 +62,9 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      { "nvim-telescope/telescope-project.nvim" },
+      { "scottmckendry/telescope-resession.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
-      { "polirritmico/telescope-lazy-plugins.nvim" },
     },
     opts = require "configs.telescope",
   },
@@ -135,6 +136,11 @@ return {
     "SmiteshP/nvim-navic",
     event = "LspAttach",
     opts = require "configs.navic",
+  },
+
+  {
+    "stevearc/resession.nvim",
+    opts = {},
   },
 
   {

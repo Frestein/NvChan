@@ -1,4 +1,3 @@
--- This file  needs to have same structure as nvconfig.lua
 ---@type ChadrcConfig
 local M = {}
 
@@ -7,11 +6,11 @@ M.ui = {
     theme = "minimal",
     separator_style = "block",
     modules = {
-      navic_statusline = function()
-        local navic = require "nvim-navic"
+      navic = function()
+        local navic_status = require "nvim-navic"
 
-        if navic.is_available() then
-          return navic.get_location()
+        if navic_status.is_available() then
+          return navic_status.get_location()
         else
           return ""
         end
@@ -32,7 +31,7 @@ M.ui = {
       "git",
       "%=",
       "lsp_msg",
-      "navic_statusline",
+      "navic",
       "%=",
       "diagnostics",
       "lsp",
@@ -59,7 +58,7 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "nord",
+  theme = "onedark",
   theme_toggle = { "nord", "onedark" },
 
   hl_override = {

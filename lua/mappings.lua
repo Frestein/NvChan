@@ -1,7 +1,16 @@
--- vim:fileencoding=utf-8:foldmethod=marker
 require "nvchad.mappings"
 
 local map = require("langmapper").map
+local telescope = require "telescope"
+local actions_preview = require "actions-preview"
+local conform = require "conform"
+local lazy = require "lazy"
+local noice = require "noice"
+local neogit = require "neogit"
+local resession = require "resession"
+local nvim_silicon = require "nvim-silicon"
+local zen_mode = require "zen-mode"
+local neorg_callbacks = require "neorg.core.callbacks"
 
 -- File {{{
 
@@ -19,11 +28,11 @@ end, { desc = "file copy path" })
 -- Split window
 map("n", "<leader>h", function()
   vim.cmd "split"
-end, { desc = "split toggle horizontal " })
+end, { desc = "split horizontal " })
 
 map("n", "<leader>v", function()
   vim.cmd "vsplit"
-end, { desc = "split toggle vertical" })
+end, { desc = "split vertical" })
 
 -- Resize split window
 map("n", "<C-S-Down>", function()
@@ -45,65 +54,50 @@ end, { desc = "split resize vertical up" })
 -- }}}
 -- Actions-preview {{{
 
-map({ "n", "v" }, "<leader>tf", function()
-  require("actions-preview").code_actions()
+map({ "n", "v" }, "<leader>ta", function()
+  actions_preview.code_actions()
 end, { desc = "LSP actions preview" })
 
 -- }}}
 -- Conform {{{
 
 map({ "n", "v" }, "<leader>fm", function()
-  require("conform").format()
+  conform.format()
 end, { desc = "format file or selected text" })
 
 -- }}}
 -- Lazy {{{
 
-local lazy = require "lazy"
+map("n", "<leader>llh", lazy.home, { desc = "lazy home" })
+map("n", "<leader>llp", lazy.log, { desc = "lazy recent updates" })
+map("n", "<leader>li", lazy.install, { desc = "lazy install missing plugins" })
+map("n", "<leader>lc", lazy.check, { desc = "lazy check updates" })
+map("n", "<leader>lu", lazy.update, { desc = "lazy update plugins" })
+map("n", "<leader>ls", lazy.sync, { desc = "lazy sync plugins" })
+map("n", "<leader>lh", lazy.health, { desc = "lazy health" })
+map("n", "<leader>lp", lazy.profile, { desc = "lazy profile" })
 
-map({ "n" }, "<leader>ll", function()
-  lazy.home()
-end, { desc = "lazy home" })
-
-map({ "n" }, "<leader>lc", function()
-  lazy.check()
-end, { desc = "lazy check updates" })
-
-map({ "n" }, "<leader>lu", function()
-  lazy.update()
-end, { desc = "lazy update" })
-
-map({ "n" }, "<leader>ls", function()
-  lazy.sync()
-end, { desc = "lazy sync" })
-
-map({ "n" }, "<leader>lt", function()
+map("n", "<leader>tip", function()
   vim.cmd "Telescope lazy"
 end, { desc = "lazy view installed plugins" })
-
-map({ "n" }, "<leader>lp", function()
-  vim.cmd "Telescope lazy_plugins"
-end, { desc = "lazy view plugin configurations" })
 
 -- }}}
 -- Mason {{{
 
-map({ "n" }, "<leader>mm", function()
+map("n", "<leader>mm", function()
   vim.cmd "Mason"
 end, { desc = "mason home" })
 
-map({ "n" }, "<leader>mi", function()
+map("n", "<leader>mi", function()
   vim.cmd "MasonInstallAll"
 end, { desc = "mason install all" })
 
-map({ "n" }, "<leader>mu", function()
+map("n", "<leader>mu", function()
   vim.cmd "MasonUpdate"
 end, { desc = "mason update" })
 
 -- }}}
 -- Noice {{{
-
-local noice = require "noice"
 
 map("n", "<leader>nd", function()
   noice.cmd "dismiss"
@@ -124,11 +118,7 @@ end, { desc = "noice open message history in telescope" })
 -- }}}
 -- Neogit {{{
 
-local neogit = require "neogit"
-
-map("n", "<leader>ng", function()
-  neogit.open()
-end, { desc = "neogit open" })
+map("n", "<leader>ng", neogit.open, { desc = "neogit open" })
 
 map("n", "<leader>nl", function()
   neogit.open { "log" }
@@ -136,8 +126,6 @@ end, { desc = "neogit log" })
 
 -- }}}
 -- Neorg {{{
-
-local neorg_callbacks = require "neorg.core.callbacks"
 
 neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
   keybinds.map_event_to_mode("norg", {
@@ -153,23 +141,27 @@ end)
 -- }}}
 -- Nvim-silicon {{{
 
-map("v", "<leader>ss", function()
-  require("nvim-silicon").shoot()
-end, { desc = "snapshot code screenshot" })
-
-map("v", "<leader>sf", function()
-  require("nvim-silicon").file()
-end, { desc = "snapshot code screenshot as file" })
-
-map("v", "<leader>sc", function()
-  require("nvim-silicon").clip()
-end, { desc = "snapshot code screenshot to clipboard" })
+map("v", "<leader>ss", nvim_silicon.shoot, { desc = "snapshot code screenshot" })
+map("v", "<leader>sf", nvim_silicon.file, { desc = "snapshot code screenshot as file" })
+map("v", "<leader>sc", nvim_silicon.clip, { desc = "snapshot code screenshot to clipboard" })
 
 -- }}}
 -- Zen-mode {{{
 
-map({ "n" }, "<leader>mz", function()
-  require("zen-mode").toggle()
-end, { desc = "zen-mode toggle zen-mode" })
+map({ "n" }, "<leader>mz", zen_mode.toggle, { desc = "toggle zen-mode" })
 
 -- }}}
+-- Project {{{
+
+map("n", "<leader>tp", telescope.extensions.project.project, { desc = "telescope open project" })
+
+-- }}}
+-- Resession {{{
+
+map("n", "<leader>ss", resession.save, { desc = "ression save session" })
+map("n", "<leader>sl", resession.load, { desc = "ression load session" })
+map("n", "<leader>sd", resession.delete, { desc = "ression delete session" })
+map("n", "<leader>st", telescope.extensions.resession.resession, { desc = "ression telescope" })
+
+-- }}}
+-- vim:fileencoding=utf-8:foldmethod=marker
