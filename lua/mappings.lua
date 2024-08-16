@@ -100,7 +100,7 @@ end, { desc = "format file or selected text" })
 -- }}}
 -- Lazy {{{
 
-map("n", "<leader>llh", lazy.home, { desc = "lazy home" })
+map("n", "<leader>ll", lazy.home, { desc = "lazy home" })
 map("n", "<leader>llp", lazy.log, { desc = "lazy recent updates" })
 map("n", "<leader>li", lazy.install, { desc = "lazy install missing plugins" })
 map("n", "<leader>lc", lazy.check, { desc = "lazy check updates" })
