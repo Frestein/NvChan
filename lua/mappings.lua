@@ -17,9 +17,6 @@ local neorg_callbacks = require "neorg.core.callbacks"
 vim.keymap.del("n", "<leader>e")
 vim.keymap.del("n", "<C-n>")
 
--- oil
-vim.keymap.del("n", "<leader>fl")
-
 -- File {{{
 
 map("n", "<leader>cf", function()
@@ -82,6 +79,7 @@ end, { desc = "Tabufline last tab" })
 -- Oil {{{
 
 map("n", "<leader>e", oil.open, { desc = "Oil Open parent directory" })
+map("n", "<leader>fl", oil.toggle_float, { desc = "Oil Open parent directory (float)" })
 
 -- }}}
 -- Actions-preview {{{
