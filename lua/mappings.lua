@@ -96,7 +96,7 @@ map("n", "<leader>ls", lazy.sync, { desc = "lazy sync plugins" })
 map("n", "<leader>lh", lazy.health, { desc = "lazy health" })
 map("n", "<leader>lp", lazy.profile, { desc = "lazy profile" })
 
-map("n", "<leader>tip", function()
+map("n", "<leader>tlp", function()
   vim.cmd "Telescope lazy"
 end, { desc = "lazy view installed plugins" })
 
@@ -137,9 +137,9 @@ end, { desc = "noice open message history in telescope" })
 -- }}}
 -- Neogit {{{
 
-map("n", "<leader>ng", neogit.open, { desc = "neogit open" })
+map("n", "<leader>gg", neogit.open, { desc = "neogit open" })
 
-map("n", "<leader>nl", function()
+map("n", "<leader>gl", function()
   neogit.open { "log" }
 end, { desc = "neogit log" })
 
