@@ -22,6 +22,8 @@ local git_ignored = setmetatable({}, {
 })
 
 local options = {
+  delete_to_trash = true,
+  skip_confirm_for_simple_edits = true,
   keymaps = {
     ["gd"] = {
       desc = "Toggle file detail view",
@@ -48,6 +50,17 @@ local options = {
       end
       -- Check if file is gitignored
       return vim.list_contains(git_ignored[dir], name)
+    end,
+  },
+  git = {
+    add = function(path)
+      return true
+    end,
+    mv = function(src_path, dest_path)
+      return true
+    end,
+    rm = function(path)
+      return true
     end,
   },
 }
