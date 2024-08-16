@@ -164,4 +164,9 @@ map("n", "<leader>sd", resession.delete, { desc = "ression delete session" })
 map("n", "<leader>st", telescope.extensions.resession.resession, { desc = "ression telescope" })
 
 -- }}}
+-- Zoxide {{{
+
+map("n", "<leader>zl", telescope.extensions.zoxide.list, { desc = "zoxide list" })
+
+-- }}}
 -- vim:fileencoding=utf-8:foldmethod=marker

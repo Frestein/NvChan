@@ -8,6 +8,7 @@ options.extensions_list = {
   "undo",
   "project",
   "resession",
+  "zoxide",
 }
 options.extensions = {
   lazy_plugins = {

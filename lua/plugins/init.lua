@@ -65,6 +65,7 @@ return {
       { "nvim-telescope/telescope-project.nvim" },
       { "scottmckendry/telescope-resession.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
+      { "jvgrootveld/telescope-zoxide" },
     },
     opts = require "configs.telescope",
   },
