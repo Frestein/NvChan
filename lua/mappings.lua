@@ -52,6 +52,25 @@ map("n", "<C-S-Right>", function()
 end, { desc = "split resize vertical up" })
 
 -- }}}
+-- Tabufline {{{
+
+map("n", "<C-S-[>", function()
+  vim.cmd "tabprev"
+end, { desc = "Tabufline previous tab" })
+
+map("n", "<C-S-]>", function()
+  vim.cmd "tabnext"
+end, { desc = "Tabufline next tab" })
+
+map("n", "<leader>^", function()
+  vim.cmd "tabfirst"
+end, { desc = "Tabufline first tab" })
+
+map("n", "<leader>$", function()
+  vim.cmd "tablast"
+end, { desc = "Tabufline last tab" })
+
+-- }}}
 -- Actions-preview {{{
 
 map({ "n", "v" }, "<leader>ta", function()
