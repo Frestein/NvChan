@@ -1,23 +1,23 @@
-local opts = require "nvchad.configs.gitsigns"
+local options = require "nvchad.configs.gitsigns"
 
-opts.current_line_blame = true
-opts.current_line_blame_opts = {
+options.current_line_blame = true
+options.current_line_blame_opts = {
   delay = 500,
 }
-opts.on_attach = function(bufnr)
-  local gs = package.loaded.gitsigns
+options.on_attach = function(bufnr)
+  local gitsigns = package.loaded.gitsigns
   local map = vim.keymap.set
 
-  local function options(desc)
+  local function opts(desc)
     return { buffer = bufnr, desc = desc }
   end
 
-  map("n", "<leader>grh", gs.reset_hunk, options "Gitsigns Reset Hunk")
-  map("n", "<leader>gph", gs.preview_hunk, options "Gitsigns Preview Hunk")
-  map("n", "<leader>gb", gs.blame_line, options "Gitsigns Blame Line")
-  map("n", "<leader>gtb", gs.toggle_current_line_blame, options "Gitsigns Toggle Blame Line")
-  map("n", "<leader>gtd", gs.toggle_deleted, options "Gitsigns Toggle Deleted")
-  map("n", "<leader>gtn", gs.toggle_numhl, options "Gitsigns Toggle Numhl")
+  map("n", "<leader>grh", gitsigns.reset_hunk, opts "Gitsigns Reset Hunk")
+  map("n", "<leader>gph", gitsigns.preview_hunk, opts "Gitsigns Preview Hunk")
+  map("n", "<leader>gb", gitsigns.blame_line, opts "Gitsigns Blame Line")
+  map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, opts "Gitsigns Toggle Blame Line")
+  map("n", "<leader>gtd", gitsigns.toggle_deleted, opts "Gitsigns Toggle Deleted")
+  map("n", "<leader>gtn", gitsigns.toggle_numhl, opts "Gitsigns Toggle Numhl")
 end
 
-return opts
+return options
