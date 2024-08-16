@@ -5,12 +5,20 @@ local telescope = require "telescope"
 local actions_preview = require "actions-preview"
 local conform = require "conform"
 local lazy = require "lazy"
+local oil = require "oil"
 local noice = require "noice"
 local neogit = require "neogit"
 local resession = require "resession"
 local nvim_silicon = require "nvim-silicon"
 local zen_mode = require "zen-mode"
 local neorg_callbacks = require "neorg.core.callbacks"
+
+-- nvimtree
+vim.keymap.del("n", "<leader>e")
+vim.keymap.del("n", "<C-n>")
+
+-- oil
+vim.keymap.del("n", "<leader>fl")
 
 -- File {{{
 
@@ -69,6 +77,11 @@ end, { desc = "Tabufline first tab" })
 map("n", "<leader>$", function()
   vim.cmd "tablast"
 end, { desc = "Tabufline last tab" })
+
+-- }}}
+-- Oil {{{
+
+map("n", "<leader>e", oil.open, { desc = "Oil Open parent directory" })
 
 -- }}}
 -- Actions-preview {{{

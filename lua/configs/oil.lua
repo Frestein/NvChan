@@ -70,9 +70,6 @@ local function get_git_ignored_files_in(dir)
 end
 
 local options = {
-  keymaps = {
-    ["<Tab>"] = "actions.select",
-  },
   view_options = {
     is_hidden_file = function(name, bufnr)
       local ignored_files = get_git_ignored_files_in(require("oil").get_current_dir())
@@ -81,4 +78,4 @@ local options = {
   },
 }
 
-require("oil").setup(options)
+return options

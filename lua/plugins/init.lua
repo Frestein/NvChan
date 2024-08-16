@@ -15,8 +15,8 @@ return {
     { import = "nvcommunity.file-explorer.oil-nvim" },
     {
       "stevearc/oil.nvim",
-      config = function()
-        require "configs.oil"
+      opts = function()
+        return require "configs.oil"
       end,
     },
     { import = "nvcommunity.git.diffview" },
@@ -57,6 +57,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = require "configs.tree",
+    enabled = false,
   },
 
   {
