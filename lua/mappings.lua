@@ -201,4 +201,9 @@ map("n", "<leader>st", telescope.extensions.resession.resession, { desc = "ressi
 map("n", "<leader>zl", telescope.extensions.zoxide.list, { desc = "zoxide list" })
 
 -- }}}
+-- Chezmoi {{{
+
+map("n", "<leader>cz", telescope.extensions.chezmoi.find_files, { desc = "chezmoi find files" })
+
+-- }}}
 -- vim:fileencoding=utf-8:foldmethod=marker

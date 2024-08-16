@@ -112,6 +112,18 @@ return {
   },
 
   {
+    "xvzc/chezmoi.nvim",
+    dependencies = {
+      "alker0/chezmoi.vim",
+      lazy = false,
+      init = function()
+        vim.g["chezmoi#use_tmp_buffer"] = true
+      end,
+    },
+    opts = require "configs.chezmoi",
+  },
+
+  {
     "folke/zen-mode.nvim",
     opts = require "configs.zen-mode",
   },

@@ -9,6 +9,7 @@ options.extensions_list = {
   "project",
   "resession",
   "zoxide",
+  "chezmoi",
 }
 options.extensions = {
   lazy_plugins = {
