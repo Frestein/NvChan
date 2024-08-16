@@ -1,3 +1,5 @@
+local detail = false
+
 local git_ignored = setmetatable({}, {
   __index = function(self, key)
     local proc = vim.system({ "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" }, {
@@ -20,6 +22,19 @@ local git_ignored = setmetatable({}, {
 })
 
 local options = {
+  keymaps = {
+    ["gd"] = {
+      desc = "Toggle file detail view",
+      callback = function()
+        detail = not detail
+        if detail then
+          require("oil").set_columns { "icon", "permissions", "size", "mtime" }
+        else
+          require("oil").set_columns { "icon" }
+        end
+      end,
+    },
+  },
   view_options = {
     is_hidden_file = function(name, _)
       -- dotfiles are always considered hidden
