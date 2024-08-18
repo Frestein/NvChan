@@ -69,10 +69,6 @@ M.ui = {
   border = {
     style = "rounded",
   },
-
-  -- lsp = {
-  --   signature = false,
-  -- },
 }
 
 M.base46 = {
