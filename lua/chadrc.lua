@@ -78,6 +78,7 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    -- Tabufline {{{
     ["TbFill"] = {
       bg = "NONE",
     },
@@ -93,6 +94,8 @@ M.base46 = {
     ["TbBufOffClose"] = {
       bg = "NONE",
     },
+    -- }}}
+    -- Navic {{{
     ["NavicIconsColor"] = {
       bg = "NONE",
     },
@@ -210,6 +213,7 @@ M.base46 = {
     ["NavicIconsReference"] = {
       bg = "NONE",
     },
+    -- }}}
   },
 
   hl_add = {
@@ -235,6 +239,32 @@ M.base46 = {
     ["NvimTreeWinSeparator"] = {
       bg = "NONE",
     },
+    -- Symbol-Usage {{{
+    ["SymbolUsageRounding"] = {
+      fg = "one_bg",
+      italic = true,
+    },
+    ["SymbolUsageContent"] = {
+      bg = "one_bg",
+      fg = "grey_fg",
+      italic = true,
+    },
+    ["SymbolUsageRef"] = {
+      fg = "nord_blue",
+      bg = "one_bg",
+      italic = true,
+    },
+    ["SymbolUsageDef"] = {
+      fg = "dark_purple",
+      bg = "one_bg",
+      italic = true,
+    },
+    ["SymbolUsageImpl"] = {
+      fg = "yellow",
+      bg = "one_bg",
+      italic = true,
+    },
+    -- }}}
   },
 
   integrations = {
@@ -247,3 +277,5 @@ M.base46 = {
 }
 
 return M
+
+-- vim:fileencoding=utf-8:foldmethod=marker

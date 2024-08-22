@@ -96,8 +96,7 @@ return {
       "rcarriga/nvim-notify",
     },
     opts = require "plugins.options.noice-opts",
-    config = function(_, opts)
-      require("noice").setup(opts)
+    config = function()
       require "plugins.configs.noice-conf"
     end,
   },
@@ -177,6 +176,12 @@ return {
   {
     "stevearc/resession.nvim",
     opts = {},
+  },
+
+  {
+    "Wansmer/symbol-usage.nvim",
+    event = "LspAttach",
+    opts = require "plugins.options.symbol-usage-opts",
   },
 
   {
