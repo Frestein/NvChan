@@ -73,7 +73,7 @@ M.ui = {
 
 M.base46 = {
   theme = "nord",
-  theme_toggle = { "nord", "nord" },
+  theme_toggle = { "nord", "onedark" },
 
   hl_override = {
     Comment = { italic = true },
