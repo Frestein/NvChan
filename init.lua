@@ -11,7 +11,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require "configs.lazy"
+local lazy_options = require "plugins.options.lazy-opts"
 
 -- load plugins
 require("lazy").setup({
@@ -23,7 +23,7 @@ require("lazy").setup({
   },
 
   { import = "plugins" },
-}, lazy_config)
+}, lazy_options)
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")

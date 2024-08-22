@@ -4,4 +4,4 @@ local options = {
   telescope = telescope_defaults,
 }
 
-require("actions-preview").setup(options)
+return options

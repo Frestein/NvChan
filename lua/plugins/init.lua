@@ -15,9 +15,7 @@ return {
     { import = "nvcommunity.file-explorer.oil-nvim" },
     {
       "stevearc/oil.nvim",
-      opts = function()
-        return require "configs.oil"
-      end,
+      opts = require "plugins.options.oil-opts",
     },
     { import = "nvcommunity.git.diffview" },
     { import = "nvcommunity.git.neogit" },
@@ -26,34 +24,23 @@ return {
 
   {
     "stevearc/conform.nvim",
-    opts = require "configs.conform",
+    event = { "BufWritePre" },
+    opts = require "plugins.options.conform-opts",
     config = function(_, opts)
-      local conform = require "conform"
-
-      conform.setup(opts)
-      vim.api.nvim_create_user_command("ConformFormat", function(args)
-        local range = nil
-        if args.count ~= -1 then
-          local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-          range = {
-            start = { args.line1, 0 },
-            ["end"] = { args.line2, end_line:len() },
-          }
-        end
-        conform.format { async = true, lsp_fallback = true, range = range }
-      end, { range = true })
+      require("conform").setup(opts)
+      require "plugins.configs.conform-conf"
     end,
   },
 
   {
     "williamboman/mason.nvim",
-    opts = require "configs.mason",
+    opts = require "plugins.options.mason-opts",
   },
 
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "configs.lspconfig"
+      require "plugins.options.lspconfig-opts"
     end,
   },
 
@@ -61,18 +48,18 @@ return {
     "mfussenegger/nvim-lint",
     event = "LspAttach",
     config = function()
-      require "configs.lint"
+      require "plugins.configs.lint-conf"
     end,
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = require "configs.treesitter",
+    opts = require "plugins.options.treesitter-opts",
   },
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = require "configs.tree",
+    opts = require "plugins.options.tree-opts",
     enabled = false,
   },
 
@@ -80,7 +67,7 @@ return {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = "LspAttach",
     config = function()
-      require "configs.lsplines"
+      require "plugins.configs.lsplines-conf"
     end,
   },
 
@@ -92,13 +79,13 @@ return {
       { "tsakirist/telescope-lazy.nvim" },
       { "jvgrootveld/telescope-zoxide" },
     },
-    opts = require "configs.telescope",
+    opts = require "plugins.options.telescope-opts",
   },
 
   {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
-    opts = require "configs.gitsigns",
+    opts = require "plugins.options.gitsigns-opts",
   },
 
   {
@@ -108,34 +95,25 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
-    opts = require "configs.noice",
+    opts = require "plugins.options.noice-opts",
     config = function(_, opts)
-      local noice = require "noice"
-      local notify = require "notify"
-      local base46 = require "base46"
-
-      noice.setup(opts)
-
-      -- Transparency fix
-      local base16 = base46.get_theme_tb "base_16"
-
-      notify.setup {
-        background_colour = base16.base00,
-      }
+      require("noice").setup(opts)
+      require "plugins.configs.noice-conf"
     end,
   },
 
   {
     "michaelrommel/nvim-silicon",
     opts = function()
-      return require "configs.silicon"
+      return require "plugins.options.silicon-opts"
     end,
   },
 
   {
     "aznhe21/actions-preview.nvim",
-    config = function()
-      require "configs.actions-preview"
+    opts = require "plugins.options.actions-preview-opts",
+    config = function(_, opts)
+      require("actions-preview").setup(opts)
     end,
   },
 
@@ -158,12 +136,12 @@ return {
         vim.g["chezmoi#use_tmp_buffer"] = true
       end,
     },
-    opts = require "configs.chezmoi",
+    opts = require "plugins.options.chezmoi-opts",
   },
 
   {
     "folke/zen-mode.nvim",
-    opts = require "configs.zen-mode",
+    opts = require "plugins.options.zen-mode-opts",
   },
 
   {
@@ -180,7 +158,7 @@ return {
     },
     lazy = false,
     version = "*",
-    opts = require "configs.neorg",
+    opts = require "plugins.options.neorg-opts",
   },
 
   {
@@ -193,7 +171,7 @@ return {
   {
     "SmiteshP/nvim-navic",
     event = "LspAttach",
-    opts = require "configs.navic",
+    opts = require "plugins.options.navic-opts",
   },
 
   {
@@ -205,19 +183,9 @@ return {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1,
-    opts = require "configs.langmapper",
+    opts = require "plugins.options.langmapper-opts",
     config = function(_, opts)
-      local function escape(str)
-        local escape_chars = [[;,."|\]]
-        return vim.fn.escape(str, escape_chars)
-      end
-
-      local en = [[qwertyuiop[]asdfghjkl;zxcvbnm,.]]
-      local ru = [[йцукенгшщзхъфывапролджячсмитьбю]]
-      local en_shift = [[QWERTYUIOP{}ASDFGHJKL:ZXCVBNM<>]]
-      local ru_shift = [[ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЯЧСМИТЬБЮ]]
-      vim.o.langmap = vim.fn.join({ escape(ru_shift) .. ";" .. escape(en_shift), escape(ru) .. ";" .. escape(en) }, ",")
-
+      require "plugins.configs.langmapper-conf"
       require("langmapper").setup(opts)
       require("langmapper").hack_get_keymap()
     end,

@@ -1,5 +1,7 @@
 local options = {
   defaults = { lazy = true },
+  checker = { enabled = true },
+  diff = { cmd = "diffview.nvim" },
   install = { colorscheme = { "nvchad" } },
 
   ui = {
@@ -9,10 +11,6 @@ local options = {
       loaded = "",
       not_loaded = "",
     },
-  },
-
-  checker = {
-    enabled = true,
   },
 
   performance = {
