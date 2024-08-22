@@ -122,7 +122,7 @@ map("n", "<leader>fl", oil.toggle_float, { desc = "file open parent directory (f
 
 map({ "n", "v" }, "<leader>fc", function()
   conform.format { async = true }
-end, { desc = "conform format buffer or selected text" })
+end, { desc = "file format buffer" })
 
 -- }}}
 -- Lazy {{{
