@@ -100,6 +100,8 @@ map("n", "<leader>fip", telescope.extensions.lazy.lazy, { desc = "telescope inst
 map("n", "<leader>fs", telescope.extensions.resession.resession, { desc = "telescope find sessions" })
 map("n", "<leader>zl", telescope.extensions.zoxide.list, { desc = "telescope zoxide list" })
 map("n", "<leader>fd", telescope.extensions.chezmoi.find_files, { desc = "telescope find dotfiles" })
+map("n", "<leader>fp", telescope.extensions.project.project, { desc = "telescope find projects" })
+map("n", "<leader>fn", telescope.extensions.noice.noice, { desc = "telescope find notices" })
 
 -- }}}
 -- Tabufline {{{
@@ -182,10 +184,6 @@ map("n", "<leader>nh", function()
   noice.cmd "history"
 end, { desc = "notices show the notice history" })
 
-map("n", "<leader>fn", function()
-  noice.cmd "telescope"
-end, { desc = "telescope find notices" })
-
 -- }}}
 -- Neogit {{{
 
@@ -220,11 +218,6 @@ map("v", "<leader>sc", silicon.clip, { desc = "snapshot screenshot code to clipb
 -- Zen-mode {{{
 
 map({ "n" }, "<leader>mz", zen_mode.toggle, { desc = "toggle zen-mode" })
-
--- }}}
--- Project {{{
-
-map("n", "<leader>fp", telescope.extensions.project.project, { desc = "telescope find projects" })
 
 -- }}}
 -- Resession {{{
