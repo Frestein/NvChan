@@ -34,6 +34,15 @@ unmap("n", "<leader>gt")
 
 --}}}
 
+-- Movement {{{
+
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "movement down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "movement down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'j'", { desc = "movement up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'j'", { desc = "movement up", expr = true, silent = true })
+
+-- }}}
 -- File {{{
 
 map("n", "<leader>cf", function()
