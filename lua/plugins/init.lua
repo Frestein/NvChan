@@ -1,25 +1,7 @@
 return {
   {
-    "NvChad/nvcommunity",
-    { import = "nvcommunity.completion.codeium" },
-    { import = "nvcommunity.diagnostics.trouble" },
-    { import = "nvcommunity.editor.telescope-undo" },
-    { import = "nvcommunity.editor.treesittercontext" },
-    { import = "nvcommunity.editor.autosave" },
-    {
-      "okuuva/auto-save.nvim",
-      opts = {
-        debounce_delay = 30000,
-      },
-    },
-    { import = "nvcommunity.file-explorer.oil-nvim" },
-    {
-      "stevearc/oil.nvim",
-      opts = require "plugins.options.oil-opts",
-    },
-    { import = "nvcommunity.git.diffview" },
-    { import = "nvcommunity.git.neogit" },
-    { import = "nvcommunity.motion.neoscroll" },
+    "williamboman/mason.nvim",
+    opts = require "plugins.options.mason-opts",
   },
 
   {
@@ -30,11 +12,6 @@ return {
       require("conform").setup(opts)
       require "plugins.configs.conform-conf"
     end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = require "plugins.options.mason-opts",
   },
 
   {
@@ -54,6 +31,13 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        event = "BufReadPost",
+        opts = require "plugins.options.treesitter-context-opts",
+      },
+    },
     opts = require "plugins.options.treesitter-opts",
   },
 
@@ -61,6 +45,27 @@ return {
     "nvim-tree/nvim-tree.lua",
     opts = require "plugins.options.tree-opts",
     enabled = false,
+  },
+
+  {
+    "stevearc/oil.nvim",
+    event = "VeryLazy",
+    cmd = "Oil",
+    opts = require "plugins.options.oil-opts",
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "jcdickinson/codeium.nvim",
+        opts = {},
+      },
+    },
+    config = function(_, opts)
+      table.insert(opts.sources, { name = "codeium" })
+      require("cmp").setup(opts)
+    end,
   },
 
   {
@@ -78,6 +83,7 @@ return {
       { "scottmckendry/telescope-resession.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
       { "jvgrootveld/telescope-zoxide" },
+      { "debugloop/telescope-undo.nvim" },
     },
     opts = require "plugins.options.telescope-opts",
   },
@@ -85,7 +91,25 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
+    dependencies = {
+      {
+        "sindrets/diffview.nvim",
+        opts = {},
+      },
+    },
     opts = require "plugins.options.gitsigns-opts",
+  },
+
+  {
+    "NeogitOrg/neogit",
+    cmd = "Neogit",
+    ft = { "diff" },
+    opts = require "plugins.options.neogit-opts",
+    config = function(_, opts)
+      require("neogit").setup(opts)
+      dofile(vim.g.base46_cache .. "git")
+      dofile(vim.g.base46_cache .. "neogit")
+    end,
   },
 
   {
@@ -99,6 +123,18 @@ return {
     config = function()
       require "plugins.configs.noice-conf"
     end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    cmd = { "Trouble", "TroubleToggle", "TodoTrouble", "TodoTelescope" },
+    dependencies = {
+      {
+        "folke/todo-comments.nvim",
+        opts = {},
+      },
+    },
+    opts = {},
   },
 
   {
@@ -127,13 +163,21 @@ return {
   },
 
   {
+    "okuuva/auto-save.nvim",
+    event = { "InsertLeave", "TextChanged" },
+    opts = require "plugins.options.auto-save-opts",
+  },
+
+  {
     "xvzc/chezmoi.nvim",
     dependencies = {
-      "alker0/chezmoi.vim",
-      lazy = false,
-      init = function()
-        vim.g["chezmoi#use_tmp_buffer"] = true
-      end,
+      {
+        "alker0/chezmoi.vim",
+        lazy = false,
+        init = function()
+          vim.g["chezmoi#use_tmp_buffer"] = true
+        end,
+      },
     },
     opts = require "plugins.options.chezmoi-opts",
   },
@@ -182,6 +226,15 @@ return {
     "Wansmer/symbol-usage.nvim",
     event = "LspAttach",
     opts = require "plugins.options.symbol-usage-opts",
+  },
+
+  {
+    "karb94/neoscroll.nvim",
+    keys = {
+      "<C-u>",
+      "<C-d>",
+    },
+    opts = require "plugins.options.neoscroll-opts",
   },
 
   {

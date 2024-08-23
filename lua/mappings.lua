@@ -94,6 +94,7 @@ map("n", "<leader>fb", telescope_builtin.buffers, { desc = "telescope find buffe
 map("n", "<leader>fh", telescope_builtin.help_tags, { desc = "telescope help page" })
 map("n", "<leader>fo", telescope_builtin.oldfiles, { desc = "telescope find oldfiles" })
 map("n", "<leader>fz", telescope_builtin.current_buffer_fuzzy_find, { desc = "telescope find in current buffer" })
+map("n", "<leader>ftd", telescope_builtin.diagnostics, { desc = "telescope find diagnostics" })
 map("n", "<leader>pt", telescope.extensions.terms.terms, { desc = "telescope pick hidden term" })
 map("n", "<leader>th", telescope.extensions.themes.themes, { desc = "telescope nvchad themes" })
 map("n", "<leader>fip", telescope.extensions.lazy.lazy, { desc = "telescope installed plugins" })
@@ -102,6 +103,11 @@ map("n", "<leader>zl", telescope.extensions.zoxide.list, { desc = "telescope zox
 map("n", "<leader>fd", telescope.extensions.chezmoi.find_files, { desc = "telescope find dotfiles" })
 map("n", "<leader>fp", telescope.extensions.project.project, { desc = "telescope find projects" })
 map("n", "<leader>fn", telescope.extensions.noice.noice, { desc = "telescope find notices" })
+map("n", "<leader>fu", telescope.extensions.undo.undo, { desc = "telescope find undo" })
+
+map("n", "<leader>ftt", function ()
+  vim.cmd "TodoTelescope"
+end, { desc = "telescope todo-list" })
 
 -- }}}
 -- Tabufline {{{
@@ -208,16 +214,26 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 end)
 
 -- }}}
+-- Trouble {{{
+
+map("n", "<leader>td", function ()
+  vim.cmd "Trouble diagnostics toggle"
+end, { desc = "toggle diagnostics" })
+
+map("n", "<leader>tt", function ()
+  vim.cmd "TodoTrouble"
+end, { desc = "todo-comments show the todo-list" })
+-- }}}
+-- Zen-mode {{{
+
+map({ "n" }, "<leader>mz", zen_mode.toggle, { desc = "toggle zen-mode" })
+
+-- }}}
 -- Silicon {{{
 
 map("v", "<leader>ss", silicon.shoot, { desc = "snapshot screenshot code" })
 map("v", "<leader>sf", silicon.file, { desc = "snapshot screenshot code as file" })
 map("v", "<leader>sc", silicon.clip, { desc = "snapshot screenshot code to clipboard" })
-
--- }}}
--- Zen-mode {{{
-
-map({ "n" }, "<leader>mz", zen_mode.toggle, { desc = "toggle zen-mode" })
 
 -- }}}
 -- Resession {{{
