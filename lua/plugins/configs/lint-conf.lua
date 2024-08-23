@@ -1,5 +1,8 @@
 local lint = require "lint"
 
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
 local function get_lsp_root()
   local clients = vim.lsp.get_clients()
   for _, client in ipairs(clients) do
@@ -57,9 +60,9 @@ lint.linters_by_ft = {
   bash = { "shellharden", "shellcheck" },
 }
 
-local lint_augroup = vim.api.nvim_create_augroup("nvim_lint_au", { clear = true })
+local lint_augroup = augroup("nvim_lint", { clear = true })
 
-vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter", "TextChanged" }, {
+autocmd({ "LspAttach", "BufEnter", "TextChanged" }, {
   group = lint_augroup,
   callback = function()
     local clients = vim.lsp.get_clients()

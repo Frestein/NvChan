@@ -3,17 +3,27 @@ local noice = require "noice"
 local notify = require "notify"
 local base46 = require "base46"
 
-local function setup_lsp_specific_options()
-  local filetype = vim.bo.filetype
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
-  if filetype == "python" then
-    options.lsp.progress.throttle = 1000 / 5
+local function setup_lsp_specific_options()
+  local clients = vim.lsp.get_clients()
+
+  for _, client in ipairs(clients) do
+    if client.name == "pyright" then
+      options.lsp.progress.throttle = 1000 / 5
+    end
   end
 end
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = setup_lsp_specific_options,
+local symbol_usage_augroup = augroup("noice_symbol_usage", { clear = true })
+
+autocmd("LspAttach", {
+  group = symbol_usage_augroup,
+  callback = function()
+    setup_lsp_specific_options()
+    noice.setup(options)
+  end,
 })
 
 noice.setup(options)
