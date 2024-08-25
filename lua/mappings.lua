@@ -5,6 +5,7 @@ require "nvchad.mappings"
 local map = require("langmapper").map
 local unmap = vim.keymap.del
 
+local tabufline = require "nvchad.tabufline"
 local telescope = require "telescope"
 local telescope_builtin = require "telescope.builtin"
 local conform = require "conform"
@@ -41,6 +42,9 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "movement down", ex
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "movement down", expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'j'", { desc = "movement up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'j'", { desc = "movement up", expr = true, silent = true })
+
+map({ "n", "o", "x" }, "<S-h>", "^", { desc = "Jump to beginning of line" })
+map({ "n", "o", "x" }, "<S-l>", "$", { desc = "Jump to end of line" })
 
 -- }}}
 -- File {{{
@@ -83,6 +87,17 @@ map("n", "<C-S-Right>", function()
 end, { desc = "split resize vertical up" })
 
 -- }}}
+-- Code {{{
+
+-- Stay in indent mode
+map("v", "<", "<gv", { desc = "code block left" })
+map("v", ">", ">gv", { desc = "code block right" })
+
+-- Move block
+map("v", "<C-j>", ":m '>+1<CR>gv", { desc = "code block down", silent = true })
+map("v", "<C-k>", ":m '<-2<CR>gv", { desc = "code block up", silent = true })
+
+-- }}}
 
 -- Plugins
 -- Telescope {{{
@@ -105,18 +120,26 @@ map("n", "<leader>fp", telescope.extensions.project.project, { desc = "telescope
 map("n", "<leader>fn", telescope.extensions.noice.noice, { desc = "telescope find notices" })
 map("n", "<leader>fu", telescope.extensions.undo.undo, { desc = "telescope find undo" })
 
-map("n", "<leader>ftt", function ()
+map("n", "<leader>ftt", function()
   vim.cmd "TodoTelescope"
 end, { desc = "telescope todo-list" })
 
 -- }}}
 -- Tabufline {{{
 
-map("n", "<C-S-[>", function()
+map("n", "[b", function()
+  tabufline.prev()
+end, { desc = "buffer goto prev" })
+
+map("n", "]b", function()
+  tabufline.next()
+end, { desc = "buffer goto next" })
+
+map("n", "[t", function()
   vim.cmd "tabprev"
 end, { desc = "tabufline previous tab" })
 
-map("n", "<C-S-]>", function()
+map("n", "]t", function()
   vim.cmd "tabnext"
 end, { desc = "tabufline next tab" })
 
@@ -216,11 +239,11 @@ end)
 -- }}}
 -- Trouble {{{
 
-map("n", "<leader>td", function ()
+map("n", "<leader>td", function()
   vim.cmd "Trouble diagnostics toggle"
 end, { desc = "toggle diagnostics" })
 
-map("n", "<leader>tt", function ()
+map("n", "<leader>tt", function()
   vim.cmd "TodoTrouble"
 end, { desc = "todo-comments show the todo-list" })
 -- }}}
