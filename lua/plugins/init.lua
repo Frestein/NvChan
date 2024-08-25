@@ -231,8 +231,8 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      "<C-u>",
-      "<C-d>",
+      { "<C-u>", nil, mode = { "n", "v" } },
+      { "<C-d>", nil, mode = { "n", "v" } },
     },
     opts = require "plugins.options.neoscroll-opts",
   },
