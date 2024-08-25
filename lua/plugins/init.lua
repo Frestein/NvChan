@@ -62,7 +62,6 @@ return {
 
   {
     "stevearc/oil.nvim",
-    event = "VeryLazy",
     cmd = "Oil",
     keys = {
       { "<leader>e", desc = "file open parent directory" },
