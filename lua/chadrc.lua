@@ -1,3 +1,4 @@
+-- vim:fileencoding=utf-8:foldmethod=marker
 ---@type ChadrcConfig
 local M = {}
 
@@ -277,5 +278,3 @@ M.base46 = {
 }
 
 return M
-
--- vim:fileencoding=utf-8:foldmethod=marker

@@ -1,16 +1,29 @@
 return {
   {
     "williamboman/mason.nvim",
+    keys = {
+      { "<leader>mm", desc = "mason open home" },
+      { "<leader>mi", desc = "mason install all packages" },
+      { "<leader>mu", desc = "mason update packages" },
+    },
     opts = require "plugins.options.mason-opts",
+    config = function(_, opts)
+      require("mason").setup(opts)
+      require "plugins.mappings.mason-keys"
+    end,
   },
 
   {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
+    keys = {
+      { mode = { "n", "v" }, "<leader>fc", desc = "file format code" },
+    },
     opts = require "plugins.options.conform-opts",
     config = function(_, opts)
       require("conform").setup(opts)
       require "plugins.configs.conform-conf"
+      require "plugins.mappings.conform-keys"
     end,
   },
 
@@ -51,7 +64,15 @@ return {
     "stevearc/oil.nvim",
     event = "VeryLazy",
     cmd = "Oil",
+    keys = {
+      { "<leader>e", desc = "file open parent directory" },
+      { "<leader>fl", desc = "file open parent directory (float)" },
+    },
     opts = require "plugins.options.oil-opts",
+    config = function(_, opts)
+      require("oil").setup(opts)
+      require "plugins.mappings.oil-keys"
+    end,
   },
 
   {
@@ -79,13 +100,37 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-project.nvim" },
       { "scottmckendry/telescope-resession.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
       { "jvgrootveld/telescope-zoxide" },
       { "debugloop/telescope-undo.nvim" },
     },
+    keys = {
+      { mode = "n", "<leader>ff", desc = "telescope find files" },
+      { mode = "n", "<leader>fm", desc = "telescope find marks" },
+      { mode = "n", "<leader>fw", desc = "telescope live grep" },
+      { mode = "n", "<leader>fb", desc = "telescope find buffers" },
+      { mode = "n", "<leader>fh", desc = "telescope help page" },
+      { mode = "n", "<leader>fo", desc = "telescope find oldfiles" },
+      { mode = "n", "<leader>fz", desc = "telescope find in current buffer" },
+      { mode = "n", "<leader>ftd", desc = "telescope find diagnostics" },
+      { mode = "n", "<leader>pt", desc = "telescope pick hidden term" },
+      { mode = "n", "<leader>th", desc = "telescope nvchad themes" },
+      { mode = "n", "<leader>fip", desc = "telescope installed plugins" },
+      { mode = "n", "<leader>fs", desc = "telescope find sessions" },
+      { mode = "n", "<leader>zl", desc = "telescope zoxide list" },
+      { mode = "n", "<leader>fd", desc = "telescope find dotfiles" },
+      { mode = "n", "<leader>fp", desc = "telescope find projects" },
+      { mode = "n", "<leader>fn", desc = "telescope find notices" },
+      { mode = "n", "<leader>fu", desc = "telescope find undo" },
+    },
     opts = require "plugins.options.telescope-opts",
+    config = function(_, opts)
+      require("telescope").setup(opts)
+      require "plugins.mappings.telescope-keys"
+    end,
   },
 
   {
@@ -104,9 +149,15 @@ return {
     "NeogitOrg/neogit",
     cmd = "Neogit",
     ft = { "diff" },
+    keys = {
+      { "<leader>gg", desc = "neogit open" },
+      { "<leader>gl", desc = "neogit log" },
+    },
     opts = require "plugins.options.neogit-opts",
     config = function(_, opts)
       require("neogit").setup(opts)
+      require "plugins.mappings.neogit-keys"
+
       dofile(vim.g.base46_cache .. "git")
       dofile(vim.g.base46_cache .. "neogit")
     end,
@@ -119,9 +170,16 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+    version = "4.4.7",
+    keys = {
+      { "<leader>nd", desc = "notices dismiss all visible messages" },
+      { "<leader>nl", desc = "notices show the last message" },
+      { "<leader>nh", desc = "notices show the notice history" },
+    },
     opts = require "plugins.options.noice-opts",
     config = function()
       require "plugins.configs.noice-conf"
+      require "plugins.mappings.noice-keys"
     end,
   },
 
@@ -134,18 +192,31 @@ return {
         opts = {},
       },
     },
-    opts = {},
+    config = function(_, opts)
+      require("trouble").setup(opts)
+      require "plugins.mappings.trouble-keys"
+    end,
   },
 
   {
     "michaelrommel/nvim-silicon",
-    opts = function()
-      return require "plugins.options.silicon-opts"
+    keys = {
+      { mode = "v", "<leader>ss", desc = "snapshot screenshot code" },
+      { mode = "v", "<leader>sf", desc = "snapshot screenshot code as file" },
+      { mode = "v", "<leader>sc", desc = "snapshot screenshot code to clipboard" },
+    },
+    opts = require "plugins.options.silicon-opts",
+    config = function(_, opts)
+      require("nvim-silicon").setup(opts)
+      require "plugins.mappings.silicon-keys"
     end,
   },
 
   {
     "aznhe21/actions-preview.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
     opts = require "plugins.options.actions-preview-opts",
     config = function(_, opts)
       require("actions-preview").setup(opts)
@@ -157,10 +228,10 @@ return {
     lazy = false,
   },
 
-  {
-    "fladson/vim-kitty",
-    event = "BufEnter */kitty/*.conf",
-  },
+  -- {
+  --   "fladson/vim-kitty",
+  --   event = "BufEnter */kitty/*.conf",
+  -- },
 
   {
     "okuuva/auto-save.nvim",
@@ -171,9 +242,9 @@ return {
   {
     "xvzc/chezmoi.nvim",
     dependencies = {
+      { "nvim-lua/plenary.nvim" },
       {
         "alker0/chezmoi.vim",
-        lazy = false,
         init = function()
           vim.g["chezmoi#use_tmp_buffer"] = true
         end,
@@ -184,13 +255,23 @@ return {
 
   {
     "folke/zen-mode.nvim",
+    keys = {
+      {
+        "<leader>mz",
+        desc = "toggle zen-mode",
+      },
+    },
     opts = require "plugins.options.zen-mode-opts",
+    config = function(_, opts)
+      require("zen-mode").setup(opts)
+      require "plugins.mappings.zen-mode-keys"
+    end,
   },
 
   {
     "vhyrro/luarocks.nvim",
     priority = 1000,
-    config = true,
+    opts = {},
   },
 
   {
@@ -202,6 +283,10 @@ return {
     lazy = false,
     version = "*",
     opts = require "plugins.options.neorg-opts",
+    config = function(_, opts)
+      require("neorg").setup(opts)
+      require "plugins.mappings.neorg-keys"
+    end,
   },
 
   {
@@ -219,7 +304,15 @@ return {
 
   {
     "stevearc/resession.nvim",
-    opts = {},
+    keys = {
+      { "<leader>rs", desc = "resession save session" },
+      { "<leader>rl", desc = "resession load session" },
+      { "<leader>rd", desc = "resession delete session" },
+    },
+    config = function(_, opts)
+      require("resession").setup(opts)
+      require "plugins.mappings.resession-keys"
+    end,
   },
 
   {
@@ -231,8 +324,8 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      { "<C-u>", nil, mode = { "n", "x" } },
-      { "<C-d>", nil, mode = { "n", "x" } },
+      { mode = { "n", "x" }, "<C-u>" },
+      { mode = { "n", "x" }, "<C-d>" },
     },
     opts = require "plugins.options.neoscroll-opts",
   },
@@ -240,7 +333,17 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
+    keys = {
+      { mode = { "n", "x", "o" }, "s", desc = "flash jump" },
+      { mode = { "n", "x", "o" }, "S", desc = "flash treesitter" },
+      { mode = { "x", "o" }, "R", desc = "flash treesitter search" },
+      { mode = "o", "r", desc = "flash remote" },
+      { mode = "c", "<c-s>", desc = "flash toggle flash search" },
+    },
+    config = function(_, opts)
+      require("flash").setup(opts)
+      require "plugins.mappings.flash-keys"
+    end,
   },
 
   {
