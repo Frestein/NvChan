@@ -231,10 +231,16 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      { "<C-u>", nil, mode = { "n", "v" } },
-      { "<C-d>", nil, mode = { "n", "v" } },
+      { "<C-u>", nil, mode = { "n", "x" } },
+      { "<C-d>", nil, mode = { "n", "x" } },
     },
     opts = require "plugins.options.neoscroll-opts",
+  },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
 
   {

@@ -17,6 +17,7 @@ local resession = require "resession"
 local silicon = require "nvim-silicon"
 local zen_mode = require "zen-mode"
 local neorg_callbacks = require "neorg.core.callbacks"
+local flash = require "flash"
 
 -- }}}
 -- NvChad Defaults {{{
@@ -40,11 +41,11 @@ unmap("n", "<leader>gt")
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "movement down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "movement down", expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'j'", { desc = "movement up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'j'", { desc = "movement up", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "movement up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "movement up", expr = true, silent = true })
 
-map({ "n", "o", "x" }, "<S-h>", "^", { desc = "Jump to beginning of line" })
-map({ "n", "o", "x" }, "<S-l>", "$", { desc = "Jump to end of line" })
+map({ "n", "o", "x" }, "<S-h>", "^", { desc = "movement jump to beginning of line" })
+map({ "n", "o", "x" }, "<S-l>", "$", { desc = "movement jump to end of line" })
 
 -- }}}
 -- File {{{
@@ -264,6 +265,15 @@ map("v", "<leader>sc", silicon.clip, { desc = "snapshot screenshot code to clipb
 map("n", "<leader>rs", resession.save, { desc = "session save session" })
 map("n", "<leader>rl", resession.load, { desc = "session load session" })
 map("n", "<leader>rd", resession.delete, { desc = "session delete session" })
+
+-- }}}
+-- Flash {{{
+
+map({ "n", "x", "o" }, "s", flash.jump, { desc = "flash jump" })
+map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "flash treesitter" })
+map("o", "r", flash.remote, { desc = "flash remote" })
+map({ "x", "o" }, "R", flash.treesitter_search, { desc = "flash treesitter search" })
+map("c", "<c-s>", flash.toggle, { desc = "flash toggle flash search" })
 
 -- }}}
 
