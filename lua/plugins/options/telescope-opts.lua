@@ -7,7 +7,6 @@ options.extensions_list = {
   "lazy",
   "undo",
   "project",
-  "resession",
   "zoxide",
   "chezmoi",
 }

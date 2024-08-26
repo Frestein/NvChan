@@ -98,9 +98,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-    },
+    dependencies = "nvim-lua/plenary.nvim",
     keys = {
       { "<leader>ff", desc = "telescope find files" },
       { "<leader>fm", desc = "telescope find marks" },
@@ -122,9 +120,7 @@ return {
 
   {
     "tsakirist/telescope-lazy.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
+    dependencies = "nvim-telescope/telescope.nvim",
     keys = {
       {
         "<leader>fip",
@@ -138,9 +134,7 @@ return {
 
   {
     "nvim-telescope/telescope-project.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
+    dependencies = "nvim-telescope/telescope.nvim",
     keys = {
       {
         "<leader>fp",
@@ -155,7 +149,8 @@ return {
   {
     "jvgrootveld/telescope-zoxide",
     dependencies = {
-      "nvim-telescope/telescope.nvim",
+      { "stevearc/oil.nvim" },
+      { "nvim-telescope/telescope.nvim" },
     },
     keys = {
       {
@@ -170,9 +165,7 @@ return {
 
   {
     "debugloop/telescope-undo.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
+    dependencies = "nvim-telescope/telescope.nvim",
     keys = {
       {
         "<leader>fu",
@@ -410,8 +403,8 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      { mode = { "n", "x" }, "<C-u>" },
-      { mode = { "n", "x" }, "<C-d>" },
+      { mode = { "n", "x" }, "<C-u>", desc = "motion scroll up" },
+      { mode = { "n", "x" }, "<C-d>", desc = "motion scroll down" },
     },
     opts = require "plugins.options.neoscroll-opts",
   },
