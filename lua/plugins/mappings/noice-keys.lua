@@ -13,3 +13,7 @@ end, { desc = "notices show the last message" })
 map("n", "<leader>nh", function()
   noice.cmd "history"
 end, { desc = "notices show the notice history" })
+
+map("n", "<leader>fn", function()
+  noice.cmd "telescope"
+end, { desc = "telescope find notices" })

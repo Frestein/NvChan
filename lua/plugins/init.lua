@@ -100,36 +100,104 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope-project.nvim" },
-      { "scottmckendry/telescope-resession.nvim" },
-      { "tsakirist/telescope-lazy.nvim" },
-      { "jvgrootveld/telescope-zoxide" },
-      { "debugloop/telescope-undo.nvim" },
     },
     keys = {
-      { mode = "n", "<leader>ff", desc = "telescope find files" },
-      { mode = "n", "<leader>fm", desc = "telescope find marks" },
-      { mode = "n", "<leader>fw", desc = "telescope live grep" },
-      { mode = "n", "<leader>fb", desc = "telescope find buffers" },
-      { mode = "n", "<leader>fh", desc = "telescope help page" },
-      { mode = "n", "<leader>fo", desc = "telescope find oldfiles" },
-      { mode = "n", "<leader>fz", desc = "telescope find in current buffer" },
-      { mode = "n", "<leader>ftd", desc = "telescope find diagnostics" },
-      { mode = "n", "<leader>pt", desc = "telescope pick hidden term" },
-      { mode = "n", "<leader>th", desc = "telescope nvchad themes" },
-      { mode = "n", "<leader>fip", desc = "telescope installed plugins" },
-      { mode = "n", "<leader>fs", desc = "telescope find sessions" },
-      { mode = "n", "<leader>zl", desc = "telescope zoxide list" },
-      { mode = "n", "<leader>fd", desc = "telescope find dotfiles" },
-      { mode = "n", "<leader>fp", desc = "telescope find projects" },
-      { mode = "n", "<leader>fn", desc = "telescope find notices" },
-      { mode = "n", "<leader>fu", desc = "telescope find undo" },
+      { "<leader>ff", desc = "telescope find files" },
+      { "<leader>fm", desc = "telescope find marks" },
+      { "<leader>fw", desc = "telescope live grep" },
+      { "<leader>fb", desc = "telescope find buffers" },
+      { "<leader>fh", desc = "telescope help page" },
+      { "<leader>fo", desc = "telescope find oldfiles" },
+      { "<leader>fz", desc = "telescope find in current buffer" },
+      { "<leader>ftd", desc = "telescope find diagnostics" },
+      { "<leader>pt", desc = "telescope pick hidden term" },
+      { "<leader>th", desc = "telescope nvchad themes" },
     },
     opts = require "plugins.options.telescope-opts",
     config = function(_, opts)
       require("telescope").setup(opts)
       require "plugins.mappings.telescope-keys"
     end,
+  },
+
+  {
+    "tsakirist/telescope-lazy.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      {
+        "<leader>fip",
+        function()
+          require("telescope").extensions.lazy.lazy()
+        end,
+        desc = "telescope installed plugins",
+      },
+    },
+  },
+
+  {
+    "scottmckendry/telescope-resession.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      {
+        "<leader>fs",
+        function()
+          require("telescope").extensions.resession.resession()
+        end,
+        desc = "telescope find sessions",
+      },
+    },
+  },
+
+  {
+    "nvim-telescope/telescope-project.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      {
+        "<leader>fp",
+        function()
+          require("telescope").extensions.project.project()
+        end,
+        desc = "telescope find projects",
+      },
+    },
+  },
+
+  {
+    "jvgrootveld/telescope-zoxide",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      {
+        "<leader>zl",
+        function()
+          require("telescope").extensions.zoxide.list()
+        end,
+        desc = "telescope zoxide list",
+      },
+    },
+  },
+
+  {
+    "debugloop/telescope-undo.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      {
+        "<leader>fu",
+        function()
+          require("telescope").extensions.undo.undo()
+        end,
+        desc = "telescope find undo",
+      },
+    },
   },
 
   {
@@ -174,6 +242,7 @@ return {
       { "<leader>nd", desc = "notices dismiss all visible messages" },
       { "<leader>nl", desc = "notices show the last message" },
       { "<leader>nh", desc = "notices show the notice history" },
+      { "<leader>fn", desc = "telescope find notices" },
     },
     opts = require "plugins.options.noice-opts",
     config = function()
@@ -253,6 +322,11 @@ return {
           vim.g["chezmoi#use_tmp_buffer"] = true
         end,
       },
+    },
+    keys = {
+      { "<leader>fd", function ()
+        require("telescope").extensions.chezmoi.find_files()
+      end, desc = "telescope find dotfiles" },
     },
     opts = require "plugins.options.chezmoi-opts",
   },

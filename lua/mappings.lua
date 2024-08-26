@@ -82,6 +82,7 @@ map("n", "[b", tabufline.prev, { desc = "tabufline goto prev buffer" })
 map("n", "]b", tabufline.next, { desc = "tabufline goto next buffer" })
 map("n", "<S-tab>", tabufline.prev, { desc = "tabufline goto prev buffer" })
 map("n", "<tab>", tabufline.next, { desc = "tabufline goto next buffer" })
+
 map("n", "[t", "<cmd>tabprev<CR>", { desc = "tabufline previous tab" })
 map("n", "]t", "<cmd>tabnext<CR>", { desc = "tabufline next tab" })
 map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tabufline last tab" })
