@@ -186,9 +186,9 @@ return {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
     keys = {
-      { mode = "n", "<leader>td", desc = "toggle diagnostics" },
-      { mode = "n", "<leader>tt", desc = "todo-comments show the todo-list" },
-      { mode = "n", "<leader>ftt", desc = "telescope todo-list" },
+      { "<leader>td", desc = "toggle diagnostics" },
+      { "<leader>tt", desc = "todo-comments show the todo-list" },
+      { "<leader>ftt", desc = "telescope todo-list" },
     },
     dependencies = {
       {

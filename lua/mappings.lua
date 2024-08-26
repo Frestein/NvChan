@@ -8,6 +8,9 @@ local term = require "nvchad.term"
 
 map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+
 -- Motion {{{
 
 -- better up/down
@@ -40,9 +43,6 @@ end, { desc = "file copy name" })
 map("n", "<leader>cp", function()
   vim.fn.setreg("+", vim.fn.expand "%:p")
 end, { desc = "file copy path" })
-
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "file toggle line number" })
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "file toggle relative number" })
 
 -- }}}
 -- Split {{{
@@ -77,45 +77,16 @@ map("v", "<leader>/", "gc", { desc = "code toggle comment", remap = true })
 -- }}}
 -- Tabufline {{{
 
-map("n", "[b", function()
-  tabufline.prev()
-end, { desc = "tabufline goto prev buffer" })
-
-map("n", "]b", function()
-  tabufline.next()
-end, { desc = "tabufline goto next buffer" })
-
-map("n", "<S-tab>", function()
-  tabufline.prev()
-end, { desc = "tabufline goto prev buffer" })
-
-map("n", "<tab>", function()
-  tabufline.next()
-end, { desc = "tabufline goto next buffer" })
-
-map("n", "[t", function()
-  vim.cmd "tabprev"
-end, { desc = "tabufline previous tab" })
-
-map("n", "]t", function()
-  vim.cmd "tabnext"
-end, { desc = "tabufline next tab" })
-
-map("n", "<leader>$", function()
-  vim.cmd "tablast"
-end, { desc = "tabufline last tab" })
-
-map("n", "<leader>^", function()
-  vim.cmd "tabfirst"
-end, { desc = "tabufline first tab" })
-
-map("n", "<leader>b", function()
-  vim.cmd "enew"
-end, { desc = "tabufline new buffer" })
-
-map("n", "<leader>x", function()
-  tabufline.close_buffer()
-end, { desc = "tabufline close buffer" })
+map("n", "<leader>x", tabufline.close_buffer, { desc = "tabufline close buffer" })
+map("n", "[b", tabufline.prev, { desc = "tabufline goto prev buffer" })
+map("n", "]b", tabufline.next, { desc = "tabufline goto next buffer" })
+map("n", "<S-tab>", tabufline.prev, { desc = "tabufline goto prev buffer" })
+map("n", "<tab>", tabufline.next, { desc = "tabufline goto next buffer" })
+map("n", "[t", "<cmd>tabprev<CR>", { desc = "tabufline previous tab" })
+map("n", "]t", "<cmd>tabnext<CR>", { desc = "tabufline next tab" })
+map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tabufline last tab" })
+map("n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tabufline first tab" })
+map("n", "<leader>b", "<cmd>enew<CR>", { desc = "tabufline new buffer" })
 
 -- }}}
 -- Terminal {{{
