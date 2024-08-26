@@ -11,4 +11,4 @@ map({ "n", "v" }, "<leader>fc", function()
       end
     end
   end)
-end, { desc = "file format code" })
+end, { desc = "code format code" })

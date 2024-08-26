@@ -17,7 +17,7 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     keys = {
-      { mode = { "n", "v" }, "<leader>fc", desc = "file format code" },
+      { mode = { "n", "v" }, "<leader>fc", desc = "code format code" },
     },
     opts = require "plugins.options.conform-opts",
     config = function(_, opts)
@@ -184,7 +184,12 @@ return {
 
   {
     "folke/trouble.nvim",
-    cmd = { "Trouble", "TroubleToggle", "TodoTrouble", "TodoTelescope" },
+    cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
+    keys = {
+      { mode = "n", "<leader>td", desc = "toggle diagnostics" },
+      { mode = "n", "<leader>tt", desc = "todo-comments show the todo-list" },
+      { mode = "n", "<leader>ftt", desc = "telescope todo-list" },
+    },
     dependencies = {
       {
         "folke/todo-comments.nvim",
