@@ -236,6 +236,12 @@ return {
   },
 
   {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
     keys = {

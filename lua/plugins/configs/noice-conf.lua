@@ -38,3 +38,5 @@ notify.setup {
   stages = "fade",
   fps = 75,
 }
+
+dofile(vim.g.base46_cache .. "notify")
