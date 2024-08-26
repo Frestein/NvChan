@@ -39,6 +39,8 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### fuzzy-finder
 
 - [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
+- [jvgrootveld/telescope-zoxide](https://dotfyle.com/plugins/jvgrootveld/telescope-zoxide)
+- [nvim-telescope/telescope-project.nvim](https://github.com/nvim-telescope/telescope-project.nvim)
 
 ### formatting
 
@@ -53,11 +55,16 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 - [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
+- [Wansmer/symbol-usage.nvim](https://dotfyle.com/plugins/Wansmer/symbol-usage.nvim)
 - [aznhe21/actions-preview.nvim](https://dotfyle.com/plugins/aznhe21/actions-preview.nvim)
 
 ### lsp-installer
 
 - [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
+
+### motion
+
+- [folke/flash.nvim](https://dotfyle.com/plugins/folke/flash.nvim)
 
 ### completion
 
@@ -82,6 +89,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### plugin-manager
 
 - [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
+- [tsakirist/telescope-lazy.nvim](https://github.com/tsakirist/telescope-lazy.nvim)
 
 ### git
 
@@ -130,12 +138,18 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)
 
+### session
+
+- [stevearc/resession.nvim](https://dotfyle.com/plugins/stevearc/resession.nvim)
+- [scottmckendry/telescope-resession.nvim](https://dotfyle.com/plugins/scottmckendry/telescope-resession.nvim)
+
 ### utility
 
 - [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
 - [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
 - [michaelrommel/nvim-silicon](https://github.com/michaelrommel/nvim-silicon)
-- [fladson/vim-kitty](https://github.com/fladson/vim-kitty)
+- [xvzc/chezmoi.nvim](https://dotfyle.com/plugins/xvzc/chezmoi.nvim)
+- [alker0/chezmoi.vim](https://github.com/alker0/chezmoi.vim)
 
 ## Language Servers
 
@@ -149,6 +163,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - ruff
 - taplo
 - marksman
+- hyprls
 
 ## Linters
 
