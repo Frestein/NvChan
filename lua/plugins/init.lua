@@ -352,7 +352,7 @@ return {
       "luarocks.nvim",
       "nvim-neorg/neorg-telescope",
     },
-    lazy = false,
+    event = "VeryLazy",
     version = "*",
     opts = require "plugins.options.neorg-opts",
     config = function(_, opts)
@@ -364,7 +364,7 @@ return {
   {
     "lukas-reineke/headlines.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = false,
+    event = "VeryLazy",
     opts = {},
   },
 
