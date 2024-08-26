@@ -1,8 +1,8 @@
 # NvChan
 
-<a href="https://dotfyle.com/Frestein/nvchad"><img src="https://dotfyle.com/Frestein/nvchad/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/Frestein/nvchad"><img src="https://dotfyle.com/Frestein/nvchad/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/Frestein/nvchad"><img src="https://dotfyle.com/Frestein/nvchad/badges/plugin-manager?style=flat" /></a>
+<a href="https://dotfyle.com/Frestein/nvchan"><img src="https://dotfyle.com/Frestein/nvchan/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/Frestein/nvchan"><img src="https://dotfyle.com/Frestein/nvchan/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/Frestein/nvchan"><img src="https://dotfyle.com/Frestein/nvchan/badges/plugin-manager?style=flat" /></a>
 
 ## Install Instructions
 
