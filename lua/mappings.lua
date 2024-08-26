@@ -6,10 +6,13 @@ local map = require("langmapper").map
 local tabufline = require "nvchad.tabufline"
 local term = require "nvchad.term"
 
-map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
+map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "general nvcheatsheet" })
 
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "general toggle line number" })
+map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "general toggle relative number" })
+
+map("n", "<leader>qq", "<cmd>quitall<CR>", { desc = "general quit all" })
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
 -- Motion {{{
 
@@ -32,7 +35,6 @@ map("i", "<C-k>", "<Up>", { desc = "motion up" })
 -- }}}
 -- File {{{
 
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "file clear highlights" })
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "file save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole file" })
 

@@ -137,22 +137,6 @@ return {
   },
 
   {
-    "scottmckendry/telescope-resession.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    keys = {
-      {
-        "<leader>fs",
-        function()
-          require("telescope").extensions.resession.resession()
-        end,
-        desc = "telescope find sessions",
-      },
-    },
-  },
-
-  {
     "nvim-telescope/telescope-project.nvim",
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -324,9 +308,13 @@ return {
       },
     },
     keys = {
-      { "<leader>fd", function ()
-        require("telescope").extensions.chezmoi.find_files()
-      end, desc = "telescope find dotfiles" },
+      {
+        "<leader>fd",
+        function()
+          require("telescope").extensions.chezmoi.find_files()
+        end,
+        desc = "telescope find dotfiles",
+      },
     },
     opts = require "plugins.options.chezmoi-opts",
   },
@@ -381,15 +369,29 @@ return {
   },
 
   {
-    "stevearc/resession.nvim",
+    "folke/persistence.nvim",
+    event = "BufReadPre",
     keys = {
-      { "<leader>rs", desc = "resession save session" },
-      { "<leader>rl", desc = "resession load session" },
-      { "<leader>rd", desc = "resession delete session" },
+      {
+        "<leader>qS",
+        desc = "session select session",
+      },
+      {
+        "<leader>qs",
+        desc = "restore session",
+      },
+      {
+        "<leader>ql",
+        desc = "restore last session",
+      },
+      {
+        "<leader>qd",
+        desc = "session don't save current session",
+      },
     },
     config = function(_, opts)
-      require("resession").setup(opts)
-      require "plugins.mappings.resession-keys"
+      require("persistence").setup(opts)
+      require "plugins.mappings.persistence-keys"
     end,
   },
 
