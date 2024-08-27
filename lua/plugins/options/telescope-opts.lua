@@ -9,15 +9,15 @@ options.extensions_list = {
   "project",
   "zoxide",
   "chezmoi",
+  "heading",
 }
 options.extensions = {
   lazy_plugins = {
     lazy_config = vim.fn.stdpath "config" .. "/init.lua",
   },
   extensions = {
-    resession = {
-      prompt_title = "Find Sessions",
-      dir = "session",
+    heading = {
+      treesitter = true,
     },
   },
 }

@@ -112,7 +112,7 @@ return {
       { "<leader>fm", desc = "telescope find marks" },
       { "<leader>fw", desc = "telescope live grep" },
       { "<leader>fb", desc = "telescope find buffers" },
-      { "<leader>fh", desc = "telescope help page" },
+      { "<leader>fH", desc = "telescope help page" },
       { "<leader>fo", desc = "telescope find oldfiles" },
       { "<leader>fz", desc = "telescope find in current buffer" },
       { "<leader>fd", desc = "telescope find diagnostics" },
@@ -150,6 +150,22 @@ return {
           require("telescope").extensions.project.project()
         end,
         desc = "telescope find projects",
+      },
+    },
+  },
+
+  {
+    "crispgm/telescope-heading.nvim",
+    dependencies = {
+      { "nvim-telescope/telescope.nvim" },
+    },
+    keys = {
+      {
+        "<leader>fh",
+        function()
+          require("telescope").extensions.heading.heading()
+        end,
+        desc = "telescope heading list",
       },
     },
   },
