@@ -4,19 +4,46 @@ local neoscroll = require "neoscroll"
 
 -- stylua: ignore
 local keymaps = {
-  ["<C-u>"] = function() neoscroll.ctrl_u({ duration = 320; easing = "sine" }) end;
-  ["<C-d>"] = function() neoscroll.ctrl_d({ duration = 320; easing = "sine" }) end;
-  ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 420; easing = "circular"; info = "cursorline" }) end;
-  ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 420; easing = "circular"; info = "cursorline" }) end;
-  ["<C-y>"] = function() neoscroll.scroll(-0.1, { move_cursor=false; duration = 100; easing = "linear"; info = "cursorline" }) end;
-  ["<C-e>"] = function() neoscroll.scroll(0.1,  { move_cursor=false; duration = 100; easing = "linear"; info = "cursorline" }) end;
-  ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end;
-  ["zz"]    = function() neoscroll.zz({ half_win_duration = 250 }) end;
-  ["zb"]    = function() neoscroll.zb({ half_win_duration = 250 }) end;
+  ["<C-u>"] = {
+    func = function() neoscroll.ctrl_u({ duration = 320; easing = "sine" }) end,
+    desc = "scroll scroll up half a page"
+  },
+  ["<C-d>"] = {
+    func = function() neoscroll.ctrl_d({ duration = 320; easing = "sine" }) end,
+    desc = "scroll scroll down half a page"
+  },
+  ["<C-b>"] = {
+    func = function() neoscroll.ctrl_b({ duration = 420; easing = "circular"; info = "cursorline" }) end,
+    desc = "scroll scroll up one full page"
+  },
+  ["<C-f>"] = {
+    func = function() neoscroll.ctrl_f({ duration = 420; easing = "circular"; info = "cursorline" }) end,
+    desc = "scroll scroll down one full page"
+  },
+  ["<C-y>"] = {
+    func = function() neoscroll.scroll(-0.1, { move_cursor=false; duration = 100; easing = "linear"; info = "cursorline" }) end,
+    desc = "scroll scroll up a little without moving the cursor"
+  },
+  ["<C-e>"] = {
+    func = function() neoscroll.scroll(0.1, { move_cursor=false; duration = 100; easing = "linear"; info = "cursorline" }) end,
+    desc = "scroll scroll down a little without moving the cursor"
+  },
+  ["zt"] = {
+    func = function() neoscroll.zt({ half_win_duration = 250 }) end,
+    desc = "scroll move the current line to the top of the window"
+  },
+  ["zz"] = {
+    func = function() neoscroll.zz({ half_win_duration = 250 }) end,
+    desc = "scroll center the current line in the window"
+  },
+  ["zb"] = {
+    func = function() neoscroll.zb({ half_win_duration = 250 }) end,
+    desc = "scroll move the current line to the bottom of the window"
+  },
 }
 
 local modes = { "n", "v" }
 
-for key, func in pairs(keymaps) do
-  map(modes, key, func)
+for key, value in pairs(keymaps) do
+  map(modes, key, value.func, { desc = value.desc })
 end

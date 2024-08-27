@@ -115,8 +115,8 @@ return {
       { "<leader>fh", desc = "telescope help page" },
       { "<leader>fo", desc = "telescope find oldfiles" },
       { "<leader>fz", desc = "telescope find in current buffer" },
-      { "<leader>ftd", desc = "telescope find diagnostics" },
-      { "<leader>pt", desc = "telescope pick hidden term" },
+      { "<leader>fd", desc = "telescope find diagnostics" },
+      { "<leader>ft", desc = "telescope find terms" },
       { "<leader>th", desc = "telescope nvchad themes" },
     },
     opts = require "plugins.options.telescope-opts",
@@ -131,7 +131,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     keys = {
       {
-        "<leader>fip",
+        "<leader>fP",
         function()
           require("telescope").extensions.lazy.lazy()
         end,
@@ -162,7 +162,7 @@ return {
     },
     keys = {
       {
-        "<leader>zl",
+        "<leader>fZ",
         function()
           require("telescope").extensions.zoxide.list()
         end,
@@ -247,8 +247,8 @@ return {
     cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
     keys = {
       { "<leader>td", desc = "toggle diagnostics" },
-      { "<leader>tt", desc = "todo-comments show the todo-list" },
-      { "<leader>ftt", desc = "telescope todo-list" },
+      { "<leader>tt", desc = "todo-comments show the todo list" },
+      { "<leader>fT", desc = "telescope todo list" },
     },
     dependencies = {
       {
@@ -316,7 +316,7 @@ return {
     },
     keys = {
       {
-        "<leader>fd",
+        "<leader>fD",
         function()
           require("telescope").extensions.chezmoi.find_files()
         end,
@@ -411,15 +411,15 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      { mode = { "n", "v" }, "<C-u>" },
-      { mode = { "n", "v" }, "<C-d>" },
-      { mode = { "n", "v" }, "<C-b>" },
-      { mode = { "n", "v" }, "<C-f>" },
-      { mode = { "n", "v" }, "<C-y>" },
-      { mode = { "n", "v" }, "<C-e>" },
-      { mode = { "n", "v" }, "zt" },
-      { mode = { "n", "v" }, "zz" },
-      { mode = { "n", "v" }, "zb" },
+      { mode = { "n", "v" }, "<C-u>", desc = "scroll scroll up half a page" },
+      { mode = { "n", "v" }, "<C-d>", desc = "scroll scroll down half a page" },
+      { mode = { "n", "v" }, "<C-b>", desc = "scroll scroll up one full page" },
+      { mode = { "n", "v" }, "<C-f>", desc = "scroll scroll down one full page" },
+      { mode = { "n", "v" }, "<C-y>", desc = "scroll scroll up a little without moving the cursor" },
+      { mode = { "n", "v" }, "<C-e>", desc = "scroll scroll down a little without moving the cursor" },
+      { mode = { "n", "v" }, "zt", desc = "scroll move the current line to the top of the window" },
+      { mode = { "n", "v" }, "zz", desc = "scroll center the current line in the window" },
+      { mode = { "n", "v" }, "zb", desc = "scroll move the current line to the bottom of the window" },
     },
     opts = require "plugins.options.neoscroll-opts",
     config = function(_, opts)
