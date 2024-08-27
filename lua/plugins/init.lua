@@ -3,8 +3,16 @@ return {
     "williamboman/mason.nvim",
     keys = {
       { "<leader>mm", desc = "mason open home" },
-      { "<leader>mi", desc = "mason install all packages" },
       { "<leader>mu", desc = "mason update packages" },
+    },
+    cmd = {
+      "Mason",
+      "MasonLog",
+      "MasonUpdate",
+      "MasonInstall",
+      "MasonInstallAll",
+      "MasonUninstall",
+      "MasonUninstallAll",
     },
     opts = require "plugins.options.mason-opts",
     config = function(_, opts)
@@ -436,12 +444,12 @@ return {
     end,
   },
 
-{
+  {
     "kylechui/nvim-surround",
     version = "*",
     event = "VeryLazy",
-    opts = {}
-},
+    opts = {},
+  },
 
   {
     "Wansmer/langmapper.nvim",
