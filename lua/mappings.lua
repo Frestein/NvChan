@@ -11,7 +11,17 @@ map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "general nvcheatsheet" 
 map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "general toggle line number" })
 map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "general toggle relative number" })
 
-map("n", "<leader>qq", "<cmd>quitall<CR>", { desc = "general quit all" })
+map("n", "<leader>qq", function()
+  if vim.fn.exists ":Neominimap" == 2 then
+    vim.cmd "Neominimap off"
+    vim.defer_fn(function()
+      vim.cmd "quitall"
+    end, 1)
+  else
+    vim.cmd "quitall"
+  end
+end, { desc = "general quit all" })
+
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
 -- Motion {{{

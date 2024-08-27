@@ -409,6 +409,33 @@ return {
   },
 
   {
+    "Isrothy/neominimap.nvim",
+    version = "*",
+    keys = {
+      { "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "minimap toggle global minimap" },
+      { "<leader>nr", "<cmd>Neominimap refresh<cr>", desc = "minimap refresh global minimap" },
+      { "<leader>nwt", "<cmd>Neominimap winToggle<cr>", desc = "minimap toggle minimap for current window" },
+      { "<leader>nwr", "<cmd>Neominimap winRefresh<cr>", desc = "minimap refresh minimap for current window" },
+      { "<leader>ntt", "<cmd>Neominimap tabToggle<cr>", desc = "minimap toggle minimap for current tab" },
+      { "<leader>ntr", "<cmd>Neominimap tabRefresh<cr>", desc = "minimap refresh minimap for current tab" },
+      { "<leader>nbt", "<cmd>Neominimap bufToggle<cr>", desc = "minimap toggle minimap for current buffer" },
+      { "<leader>nbr", "<cmd>Neominimap bufRefresh<cr>", desc = "minimap refresh minimap for current buffer" },
+      { "<leader>nf", "<cmd>Neominimap toggleFocus<cr>", desc = "minimap switch focus on minimap" },
+    },
+    init = function()
+      vim.g.neominimap = {
+        layout = "split",
+        split = {
+          close_if_last_window = true,
+        },
+        search = {
+          enabled = true,
+        },
+      }
+    end,
+  },
+
+  {
     "karb94/neoscroll.nvim",
     keys = {
       { mode = { "n", "v" }, "<C-u>", desc = "scroll scroll up half a page" },
