@@ -155,10 +155,22 @@ return {
   },
 
   {
-    "crispgm/telescope-heading.nvim",
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" },
+    "piersolenski/telescope-import.nvim",
+    dependencies = "nvim-telescope/telescope.nvim",
+    keys = {
+      {
+        "<leader>fi",
+        function()
+          require("telescope").extensions.import.import()
+        end,
+        desc = "telescope find imports",
+      },
     },
+  },
+
+  {
+    "crispgm/telescope-heading.nvim",
+    dependencies = "nvim-telescope/telescope.nvim",
     keys = {
       {
         "<leader>fh",
