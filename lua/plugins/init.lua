@@ -464,6 +464,21 @@ return {
   },
 
   {
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    keys = {
+      { "<leader>a", "<cmd>AerialToggle!<cr>", desc = "aerial toggle" },
+    },
+    opts = require "plugins.options.aerial-opts",
+    config = function(_, opts)
+      require("aerial").setup(opts)
+    end,
+  },
+
+  {
     "karb94/neoscroll.nvim",
     keys = {
       { mode = { "n", "v" }, "<C-u>", desc = "scroll scroll up half a page" },
