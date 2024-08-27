@@ -11,6 +11,7 @@ options.extensions_list = {
   "chezmoi",
   "import",
   "heading",
+  "aerial",
 }
 options.extensions = {
   lazy_plugins = {

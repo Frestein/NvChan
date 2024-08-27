@@ -471,6 +471,7 @@ return {
     },
     keys = {
       { "<leader>a", "<cmd>AerialToggle!<cr>", desc = "aerial toggle" },
+      { "<leader>fa", function() require("telescope").extensions.aerial.aerial() end, desc = "telescope aerial" },
     },
     opts = require "plugins.options.aerial-opts",
     config = function(_, opts)
