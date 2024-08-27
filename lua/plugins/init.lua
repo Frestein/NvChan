@@ -436,6 +436,13 @@ return {
     end,
   },
 
+{
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {}
+},
+
   {
     "Wansmer/langmapper.nvim",
     lazy = false,
