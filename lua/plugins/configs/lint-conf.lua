@@ -58,6 +58,8 @@ lint.linters_by_ft = {
   python = { "ruff" },
   yaml = { "yamllint" },
   bash = { "shellharden", "shellcheck" },
+  ["yaml.ansible"] = { "ansible_lint" },
+  dockerfile = { "hadolint" },
 }
 
 local lint_augroup = augroup("nvim_lint", { clear = true })
