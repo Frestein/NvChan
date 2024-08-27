@@ -10,6 +10,8 @@ options.ensure_installed = {
   "css",
   "scss",
   "html",
+  "yaml",
+  "dockerfile",
   "toml",
   "json",
   "jsonc",
