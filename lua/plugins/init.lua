@@ -403,10 +403,21 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      { mode = { "n", "x" }, "<C-u>", desc = "motion scroll up" },
-      { mode = { "n", "x" }, "<C-d>", desc = "motion scroll down" },
+      { mode = { "n", "v" }, "<C-u>" },
+      { mode = { "n", "v" }, "<C-d>" },
+      { mode = { "n", "v" }, "<C-b>" },
+      { mode = { "n", "v" }, "<C-f>" },
+      { mode = { "n", "v" }, "<C-y>" },
+      { mode = { "n", "v" }, "<C-e>" },
+      { mode = { "n", "v" }, "zt" },
+      { mode = { "n", "v" }, "zz" },
+      { mode = { "n", "v" }, "zb" },
     },
     opts = require "plugins.options.neoscroll-opts",
+    config = function(_, opts)
+      require("neoscroll").setup(opts)
+      require "plugins.mappings.neoscroll-keys"
+    end,
   },
 
   {
