@@ -147,56 +147,36 @@ return {
   {
     "tsakirist/telescope-lazy.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>fP",
-        function()
-          require("telescope").extensions.lazy.lazy()
-        end,
-        desc = "telescope installed plugins",
-      },
+      { "<leader>fP", function() require("telescope").extensions.lazy.lazy() end, desc = "telescope installed plugins", },
     },
   },
 
   {
     "nvim-telescope/telescope-project.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>fp",
-        function()
-          require("telescope").extensions.project.project()
-        end,
-        desc = "telescope find projects",
-      },
+      { "<leader>fp", function() require("telescope").extensions.project.project() end, desc = "telescope find projects", },
     },
   },
 
   {
     "piersolenski/telescope-import.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>fi",
-        function()
-          require("telescope").extensions.import.import()
-        end,
-        desc = "telescope find imports",
-      },
+      { "<leader>fi", function() require("telescope").extensions.import.import() end, desc = "telescope find imports", },
     },
   },
 
   {
     "crispgm/telescope-heading.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>fh",
-        function()
-          require("telescope").extensions.heading.heading()
-        end,
-        desc = "telescope heading list",
-      },
+      { "<leader>fh", function() require("telescope").extensions.heading.heading() end, desc = "telescope heading list", },
     },
   },
 
@@ -206,28 +186,18 @@ return {
       { "stevearc/oil.nvim" },
       { "nvim-telescope/telescope.nvim" },
     },
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>fZ",
-        function()
-          require("telescope").extensions.zoxide.list()
-        end,
-        desc = "telescope zoxide list",
-      },
+      { "<leader>fZ", function() require("telescope").extensions.zoxide.list() end, desc = "telescope zoxide list", },
     },
   },
 
   {
     "debugloop/telescope-undo.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>fu",
-        function()
-          require("telescope").extensions.undo.undo()
-        end,
-        desc = "telescope find undo",
-      },
+      { "<leader>fu", function() require("telescope").extensions.undo.undo() end, desc = "telescope find undo", },
     },
   },
 
@@ -324,9 +294,7 @@ return {
 
   {
     "aznhe21/actions-preview.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
+    dependencies = "nvim-telescope/telescope.nvim",
     opts = require "plugins.options.actions-preview-opts",
     config = function(_, opts)
       require("actions-preview").setup(opts)
@@ -337,11 +305,6 @@ return {
     "wakatime/vim-wakatime",
     lazy = false,
   },
-
-  -- {
-  --   "fladson/vim-kitty",
-  --   event = "BufEnter */kitty/*.conf",
-  -- },
 
   {
     "okuuva/auto-save.nvim",
@@ -375,10 +338,7 @@ return {
   {
     "folke/zen-mode.nvim",
     keys = {
-      {
-        "<leader>mz",
-        desc = "toggle zen-mode",
-      },
+      { "<leader>mz", desc = "toggle zen-mode" },
     },
     opts = require "plugins.options.zen-mode-opts",
     config = function(_, opts)
@@ -425,22 +385,10 @@ return {
     "folke/persistence.nvim",
     event = "BufReadPre",
     keys = {
-      {
-        "<leader>qS",
-        desc = "session select session",
-      },
-      {
-        "<leader>qs",
-        desc = "restore session",
-      },
-      {
-        "<leader>ql",
-        desc = "restore last session",
-      },
-      {
-        "<leader>qd",
-        desc = "session don't save current session",
-      },
+      { "<leader>qS", desc = "session select session" },
+      { "<leader>qs", desc = "restore session" },
+      { "<leader>ql", desc = "restore last session" },
+      { "<leader>qd", desc = "session don't save current session" },
     },
     config = function(_, opts)
       require("persistence").setup(opts)
@@ -487,6 +435,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
+    -- stylua: ignore
     keys = {
       { "<leader>a", "<cmd>AerialToggle!<cr>", desc = "aerial toggle" },
       { "<leader>fa", function() require("telescope").extensions.aerial.aerial() end, desc = "telescope aerial" },
