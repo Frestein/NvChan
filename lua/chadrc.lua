@@ -26,21 +26,10 @@ M.ui = {
     separator_style = "block",
     modules = {
       navic = function()
-        local navic_status = require "nvim-navic"
-
-        if navic_status.is_available() then
-          return navic_status.get_location()
-        else
-          return ""
-        end
+        return require("statusline").navic()
       end,
       lazy = function()
-        local lazy_status = require "lazy.status"
-        if lazy_status.has_updates() then
-          return ("%#LazyUpdates#" .. " " .. lazy_status.updates() .. " ")
-        else
-          return ""
-        end
+        return require("statusline").lazy()
       end,
     },
     order = {

@@ -1,5 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+local statusline = require "statusline"
+
 autocmd("FileType", {
   pattern = { "norg", "markdown" },
   callback = function()
@@ -21,5 +23,11 @@ autocmd("BufReadPost", {
     then
       vim.cmd 'normal! g`"'
     end
+  end,
+})
+
+autocmd("LspAttach", {
+  callback = function()
+    statusline.set_lsp_attached(true)
   end,
 })
