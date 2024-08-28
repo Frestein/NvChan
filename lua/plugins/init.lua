@@ -349,16 +349,11 @@ return {
   },
 
   {
-    "vhyrro/luarocks.nvim",
-    priority = 1000,
-    opts = {},
-  },
-
-  {
     "nvim-neorg/neorg",
     dependencies = {
-      "luarocks.nvim",
-      "nvim-neorg/neorg-telescope",
+      { "nvim-neorg/neorg-telescope" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
     },
     event = "VeryLazy",
     version = "*",
