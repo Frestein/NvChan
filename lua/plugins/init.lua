@@ -71,14 +71,14 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = "BufReadPost",
-        opts = require "plugins.options.treesitter-context-opts",
-      },
-    },
     opts = require "plugins.options.treesitter-opts",
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    event = "BufReadPost",
+    opts = require "plugins.options.treesitter-context-opts",
   },
 
   {
@@ -264,18 +264,25 @@ return {
     cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
     keys = {
       { "<leader>td", desc = "toggle diagnostics" },
-      { "<leader>tt", desc = "todo-comments show the todo list" },
-      { "<leader>fT", desc = "telescope todo list" },
     },
-    dependencies = {
-      {
-        "folke/todo-comments.nvim",
-        opts = {},
-      },
-    },
+    dependencies = "folke/todo-comments.nvim",
     config = function(_, opts)
       require("trouble").setup(opts)
       require "plugins.mappings.trouble-keys"
+    end,
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    event = "BufReadPost",
+    keys = {
+      { "<leader>tt", desc = "todo-comments show the todo list" },
+      { "<leader>fT", desc = "telescope todo list" },
+    },
+    dependencies = "nvim-telescope/telescope.nvim",
+    config = function(_, opts)
+      require("todo-comments").setup(opts)
+      require "plugins.mappings.todo-comments-keys"
     end,
   },
 
@@ -339,7 +346,7 @@ return {
   {
     "folke/zen-mode.nvim",
     keys = {
-      { "<leader>mz", desc = "toggle zen-mode" },
+      { "<leader>z", desc = "toggle zen-mode" },
     },
     opts = require "plugins.options.zen-mode-opts",
     config = function(_, opts)
@@ -355,7 +362,7 @@ return {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" },
     },
-    event = "VeryLazy",
+    ft = { "norg" },
     version = "*",
     opts = require "plugins.options.neorg-opts",
     config = function(_, opts)
@@ -367,7 +374,7 @@ return {
   {
     "lukas-reineke/headlines.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    ft = { "markdown", "norg" },
     opts = {},
   },
 
@@ -465,14 +472,14 @@ return {
 
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     -- stylua: ignore
     keys = {
       { mode = { "n", "x", "o" }, "s",      desc = "flash jump" },
       { mode = { "n", "x", "o" }, "S",      desc = "flash treesitter" },
       { mode = { "x", "o" },      "R",      desc = "flash treesitter search" },
       { mode = "o",               "r",      desc = "flash remote" },
-      { mode = "c",               "<c-s>",  desc = "flash toggle flash search" },
+      { mode = "c",               "<C-s>",  desc = "flash toggle flash search" },
     },
     config = function(_, opts)
       require("flash").setup(opts)
@@ -483,7 +490,7 @@ return {
   {
     "kylechui/nvim-surround",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = {},
   },
 
