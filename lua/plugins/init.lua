@@ -3,6 +3,7 @@ return {
     "williamboman/mason.nvim",
     keys = {
       { "<leader>mm", desc = "mason open home" },
+      { "<leader>mi", desc = "mason install all packages" },
       { "<leader>mu", desc = "mason update packages" },
     },
     cmd = {
