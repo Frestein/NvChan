@@ -444,6 +444,7 @@ return {
 
   {
     "karb94/neoscroll.nvim",
+    -- stylua: ignore
     keys = {
       { mode = { "n", "v" }, "<C-u>", desc = "scroll scroll up half a page" },
       { mode = { "n", "v" }, "<C-d>", desc = "scroll scroll down half a page" },
@@ -451,9 +452,9 @@ return {
       { mode = { "n", "v" }, "<C-f>", desc = "scroll scroll down one full page" },
       { mode = { "n", "v" }, "<C-y>", desc = "scroll scroll up a little without moving the cursor" },
       { mode = { "n", "v" }, "<C-e>", desc = "scroll scroll down a little without moving the cursor" },
-      { mode = { "n", "v" }, "zt", desc = "scroll move the current line to the top of the window" },
-      { mode = { "n", "v" }, "zz", desc = "scroll center the current line in the window" },
-      { mode = { "n", "v" }, "zb", desc = "scroll move the current line to the bottom of the window" },
+      { mode = { "n", "v" }, "zt",    desc = "scroll move the current line to the top of the window" },
+      { mode = { "n", "v" }, "zz",    desc = "scroll center the current line in the window" },
+      { mode = { "n", "v" }, "zb",    desc = "scroll move the current line to the bottom of the window" },
     },
     opts = require "plugins.options.neoscroll-opts",
     config = function(_, opts)
@@ -465,12 +466,13 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
+    -- stylua: ignore
     keys = {
-      { mode = { "n", "x", "o" }, "s", desc = "flash jump" },
-      { mode = { "n", "x", "o" }, "S", desc = "flash treesitter" },
-      { mode = { "x", "o" }, "R", desc = "flash treesitter search" },
-      { mode = "o", "r", desc = "flash remote" },
-      { mode = "c", "<c-s>", desc = "flash toggle flash search" },
+      { mode = { "n", "x", "o" }, "s",      desc = "flash jump" },
+      { mode = { "n", "x", "o" }, "S",      desc = "flash treesitter" },
+      { mode = { "x", "o" },      "R",      desc = "flash treesitter search" },
+      { mode = "o",               "r",      desc = "flash remote" },
+      { mode = "c",               "<c-s>",  desc = "flash toggle flash search" },
     },
     config = function(_, opts)
       require("flash").setup(opts)
@@ -483,6 +485,22 @@ return {
     version = "*",
     event = "VeryLazy",
     opts = {},
+  },
+
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "<leader>m", desc = "treesj toggle node under cursor" },
+      { "<leader>M", desc = "treesj toggle node recursive under cursor" },
+      { "<leader>j", desc = "treesj join node under cursor" },
+      { "<leader>s", desc = "treesj split node under cursor" },
+    },
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = require "plugins.options.treesj-opts",
+    config = function(_, opts)
+      require("treesj").setup(opts)
+      require "plugins.mappings.treesj-keys"
+    end,
   },
 
   {
