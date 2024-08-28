@@ -409,15 +409,12 @@ return {
     "Isrothy/neominimap.nvim",
     version = "*",
     keys = {
-      { "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "minimap toggle global minimap" },
-      { "<leader>nr", "<cmd>Neominimap refresh<cr>", desc = "minimap refresh global minimap" },
-      { "<leader>nwt", "<cmd>Neominimap winToggle<cr>", desc = "minimap toggle minimap for current window" },
-      { "<leader>nwr", "<cmd>Neominimap winRefresh<cr>", desc = "minimap refresh minimap for current window" },
-      { "<leader>ntt", "<cmd>Neominimap tabToggle<cr>", desc = "minimap toggle minimap for current tab" },
-      { "<leader>ntr", "<cmd>Neominimap tabRefresh<cr>", desc = "minimap refresh minimap for current tab" },
-      { "<leader>nbt", "<cmd>Neominimap bufToggle<cr>", desc = "minimap toggle minimap for current buffer" },
-      { "<leader>nbr", "<cmd>Neominimap bufRefresh<cr>", desc = "minimap refresh minimap for current buffer" },
-      { "<leader>nf", "<cmd>Neominimap toggleFocus<cr>", desc = "minimap switch focus on minimap" },
+      { "<leader>nm", desc = "minimap toggle global minimap" },
+      { "<leader>nr", desc = "minimap refresh global minimap" },
+      { "<leader>nw", desc = "minimap toggle minimap for current window" },
+      { "<leader>nt", desc = "minimap toggle minimap for current tab" },
+      { "<leader>nb", desc = "minimap toggle minimap for current buffer" },
+      { "<leader>nf", desc = "minimap switch focus on minimap" },
     },
     init = function()
       vim.g.neominimap = {
@@ -429,6 +426,9 @@ return {
           enabled = true,
         },
       }
+    end,
+    config = function()
+      require "plugins.mappings.neominimap-keys"
     end,
   },
 
