@@ -2,11 +2,11 @@ M = {}
 
 local lsp_attached = false
 
-M.set_lsp_attached = function(value)
+function M.set_lsp_attached(value)
   lsp_attached = value -- Устанавливаем значение флага
 end
 
-M.navic = function()
+function M.navic()
   if not lsp_attached then
     return ""
   end
@@ -19,7 +19,7 @@ M.navic = function()
   end
 end
 
-M.lazy = function()
+function M.lazy()
   local lazy_status = require "lazy.status"
   if lazy_status.has_updates() then
     return ("%#LazyUpdates#" .. " " .. lazy_status.updates() .. " ")
