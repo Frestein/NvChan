@@ -46,6 +46,7 @@ local function setup_linting()
     else
       linter_error_notify = vim.notify(
         "Configuration file for selene not found.",
+        --- @diagnostic disable: param-type-mismatch
         "ERROR",
         { title = "Linter", replace = linter_error_notify }
       )
@@ -64,6 +65,8 @@ lint.linters_by_ft = {
 
 local lint_augroup = augroup("nvim_lint", { clear = true })
 
+-- FIX:: Disable the linter if the configuration for Selene is not found,
+-- and ensure the notification about the missing config is shown only once.
 autocmd({ "LspAttach", "BufEnter", "TextChanged" }, {
   group = lint_augroup,
   callback = function()

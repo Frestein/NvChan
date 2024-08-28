@@ -20,6 +20,7 @@ local function update_diagnostics()
         if win_type == "popup" or win_type == "floating" then
           return diagnostic.message
         elseif diagnostic.lnum == cur_line - 1 then
+          --- @diagnostic disable: return-type-mismatch
           return nil
         end
 
@@ -32,6 +33,8 @@ end
 
 update_diagnostics()
 
+-- FIX: Add a delay of 200 ms before updating diagnostics
+-- on CursorMoved event to prevent excessive updates.
 autocmd("CursorMoved", {
   callback = function()
     local win_type = vim.fn.win_gettype()
