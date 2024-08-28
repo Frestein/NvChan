@@ -5,11 +5,11 @@ local neominimap = require "neominimap"
 -- stylua: ignore
 local keymaps = {
   ["<leader>nm"] = {
-    func = function() neominimap.toggle() end,
+    func = neominimap.toggle,
     desc = "minimap toggle global minimap",
   },
   ["<leader>nr"] = {
-    func = function() neominimap.refresh() end,
+    func = neominimap.refresh,
     desc = "minimap refresh global minimap",
   },
   ["<leader>nw"] = {
@@ -25,7 +25,7 @@ local keymaps = {
     desc = "minimap toggle minimap for current buffer",
   },
   ["<leader>nf"] = {
-    func = function() neominimap.focus() end,
+    func = neominimap.focus,
     desc = "minimap switch focus on minimap",
   },
 }

@@ -1,9 +1,19 @@
 local map = require("langmapper").map
 
-map("n", "<leader>tt", function()
-  vim.cmd "TodoTrouble"
-end, { desc = "todo-comments show the todo-list" })
+-- stylua: ignore
+local keymaps = {
+  ["<leader>tt"] = {
+    func = "<cmd>TodoTrouble<cr>",
+    desc = "todo-comments show the todo-list",
+  },
+  ["<leader>fT"] = {
+    func = "<cmd>TodoTelescope<cr>",
+    desc = "telescope todo-list",
+  },
+}
 
-map("n", "<leader>fT", function()
-  vim.cmd "TodoTelescope"
-end, { desc = "telescope todo-list" })
+local modes = { "n" }
+
+for key, value in pairs(keymaps) do
+  map(modes, key, value.func, { desc = value.desc })
+end

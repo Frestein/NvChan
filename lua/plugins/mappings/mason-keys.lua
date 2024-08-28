@@ -1,13 +1,23 @@
 local map = require("langmapper").map
 
-map("n", "<leader>mm", function()
-  vim.cmd "Mason"
-end, { desc = "mason open home" })
+-- stylua: ignore
+local keymaps = {
+  ["<leader>mm"] = {
+    func = "<cmd>Mason<cr>",
+    desc = "mason open home",
+  },
+  ["<leader>mi"] = {
+    func = "<cmd>MasonInstallAll<cr>",
+    desc = "mason install all packages",
+  },
+  ["<leader>mu"] = {
+    func = "<cmd>MasonUpdate<cr>",
+    desc = "mason update packages",
+  },
+}
 
-map("n", "<leader>mi", function()
-  vim.cmd "MasonInstallAll"
-end, { desc = "mason install all packages" })
+local modes = { "n" }
 
-map("n", "<leader>mu", function()
-  vim.cmd "MasonUpdate"
-end, { desc = "mason update packages" })
+for key, value in pairs(keymaps) do
+  map(modes, key, value.func, { desc = value.desc })
+end

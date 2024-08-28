@@ -3,7 +3,7 @@ M = {}
 local lsp_attached = false
 
 function M.set_lsp_attached(value)
-  lsp_attached = value -- Устанавливаем значение флага
+  lsp_attached = value
 end
 
 function M.navic()
