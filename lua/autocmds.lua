@@ -1,4 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
+local o = vim.o
 
 local statusline = require "statusline"
 
@@ -7,6 +8,13 @@ autocmd("FileType", {
   callback = function()
     vim.wo.foldlevel = 99
     vim.wo.conceallevel = 2
+  end,
+})
+
+autocmd("FileType", {
+  pattern = { "help", "oil", "lazy" },
+  callback = function()
+    o.winfixbuf = true
   end,
 })
 
