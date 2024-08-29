@@ -513,7 +513,7 @@ return {
   {
     "Wansmer/langmapper.nvim",
     lazy = false,
-    priority = 1,
+    priority = 1000,
     opts = require "plugins.options.langmapper-opts",
     config = function(_, opts)
       require "plugins.configs.langmapper-conf"
