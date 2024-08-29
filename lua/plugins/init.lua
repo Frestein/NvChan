@@ -510,6 +510,30 @@ return {
   },
 
   {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    -- stylua: ignore
+    keys = {
+      { mode = { "x" },       "<leader>re", desc = "refactor extract function" },
+      { mode = { "x" },       "<leader>rf", desc = "refactor extract function to file" },
+      { mode = { "x" },       "<leader>rv", desc = "refactor extract variable" },
+      { mode = { "n" },       "<leader>rI", desc = "refactor inline function" },
+      { mode = { "n", "x" },  "<leader>ri", desc = "refactor inline variable" },
+      { mode = { "n" },       "<leader>rb", desc = "refactor extract block" },
+      { mode = { "n" },       "<leader>rB", desc = "refactor extract block to file" },
+      { mode = { "n", "x" },  "<leader>rr", desc = "refactor select refactor" },
+    },
+    opts = require "plugins.options.refactoring-opts",
+    config = function(_, opts)
+      require("refactoring").setup(opts)
+      require "plugins.mappings.refactoring-keys"
+    end,
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
