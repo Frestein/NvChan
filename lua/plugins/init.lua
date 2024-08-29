@@ -94,9 +94,8 @@ return {
       { "<leader>e", desc = "file open parent directory" },
       { "<leader>fl", desc = "file open parent directory (float)" },
     },
-    opts = require "plugins.options.oil-opts",
-    config = function(_, opts)
-      require("oil").setup(opts)
+    config = function()
+      require "plugins.configs.oil-conf"
       require "plugins.mappings.oil-keys"
     end,
   },
