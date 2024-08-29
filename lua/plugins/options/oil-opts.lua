@@ -1,3 +1,5 @@
+local oil = require "oil"
+
 local detail = false
 
 local options = {
@@ -5,15 +7,16 @@ local options = {
   skip_confirm_for_simple_edits = true,
   keymaps = {
     ["gd"] = {
-      desc = "Toggle file detail view",
       callback = function()
         detail = not detail
+
         if detail then
-          require("oil").set_columns { "icon", "permissions", "size", "mtime" }
+          oil.set_columns { "icon", "permissions", "size", "mtime" }
         else
-          require("oil").set_columns { "icon" }
+          oil.set_columns { "icon" }
         end
       end,
+      desc = "file toggle detail view",
     },
   },
   git = {
@@ -26,6 +29,9 @@ local options = {
     rm = function(path)
       return true
     end,
+  },
+  float = {
+    padding = 3,
   },
 }
 
