@@ -530,6 +530,20 @@ return {
   },
 
   {
+    "MagicDuck/grug-far.nvim",
+    keys = {
+      { mode = { "n" }, "<leader>rw", "grug-far open with word under cursor" },
+      { mode = { "n" }, "<leader>rc", "grug-far open for current file" },
+      { mode = { "x" }, "<leader>rC", "grug-far open with visual selection" },
+    },
+    opts = require "plugins.options.grug-far-opts",
+    config = function(_, opts)
+      require("grug-far").setup(opts)
+      require "plugins.mappings.grug-far-keys"
+    end,
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
