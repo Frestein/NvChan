@@ -1,20 +1,20 @@
 local autocmd = vim.api.nvim_create_autocmd
-local o = vim.o
+local wo = vim.wo
 
 local statusline = require "statusline"
 
 autocmd("FileType", {
   pattern = { "norg", "markdown" },
   callback = function()
-    vim.wo.foldlevel = 99
-    vim.wo.conceallevel = 2
+    wo.foldlevel = 99
+    wo.conceallevel = 2
   end,
 })
 
 autocmd("FileType", {
   pattern = { "help", "lazy" },
   callback = function()
-    o.winfixbuf = true
+    wo.winfixbuf = true
   end,
 })
 
