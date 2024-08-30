@@ -49,7 +49,12 @@ M.ui = {
   },
 
   cmp = {
-    style = "flat_light",
+    style = "atom",
+    lspkind_text = false,
+  },
+
+  tabufline = {
+    order = { "treeOffset", "buffers", "tabs" },
   },
 
   telescope = {
@@ -63,11 +68,13 @@ M.ui = {
 
 M.base46 = {
   theme = "nord",
-  theme_toggle = { "nord", "onedark" },
 
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    ["CmpPmenu"] = {
+      bg = "darker_black",
+    },
     -- Tabufline {{{
     ["TbFill"] = {
       bg = "NONE",
