@@ -1,10 +1,28 @@
 local map = require("langmapper").map
 
+local trouble = require "trouble"
+
 -- stylua: ignore
 local keymaps = {
-  ["<leader>td"] = {
-    func = "<cmd>Trouble diagnostics toggle<cr>",
-    desc = "toggle diagnostics",
+  ["<leader>x"] = {
+    func = function() trouble.toggle("diagnostics") end,
+    desc = "trouble toggle diagnostics",
+  },
+  ["<leader>xx"] = {
+    func = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+    desc = "trouble toggle buffer diagnostics",
+  },
+  ["<leader>cl"] = {
+    func = "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+    desc = "trouble LSP definitions / references / ...",
+  },
+  ["<leader>xq"] = {
+    func = function() trouble.toggle("qflist") end,
+    desc = "trouble toggle quickfix list",
+  },
+  ["<leader>xs"] = {
+    func = function() trouble.toggle("symbols") end,
+    desc = "trouble toggle document symbols",
   },
 }
 

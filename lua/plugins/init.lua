@@ -280,7 +280,11 @@ return {
     cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
     dependencies = "folke/todo-comments.nvim",
     keys = {
-      { "<leader>td", desc = "toggle diagnostics" },
+      { "<leader>x", desc = "trouble toggle diagnostics" },
+      { "<leader>xx", desc = "trouble toggle buffer diagnostics" },
+      { "<leader>cl", desc = "trouble LSP definitions / references / ..." },
+      { "<leader>xq", desc = "trouble toggle quickfix list" },
+      { "<leader>xs", desc = "trouble toggle document symbols" },
     },
     config = function()
       require("trouble").setup {}
