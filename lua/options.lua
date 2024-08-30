@@ -23,3 +23,5 @@ vim.filetype.add {
     [".*/hypr/.*%.conf"] = "hyprlang",
   },
 }
+
+o.pumblend = 15
