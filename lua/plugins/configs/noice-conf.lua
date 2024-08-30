@@ -29,10 +29,10 @@ autocmd("LspAttach", {
 noice.setup(options)
 
 -- Transparency fix
-local base16 = base46.get_theme_tb "base_16"
+-- local base16 = base46.get_theme_tb "base_16"
 
 notify.setup {
-  background_colour = base16.base00,
+  -- background_colour = base16.base00,
   render = "wrapped-compact",
   max_width = 50,
   stages = "fade",

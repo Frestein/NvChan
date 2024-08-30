@@ -145,7 +145,7 @@ M.base46 = {
     "todo",
   },
 
-  transparency = true,
+  transparency = false,
 }
 
 return M
