@@ -14,7 +14,7 @@ local symbols = trouble.statusline {
   title = false,
   filter = { range = true },
   format = "{kind_icon}{symbol.name:Normal}",
-  hl_group = "lualine_a_normal",
+  hl_group = "lualine_c_normal",
 }
 
 local function set_trouble_highlights()
