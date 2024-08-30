@@ -357,6 +357,11 @@ return {
   },
 
   {
+    "folke/twilight.nvim",
+    opts = require "plugins.options.twilight-opts",
+  },
+
+  {
     "nvim-neorg/neorg",
     dependencies = {
       { "nvim-neorg/neorg-telescope" },
