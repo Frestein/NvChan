@@ -149,7 +149,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>fP", function() require("telescope").extensions.lazy.lazy() end, desc = "telescope installed plugins", },
+      { "<leader>fP", function() require("telescope").extensions.lazy.lazy() end, desc = "telescope installed plugins" },
     },
   },
 
@@ -158,7 +158,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>fp", function() require("telescope").extensions.project.project() end, desc = "telescope find projects", },
+      { "<leader>fp", function() require("telescope").extensions.project.project() end, desc = "telescope find projects" },
     },
   },
 
@@ -167,7 +167,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>fi", function() require("telescope").extensions.import.import() end, desc = "telescope find imports", },
+      { "<leader>fi", function() require("telescope").extensions.import.import() end, desc = "telescope find imports" },
     },
   },
 
@@ -176,7 +176,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>fh", function() require("telescope").extensions.heading.heading() end, desc = "telescope heading list", },
+      { "<leader>fh", function() require("telescope").extensions.heading.heading() end, desc = "telescope heading list" },
     },
   },
 
@@ -188,7 +188,7 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>fZ", function() require("telescope").extensions.zoxide.list() end, desc = "telescope zoxide list", },
+      { "<leader>fZ", function() require("telescope").extensions.zoxide.list() end, desc = "telescope zoxide list" },
     },
   },
 
@@ -197,7 +197,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>fu", function() require("telescope").extensions.undo.undo() end, desc = "telescope find undo", },
+      { "<leader>fu", function() require("telescope").extensions.undo.undo() end, desc = "telescope find undo" },
     },
   },
 
@@ -261,12 +261,13 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
+    dependencies = "folke/todo-comments.nvim",
     keys = {
       { "<leader>td", desc = "toggle diagnostics" },
     },
-    dependencies = "folke/todo-comments.nvim",
-    config = function(_, opts)
-      require("trouble").setup(opts)
+    config = function()
+      require("trouble").setup {}
+      dofile(vim.g.base46_cache .. "trouble")
       require "plugins.mappings.trouble-keys"
     end,
   },
@@ -281,6 +282,7 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     config = function(_, opts)
       require("todo-comments").setup(opts)
+      dofile(vim.g.base46_cache .. "todo")
       require "plugins.mappings.todo-comments-keys"
     end,
   },
@@ -375,12 +377,6 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter",
     ft = { "markdown", "norg" },
     opts = {},
-  },
-
-  {
-    "SmiteshP/nvim-navic",
-    event = "LspAttach",
-    opts = require "plugins.options.navic-opts",
   },
 
   {
