@@ -67,7 +67,7 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "nord",
+  theme = "palenight",
 
   hl_override = {
     Comment = { italic = true },
