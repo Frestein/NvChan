@@ -41,7 +41,7 @@ local keymaps = {
     func = telescope.extensions.terms.terms,
     desc = "telescope find terms",
   },
-  ["<leader>th"] = {
+  ["<leader>tH"] = {
     func = telescope.extensions.themes.themes,
     desc = "telescope nvchad themes",
   },

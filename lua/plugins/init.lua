@@ -138,7 +138,7 @@ return {
       { "<leader>fz", desc = "telescope find in current buffer" },
       { "<leader>fd", desc = "telescope find diagnostics" },
       { "<leader>ft", desc = "telescope find terms" },
-      { "<leader>th", desc = "telescope nvchad themes" },
+      { "<leader>tH", desc = "telescope nvchad themes" },
     },
     opts = require "plugins.options.telescope-opts",
     config = function(_, opts)
