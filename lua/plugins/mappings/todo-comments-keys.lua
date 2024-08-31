@@ -6,6 +6,10 @@ local keymaps = {
     func = "<cmd>TodoTrouble<cr>",
     desc = "todo-comments show the todo-list",
   },
+  ["<leader>tq"] = {
+    func = "<cmd>TodoQuickFix<cr>",
+    desc = "todo-comments show quickfix",
+  },
   ["<leader>fT"] = {
     func = "<cmd>TodoTelescope<cr>",
     desc = "telescope todo-list",
