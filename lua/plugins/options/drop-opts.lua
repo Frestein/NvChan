@@ -17,7 +17,8 @@ local options = {
   },
   max = 75,
   interval = 150,
-  filetypes = { "dashboard", "alpha", "ministarter", "nvdash" },
+  winblend = 50,
+  filetypes = { "dashboard", "alpha", "ministarter" },
 }
 
 local win_width = vim.api.nvim_win_get_width(0)

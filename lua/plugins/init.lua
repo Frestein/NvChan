@@ -578,7 +578,7 @@ return {
 
   {
     "folke/drop.nvim",
-    lazy = false,
+    event = "VimEnter",
     opts = require "plugins.options.drop-opts",
   },
 
