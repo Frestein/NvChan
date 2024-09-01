@@ -24,7 +24,7 @@ local win_width = vim.api.nvim_win_get_width(0)
 local win_height = vim.api.nvim_win_get_height(0)
 
 if win_width < 150 and win_height < 50 then
-  options.max = 250
+  options.max = 25
 elseif win_width < 150 then
   options.max = 50
 else
