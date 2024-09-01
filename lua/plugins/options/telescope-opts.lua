@@ -12,12 +12,20 @@ options.extensions_list = {
   "import",
   "heading",
   "aerial",
+  "ast_grep",
 }
 options.extensions = {
   lazy_plugins = {
     lazy_config = vim.fn.stdpath "config" .. "/init.lua",
   },
   extensions = {
+    ast_grep = {
+      command = {
+        "sg",
+        "--json=stream",
+      },
+      grep_open_files = false,
+    },
     heading = {
       treesitter = true,
     },

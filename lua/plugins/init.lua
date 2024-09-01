@@ -169,6 +169,15 @@ return {
   },
 
   {
+    "Marskey/telescope-sg",
+    dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
+    keys = {
+      { "<leader>fW", function() require("telescope").extensions.ast_grep.ast_grep() end, desc = "telescope live grep (sg)" },
+    },
+  },
+
+  {
     "tsakirist/telescope-lazy.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
     -- stylua: ignore
