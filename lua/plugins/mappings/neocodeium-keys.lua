@@ -6,37 +6,37 @@ local neocodeium = require "neocodeium"
 local keymaps = {
   ["<C-f>"] = {
     modes = { "i" },
-    func = function() neocodeium.accept() end,
+    func = neocodeium.accept,
     desc = "neocodeium accept",
   },
   ["<C-w>"] = {
     modes = { "i" },
-    func = function() neocodeium.accept_word() end,
+    func = neocodeium.accept_word,
     desc = "neocodeium accept word",
   },
   ["<C-l>"] = {
     modes = { "i" },
-    func = function() neocodeium.accept_line() end,
+    func = neocodeium.accept_line,
     desc = "neocodeium accept line",
   },
   ["<C-e>"] = {
     modes = { "i" },
-    func = function() neocodeium.cycle_or_complete() end,
+    func = neocodeium.cycle_or_complete,
     desc = "neocodeium cycle or complete",
   },
   ["<C-r>"] = {
     modes = { "i" },
-    func = function() neocodeium.cycle_or_complete(-1) end,
+    func = function() return neocodeium.cycle_or_complete(-1) end,
     desc = "neocodeium cycle or complete (reverse)",
   },
   ["<C-c>"] = {
     modes = { "i" },
-    func = function() neocodeium.clear() end,
+    func = neocodeium.clear,
     desc = "neocodeium clear",
   },
   ["<leader>tc"] = {
     modes = { "n" },
-    func = function() neocodeium.chat() end,
+    func = neocodeium.chat,
     desc = "neocodeium chat",
   },
 }

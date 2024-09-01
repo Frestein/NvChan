@@ -171,45 +171,40 @@ return {
   {
     "Marskey/telescope-sg",
     dependencies = "nvim-telescope/telescope.nvim",
-    -- stylua: ignore
     keys = {
-      { "<leader>fW", function() require("telescope").extensions.ast_grep.ast_grep() end, desc = "telescope live grep (sg)" },
+      { "<leader>fW", require("plugins.mappings.telescope-extensions-keys").sg, desc = "telescope live grep (sg)" },
     },
   },
 
   {
     "tsakirist/telescope-lazy.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
-    -- stylua: ignore
     keys = {
-      { "<leader>fP", function() require("telescope").extensions.lazy.lazy() end, desc = "telescope installed plugins" },
+      { "<leader>fP", require("plugins.mappings.telescope-extensions-keys").lazy, desc = "telescope installed plugins" },
     },
   },
 
   {
     "nvim-telescope/telescope-project.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
-    -- stylua: ignore
     keys = {
-      { "<leader>fp", function() require("telescope").extensions.project.project() end, desc = "telescope find projects" },
+      { "<leader>fp", require("plugins.mappings.telescope-extensions-keys").project, desc = "telescope find projects" },
     },
   },
 
   {
     "piersolenski/telescope-import.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
-    -- stylua: ignore
     keys = {
-      { "<leader>fi", function() require("telescope").extensions.import.import() end, desc = "telescope find imports" },
+      { "<leader>fi", require("plugins.mappings.telescope-extensions-keys").import, desc = "telescope find imports" },
     },
   },
 
   {
     "crispgm/telescope-heading.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
-    -- stylua: ignore
     keys = {
-      { "<leader>fh", function() require("telescope").extensions.heading.heading() end, desc = "telescope heading list" },
+      { "<leader>fh", require("plugins.mappings.telescope-extensions-keys").heading, desc = "telescope heading list" },
     },
   },
 
@@ -219,18 +214,16 @@ return {
       { "stevearc/oil.nvim" },
       { "nvim-telescope/telescope.nvim" },
     },
-    -- stylua: ignore
     keys = {
-      { "<leader>fZ", function() require("telescope").extensions.zoxide.list() end, desc = "telescope zoxide list" },
+      { "<leader>fZ", require("plugins.mappings.telescope-extensions-keys").zoxide, desc = "telescope zoxide list" },
     },
   },
 
   {
     "debugloop/telescope-undo.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
-    -- stylua: ignore
     keys = {
-      { "<leader>fu", function() require("telescope").extensions.undo.undo() end, desc = "telescope find undo" },
+      { "<leader>fu", require("plugins.mappings.telescope-extensions-keys").undo, desc = "telescope find undo" },
     },
   },
 
@@ -370,13 +363,7 @@ return {
       },
     },
     keys = {
-      {
-        "<leader>fD",
-        function()
-          require("telescope").extensions.chezmoi.find_files()
-        end,
-        desc = "telescope find dotfiles",
-      },
+      { "<leader>fD", require("plugins.mappings.telescope-extensions-keys").chezmoi, desc = "telescope find dotfiles" },
     },
     opts = require "plugins.options.chezmoi-opts",
   },
@@ -475,14 +462,14 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
-    -- stylua: ignore
     keys = {
-      { "<leader>a", "<cmd>AerialToggle!<cr>", desc = "aerial toggle" },
-      { "<leader>fa", function() require("telescope").extensions.aerial.aerial() end, desc = "telescope aerial" },
+      { "<leader>a", desc = "aerial toggle" },
+      { "<leader>fa", desc = "telescope aerial" },
     },
     opts = require "plugins.options.aerial-opts",
     config = function(_, opts)
       require("aerial").setup(opts)
+      require "plugins.mappings.aerial-keys"
     end,
   },
 

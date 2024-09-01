@@ -41,7 +41,7 @@ local keymaps = {
   },
   ["<leader>rr"] = {
     modes = { "n", "x" },
-    func = function() refactoring.select_refactor() end,
+    func = refactoring.select_refactor,
     desc = "refactor select refactor",
   },
 }
