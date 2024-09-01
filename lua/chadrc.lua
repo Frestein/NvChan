@@ -95,6 +95,9 @@ M.base46 = {
   },
 
   hl_add = {
+    ["NeoCodeiumSuggestion"] = {
+      fg = "light_grey",
+    },
     ["LazyUpdates"] = {
       fg = "green",
       bg = "NONE",
