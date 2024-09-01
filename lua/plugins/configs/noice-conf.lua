@@ -1,7 +1,7 @@
 local options = require "plugins.options.noice-opts"
 local noice = require "noice"
 local notify = require "notify"
-local base46 = require "base46"
+-- local base46 = require "base46"
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
