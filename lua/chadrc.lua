@@ -58,7 +58,7 @@ M.ui = {
   },
 
   telescope = {
-    style = "bordered",
+    style = "borderless",
   },
 
   border = {

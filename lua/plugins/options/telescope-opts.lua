@@ -1,5 +1,22 @@
 local options = require "nvchad.configs.telescope"
 
+options.defaults = {
+  prompt_prefix = "   ",
+  selection_caret = " ",
+  entry_prefix = " ",
+  layout_config = {
+    vertical = {
+      prompt_position = "top",
+      preview_width = 0.55,
+    },
+    width = 0.87,
+    height = 0.80,
+  },
+  mappings = {
+    n = { ["q"] = require("telescope.actions").close },
+  },
+}
+
 options.extensions_list = {
   "themes",
   "terms",
@@ -14,6 +31,7 @@ options.extensions_list = {
   "aerial",
   "ast_grep",
 }
+
 options.extensions = {
   lazy_plugins = {
     lazy_config = vim.fn.stdpath "config" .. "/init.lua",
