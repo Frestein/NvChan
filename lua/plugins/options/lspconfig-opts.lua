@@ -29,6 +29,13 @@ local servers = {
   ruff = {
     root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
   },
+  ast_grep = {
+    default_config = {
+      cmd = { "ast-grep", "lsp" },
+      single_file_support = false,
+      root_dir = lspconfig.util.root_pattern(".git", "sgconfig.yml"),
+    },
+  },
 }
 
 for name, options in pairs(servers) do
