@@ -577,6 +577,12 @@ return {
   },
 
   {
+    "folke/drop.nvim",
+    lazy = false,
+    opts = require "plugins.options.drop-opts",
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
