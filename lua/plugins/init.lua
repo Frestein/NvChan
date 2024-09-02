@@ -104,39 +104,55 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- { "jcdickinson/codeium.nvim" },
+      -- "supermaven-inc/supermaven-nvim",
     },
     opts = function()
       require "plugins.options.cmp-opts"
     end,
     config = function(_, opts)
       -- table.insert(opts.sources, { name = "codeium" })
+      -- table.insert(opts.sources, { name = "supermaven" })
       require("cmp").setup(opts)
     end,
   },
+
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "InsertEnter",
+    keys = {
+      { mode = "i", "<C-f>", desc = "supermaven accept suggestion" },
+      { mode = "i", "<C-w>", desc = "supermaven accept word" },
+      { mode = "i", "<C-c>", desc = "supermaven clear suggestion" },
+    },
+    opts = require "plugins.options.supermaven-opts",
+    config = function(_, opts)
+      require("supermaven-nvim").setup(opts)
+    end,
+  },
+
+  -- {
+  --   "monkoose/neocodeium",
+  --   event = "InsertEnter",
+  --   opts = require "plugins.options.neocodeium-opts",
+  --   keys = {
+  --     { mode = "i", "<C-f>", desc = "neocodeium accept suggestion" },
+  --     { mode = "i", "<C-w>", desc = "neocodeium accept word" },
+  --     { mode = "i", "<C-l>", desc = "neocodeium accept line" },
+  --     { mode = "i", "<C-e>", desc = "neocodeium cycle or complete" },
+  --     { mode = "i", "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
+  --     { mode = "i", "<C-c>", desc = "neocodeium clear" },
+  --     { "<leader>tc", desc = "neocodeium chat" },
+  --   },
+  --   config = function(_, opts)
+  --     require("neocodeium").setup(opts)
+  --     require "plugins.mappings.neocodeium-keys"
+  --   end,
+  -- },
 
   -- {
   --   "jcdickinson/codeium.nvim",
   --   opts = require "plugins.options.codeium-opts",
   -- },
-
-  {
-    "monkoose/neocodeium",
-    event = "InsertEnter",
-    opts = require "plugins.options.neocodeium-opts",
-    keys = {
-      { mode = "i", "<C-f>", desc = "neocodeium accept" },
-      { mode = "i", "<C-w>", desc = "neocodeium accept word" },
-      { mode = "i", "<C-l>", desc = "neocodeium accept line" },
-      { mode = "i", "<C-e>", desc = "neocodeium cycle or complete" },
-      { mode = "i", "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
-      { mode = "i", "<C-c>", desc = "neocodeium clear" },
-      { "<leader>tc", desc = "neocodeium chat" },
-    },
-    config = function(_, opts)
-      require("neocodeium").setup(opts)
-      require "plugins.mappings.neocodeium-keys"
-    end,
-  },
 
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",

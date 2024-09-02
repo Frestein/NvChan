@@ -2,17 +2,20 @@ local options = require "nvchad.configs.cmp"
 local cmp = require "cmp"
 local cmp_ui = require("nvconfig").ui.cmp
 local cmp_style = cmp_ui.style
-local neocodeium = require "neocodeium"
-local commands = require "neocodeium.commands"
+-- local neocodeium = require "neocodeium"
+-- local commands = require "neocodeium.commands"
+-- local supermaven_api = require "supermaven-nvim.api"
 
-cmp.event:on("menu_opened", function()
-  commands.disable()
-  neocodeium.clear()
-end)
-
-cmp.event:on("menu_closed", function()
-  commands.enable()
-end)
+-- cmp.event:on("menu_opened", function()
+--   -- commands.disable()
+--   -- neocodeium.clear()
+--   supermaven_api.stop()
+-- end)
+--
+-- cmp.event:on("menu_closed", function()
+--   -- commands.enable()
+--   supermaven_api.start()
+-- end)
 
 options.window = {
   completion = {
