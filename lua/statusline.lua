@@ -1,7 +1,7 @@
 M = {}
 
 local lsp_attached = false
-local highlight_set = false
+local trouble_highlight_set = false
 local trouble, symbols
 
 function M.set_lsp_attached(value)
@@ -20,11 +20,11 @@ function M.set_lsp_attached(value)
 end
 
 local function set_trouble_highlights()
-  if not highlight_set then
+  if not trouble_highlight_set then
     local base46 = require "base46"
     local base30 = base46.get_theme_tb "base_30"
     vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = base30.light_grey })
-    highlight_set = true
+    trouble_highlight_set = true
   end
 end
 

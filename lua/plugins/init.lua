@@ -179,6 +179,7 @@ return {
   {
     "tsakirist/telescope-lazy.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
+    -- stylua: ignore
     keys = {
       { "<leader>fP", require("plugins.mappings.telescope-extensions-keys").lazy, desc = "telescope installed plugins" },
     },
