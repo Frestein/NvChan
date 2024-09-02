@@ -34,7 +34,7 @@ function M.trouble()
   elseif symbols and symbols.has() then
     local statusline_symbols = symbols.get()
     set_trouble_highlights()
-    return statusline_symbols
+    return " " .. statusline_symbols
   else
     return ""
   end
