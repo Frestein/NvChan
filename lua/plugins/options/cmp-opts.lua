@@ -1,7 +1,11 @@
 local options = require "nvchad.configs.cmp"
+
 local cmp = require "cmp"
 local cmp_ui = require("nvconfig").ui.cmp
 local cmp_style = cmp_ui.style
+
+local lspkind = require "lspkind"
+
 -- local neocodeium = require "neocodeium"
 -- local commands = require "neocodeium.commands"
 -- local supermaven_api = require "supermaven-nvim.api"
@@ -11,15 +15,70 @@ local cmp_style = cmp_ui.style
 --   -- neocodeium.clear()
 --   supermaven_api.stop()
 -- end)
---
+
 -- cmp.event:on("menu_closed", function()
 --   -- commands.enable()
 --   supermaven_api.start()
 -- end)
 
+local symbol_map = {
+  Array = " ",
+  Boolean = "󰨙 ",
+  Class = " ",
+  Codeium = "󰘦 ",
+  Color = "󰏘 ",
+  Control = " ",
+  Collapsed = " ",
+  Constant = "󰏿 ",
+  Constructor = " ",
+  Copilot = " ",
+  Enum = " ",
+  EnumMember = " ",
+  Event = " ",
+  Field = "󰜢 ",
+  File = "󰈙 ",
+  Folder = "󰉋 ",
+  Function = "󰊕 ",
+  Interface = " ",
+  Key = " ",
+  Keyword = " ",
+  Method = "󰊕 ",
+  Module = " ",
+  Namespace = "󰦮 ",
+  Null = " ",
+  Number = "󰎠 ",
+  Object = " ",
+  Operator = "󰆕 ",
+  Package = " ",
+  Property = "󰜢 ",
+  Reference = " ",
+  Snippet = " ",
+  String = " ",
+  Struct = "󰙅 ",
+  TabNine = "󰏚 ",
+  Text = "󰉿 ",
+  TypeParameter = " ",
+  Unit = " ",
+  Value = "󰎠 ",
+  Variable = "󰀫 ",
+}
+
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
+
 options.window = {
   completion = {
-    side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
+    side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan") and 1 or 0,
     winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
     scrollbar = false,
     autocomplete = false,
@@ -29,6 +88,41 @@ options.window = {
     border = { "", "", "", " ", "", "", "", " " },
   },
 }
+
+local field_arrangement = {
+  atom = { "kind", "abbr", "menu" },
+  atom_colored = { "kind", "abbr", "menu" },
+  nvchan = { "kind", "abbr", "menu" },
+}
+
+options.formatting = {
+  fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
+  format = lspkind.cmp_format {
+    mode = "symbol_text",
+    maxwidth = 50,
+    show_labelDetails = true,
+    ellipsis_char = "󰇘",
+    before = function(entry, item)
+      local icons = symbol_map
+      local icon = (cmp_ui.icons and icons[item.kind]) or ""
+
+      if cmp_style == "atom" or cmp_style == "atom_colored" or cmp_style == "nvchan" then
+        icon = icon
+        item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
+        item.kind = icon
+      else
+        icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
+        item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
+      end
+
+      return item
+    end,
+  },
+}
+
+if cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan" then
+  options.window.completion.border = border "CmpBorder"
+end
 
 options.mapping = {
   ["<C-p>"] = cmp.mapping.select_prev_item(),

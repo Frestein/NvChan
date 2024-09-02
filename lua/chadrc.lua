@@ -48,8 +48,9 @@ M.ui = {
     },
   },
 
+  --- @diagnostic disable: assign-type-mismatch
   cmp = {
-    style = "atom",
+    style = "nvchan",
     lspkind_text = false,
   },
 

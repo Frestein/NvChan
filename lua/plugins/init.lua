@@ -105,6 +105,7 @@ return {
     dependencies = {
       -- { "jcdickinson/codeium.nvim" },
       -- "supermaven-inc/supermaven-nvim",
+      "onsails/lspkind.nvim",
     },
     opts = function()
       require "plugins.options.cmp-opts"
