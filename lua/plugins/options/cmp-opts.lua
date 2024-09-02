@@ -106,9 +106,11 @@ options.formatting = {
       local icons = symbol_map
       local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
-      if cmp_style == "atom" or cmp_style == "atom_colored" or cmp_style == "nvchan" then
-        icon = icon
-        item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
+      if cmp_style == "atom" or cmp_style == "atom_colored" then
+        item.menu = cmp_ui.lspkind_text and " (" .. item.kind .. ")" or ""
+        item.kind = icon
+      elseif cmp_style == "nvchan" then
+        item.menu = cmp_ui.lspkind_text and " " .. item.kind or ""
         item.kind = icon
       else
         icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon

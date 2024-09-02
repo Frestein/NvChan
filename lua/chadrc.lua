@@ -73,9 +73,6 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    ["CmpPmenu"] = {
-      bg = "darker_black",
-    },
     -- Tabufline {{{
     ["TbFill"] = {
       bg = "NONE",
@@ -158,5 +155,11 @@ M.base46 = {
 
   transparency = false,
 }
+
+if M.ui.cmp.style == "nvchan" then
+  M.base46.hl_override["CmpPmenu"] = {
+    bg = "darker_black",
+  }
+end
 
 return M
