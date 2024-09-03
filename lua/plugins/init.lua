@@ -604,6 +604,24 @@ return {
   },
 
   {
+    "piersolenski/wtf.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      {
+        "<leader>ws",
+        desc = "wtf search diagnostic with duckduckgo",
+      },
+    },
+    opts = require "plugins.options.wtf-opts",
+    config = function(_, opts)
+      require("wtf").setup(opts)
+      require "plugins.mappings.wtf-keys"
+    end,
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
