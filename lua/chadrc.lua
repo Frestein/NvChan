@@ -50,7 +50,7 @@ M.ui = {
 
   --- @diagnostic disable: assign-type-mismatch
   cmp = {
-    style = "nvchan",
+    style = "nvchan_colored",
     lspkind_text = false,
   },
 
@@ -156,10 +156,20 @@ M.base46 = {
   transparency = false,
 }
 
-if M.ui.cmp.style == "nvchan" then
-  M.base46.hl_override["CmpPmenu"] = {
-    bg = "darker_black",
+if M.ui.cmp.style == "nvchan" or M.ui.cmp.style == "nvchan_colored" then
+  M.base46.hl_override = {
+    ["CmpMenu"] = {
+      bg = "darker_black",
+    },
   }
+  if M.ui.cmp.style == "nvchan_colored" then
+    M.base46.hl_override = {
+      ["PmenuSel"] = {
+        bg = "grey",
+        fg = "NONE",
+      },
+    }
+  end
 end
 
 return M

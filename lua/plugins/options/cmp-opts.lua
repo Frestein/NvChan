@@ -78,7 +78,7 @@ end
 
 options.window = {
   completion = {
-    side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan") and 1 or 0,
+    side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan" and cmp_style ~= "nvchan_colored") and 1 or 0,
     winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
     scrollbar = false,
     autocomplete = false,
@@ -93,6 +93,7 @@ local field_arrangement = {
   atom = { "kind", "abbr", "menu" },
   atom_colored = { "kind", "abbr", "menu" },
   nvchan = { "kind", "abbr", "menu" },
+  nvchan_colored = { "kind", "abbr", "menu" },
 }
 
 options.formatting = {
@@ -109,7 +110,7 @@ options.formatting = {
       if cmp_style == "atom" or cmp_style == "atom_colored" then
         item.menu = cmp_ui.lspkind_text and " (" .. item.kind .. ")" or ""
         item.kind = icon
-      elseif cmp_style == "nvchan" then
+      elseif cmp_style == "nvchan" or cmp_style == "nvchan_colored" then
         item.menu = cmp_ui.lspkind_text and " " .. item.kind or ""
         item.kind = icon
       else
@@ -122,7 +123,7 @@ options.formatting = {
   },
 }
 
-if cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan" then
+if cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan" and cmp_style ~= "nvchan_colored" then
   options.window.completion.border = border "CmpBorder"
 end
 
