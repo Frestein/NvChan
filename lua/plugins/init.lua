@@ -597,6 +597,13 @@ return {
   },
 
   {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    opts = require "plugins.options.garbage-day-opts",
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
