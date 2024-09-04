@@ -82,25 +82,6 @@ return {
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-    opts = require "plugins.options.tree-opts",
-    enabled = false,
-  },
-
-  {
-    "stevearc/oil.nvim",
-    cmd = "Oil",
-    keys = {
-      { "<leader>e", desc = "file open parent directory" },
-      { "<leader>fl", desc = "file open parent directory (float)" },
-    },
-    config = function()
-      require "plugins.configs.oil-conf"
-      require "plugins.mappings.oil-keys"
-    end,
-  },
-
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- { "jcdickinson/codeium.nvim" },
@@ -114,6 +95,39 @@ return {
       -- table.insert(opts.sources, { name = "codeium" })
       -- table.insert(opts.sources, { name = "supermaven" })
       require("cmp").setup(opts)
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = require "plugins.options.tree-opts",
+    enabled = false,
+  },
+
+  {
+    "stevearc/oil.nvim",
+    event = "VeryLazy",
+    cmd = "Oil",
+    keys = {
+      { "<leader>e", desc = "file open parent directory" },
+      { "<leader>fl", desc = "file open parent directory (float)" },
+    },
+    config = function()
+      require "plugins.configs.oil-conf"
+      require "plugins.mappings.oil-keys"
+    end,
+  },
+
+  {
+    "mikavilpas/yazi.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    keys = {
+      { "<leader>-", desc = "yazi open" },
+    },
+    opts = require "plugins.options.yazi-opts",
+    config = function(_, opts)
+      require("yazi").setup(opts)
+      require "plugins.mappings.yazi-keys"
     end,
   },
 
@@ -491,6 +505,18 @@ return {
     end,
   },
 
+  -- {
+  --   "stevearc/overseer.nvim",
+  --   keys = {
+  --     { "<leader>o", desc = "overseer toggle" },
+  --   },
+  --   opts = {},
+  --   config = function(_, opts)
+  --     require("overseer").setup(opts)
+  --     require "plugins.mappings.overseer-keys"
+  --   end,
+  -- },
+
   {
     "karb94/neoscroll.nvim",
     -- stylua: ignore
@@ -602,6 +628,16 @@ return {
     event = "VeryLazy",
     opts = require "plugins.options.garbage-day-opts",
   },
+
+  -- {
+  --   "m4xshen/hardtime.nvim",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   event = "VeryLazy",
+  --   opts = require "plugins.options.hardtime-opts",
+  -- },
 
   {
     "piersolenski/wtf.nvim",
