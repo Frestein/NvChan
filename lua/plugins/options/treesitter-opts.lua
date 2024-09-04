@@ -28,8 +28,8 @@ options.ensure_installed = {
   "rasi",
   "regex",
   "gitcommit",
-  "gitconfig",
-  "gitrebase",
+  "git_config",
+  "git_rebase",
   "gitignore",
   "gitattributes",
 }
