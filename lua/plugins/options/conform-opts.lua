@@ -17,6 +17,18 @@ local options = {
     markdown = { "prettier" },
     toml = { "taplo" },
   },
+  formatters = {
+    prettier = {
+      append_args = function()
+        local ft = vim.bo.filetype
+        if ft == "jsonc" then
+          return { "--trailing-comma", "none" }
+        else
+          return {}
+        end
+      end,
+    },
+  },
 }
 
 return options
