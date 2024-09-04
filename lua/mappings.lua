@@ -6,8 +6,6 @@ local map = require("langmapper").map
 local tabufline = require "nvchad.tabufline"
 local term = require "nvchad.term"
 
-vim.g.maplocalleader = "\\"
-
 map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "general nvcheatsheet" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
