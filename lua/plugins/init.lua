@@ -200,6 +200,26 @@ return {
   },
 
   {
+    "danielfalk/smart-open.nvim",
+    dependencies = {
+      "kkharji/sqlite.lua",
+      "nvim-telescope/telescope.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+      },
+    },
+    branch = "0.2.x",
+    keys = {
+      {
+        "<leader><leader>",
+        require("plugins.mappings.telescope-extensions-keys").smart,
+        desc = "telescope smart open",
+      },
+    },
+  },
+
+  {
     "Marskey/telescope-sg",
     dependencies = "nvim-telescope/telescope.nvim",
     keys = {

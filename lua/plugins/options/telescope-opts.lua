@@ -18,6 +18,7 @@ options.defaults = {
 }
 
 options.extensions_list = {
+  "fzf",
   "themes",
   "terms",
   "noice",
@@ -30,33 +31,29 @@ options.extensions_list = {
   "heading",
   "aerial",
   "ast_grep",
+  "smart_open",
 }
 
 options.extensions = {
-  lazy_plugins = {
-    lazy_config = vim.fn.stdpath "config" .. "/init.lua",
+  fzf = {
+    fuzzy = true,
+    override_generic_sorter = true,
+    override_file_sorter = true,
+    case_mode = "smart_case",
   },
-  extensions = {
-    ast_grep = {
-      command = {
-        "sg",
-        "--json=stream",
-      },
-      grep_open_files = false,
+  smart_open = {
+    match_algorithm = "fzf",
+    cwd_only = true,
+  },
+  ast_grep = {
+    command = {
+      "sg",
+      "--json=stream",
     },
-    heading = {
-      treesitter = true,
-    },
-    import = {
-      insert_at_top = true,
-      custom_languages = {
-        {
-          extensions = { "go", "sh", "python", "lua" },
-          insert_at_line = 2,
-          regex = [[^(?:import(?:[\"'\s]*([\w*{}\n, ]+)from\s*)?[\"'\s](.*?)[\"'\s].*)]],
-        },
-      },
-    },
+    grep_open_files = false,
+  },
+  heading = {
+    treesitter = true,
   },
 }
 

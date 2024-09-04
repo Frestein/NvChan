@@ -2,6 +2,10 @@ local telescope = require "telescope"
 
 local M = {}
 
+function M.smart()
+  return telescope.extensions.smart_open.smart_open()
+end
+
 function M.sg()
   return telescope.extensions.ast_grep.ast_grep()
 end
