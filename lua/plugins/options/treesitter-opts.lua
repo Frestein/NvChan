@@ -14,6 +14,7 @@ options.ensure_installed = {
   "dockerfile",
   "toml",
   "json",
+  "json5",
   "jsonc",
   "c",
   "hyprlang",

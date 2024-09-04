@@ -11,6 +11,7 @@ local options = {
     html = { "prettier" },
     yaml = { "prettier" },
     json = { "prettier" },
+    json5 = { "prettier" },
     jsonc = { "prettier" },
     markdown = { "prettier" },
     toml = { "taplo" },

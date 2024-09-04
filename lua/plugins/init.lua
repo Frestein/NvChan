@@ -678,6 +678,11 @@ return {
   },
 
   {
+    "b0o/schemastore.nvim",
+    version = false,
+  },
+
+  {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
