@@ -1,6 +1,10 @@
 local options = require "nvchad.configs.treesitter"
 
 options.ensure_installed = {
+  "go",
+  "gomod",
+  "gowork",
+  "gosum",
   "ini",
   "vim",
   "vimdoc",
