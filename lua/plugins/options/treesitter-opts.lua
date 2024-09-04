@@ -24,7 +24,10 @@ options.ensure_installed = {
   "rasi",
   "regex",
   "gitcommit",
+  "gitconfig",
+  "gitrebase",
   "gitignore",
+  "gitattributes",
 }
 
 return options
