@@ -157,18 +157,18 @@ M.base46 = {
 }
 
 if M.ui.cmp.style == "nvchan" or M.ui.cmp.style == "nvchan_colored" then
-  M.base46.hl_override = {
-    ["CmpMenu"] = {
+  M.base46.hl_override = vim.tbl_extend("force", M.base46.hl_override, {
+    ["CmpPmenu"] = {
       bg = "darker_black",
     },
-  }
+  })
   if M.ui.cmp.style == "nvchan_colored" then
-    M.base46.hl_override = {
+    M.base46.hl_override = vim.tbl_extend("force", M.base46.hl_override, {
       ["PmenuSel"] = {
         bg = "grey",
         fg = "NONE",
       },
-    }
+    })
   end
 end
 
