@@ -1,4 +1,5 @@
 local options = require "nvchad.configs.cmp"
+local symbol_map = require("utils").symbol_map
 
 local cmp = require "cmp"
 local cmp_ui = require("nvconfig").ui.cmp
@@ -21,48 +22,6 @@ local lspkind = require "lspkind"
 --   supermaven_api.start()
 -- end)
 
-local symbol_map = {
-  Array = " ",
-  Boolean = "󰨙 ",
-  Class = " ",
-  Codeium = "󰘦 ",
-  Color = "󰏘 ",
-  Control = " ",
-  Collapsed = " ",
-  Constant = "󰏿 ",
-  Constructor = " ",
-  Copilot = " ",
-  Enum = " ",
-  EnumMember = " ",
-  Event = " ",
-  Field = "󰜢 ",
-  File = "󰈙 ",
-  Folder = "󰉋 ",
-  Function = "󰊕 ",
-  Interface = " ",
-  Key = " ",
-  Keyword = " ",
-  Method = "󰊕 ",
-  Module = " ",
-  Namespace = "󰦮 ",
-  Null = " ",
-  Number = "󰎠 ",
-  Object = " ",
-  Operator = "󰆕 ",
-  Package = " ",
-  Property = "󰜢 ",
-  Reference = " ",
-  Snippet = " ",
-  String = " ",
-  Struct = "󰙅 ",
-  TabNine = "󰏚 ",
-  Text = "󰉿 ",
-  TypeParameter = " ",
-  Unit = " ",
-  Value = "󰎠 ",
-  Variable = "󰀫 ",
-}
-
 local function border(hl_name)
   return {
     { "╭", hl_name },
@@ -78,7 +37,14 @@ end
 
 options.window = {
   completion = {
-    side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan" and cmp_style ~= "nvchan_colored") and 1 or 0,
+    side_padding = (
+      cmp_style ~= "atom"
+      and cmp_style ~= "atom_colored"
+      and cmp_style ~= "nvchan"
+      and cmp_style ~= "nvchan_colored"
+    )
+        and 1
+      or 0,
     winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
     scrollbar = false,
     autocomplete = false,

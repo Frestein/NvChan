@@ -99,6 +99,11 @@ return {
   },
 
   {
+    "onsails/lspkind.nvim",
+    opts = require "plugins.options.lspkind-opts",
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = require "plugins.options.tree-opts",
     enabled = false,
