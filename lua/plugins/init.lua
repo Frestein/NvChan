@@ -539,7 +539,7 @@ return {
     opts = require "plugins.options.aerial-opts",
     config = function(_, opts)
       require("aerial").setup(opts)
-      require "plugins.mappings.aerial-keys"
+      require("plugins.mappings.aerial-keys").lazy()
     end,
   },
 
