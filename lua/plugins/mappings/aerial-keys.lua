@@ -9,6 +9,10 @@ local keymaps = {
     func = aerial.toggle,
     desc = "aerial toggle",
   },
+  ["<leader>an"] = {
+    func = aerial.nav_toggle,
+    desc = "aerial navigation toggle",
+  },
   ["<leader>fa"] = {
     func = telescope.extensions.aerial.aerial,
     desc = "telescope aerial",

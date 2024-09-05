@@ -5,6 +5,8 @@ local options = {
 
   manage_folds = true,
 
+  link_folds_to_tree = true,
+
   lsp = {
     diagnostics_trigger_update = true,
   },

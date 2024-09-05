@@ -521,6 +521,7 @@ return {
     },
     keys = {
       { "<leader>a", desc = "aerial toggle" },
+      { "<leader>an", desc = "aerial navigation toggle" },
       { "<leader>fa", desc = "telescope aerial" },
     },
     opts = require "plugins.options.aerial-opts",
