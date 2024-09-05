@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   layout = {
     default_direction = "prefer_left",
   },
@@ -16,4 +16,4 @@ local options = {
   end,
 }
 
-return options
+return opts

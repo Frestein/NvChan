@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   load = {
     ["core.defaults"] = {},
     ["core.concealer"] = {},
@@ -25,4 +25,4 @@ local options = {
   },
 }
 
-return options
+return opts

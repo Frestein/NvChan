@@ -1,8 +1,8 @@
-local options = {
+local opts = {
   silent = true,
   filetypes = {
     gitcommit = true,
   },
 }
 
-return options
+return opts

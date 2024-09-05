@@ -72,11 +72,11 @@ local function bubbles(symbol)
   return res
 end
 
-local options = {
+local opts = {
   vt_position = "end_of_line",
   definition = { enabled = true },
   implementation = { enabled = true },
   text_format = bubbles,
 }
 
-return options
+return opts

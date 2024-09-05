@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   defaults = { lazy = true },
   checker = { enabled = true },
   install = { colorscheme = { "nvchad" } },
@@ -10,10 +10,6 @@ local options = {
       loaded = "",
       not_loaded = "",
     },
-  },
-
-  rocks = {
-    enabled = true,
   },
 
   performance = {
@@ -51,4 +47,4 @@ local options = {
   },
 }
 
-return options
+return opts

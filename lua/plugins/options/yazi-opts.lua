@@ -1,5 +1,5 @@
-local options = {
+local opts = {
   open_multiple_tabs = true,
 }
 
-return options
+return opts

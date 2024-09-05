@@ -1,5 +1,5 @@
-local options = require "nvchad.configs.nvimtree"
+local opts = require "nvchad.configs.nvimtree"
 
-options.renderer.group_empty = true
+opts.renderer.group_empty = true
 
-return options
+return opts

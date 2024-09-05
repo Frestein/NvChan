@@ -1,6 +1,6 @@
-local options = require "nvchad.configs.treesitter"
+local opts = require "nvchad.configs.treesitter"
 
-options.ensure_installed = {
+opts.ensure_installed = {
   "go",
   "gomod",
   "gowork",
@@ -34,4 +34,4 @@ options.ensure_installed = {
   "gitattributes",
 }
 
-return options
+return opts

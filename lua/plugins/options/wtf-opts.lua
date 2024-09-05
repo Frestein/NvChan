@@ -1,5 +1,5 @@
-local options = {
+local opts = {
   search_engine = "duck_duck_go",
 }
 
-return options
+return opts

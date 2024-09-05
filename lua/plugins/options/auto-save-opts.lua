@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   debounce_delay = 30000,
   execution_message = {
     enabled = false,
@@ -28,4 +28,4 @@ local options = {
   },
 }
 
-return options
+return opts

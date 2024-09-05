@@ -1,6 +1,6 @@
-local options = require "nvchad.configs.telescope"
+local opts = require "nvchad.configs.telescope"
 
-options.defaults = {
+opts.defaults = {
   prompt_prefix = "   ",
   selection_caret = " ",
   entry_prefix = " ",
@@ -17,7 +17,7 @@ options.defaults = {
   },
 }
 
-options.extensions_list = {
+opts.extensions_list = {
   "fzf",
   "themes",
   "terms",
@@ -34,7 +34,7 @@ options.extensions_list = {
   "smart_open",
 }
 
-options.extensions = {
+opts.extensions = {
   fzf = {
     fuzzy = true,
     override_generic_sorter = true,
@@ -57,4 +57,4 @@ options.extensions = {
   },
 }
 
-return options
+return opts

@@ -1,5 +1,5 @@
-local options = {
+local opts = {
   grace_period = 60 * 10,
 }
 
-return options
+return opts

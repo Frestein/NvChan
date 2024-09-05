@@ -1,4 +1,7 @@
+local opts = require "plugins.options.conform-opts"
 local conform = require "conform"
+
+conform.setup(opts)
 
 vim.api.nvim_create_user_command("ConformFormat", function(args)
   local range = nil

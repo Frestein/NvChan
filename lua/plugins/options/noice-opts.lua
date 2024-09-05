@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   lsp = {
     progress = {
       throttle = 1000 / 30,
@@ -25,4 +25,4 @@ local options = {
   },
 }
 
-return options
+return opts

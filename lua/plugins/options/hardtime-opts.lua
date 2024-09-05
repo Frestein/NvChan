@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   restricted_keys = {
     ["j"] = { "x" },
     ["k"] = { "x" },
@@ -7,4 +7,4 @@ local options = {
   },
 }
 
-return options
+return opts

@@ -1,5 +1,5 @@
-local options = {
+local opts = {
   use_default_keymaps = false,
 }
 
-return options
+return opts

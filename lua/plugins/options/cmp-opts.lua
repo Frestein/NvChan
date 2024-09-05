@@ -1,4 +1,4 @@
-local options = require "nvchad.configs.cmp"
+local opts = require "nvchad.configs.cmp"
 local symbol_map = require("utils").symbol_map
 
 local cmp = require "cmp"
@@ -35,7 +35,7 @@ local function border(hl_name)
   }
 end
 
-options.window = {
+opts.window = {
   completion = {
     side_padding = (
       cmp_style ~= "atom"
@@ -62,7 +62,7 @@ local field_arrangement = {
   nvchan_colored = { "kind", "abbr", "menu" },
 }
 
-options.formatting = {
+opts.formatting = {
   fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
   format = lspkind.cmp_format {
     mode = "symbol_text",
@@ -90,10 +90,10 @@ options.formatting = {
 }
 
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" and cmp_style ~= "nvchan" and cmp_style ~= "nvchan_colored" then
-  options.window.completion.border = border "CmpBorder"
+  opts.window.completion.border = border "CmpBorder"
 end
 
-options.mapping = {
+opts.mapping = {
   ["<C-p>"] = cmp.mapping.select_prev_item(),
   ["<C-n>"] = cmp.mapping.select_next_item(),
   ["<C-k>"] = cmp.mapping.scroll_docs(-4),
@@ -127,4 +127,4 @@ options.mapping = {
   end, { "i", "s" }),
 }
 
-return options
+return opts

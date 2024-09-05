@@ -2,7 +2,7 @@ local oil = require "oil"
 
 local detail = false
 
-local options = {
+local opts = {
   delete_to_trash = true,
   skip_confirm_for_simple_edits = true,
   keymaps = {
@@ -35,4 +35,4 @@ local options = {
   },
 }
 
-return options
+return opts

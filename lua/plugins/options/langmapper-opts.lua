@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   map_all_ctrl = true,
   ctrl_map_modes = { "n", "o", "i", "c", "t", "v" },
   hack_keymap = true,
@@ -13,4 +13,4 @@ local options = {
   },
 }
 
-return options
+return opts

@@ -1,5 +1,5 @@
-local options = {
+local opts = {
   enable_chat = true,
 }
 
-return options
+return opts

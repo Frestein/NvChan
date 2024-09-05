@@ -1,7 +1,7 @@
 local telescope_defaults = require "nvchad.configs.telescope"
 
-local options = {
+local opts = {
   telescope = telescope_defaults,
 }
 
-return options
+return opts

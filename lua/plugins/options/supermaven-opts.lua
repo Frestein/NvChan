@@ -1,6 +1,6 @@
 local base30 = require("base46").get_theme_tb "base_30"
 
-local options = {
+local opts = {
   keymaps = {
     accept_suggestion = "<C-f>",
     accept_word = "<C-w>",
@@ -12,4 +12,4 @@ local options = {
   log_level = "off",
 }
 
-return options
+return opts

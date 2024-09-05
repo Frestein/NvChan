@@ -1,5 +1,5 @@
-local options = {
+local opts = {
     show_success_message = true,
 }
 
-return options
+return opts

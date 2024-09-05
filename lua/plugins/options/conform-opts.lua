@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   formatters_by_ft = {
     lua = { "stylua" },
     go = { "goimports", "gofumpt" },
@@ -31,4 +31,4 @@ local options = {
   },
 }
 
-return options
+return opts

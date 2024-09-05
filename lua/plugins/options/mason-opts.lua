@@ -1,6 +1,6 @@
-local options = require "nvchad.configs.mason"
+local opts = require "nvchad.configs.mason"
 
-options.ensure_installed = {
+opts.ensure_installed = {
   "html-lsp",
   "css-lsp",
   "dockerfile-language-server",
@@ -10,4 +10,4 @@ options.ensure_installed = {
   "hyprls",
 }
 
-return options
+return opts

@@ -1,5 +1,5 @@
-local options = {
+local opts = {
   staticTitle = "Find and Replace",
 }
 
-return options
+return opts

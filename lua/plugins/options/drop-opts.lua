@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   themes = {
     { theme = "new_year", month = 1, day = 1 },
     { theme = "valentines_day", month = 2, day = 14 },
@@ -25,11 +25,11 @@ local win_width = vim.api.nvim_win_get_width(0)
 local win_height = vim.api.nvim_win_get_height(0)
 
 if win_width < 150 and win_height < 50 then
-  options.max = 25
+  opts.max = 25
 elseif win_width < 150 then
-  options.max = 50
+  opts.max = 50
 else
-  options.max = 75
+  opts.max = 75
 end
 
-return options
+return opts

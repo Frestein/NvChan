@@ -1,6 +1,7 @@
 local opts = require "plugins.options.mason-opts"
+local mason = require "mason"
 
-require("mason").setup(opts)
+mason.setup(opts)
 
 vim.api.nvim_create_user_command("MasonInstallAll", function()
   if opts.ensure_installed and #opts.ensure_installed > 0 then

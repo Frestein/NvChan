@@ -1,4 +1,4 @@
-local options = {
+local opts = {
   edit = {
     watch = true,
   },
@@ -8,4 +8,4 @@ local options = {
   },
 }
 
-return options
+return opts

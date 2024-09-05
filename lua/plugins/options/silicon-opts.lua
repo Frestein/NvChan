@@ -1,5 +1,5 @@
-local options = {
-  font = "Maple Mono=34;FontAwesome;JetBrainsMono Nerd Font",
+local opts = {
+  font = "Maple Mono NF=34",
   to_clipboard = true,
   theme = "Nord",
   pad_horiz = 50,
@@ -18,4 +18,4 @@ local options = {
   end,
 }
 
-return options
+return opts

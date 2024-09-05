@@ -1,4 +1,4 @@
-local options = require "plugins.options.noice-opts"
+local opts = require "plugins.options.noice-opts"
 local noice = require "noice"
 local notify = require "notify"
 -- local base46 = require "base46"
@@ -11,7 +11,7 @@ local function setup_lsp_specific_options()
 
   for _, client in ipairs(clients) do
     if client.name == "pyright" then
-      options.lsp.progress.throttle = 1000 / 5
+      opts.lsp.progress.throttle = 1000 / 5
     end
   end
 end
@@ -22,11 +22,11 @@ autocmd("LspAttach", {
   group = symbol_usage_augroup,
   callback = function()
     setup_lsp_specific_options()
-    noice.setup(options)
+    noice.setup(opts)
   end,
 })
 
-noice.setup(options)
+noice.setup(opts)
 
 -- Transparency fix
 -- local base16 = base46.get_theme_tb "base_16"

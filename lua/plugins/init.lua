@@ -1,11 +1,15 @@
 return {
   {
+    "Wansmer/langmapper.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require "plugins.configs.langmapper-conf"
+    end,
+  },
+
+  {
     "williamboman/mason.nvim",
-    keys = {
-      { mode = { "n" }, "<leader>mm", desc = "mason open home" },
-      { mode = { "n" }, "<leader>mi", desc = "mason install all packages" },
-      { mode = { "n" }, "<leader>mu", desc = "mason update packages" },
-    },
     cmd = {
       "Mason",
       "MasonLog",
@@ -15,7 +19,11 @@ return {
       "MasonUninstall",
       "MasonUninstallAll",
     },
-    opts = require "plugins.options.mason-opts",
+    keys = {
+      { mode = { "n" }, "<leader>mm", desc = "mason open home" },
+      { mode = { "n" }, "<leader>mi", desc = "mason install all packages" },
+      { mode = { "n" }, "<leader>mu", desc = "mason update packages" },
+    },
     config = function()
       require "plugins.configs.mason-conf"
       require "plugins.mappings.mason-keys"
@@ -28,9 +36,7 @@ return {
     keys = {
       { mode = { "n", "v" }, "<leader>fc", desc = "code format code" },
     },
-    opts = require "plugins.options.conform-opts",
-    config = function(_, opts)
-      require("conform").setup(opts)
+    config = function()
       require "plugins.configs.conform-conf"
       require "plugins.mappings.conform-keys"
     end,
@@ -137,13 +143,13 @@ return {
   --   event = "InsertEnter",
   --   opts = require "plugins.options.neocodeium-opts",
   --   keys = {
-  --     { mode = "i", "<C-f>", desc = "neocodeium accept suggestion" },
-  --     { mode = "i", "<C-w>", desc = "neocodeium accept word" },
-  --     { mode = "i", "<C-l>", desc = "neocodeium accept line" },
-  --     { mode = "i", "<C-e>", desc = "neocodeium cycle or complete" },
-  --     { mode = "i", "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
-  --     { mode = "i", "<C-c>", desc = "neocodeium clear" },
-  --     { "<leader>tc", desc = "neocodeium chat" },
+  --     { mode = { "i" }, "<C-f>", desc = "neocodeium accept suggestion" },
+  --     { mode = { "i" }, "<C-w>", desc = "neocodeium accept word" },
+  --     { mode = { "i" }, "<C-l>", desc = "neocodeium accept line" },
+  --     { mode = { "i" }, "<C-e>", desc = "neocodeium cycle or complete" },
+  --     { mode = { "i" }, "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
+  --     { mode = { "i" }, "<C-c>", desc = "neocodeium clear" },
+  --     { mode = { "n" }, "<leader>tc", desc = "neocodeium chat" },
   --   },
   --   config = function(_, opts)
   --     require("neocodeium").setup(opts)
@@ -356,7 +362,6 @@ return {
       { mode = { "n" }, "<leader>nh", desc = "notices show the notice history" },
       { mode = { "n" }, "<leader>fn", desc = "telescope find notices" },
     },
-    opts = require "plugins.options.noice-opts",
     config = function()
       require "plugins.configs.noice-conf"
       require "plugins.mappings.noice-keys"
@@ -623,13 +628,13 @@ return {
 
   {
     "Wansmer/treesj",
+    dependencies = "nvim-treesitter/nvim-treesitter",
     keys = {
       { mode = { "n" }, "<leader>m", desc = "treesj toggle node under cursor" },
       { mode = { "n" }, "<leader>M", desc = "treesj toggle node recursive under cursor" },
       { mode = { "n" }, "<leader>j", desc = "treesj join node under cursor" },
       { mode = { "n" }, "<leader>s", desc = "treesj split node under cursor" },
     },
-    dependencies = "nvim-treesitter/nvim-treesitter",
     opts = require "plugins.options.treesj-opts",
     config = function(_, opts)
       require("treesj").setup(opts)
@@ -716,17 +721,5 @@ return {
   {
     "b0o/schemastore.nvim",
     version = false,
-  },
-
-  {
-    "Wansmer/langmapper.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = require "plugins.options.langmapper-opts",
-    config = function(_, opts)
-      require "plugins.configs.langmapper-conf"
-      require("langmapper").setup(opts)
-      require("langmapper").hack_get_keymap()
-    end,
   },
 }
