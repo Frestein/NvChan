@@ -1,3 +1,4 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local aerial = require "aerial"
@@ -7,65 +8,26 @@ local M = {}
 
 function M.lazy()
   local keymaps = {
-    ["<leader>a"] = {
-      func = aerial.toggle,
-      desc = "aerial toggle",
-    },
-    ["<leader>an"] = {
-      func = aerial.nav_toggle,
-      desc = "aerial navigation toggle",
-    },
-    ["<leader>fa"] = {
-      func = telescope.extensions.aerial.aerial,
-      desc = "telescope aerial",
-    },
+    ["<leader>a"] = { func = aerial.toggle, desc = "aerial toggle" },
+    ["<leader>an"] = { func = aerial.nav_toggle, desc = "aerial navigation toggle" },
+    ["<leader>fa"] = { func = telescope.extensions.aerial.aerial, desc = "telescope aerial" },
   }
 
-  local modes = { "n" }
-
-  for key, value in pairs(keymaps) do
-    map(modes, key, value.func, { desc = value.desc })
-  end
+  set_keymaps(map, { "n" }, keymaps)
 end
 
 function M.on_attach(bufnr)
-    -- stylua: ignore
-    local keymaps = {
-      ["{"] = {
-        func = function() aerial.prev() end,
-        desc = "aerial previous"
-      },
-      ["}"] = {
-        func = function() aerial.next() end,
-        desc = "aerial next"
-      },
-      ["<leader>af"] = {
-        func = function() aerial.focus() end,
-        desc = "aerial focus"
-      },
-      ["<leader>ao"] = {
-        func = function() aerial.open() end,
-        desc = "aerial open"
-      },
-      ["<leader>aO"] = {
-        func = function() aerial.open_all() end,
-        desc = "aerial open all"
-      },
-      ["<leader>ac"] = {
-        func = function() aerial.close() end,
-        desc = "aerial close"
-      },
-      ["<leader>aC"] = {
-        func = function() aerial.close_all() end,
-        desc = "aerial close all"
-      },
-    }
+  local keymaps = {
+    ["{"] = { func = aerial.prev, desc = "aerial previous" },
+    ["}"] = { func = aerial.next, desc = "aerial next" },
+    ["<leader>af"] = { func = aerial.focus, desc = "aerial focus" },
+    ["<leader>ao"] = { func = aerial.open, desc = "aerial open" },
+    ["<leader>aO"] = { func = aerial.open_all, desc = "aerial open all" },
+    ["<leader>ac"] = { func = aerial.close, desc = "aerial close" },
+    ["<leader>aC"] = { func = aerial.close_all, desc = "aerial close all" },
+  }
 
-  local modes = { "n" }
-
-  for key, value in pairs(keymaps) do
-    map(modes, key, value.func, { desc = value.desc, buffer = bufnr })
-  end
+  set_keymaps(map, { "n" }, keymaps, bufnr)
 end
 
 return M

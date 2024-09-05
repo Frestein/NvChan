@@ -42,4 +42,14 @@ M.symbol_map = {
   Variable = "󰀫 ",
 }
 
+function M.set_keymaps(map, modes, keymaps, bufnr)
+  for key, value in pairs(keymaps) do
+    local options = { desc = value.desc }
+    if bufnr then
+      options.buffer = bufnr
+    end
+    map(modes, key, value.func, options)
+  end
+end
+
 return M
