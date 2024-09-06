@@ -10,15 +10,7 @@ return {
 
   {
     "williamboman/mason.nvim",
-    cmd = {
-      "Mason",
-      "MasonLog",
-      "MasonUpdate",
-      "MasonInstall",
-      "MasonInstallAll",
-      "MasonUninstall",
-      "MasonUninstallAll",
-    },
+    enabled = false,
     keys = {
       { mode = { "n" }, "<leader>mm", desc = "mason open home" },
       { mode = { "n" }, "<leader>mi", desc = "mason install all packages" },
@@ -731,7 +723,7 @@ return {
     },
     config = function(_, opts)
       require("mini.bufremove").setup(opts)
-      require("plugins.mappings.mini-bufremove-keys")
+      require "plugins.mappings.mini-bufremove-keys"
     end,
   },
 }
