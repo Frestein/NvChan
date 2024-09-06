@@ -1,8 +1,8 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local flash = require "flash"
 
--- stylua: ignore
 local keymaps = {
   ["s"] = {
     modes = { "n", "x", "o" },
@@ -31,6 +31,4 @@ local keymaps = {
   },
 }
 
-for key, value in pairs(keymaps) do
-  map(value.modes, key, value.func, { desc = value.desc })
-end
+set_keymaps(map, keymaps)

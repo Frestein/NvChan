@@ -1,3 +1,4 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local grug_far = require "grug-far"
@@ -5,12 +6,10 @@ local grug_far = require "grug-far"
 -- stylua: ignore
 local keymaps = {
   ["<leader>rw"] = {
-    modes = { "n" },
     func = function() grug_far.open { prefills = { search = vim.fn.expand "<cword>" } } end,
     desc = "grug-far open with word under cursor",
   },
   ["<leader>rс"] = {
-    modes = { "n" },
     func = function() grug_far.open { prefills = { paths = vim.fn.expand "%" } } end,
     desc = "grug-far open for current file",
   },
@@ -21,6 +20,4 @@ local keymaps = {
   },
 }
 
-for key, value in pairs(keymaps) do
-  map(value.modes, key, value.func, { desc = value.desc })
-end
+set_keymaps(map, keymaps)

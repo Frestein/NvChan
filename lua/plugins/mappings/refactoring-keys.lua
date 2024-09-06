@@ -1,3 +1,4 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local refactoring = require "refactoring"
@@ -20,7 +21,6 @@ local keymaps = {
     desc = "refactor extract variable",
   },
   ["<leader>rI"] = {
-    modes = { "n" },
     func = function() refactoring.refactor('Inline Function') end,
     desc = "refactor inline function",
   },
@@ -30,12 +30,10 @@ local keymaps = {
     desc = "refactor inline variable",
   },
   ["<leader>rb"] = {
-    modes = { "n" },
     func = function() refactoring.refactor('Extract Block') end,
     desc = "refactor extract block",
   },
   ["<leader>rB"] = {
-    modes = { "n" },
     func = function() refactoring.refactor('Extract Block To File') end,
     desc = "refactor extract block to file",
   },
@@ -46,6 +44,4 @@ local keymaps = {
   },
 }
 
-for key, value in pairs(keymaps) do
-  map(value.modes, key, value.func, { desc = value.desc })
-end
+set_keymaps(map, keymaps)

@@ -1,8 +1,8 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local silicon = require "nvim-silicon"
 
--- stylua: ignore
 local keymaps = {
   ["<leader>ss"] = {
     func = silicon.shoot,
@@ -18,8 +18,8 @@ local keymaps = {
   },
 }
 
-local modes = { "v" }
-
-for key, value in pairs(keymaps) do
-  map(modes, key, value.func, { desc = value.desc })
+for _, keymap in pairs(keymaps) do
+  keymap.modes = { "v" }
 end
+
+set_keymaps(map, keymaps)

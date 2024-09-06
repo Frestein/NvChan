@@ -1,3 +1,4 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local neocodeium = require "neocodeium"
@@ -35,12 +36,9 @@ local keymaps = {
     desc = "neocodeium clear",
   },
   ["<leader>tc"] = {
-    modes = { "n" },
     func = neocodeium.chat,
     desc = "neocodeium chat",
   },
 }
 
-for key, value in pairs(keymaps) do
-  map(value.modes, key, value.func, { desc = value.desc })
-end
+set_keymaps(map, keymaps)

@@ -129,35 +129,7 @@ for name, opts in pairs(servers) do
   opts.capabilities = defaults.capabilities
 
   opts.on_attach = function(_, bufnr)
-    local map = vim.keymap.set
-
-    local actions_preview = require "actions-preview"
-
-    local function options(desc)
-      return { buffer = bufnr, desc = "LSP " .. desc }
-    end
-
-    map("n", "gD", vim.lsp.buf.declaration, options "go to declaration")
-    map("n", "gd", vim.lsp.buf.definition, options "go to definition")
-    map("n", "gi", vim.lsp.buf.implementation, options "go to implementation")
-    map("n", "<leader>sh", vim.lsp.buf.signature_help, options "show signature help")
-    map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, options "add workspace folder")
-    map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, options "remove workspace folder")
-    map("n", "gr", vim.lsp.buf.references, options "show references")
-
-    map("n", "<leader>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, options "list workspace folders")
-
-    map("n", "<leader>D", vim.lsp.buf.type_definition, options "go to type definition")
-
-    map("n", "<leader>ra", function()
-      require "nvchad.lsp.renamer"()
-    end, options "NvRenamer")
-
-    map({ "n", "v" }, "<leader>ca", function()
-      actions_preview.code_actions()
-    end, options "code action")
+    require("plugins.mappings.lspconfig-keys").on_attach(bufnr)
   end
 
   require("lspconfig")[name].setup(opts)

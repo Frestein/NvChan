@@ -1,3 +1,4 @@
+local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local neoscroll = require "neoscroll"
@@ -42,8 +43,8 @@ local keymaps = {
   },
 }
 
-local modes = { "n", "v" }
-
-for key, value in pairs(keymaps) do
-  map(modes, key, value.func, { desc = value.desc })
+for _, keymap in pairs(keymaps) do
+  keymap.modes = { "n", "v" }
 end
+
+set_keymaps(map, keymaps)

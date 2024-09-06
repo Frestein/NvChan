@@ -13,7 +13,7 @@ function M.lazy()
     ["<leader>fa"] = { func = telescope.extensions.aerial.aerial, desc = "telescope aerial" },
   }
 
-  set_keymaps(map, { "n" }, keymaps)
+  set_keymaps(map, keymaps)
 end
 
 function M.on_attach(bufnr)
@@ -27,7 +27,7 @@ function M.on_attach(bufnr)
     ["<leader>aC"] = { func = aerial.close_all, desc = "aerial close all" },
   }
 
-  set_keymaps(map, { "n" }, keymaps, bufnr)
+  set_keymaps(map, keymaps, bufnr)
 end
 
 return M
