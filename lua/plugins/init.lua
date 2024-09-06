@@ -722,4 +722,17 @@ return {
     "b0o/schemastore.nvim",
     version = false,
   },
+
+  {
+    "echasnovski/mini.bufremove",
+    version = "*",
+    keys = {
+      { "<leader>bd", desc = "buffer delete buffer" },
+      { "<leader>bD", desc = "buffer delete buffer (force)" },
+    },
+    config = function(_, opts)
+      require("mini.bufremove").setup(opts)
+      require("plugins.mappings.mini-bufremove-keys")
+    end,
+  },
 }

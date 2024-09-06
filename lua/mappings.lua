@@ -98,17 +98,16 @@ map("v", "<leader>/", "gc", { desc = "code toggle comment", remap = true })
 -- }}}
 -- Tabufline {{{
 
-map("n", "<leader>bq", tabufline.close_buffer, { desc = "tabufline close buffer" })
-map("n", "[b", tabufline.prev, { desc = "tabufline goto prev buffer" })
-map("n", "]b", tabufline.next, { desc = "tabufline goto next buffer" })
-map("n", "<S-tab>", tabufline.prev, { desc = "tabufline goto prev buffer" })
-map("n", "<tab>", tabufline.next, { desc = "tabufline goto next buffer" })
+map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new buffer" })
+map("n", "[b", tabufline.prev, { desc = "buffer goto prev buffer" })
+map("n", "]b", tabufline.next, { desc = "buffer goto next buffer" })
+map("n", "<S-tab>", tabufline.prev, { desc = "buffer goto prev buffer" })
+map("n", "<tab>", tabufline.next, { desc = "buffer goto next buffer" })
 
-map("n", "[t", "<cmd>tabprev<CR>", { desc = "tabufline previous tab" })
-map("n", "]t", "<cmd>tabnext<CR>", { desc = "tabufline next tab" })
-map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tabufline last tab" })
-map("n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tabufline first tab" })
-map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "tabufline new buffer" })
+map("n", "[t", "<cmd>tabprev<CR>", { desc = "tab previous tab" })
+map("n", "]t", "<cmd>tabnext<CR>", { desc = "tab next tab" })
+map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tab last tab" })
+map("n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tab first tab" })
 
 -- }}}
 -- Terminal {{{
