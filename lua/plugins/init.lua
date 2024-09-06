@@ -355,7 +355,6 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
-    version = "4.4.7",
     keys = {
       { mode = { "n" }, "<leader>nd", desc = "notices dismiss all visible messages" },
       { mode = { "n" }, "<leader>nl", desc = "notices show the last message" },
