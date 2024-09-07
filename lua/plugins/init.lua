@@ -509,8 +509,8 @@ return {
     "folke/persistence.nvim",
     event = "BufReadPre",
     keys = {
-      { mode = { "n" }, "<leader>qS", desc = "session select session" },
-      { mode = { "n" }, "<leader>qs", desc = "session restore session" },
+      { mode = { "n" }, "<leader>qs", desc = "session select session" },
+      { mode = { "n" }, "<leader>qL", desc = "session restore session" },
       { mode = { "n" }, "<leader>ql", desc = "session restore last session" },
       { mode = { "n" }, "<leader>qd", desc = "session don't save current session" },
     },

@@ -5,8 +5,8 @@ local persistence = require "persistence"
 
 -- stylua: ignore
 local keymaps = {
-  ["<leader>qS"] = { func = persistence.select, desc = "session select session" },
-  ["<leader>qs"] = { func = persistence.load, desc = "session restore session" },
+  ["<leader>qs"] = { func = persistence.select, desc = "session select session" },
+  ["<leader>qL"] = { func = persistence.load, desc = "session restore session" },
   ["<leader>ql"] = {
     func = function() persistence.load { last = true } end,
     desc = "session last session",
