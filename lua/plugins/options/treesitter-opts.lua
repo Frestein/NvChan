@@ -23,6 +23,7 @@ vim.filetype.add {
 }
 
 opts.ensure_installed = {
+  "diff",
   "go",
   "gomod",
   "gowork",
@@ -31,6 +32,8 @@ opts.ensure_installed = {
   "vim",
   "vimdoc",
   "lua",
+  "luap",
+  "luadoc",
   "bash",
   "python",
   "css",
