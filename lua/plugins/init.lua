@@ -376,7 +376,7 @@ return {
 
   {
     "folke/trouble.nvim",
-    cmd = { "Trouble", "TodoTrouble", "TodoTelescope" },
+    cmd = { "Trouble" },
     dependencies = "folke/todo-comments.nvim",
     keys = {
       { mode = { "n" }, "<leader>x", desc = "trouble toggle diagnostics" },
@@ -394,9 +394,11 @@ return {
 
   {
     "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
     event = "BufReadPost",
     keys = {
       { mode = { "n" }, "<leader>tt", desc = "todo-comments show the todo list" },
+      { mode = { "n" }, "<leader>tq", desc = "todo-comments show quickfix" },
       { mode = { "n" }, "<leader>fT", desc = "telescope todo list" },
     },
     dependencies = "nvim-telescope/telescope.nvim",

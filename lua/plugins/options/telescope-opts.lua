@@ -32,6 +32,7 @@ opts.extensions_list = {
   "aerial",
   "ast_grep",
   "smart_open",
+  "todo-comments",
 }
 
 opts.extensions = {
