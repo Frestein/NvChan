@@ -104,6 +104,15 @@ return {
   },
 
   {
+    "SirZenith/oil-vcs-status",
+    dependencies = "stevearc/oil.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return require "plugins.options.oil-vcs-status-opts"
+    end,
+  },
+
+  {
     "mikavilpas/yazi.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
