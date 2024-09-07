@@ -23,10 +23,3 @@ o.pumblend = 15
 -- Start with folds open
 o.foldlevelstart = 99
 o.foldlevel = 99
-
-vim.filetype.add {
-  extension = { rasi = "rasi" },
-  pattern = {
-    [".*/hypr/.*%.conf"] = "hyprlang",
-  },
-}
