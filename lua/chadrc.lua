@@ -19,6 +19,16 @@ M.ui = {
       "Hello, master!",
     },
     load_on_startup = true,
+    buttons = {
+      { "  Select Session", "Spc q s", function() require("persistence").select() end },
+      { "  Find File", "Spc f f", "Telescope find_files" },
+      { "  Find Project", "Spc f p", "Telescope project" },
+      { "󱐁  Zoxide List", "Spc f Z", "Telescope zoxide list" },
+      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+      { "  Bookmarks", "Spc f m", "Telescope marks" },
+      { "  Themes", "Spc t H", "Telescope themes" },
+      { "  Mappings", "Spc c h", "NvCheatsheet" },
+    },
   },
 
   statusline = {
