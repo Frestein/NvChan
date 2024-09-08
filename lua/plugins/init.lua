@@ -707,9 +707,7 @@ return {
 
   {
     "piersolenski/wtf.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
+    dependencies = "MunifTanjim/nui.nvim",
     keys = {
       { mode = { "n" }, "<leader>ws", desc = "wtf search diagnostic with duckduckgo" },
     },
@@ -736,5 +734,11 @@ return {
       require("mini.bufremove").setup(opts)
       require "plugins.mappings.mini-bufremove-keys"
     end,
+  },
+
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    event = "WinLeave",
+    opts = require("plugins.options.colorful-winsep-opts"),
   },
 }
