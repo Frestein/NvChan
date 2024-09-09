@@ -17,6 +17,10 @@ local keymaps = {
     func = "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
     desc = "trouble LSP definitions / references / ...",
   },
+  ["<leader>xl"] = {
+    func = function() trouble.toggle("loclist") end,
+    desc = "trouble toggle location list",
+  },
   ["<leader>xq"] = {
     func = function() trouble.toggle("qflist") end,
     desc = "trouble toggle quickfix list",

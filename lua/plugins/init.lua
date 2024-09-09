@@ -382,6 +382,7 @@ return {
       { mode = { "n" }, "<leader>x", desc = "trouble toggle diagnostics" },
       { mode = { "n" }, "<leader>xx", desc = "trouble toggle buffer diagnostics" },
       { mode = { "n" }, "<leader>cl", desc = "trouble LSP definitions / references / ..." },
+      { mode = { "n" }, "<leader>xl", desc = "trouble toggle location list" },
       { mode = { "n" }, "<leader>xq", desc = "trouble toggle quickfix list" },
       { mode = { "n" }, "<leader>xs", desc = "trouble toggle document symbols" },
     },
