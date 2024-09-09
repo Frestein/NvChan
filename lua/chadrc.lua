@@ -19,6 +19,7 @@ M.ui = {
       "Hello, master!",
     },
     load_on_startup = true,
+    -- stylua: ignore
     buttons = {
       { "  Select Session", "Spc q s", function() require("persistence").select() end },
       { "  Find File", "Spc f f", "Telescope find_files" },
@@ -64,48 +65,49 @@ M.ui = {
     lspkind_text = false,
   },
 
-  tabufline = {
-    order = { "treeOffset", "buffers", "tabs" },
-  },
+  tabufline = { order = { "treeOffset", "buffers", "tabs" } },
 
-  telescope = {
-    style = "borderless",
-  },
+  telescope = { style = "borderless" },
 
-  border = {
-    style = "rounded",
-  },
+  border = { style = "rounded" },
 }
 
 M.base46 = {
-  theme = "palenight",
+  theme = "gruvbox",
 
   hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
+    Comment = {
+      fg = "light_grey",
+      italic = true,
+    },
+    ["@comment"] = {
+      fg = "light_grey",
+      italic = true,
+    },
     -- Tabufline {{{
-    ["TbFill"] = {
-      bg = "NONE",
-    },
-    ["TbBufOn"] = {
-      bg = "NONE",
-    },
-    ["TbBufOnClose"] = {
-      bg = "NONE",
-    },
-    ["TbBufOff"] = {
-      bg = "NONE",
-    },
-    ["TbBufOffClose"] = {
-      bg = "NONE",
-    },
+    ["TbFill"] = { bg = "NONE" },
+    ["TbBufOn"] = { bg = "NONE" },
+    ["TbBufOnClose"] = { bg = "NONE" },
+    ["TbBufOff"] = { bg = "NONE" },
+    ["TbBufOffClose"] = { bg = "NONE" },
     -- }}}
   },
 
   hl_add = {
-    ["NeoCodeiumSuggestion"] = {
-      fg = "light_grey",
+    ["Twilight"] = {
+      bg = "black",
+      fg = "grey_fg",
     },
+    ["GitSignsCurrentLineBlame"] = {
+      fg = "light_grey",
+      italic = true,
+    },
+    ["NvimSeparator"] = {
+      bg = "none",
+      fg = "line",
+    },
+    ["TroubleStatusline1"] = { fg = "light_grey" },
+    ["NeoCodeiumSuggestion"] = { fg = "light_grey" },
     ["LazyUpdates"] = {
       fg = "green",
       bg = "NONE",
@@ -122,12 +124,8 @@ M.base46 = {
       fg = "light_grey",
       bg = "black",
     },
-    ["NvimTreeEndOfBuffer"] = {
-      bg = "NONE",
-    },
-    ["NvimTreeWinSeparator"] = {
-      bg = "NONE",
-    },
+    ["NvimTreeEndOfBuffer"] = { bg = "NONE" },
+    ["NvimTreeWinSeparator"] = { bg = "NONE" },
     -- Symbol-Usage {{{
     ["SymbolUsageRounding"] = {
       fg = "one_bg",
@@ -168,9 +166,7 @@ M.base46 = {
 
 if M.ui.cmp.style == "nvchan" or M.ui.cmp.style == "nvchan_colored" then
   M.base46.hl_override = vim.tbl_extend("force", M.base46.hl_override, {
-    ["CmpPmenu"] = {
-      bg = "darker_black",
-    },
+    ["CmpPmenu"] = { bg = "darker_black" },
   })
   if M.ui.cmp.style == "nvchan_colored" then
     M.base46.hl_override = vim.tbl_extend("force", M.base46.hl_override, {

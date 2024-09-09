@@ -727,8 +727,8 @@ return {
     "echasnovski/mini.bufremove",
     version = "*",
     keys = {
-      { "<leader>bd", desc = "buffer delete buffer" },
-      { "<leader>bD", desc = "buffer delete buffer (force)" },
+      { mode = { "n" }, "<leader>bd", desc = "buffer delete buffer" },
+      { mode = { "n" }, "<leader>bD", desc = "buffer delete buffer (force)" },
     },
     config = function(_, opts)
       require("mini.bufremove").setup(opts)
@@ -739,6 +739,6 @@ return {
   {
     "nvim-zh/colorful-winsep.nvim",
     event = "WinLeave",
-    opts = require("plugins.options.colorful-winsep-opts"),
+    opts = require "plugins.options.colorful-winsep-opts",
   },
 }

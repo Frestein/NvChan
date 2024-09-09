@@ -1,10 +1,9 @@
-local base46 = require "base46"
-local base30 = base46.get_theme_tb "base_30"
-local base16 = base46.get_theme_tb "base_16"
+local base30 = require("base46").get_theme_tb "base_30"
 
 local opts = {
   dimming = {
-    colors = { "Normal", base16.base05 },
+    alpha = 1.0,
+    color = { base30.grey_fg },
     term_bg = base30.black,
   },
 }
