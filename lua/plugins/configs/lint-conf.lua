@@ -46,7 +46,7 @@ local function setup_linting()
     else
       linter_error_notify = vim.notify(
         "Configuration file for selene not found.",
-        --- @diagnostic disable: param-type-mismatch
+        --- @diagnostic disable-next-line: param-type-mismatch
         "ERROR",
         { title = "Linter", replace = linter_error_notify }
       )

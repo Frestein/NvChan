@@ -59,8 +59,8 @@ M.ui = {
     },
   },
 
-  --- @diagnostic disable: assign-type-mismatch
   cmp = {
+    --- @diagnostic disable-next-line: assign-type-mismatch
     style = "nvchan_colored",
     lspkind_text = false,
   },

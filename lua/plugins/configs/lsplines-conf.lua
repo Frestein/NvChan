@@ -20,7 +20,7 @@ local function update_diagnostics()
         if win_type == "popup" or win_type == "floating" then
           return diagnostic.message
         elseif diagnostic.lnum == cur_line - 1 then
-          --- @diagnostic disable: return-type-mismatch
+          --- @diagnostic disable-next-line: return-type-mismatch
           return nil
         end
 
