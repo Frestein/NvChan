@@ -23,3 +23,6 @@ o.pumblend = 15
 -- Start with folds open
 o.foldlevelstart = 99
 o.foldlevel = 99
+
+o.spelllang = "en_us"
+o.spellfile = os.getenv "HOME" .. "/.config/nvim/spell/en.utf-8.add"

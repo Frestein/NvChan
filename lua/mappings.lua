@@ -13,6 +13,8 @@ map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "general toggle line number" })
 map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "general toggle relative number" })
 
+map({ "n", "i" }, "<F11>", "<cmd>set spell!<CR>", { desc = "general toggle spell check" })
+
 map("n", "<leader>qq", function()
   if vim.fn.exists ":Neominimap" == 2 then
     vim.cmd "Neominimap off"

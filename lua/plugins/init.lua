@@ -742,4 +742,9 @@ return {
     event = "WinLeave",
     opts = require "plugins.options.colorful-winsep-opts",
   },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+  }
 }
