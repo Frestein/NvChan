@@ -2,6 +2,27 @@ require("nvchad.configs.lspconfig").defaults()
 
 local defaults = require "nvchad.configs.lspconfig"
 
+local function get_filetypes(command)
+  local filetypes = {}
+  local handle = io.popen(command)
+
+  if not handle then
+    return filetypes
+  end
+
+  local result = handle:read "*a"
+  handle:close()
+
+  for line in result:gmatch "[^\n]+" do
+    local filetype = line:match "^(%S+):"
+    if filetype then
+      table.insert(filetypes, filetype)
+    end
+  end
+
+  return filetypes
+end
+
 local lspconfig = require "lspconfig"
 local servers = {
   html = {},
@@ -126,6 +147,7 @@ local servers = {
     init_options = {
       diagnosticSeverity = "Info",
     },
+    filetypes = get_filetypes "typos --type-list",
   },
 }
 

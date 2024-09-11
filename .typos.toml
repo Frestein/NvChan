@@ -1,9 +1,13 @@
 [default]
-locale = "en-us"
+locale = "en"
 extend-ignore-re = [
-  "(?Rm)^.*(#|//|--)\\s*spellchecker:disable-line$",
-  "(?s)(#|//|--)\\s*spellchecker:off.*?\\n\\s*(#|//)\\s*spellchecker:on",
+  "(?m)^.*(#|//|--)\\s*spellchecker:\\sdisable-line\n.*$",
+  "(?s)(#|//|--)\\s*spellchecker:\\soff.*?\\n\\s*(#|//|--)\\s*spellchecker:\\son",
 ]
 
 [default.extend-words]
 noice = "noice"
+enew = "enew"
+
+[files]
+extend-exclude = ["spell"]

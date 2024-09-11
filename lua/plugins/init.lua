@@ -192,6 +192,7 @@ return {
       { mode = { "n" }, "<leader>fw", desc = "telescope live grep" },
       { mode = { "n" }, "<leader>fb", desc = "telescope find buffers" },
       { mode = { "n" }, "<leader>fH", desc = "telescope help page" },
+      -- spellchecker: disable-line
       { mode = { "n" }, "<leader>fo", desc = "telescope find oldfiles" },
       { mode = { "n" }, "<leader>fz", desc = "telescope find in current buffer" },
       { mode = { "n" }, "<leader>fd", desc = "telescope find diagnostics" },
@@ -357,6 +358,7 @@ return {
       "rcarriga/nvim-notify",
     },
     keys = {
+      -- spellchecker: disable-line
       { mode = { "n" }, "<leader>nd", desc = "notices dismiss all visible messages" },
       { mode = { "n" }, "<leader>nl", desc = "notices show the last message" },
       { mode = { "n" }, "<leader>nh", desc = "notices show the notice history" },

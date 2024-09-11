@@ -10,6 +10,7 @@ local keymaps = {
   ["<leader>fw"] = { func = telescope_builtin.live_grep, desc = "telescope live grep" },
   ["<leader>fb"] = { func = telescope_builtin.buffers, desc = "telescope find buffers" },
   ["<leader>fH"] = { func = telescope_builtin.help_tags, desc = "telescope help page" },
+  -- spellchecker: disable-line
   ["<leader>fo"] = { func = telescope_builtin.oldfiles, desc = "telescope find oldfiles" },
   ["<leader>fz"] = { func = telescope_builtin.current_buffer_fuzzy_find, desc = "telescope find in current buffer" },
   ["<leader>fd"] = { func = telescope_builtin.diagnostics, desc = "telescope find diagnostics" },

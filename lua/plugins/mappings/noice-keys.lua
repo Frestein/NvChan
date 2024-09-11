@@ -5,6 +5,7 @@ local noice = require "noice"
 
 -- stylua: ignore
 local keymaps = {
+  -- spellchecker: disable-line
   ["<leader>nd"] = {
     func = function() noice.cmd "dismiss" end,
     desc = "notices dismiss all visible messages",
