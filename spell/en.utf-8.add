@@ -90,3 +90,11 @@ nvchan
 img
 src
 leaderkey
+enew
+foldmethod
+utf
+fileencoding
+Tabufline
+VeryLazy
+hardtime
+m4xshen
