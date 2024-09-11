@@ -757,4 +757,9 @@ return {
       require("plugins.configs.colorizer-conf")
     end,
   },
+
+  {
+    "artemave/workspace-diagnostics.nvim",
+    config = true,
+  },
 }

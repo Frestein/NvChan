@@ -32,6 +32,15 @@ function M.on_attach(bufnr)
       func = function() actions_preview.code_actions() end,
       desc = "LSP code action",
     },
+    ["<leader>X"] = {
+      modes = { "n" },
+      func = function()
+        for _, client in ipairs(vim.lsp.get_clients()) do
+          require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+        end
+      end,
+      desc = "LSP populate workspace diagnostics",
+    },
   }
 
   set_keymaps(map, keymaps, bufnr)
