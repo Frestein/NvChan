@@ -81,11 +81,3 @@ autocmd({ "LspAttach", "BufEnter", "TextChanged" }, {
     lint.try_lint()
   end,
 })
-
-autocmd({ "BufEnter", "TextChanged", "InsertLeave" }, {
-  group = lint_augroup,
-  pattern = "*.lua",
-  callback = function()
-    lint.try_lint "codespell"
-  end,
-})

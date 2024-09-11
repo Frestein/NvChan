@@ -122,6 +122,11 @@ local servers = {
       root_dir = lspconfig.util.root_pattern(".git", "sgconfig.yml"),
     },
   },
+  typos_lsp = {
+    init_options = {
+      diagnosticSeverity = "Info",
+    },
+  },
 }
 
 for name, opts in pairs(servers) do
