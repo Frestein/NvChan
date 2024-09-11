@@ -747,4 +747,12 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
   },
+
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "User FilePost",
+    config = function()
+      require("plugins.configs.colorizer-conf")
+    end,
+  },
 }
