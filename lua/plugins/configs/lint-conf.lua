@@ -60,8 +60,8 @@ lint.linters_by_ft = {
   bash = { "shellharden", "shellcheck" },
   ["yaml.ansible"] = { "ansible_lint" },
   dockerfile = { "hadolint" },
-  go = { "golangci-lint" },
-  gomod = { "golangci-lint" },
+  go = { "golangcilint" },
+  gomod = { "golangcilint" },
 }
 
 local lint_augroup = augroup("nvim_lint", { clear = true })
