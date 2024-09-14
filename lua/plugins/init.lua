@@ -754,7 +754,7 @@ return {
     "NvChad/nvim-colorizer.lua",
     event = "User FilePost",
     config = function()
-      require("plugins.configs.colorizer-conf")
+      require "plugins.configs.colorizer-conf"
     end,
   },
 
