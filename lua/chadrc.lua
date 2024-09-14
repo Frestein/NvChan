@@ -178,4 +178,8 @@ if M.ui.cmp.style == "nvchan" or M.ui.cmp.style == "nvchan_colored" then
   end
 end
 
+M.lsp = {
+  signature = false,
+}
+
 return M
