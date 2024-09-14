@@ -473,9 +473,8 @@ return {
     keys = {
       { mode = { "n" }, "<leader>z", desc = "toggle zen-mode" },
     },
-    opts = require "plugins.options.zen-mode-opts",
-    config = function(_, opts)
-      require("zen-mode").setup(opts)
+    config = function()
+      require "plugins.configs.zen-mode-conf"
       require "plugins.mappings.zen-mode-keys"
     end,
   },
@@ -526,7 +525,7 @@ return {
   {
     "Wansmer/symbol-usage.nvim",
     event = "LspAttach",
-    opts = require "plugins.options.symbol-usage-opts",
+    opts = require("plugins.options.symbol-usage-opts").opts,
   },
 
   {

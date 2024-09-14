@@ -1,4 +1,6 @@
-local function plain_text(symbol)
+local M = {}
+
+function M.plain_text(symbol)
   local fragments = {}
 
   -- Indicator that shows if there are any other symbols in the same line
@@ -21,7 +23,7 @@ local function plain_text(symbol)
   return table.concat(fragments, ", ") .. stacked_functions
 end
 
-local function bubbles(symbol)
+function M.bubbles(symbol)
   local res = {}
 
   local round_start = { "", "SymbolUsageRounding" }
@@ -72,11 +74,11 @@ local function bubbles(symbol)
   return res
 end
 
-local opts = {
+M.opts = {
   vt_position = "end_of_line",
   definition = { enabled = true },
   implementation = { enabled = true },
-  text_format = bubbles,
+  text_format = M.bubbles,
 }
 
-return opts
+return M
