@@ -745,6 +745,14 @@ return {
   },
 
   {
+    "b0o/incline.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "plugins.configs.incline-conf"
+    end,
+  },
+
+  {
     "folke/which-key.nvim",
     event = "VeryLazy",
   },
