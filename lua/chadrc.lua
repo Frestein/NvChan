@@ -1,4 +1,7 @@
 -- vim:fileencoding=utf-8:foldmethod=marker
+
+local statusline = require "statusline"
+
 ---@type ChadrcConfig
 local M = {}
 
@@ -36,23 +39,54 @@ M.ui = {
     theme = "minimal",
     separator_style = "block",
     modules = {
-      trouble = function()
-        return require("statusline").trouble()
+      trouble_statusline = statusline.trouble_statusline,
+      trouble_file = function()
+        if M.ui.statusline.theme == "minimal" then
+          local config = M.ui.statusline
+          local sep_style = (config ~= nil and config.separator_style ~= nil) and config.separator_style or "default"
+          local utils = require "nvchad.stl.utils"
+
+          sep_style = (sep_style ~= "round" and sep_style ~= "block") and "block" or sep_style
+
+          local sep_icons = utils.separators
+          local separators = (type(sep_style) == "table" and sep_style) or sep_icons[sep_style]
+
+          local sep_l = separators["left"]
+          local sep_r = "%#St_sep_r#" .. separators["right"] .. " %#ST_EmptySpace#"
+
+          local function gen_block(icon, txt, symbols, sep_l_hlgroup, iconHl_group, txt_hl_group)
+            local block = sep_l_hlgroup .. sep_l .. iconHl_group .. icon .. " " .. txt_hl_group .. " " .. txt
+
+            if symbols and #symbols > 0 then
+              block = block .. " " .. "%#TroubleSeparatorHighlight#" .. "> " .. symbols
+            end
+
+            block = block .. sep_r
+            return block
+          end
+
+          local x = statusline.trouble_file()
+          return gen_block(x[1], x[2], x[3], "%#St_file_sep#", "%#St_file_bg#", "%#St_file_txt#")
+        end
+        return ""
       end,
       lazy = function()
-        return require("statusline").lazy()
+        return "%#LazyUpdates#" .. statusline.lazy()
+      end,
+      git_branch = function()
+        return "%#St_gitIcons#" .. statusline.git_branch()
       end,
     },
     order = {
       "mode",
       "file",
+      -- "trouble_file",
       "lazy",
-      "git",
+      "git_branch",
       "%=",
       "lsp_msg",
-      "trouble",
+      "trouble_statusline",
       "%=",
-      "diagnostics",
       "lsp",
       "cwd",
       "cursor",
@@ -103,10 +137,17 @@ M.base46 = {
       italic = true,
     },
     ["NvimSeparator"] = {
-      bg = "none",
+      bg = "NONE",
       fg = "line",
     },
-    ["TroubleStatusline1"] = { fg = "light_grey" },
+    ["TroubleStatusline1"] = {
+      fg = "light_grey",
+      bg = "one_bg",
+    },
+    ["TroubleSeparatorHighlight"] = {
+      fg = "yellow",
+      bg = "one_bg",
+    },
     ["NeoCodeiumSuggestion"] = { fg = "light_grey" },
     ["LazyUpdates"] = {
       fg = "green",
@@ -133,7 +174,7 @@ M.base46 = {
     },
     ["SymbolUsageContent"] = {
       bg = "one_bg",
-      fg = "grey_fg",
+      fg = "light_grey",
       italic = true,
     },
     ["SymbolUsageRef"] = {
