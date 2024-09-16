@@ -38,7 +38,8 @@ function M.trouble_statusline()
   end
 end
 
-function M.trouble_file() local icon = "󰈚"
+function M.trouble_file()
+  local icon = "󰈚"
   local path = vim.api.nvim_buf_get_name(M.stbufnr())
   local name = (path == "" and "Empty") or path:match "([^/\\]+)[/\\]*$"
   local statusline_symbols
