@@ -746,7 +746,7 @@ return {
 
   {
     "b0o/incline.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require "plugins.configs.incline-conf"
     end,
