@@ -15,26 +15,6 @@ map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "general toggle relative nu
 
 map({ "n", "i" }, "<F11>", "<cmd>set spell!<CR>", { desc = "general toggle spell check" })
 
-map("n", "<leader>qq", function()
-  if vim.fn.exists ":Neominimap" == 2 then
-    vim.cmd "Neominimap off"
-
-    if vim.fn.exists ":AerialCloseAll" == 2 then
-      vim.cmd "AerialCloseAll"
-    end
-
-    vim.defer_fn(function()
-      vim.cmd "quitall"
-    end, 1)
-  else
-    if vim.fn.exists ":AerialCloseAll" == 2 then
-      vim.cmd "AerialCloseAll"
-    end
-
-    vim.cmd "quitall"
-  end
-end, { desc = "general quit all" })
-
 -- Motion {{{
 
 -- better up/down
@@ -92,14 +72,9 @@ map("v", "<leader>/", "gc", { desc = "code toggle comment", remap = true })
 -- }}}
 -- Tabufline {{{
 
-map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new buffer" })
-map("n", "[b", tabufline.prev, { desc = "buffer goto prev buffer" })
-map("n", "]b", tabufline.next, { desc = "buffer goto next buffer" })
 map("n", "<S-tab>", tabufline.prev, { desc = "buffer goto prev buffer" })
 map("n", "<tab>", tabufline.next, { desc = "buffer goto next buffer" })
 
-map("n", "[t", "<cmd>tabprev<CR>", { desc = "tab previous tab" })
-map("n", "]t", "<cmd>tabnext<CR>", { desc = "tab next tab" })
 map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tab last tab" })
 map("n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tab first tab" })
 

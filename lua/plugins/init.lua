@@ -761,9 +761,7 @@ return {
       { mode = { "n", "x" }, "<M-k>", desc = "code block up" },
       { mode = { "n", "x" }, "<M-l>", desc = "code block right" },
     },
-    config = function(_, opts)
-      require("mini.move").setup(opts)
-    end,
+    config = true,
   },
 
   {
