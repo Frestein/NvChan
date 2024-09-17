@@ -53,16 +53,6 @@ end, { desc = "file copy path" })
 map("n", "<leader>h", "<cmd>split<CR>", { desc = "split horizontal" })
 map("n", "<leader>v", "<cmd>vsplit<CR>", { desc = "split vertical" })
 
-map("n", "<C-S-Down>", "<cmd>resize +2<CR>", { desc = "split resize horizontal down" })
-map("n", "<C-S-Up>", "<cmd>resize -2<CR>", { desc = "split resize horizontal up" })
-map("n", "<C-S-Left>", "<cmd>vertical resize -2<CR>", { desc = "split resize vertical down" })
-map("n", "<C-S-Right>", "<cmd>vertical resize +2<CR>", { desc = "split resize vertical up" })
-
-map("n", "<C-h>", "<C-w>h", { desc = "split switch window left" })
-map("n", "<C-j>", "<C-w>j", { desc = "split switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "split switch window up" })
-map("n", "<C-l>", "<C-w>l", { desc = "split switch window right" })
-
 -- }}}
 -- Code {{{
 

@@ -796,4 +796,28 @@ return {
     "artemave/workspace-diagnostics.nvim",
     config = true,
   },
+
+  {
+    "mrjones2014/smart-splits.nvim",
+    -- stylua: ignore
+    keys = {
+      { mode = { "n" }, "<C-S-Left>",         desc = "split resize left"          },
+      { mode = { "n" }, "<C-S-Down>",         desc = "split resize down"          },
+      { mode = { "n" }, "<C-S-Up>",           desc = "split resize up"            },
+      { mode = { "n" }, "<C-S-Right>",        desc = "split resize right"         },
+      { mode = { "n" }, "<C-h>",              desc = "split move cursor left"     },
+      { mode = { "n" }, "<C-j>",              desc = "split move cursor down"     },
+      { mode = { "n" }, "<C-k>",              desc = "split move cursor up"       },
+      { mode = { "n" }, "<C-l>",              desc = "split move cursor right"    },
+      { mode = { "n" }, "<C-\\>",             desc = "split move cursor previous" },
+      { mode = { "n" }, "<leader><leader>h",  desc = "split swap buffer left"     },
+      { mode = { "n" }, "<leader><leader>j",  desc = "split swap buffer down"     },
+      { mode = { "n" }, "<leader><leader>k",  desc = "split swap buffer up"       },
+      { mode = { "n" }, "<leader><leader>l",  desc = "split swap buffer right"    },
+    },
+    config = function(_, opts)
+      require("smart-splits").setup(opts)
+      require "plugins.mappings.smart-splits-keys"
+    end,
+  },
 }
