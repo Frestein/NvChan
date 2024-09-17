@@ -83,23 +83,23 @@ map("n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tab first tab" })
 
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
-map("n", "<leader>th", function()
-  term.new { pos = "sp" }
-end, { desc = "terminal new horizontal term" })
+-- map("n", "<leader>th", function()
+--   term.new { pos = "sp" }
+-- end, { desc = "terminal new horizontal term" })
+--
+-- map("n", "<leader>tv", function()
+--   term.new { pos = "vsp" }
+-- end, { desc = "terminal new vertical window" })
 
-map("n", "<leader>tv", function()
-  term.new { pos = "vsp" }
-end, { desc = "terminal new vertical window" })
-
-map({ "n", "t" }, "<A-v>", function()
+map({ "n", "t" }, "<leader><M-v>", function()
   term.toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggle vertical term" })
 
-map({ "n", "t" }, "<A-h>", function()
+map({ "n", "t" }, "<leader><M-h>", function()
   term.toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggle horizontal term" })
 
-map({ "n", "t" }, "<A-i>", function()
+map({ "n", "t" }, "<leader><M-i>", function()
   term.toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
