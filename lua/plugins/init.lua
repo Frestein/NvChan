@@ -741,7 +741,7 @@ return {
 
   {
     "echasnovski/mini.bufremove",
-    version = "*",
+    version = false,
     keys = {
       { mode = { "n" }, "<leader>bd", desc = "buffer delete buffer" },
       { mode = { "n" }, "<leader>bD", desc = "buffer delete buffer (force)" },
