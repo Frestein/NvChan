@@ -97,14 +97,14 @@ autocmd("User", {
 local map_tab = function(buf_id, lhs)
   local rhs = function()
     local fs_entry = mini_files.get_fs_entry()
+
     if fs_entry then
       mini_files.close()
       vim.cmd("tabnew " .. fs_entry.path)
     end
   end
 
-  local desc = "Open in new tab"
-  map("n", lhs, rhs, { buffer = buf_id, desc = desc })
+  map("n", lhs, rhs, { buffer = buf_id, desc = "Open in new tab" })
 end
 
 autocmd("User", {
@@ -122,6 +122,7 @@ local map_split = function(buf_id, lhs, direction)
   local rhs = function()
     -- Make new window and set it as target
     local cur_target = mini_files.get_explorer_state().target_window
+
     local new_target = vim.api.nvim_win_call(cur_target, function()
       vim.cmd(direction .. " split")
       return vim.api.nvim_get_current_win()
@@ -131,8 +132,7 @@ local map_split = function(buf_id, lhs, direction)
   end
 
   -- Adding `desc` will result into `show_help` entries
-  local desc = "Split " .. direction
-  map("n", lhs, rhs, { buffer = buf_id, desc = desc })
+  map("n", lhs, rhs, { buffer = buf_id, desc = "Split " .. direction })
 end
 
 autocmd("User", {
