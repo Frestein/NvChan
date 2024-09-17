@@ -86,14 +86,6 @@ map("n", "<C-l>", "<C-w>l", { desc = "split switch window right" })
 -- }}}
 -- Code {{{
 
--- stay in indent mode
-map("v", "<", "<gv", { desc = "code block left" })
-map("v", ">", ">gv", { desc = "code block right" })
-
--- move block
-map("v", "<C-j>", ":m '>+1<CR>gv", { desc = "code block down", silent = true })
-map("v", "<C-k>", ":m '<-2<CR>gv", { desc = "code block up", silent = true })
-
 map("n", "<leader>/", "gcc", { desc = "code toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "code toggle comment", remap = true })
 

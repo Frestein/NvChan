@@ -753,6 +753,20 @@ return {
   },
 
   {
+    "echasnovski/mini.move",
+    version = false,
+    keys = {
+      { mode = { "n", "x" }, "<M-h>", desc = "code block left" },
+      { mode = { "n", "x" }, "<M-j>", desc = "code block down" },
+      { mode = { "n", "x" }, "<M-k>", desc = "code block up" },
+      { mode = { "n", "x" }, "<M-l>", desc = "code block right" },
+    },
+    config = function(_, opts)
+      require("mini.move").setup(opts)
+    end,
+  },
+
+  {
     "nvim-zh/colorful-winsep.nvim",
     event = "WinLeave",
     opts = require "plugins.options.colorful-winsep-opts",
