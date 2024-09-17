@@ -38,4 +38,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
-require('langmapper').automapping({ global = true, buffer = true })
+require("langmapper").automapping { global = true, buffer = true }
