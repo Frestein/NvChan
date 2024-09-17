@@ -87,7 +87,7 @@ autocmd("User", {
   callback = function(args)
     local buf_id = args.data.buf_id
     -- Tweak left-hand side of mapping to your liking
-    map("n", "<C-p>", toggle_preview, { buffer = buf_id })
+    map("n", "<C-p>", toggle_preview, { buffer = buf_id, desc = "Toggle preview" })
   end,
 })
 
