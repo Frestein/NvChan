@@ -6,12 +6,12 @@ local oil = require "oil"
 -- stylua: ignore
 local keymaps = {
   ["<leader>e"] = {
-    func = oil.open,
-    desc = "file open parent directory",
-  },
-  ["<leader>fl"] = {
     func = oil.toggle_float,
-    desc = "file open parent directory (float)",
+    desc = "oil toggle current directory (float)",
+  },
+  ["<leader>E"] = {
+    func = oil.open,
+    desc = "oil open current directory",
   },
 }
 

@@ -85,32 +85,47 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = require "plugins.options.tree-opts",
     enabled = false,
+    opts = require "plugins.options.tree-opts",
   },
 
   {
-    "stevearc/oil.nvim",
+    "echasnovski/mini.files",
     event = "VeryLazy",
-    cmd = "Oil",
+    version = false,
     keys = {
-      { mode = { "n" }, "<leader>e", desc = "file open parent directory" },
-      { mode = { "n" }, "<leader>fl", desc = "file open parent directory (float)" },
+      { mode = { "n" }, "<leader>e", desc = "MiniFiles toggle current directory" },
+      { mode = { "n" }, "<leader>E", desc = "MiniFiles toggle root directory" },
     },
-    config = function()
-      require "plugins.configs.oil-conf"
-      require "plugins.mappings.oil-keys"
+    opts = require("plugins.options.mini-files-opts").opts,
+    config = function(_, opts)
+      require("mini.files").setup(opts)
+      require "plugins.mappings.mini-files-keys"
     end,
   },
 
-  {
-    "SirZenith/oil-vcs-status",
-    dependencies = "stevearc/oil.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return require "plugins.options.oil-vcs-status-opts"
-    end,
-  },
+  -- {
+  --   "stevearc/oil.nvim",
+  --   event = "VeryLazy",
+  --   cmd = "Oil",
+  --   keys = {
+  --     { mode = { "n" }, "<leader>e", desc = "oil toggle current directory (float)" },
+  --     { mode = { "n" }, "<leader>E", desc = "oil open current directory" },
+  --   },
+  --   config = function()
+  --     require "plugins.configs.oil-conf"
+  --     require "plugins.mappings.oil-keys"
+  --   end,
+  -- },
+  --
+  -- {
+  --   "SirZenith/oil-vcs-status",
+  --   dependencies = "stevearc/oil.nvim",
+  --   event = "VeryLazy",
+  --   opts = function()
+  --     return require "plugins.options.oil-vcs-status-opts"
+  --   end,
+  -- },
 
   {
     "mikavilpas/yazi.nvim",
@@ -294,7 +309,6 @@ return {
   {
     "jvgrootveld/telescope-zoxide",
     dependencies = {
-      { "stevearc/oil.nvim" },
       { "nvim-telescope/telescope.nvim" },
     },
     keys = {
