@@ -528,7 +528,8 @@ return {
       { mode = { "n" }, "<leader>qs", desc = "session select session" },
       { mode = { "n" }, "<leader>qL", desc = "session restore session" },
       { mode = { "n" }, "<leader>ql", desc = "session restore last session" },
-      { mode = { "n" }, "<leader>qd", desc = "session don't save current session" },
+      { mode = { "n" }, "<leader>qq", desc = "session quit all" },
+      { mode = { "n" }, "<leader>qQ", desc = "session quit all without save session" },
     },
     config = function(_, opts)
       require("persistence").setup(opts)
