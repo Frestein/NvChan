@@ -8,7 +8,7 @@ local M = {}
 
 function M.lazy()
   local keymaps = {
-    ["<leader>a"] = { func = aerial.toggle, desc = "aerial toggle" },
+    ["<leader>aa"] = { func = aerial.toggle, desc = "aerial toggle" },
     ["<leader>an"] = { func = aerial.nav_toggle, desc = "aerial navigation toggle" },
     ["<leader>fa"] = { func = telescope.extensions.aerial.aerial, desc = "telescope aerial" },
   }

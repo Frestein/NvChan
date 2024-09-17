@@ -127,18 +127,18 @@ return {
   --   end,
   -- },
 
-  {
-    "mikavilpas/yazi.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    keys = {
-      { mode = { "n" }, "<leader>-", desc = "yazi open" },
-    },
-    opts = require "plugins.options.yazi-opts",
-    config = function(_, opts)
-      require("yazi").setup(opts)
-      require "plugins.mappings.yazi-keys"
-    end,
-  },
+  -- {
+  --   "mikavilpas/yazi.nvim",
+  --   dependencies = "nvim-lua/plenary.nvim",
+  --   keys = {
+  --     { mode = { "n" }, "<leader>-", desc = "yazi open" },
+  --   },
+  --   opts = require "plugins.options.yazi-opts",
+  --   config = function(_, opts)
+  --     require("yazi").setup(opts)
+  --     require "plugins.mappings.yazi-keys"
+  --   end,
+  -- },
 
   {
     "supermaven-inc/supermaven-nvim",
@@ -577,7 +577,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { mode = { "n" }, "<leader>a", desc = "aerial toggle" },
+      { mode = { "n" }, "<leader>aa", desc = "aerial toggle" },
       { mode = { "n" }, "<leader>an", desc = "aerial navigation toggle" },
       { mode = { "n" }, "<leader>fa", desc = "telescope aerial" },
     },
