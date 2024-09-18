@@ -212,7 +212,7 @@ return {
       { mode = { "n" }, "<leader>fz", desc = "telescope find in current buffer" },
       { mode = { "n" }, "<leader>fd", desc = "telescope find diagnostics" },
       { mode = { "n" }, "<leader>ft", desc = "telescope find terms" },
-      { mode = { "n" }, "<leader>tH", desc = "telescope nvchad themes" },
+      { mode = { "n" }, "<leader>th", desc = "telescope nvchad themes" },
     },
     opts = require "plugins.options.telescope-opts",
     config = function(_, opts)
@@ -752,6 +752,43 @@ return {
       require "plugins.mappings.mini-bufremove-keys"
     end,
   },
+
+  -- {
+  --   "echasnovski/mini.pick",
+  --   dependencies = "echasnovski/mini.extra",
+  --   event = "VeryLazy",
+  --   version = false,
+  --   keys = {
+  --     { mode = { "n" }, "<leader>ff", desc = "MiniPick find files" },
+  --     { mode = { "n" }, "<leader>fw", desc = "MiniPick grep files" },
+  --     { mode = { "n" }, "<leader>fW", desc = "MiniPick live grep files" },
+  --     { mode = { "n" }, "<leader>fb", desc = "MiniPick find buffers" },
+  --     { mode = { "n" }, "<leader>fH", desc = "MiniPick find help" },
+  --     { mode = { "n" }, "<leader>fr", desc = "MiniPick latest picker" },
+  --     { mode = { "n" }, "<leader>fz", desc = "MiniPick buffer lines" },
+  --     { mode = { "n" }, "<leader>fm", desc = "MiniPick marks" },
+  --     { mode = { "n" }, "<leader>th", desc = "MiniPick nvchad themes" },
+  --     -- spellchecker: disable-line
+  --     { mode = { "n" }, "<leader>fo", desc = "MiniPick oldfiles" },
+  --     { mode = { "n" }, "<leader>fs", desc = "MiniPick spell suggestions" },
+  --     { mode = { "n" }, "<leader>fgb", desc = "MiniPick git branches" },
+  --     { mode = { "n" }, "<leader>fgc", desc = "MiniPick git commits" },
+  --     { mode = { "n" }, "<leader>fgf", desc = "MiniPick git files" },
+  --     { mode = { "n" }, "<leader>fgh", desc = "MiniPick git hunks" },
+  --     { mode = { "n" }, "<leader>fsh", desc = "MiniPick history" },
+  --     { mode = { "n" }, "<leader>fhl", desc = "MiniPick highlight groups" },
+  --     { mode = { "n" }, "<leader>fch", desc = "MiniPick keymaps" },
+  --   },
+  --   config = function(_, opts)
+  --     require("mini.pick").setup(opts)
+  --     require "plugins.mappings.mini-pick-keys"
+  --   end,
+  -- },
+  --
+  -- {
+  --   "echasnovski/mini.extra",
+  --   version = false,
+  -- },
 
   {
     "echasnovski/mini.move",
