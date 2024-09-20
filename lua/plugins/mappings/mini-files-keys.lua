@@ -45,7 +45,7 @@ autocmd("User", {
 })
 
 -- }}}
--- Mapping to use grug-far for search in the current working directory {{{
+-- Mapping to use grug-far for search in the current directory {{{
 
 local files_grug_far_cwd = function(path)
   -- Works only if cursor is on the valid file system entry
@@ -55,7 +55,7 @@ local files_grug_far_cwd = function(path)
 
   if not grug_far.has_instance "explorer" then
     grug_far.open {
-      name = "explorer",
+      instanceName = "explorer",
       prefills = prefills,
       staticTitle = "Find and Replace from Explorer",
     }
@@ -69,7 +69,7 @@ end
 autocmd("User", {
   pattern = "MiniFilesBufferCreate",
   callback = function(args)
-    map("n", "gs", files_grug_far_cwd, { buffer = args.data.buf_id, desc = "Search cwd" })
+    map("n", "gs", files_grug_far_cwd, { buffer = args.data.buf_id, desc = "Search in directory" })
   end,
 })
 
