@@ -47,7 +47,7 @@ autocmd("User", {
 -- }}}
 -- Mapping to use grug-far for search in the current directory {{{
 
-local files_grug_far_cwd = function(path)
+local files_grug_far_replace = function(path)
   -- Works only if cursor is on the valid file system entry
   local cur_entry_path = MiniFiles.get_fs_entry().path
   local prefills = { paths = vim.fs.dirname(cur_entry_path) }
@@ -69,7 +69,7 @@ end
 autocmd("User", {
   pattern = "MiniFilesBufferCreate",
   callback = function(args)
-    map("n", "gs", files_grug_far_cwd, { buffer = args.data.buf_id, desc = "Search in directory" })
+    map("n", "gs", files_grug_far_replace, { buffer = args.data.buf_id, desc = "Search in directory" })
   end,
 })
 
