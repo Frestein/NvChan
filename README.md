@@ -42,7 +42,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### code-runner
 
-- [stevearc/overseer.nvim](https://dotfyle.com/plugins/stevearc/overseer.nvim)
+- [stevearc/overseer.nvim](https://dotfyle.com/plugins/stevearc/overseer.nvim) (disabled)
 
 ### fuzzy-finder
 
@@ -201,7 +201,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### utility
 
-- [michaelrommel/nvim-silicon](https://github.com/michaelrommel/nvim-silicon)
+- [michaelrommel/nvim-silicon](https://dotfyle.com/plugins/michaelrommel/nvim-silicon)
 - [xvzc/chezmoi.nvim](https://dotfyle.com/plugins/xvzc/chezmoi.nvim)
 - [alker0/chezmoi.vim](https://github.com/alker0/chezmoi.vim)
 - [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
