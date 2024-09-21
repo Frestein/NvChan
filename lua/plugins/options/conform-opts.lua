@@ -20,12 +20,7 @@ local opts = {
   formatters = {
     prettier = {
       append_args = function()
-        local ft = vim.bo.filetype
-        if ft == "jsonc" then
-          return { "--trailing-comma", "none" }
-        else
-          return {}
-        end
+        return vim.bo.filetype == "jsonc" and { "--trailing-comma", "none" } or {}
       end,
     },
   },
