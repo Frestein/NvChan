@@ -65,7 +65,6 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- { "jcdickinson/codeium.nvim" },
-      -- "supermaven-inc/supermaven-nvim",
       "onsails/lspkind.nvim",
     },
     opts = function()
@@ -73,7 +72,6 @@ return {
     end,
     config = function(_, opts)
       -- table.insert(opts.sources, { name = "codeium" })
-      -- table.insert(opts.sources, { name = "supermaven" })
       require("cmp").setup(opts)
     end,
   },
@@ -104,41 +102,44 @@ return {
     end,
   },
 
-  -- {
-  --   "stevearc/oil.nvim",
-  --   event = "VeryLazy",
-  --   cmd = "Oil",
-  --   keys = {
-  --     { mode = { "n" }, "<leader>e", desc = "oil toggle current directory (float)" },
-  --     { mode = { "n" }, "<leader>E", desc = "oil open current directory" },
-  --   },
-  --   config = function()
-  --     require "plugins.configs.oil-conf"
-  --     require "plugins.mappings.oil-keys"
-  --   end,
-  -- },
-  --
-  -- {
-  --   "SirZenith/oil-vcs-status",
-  --   dependencies = "stevearc/oil.nvim",
-  --   event = "VeryLazy",
-  --   opts = function()
-  --     return require "plugins.options.oil-vcs-status-opts"
-  --   end,
-  -- },
+  {
+    "stevearc/oil.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    cmd = "Oil",
+    keys = {
+      { mode = { "n" }, "<leader>e", desc = "oil toggle current directory (float)" },
+      { mode = { "n" }, "<leader>E", desc = "oil open current directory" },
+    },
+    config = function()
+      require "plugins.configs.oil-conf"
+      require "plugins.mappings.oil-keys"
+    end,
+  },
 
-  -- {
-  --   "mikavilpas/yazi.nvim",
-  --   dependencies = "nvim-lua/plenary.nvim",
-  --   keys = {
-  --     { mode = { "n" }, "<leader>-", desc = "yazi open" },
-  --   },
-  --   opts = require "plugins.options.yazi-opts",
-  --   config = function(_, opts)
-  --     require("yazi").setup(opts)
-  --     require "plugins.mappings.yazi-keys"
-  --   end,
-  -- },
+  {
+    "SirZenith/oil-vcs-status",
+    enabled = false,
+    dependencies = "stevearc/oil.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return require "plugins.options.oil-vcs-status-opts"
+    end,
+  },
+
+  {
+    "mikavilpas/yazi.nvim",
+    enabled = false,
+    dependencies = "nvim-lua/plenary.nvim",
+    keys = {
+      { mode = { "n" }, "<leader>-", desc = "yazi open" },
+    },
+    opts = require "plugins.options.yazi-opts",
+    config = function(_, opts)
+      require("yazi").setup(opts)
+      require "plugins.mappings.yazi-keys"
+    end,
+  },
 
   {
     "supermaven-inc/supermaven-nvim",
@@ -154,29 +155,31 @@ return {
     end,
   },
 
-  -- {
-  --   "monkoose/neocodeium",
-  --   event = "InsertEnter",
-  --   opts = require "plugins.options.neocodeium-opts",
-  --   keys = {
-  --     { mode = { "i" }, "<C-f>", desc = "neocodeium accept suggestion" },
-  --     { mode = { "i" }, "<C-w>", desc = "neocodeium accept word" },
-  --     { mode = { "i" }, "<C-l>", desc = "neocodeium accept line" },
-  --     { mode = { "i" }, "<C-e>", desc = "neocodeium cycle or complete" },
-  --     { mode = { "i" }, "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
-  --     { mode = { "i" }, "<C-c>", desc = "neocodeium clear" },
-  --     { mode = { "n" }, "<leader>tc", desc = "neocodeium chat" },
-  --   },
-  --   config = function(_, opts)
-  --     require("neocodeium").setup(opts)
-  --     require "plugins.mappings.neocodeium-keys"
-  --   end,
-  -- },
+  {
+    "monkoose/neocodeium",
+    enabled = false,
+    event = "InsertEnter",
+    opts = require "plugins.options.neocodeium-opts",
+    keys = {
+      { mode = { "i" }, "<C-f>", desc = "neocodeium accept suggestion" },
+      { mode = { "i" }, "<C-w>", desc = "neocodeium accept word" },
+      { mode = { "i" }, "<C-l>", desc = "neocodeium accept line" },
+      { mode = { "i" }, "<C-e>", desc = "neocodeium cycle or complete" },
+      { mode = { "i" }, "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
+      { mode = { "i" }, "<C-c>", desc = "neocodeium clear" },
+      { mode = { "n" }, "<leader>tc", desc = "neocodeium chat" },
+    },
+    config = function(_, opts)
+      require("neocodeium").setup(opts)
+      require "plugins.mappings.neocodeium-keys"
+    end,
+  },
 
-  -- {
-  --   "jcdickinson/codeium.nvim",
-  --   opts = require "plugins.options.codeium-opts",
-  -- },
+  {
+    enabled = false,
+    "jcdickinson/codeium.nvim",
+    opts = require "plugins.options.codeium-opts",
+  },
 
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -588,17 +591,17 @@ return {
     end,
   },
 
-  -- {
-  --   "stevearc/overseer.nvim",
-  --   keys = {
-  --     { mode = { "n" }, "<leader>o", desc = "overseer toggle" },
-  --   },
-  --   opts = {},
-  --   config = function(_, opts)
-  --     require("overseer").setup(opts)
-  --     require "plugins.mappings.overseer-keys"
-  --   end,
-  -- },
+  {
+    "stevearc/overseer.nvim",
+    enabled = false,
+    keys = {
+      { mode = { "n" }, "<leader>o", desc = "overseer toggle" },
+    },
+    config = function(_, opts)
+      require("overseer").setup(opts)
+      require "plugins.mappings.overseer-keys"
+    end,
+  },
 
   {
     "karb94/neoscroll.nvim",
@@ -712,15 +715,16 @@ return {
     opts = require "plugins.options.garbage-day-opts",
   },
 
-  -- {
-  --   "m4xshen/hardtime.nvim",
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   event = "VeryLazy",
-  --   opts = require "plugins.options.hardtime-opts",
-  -- },
+  {
+    "m4xshen/hardtime.nvim",
+    enabled = false,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    event = "VeryLazy",
+    opts = require "plugins.options.hardtime-opts",
+  },
 
   {
     "piersolenski/wtf.nvim",
@@ -753,42 +757,44 @@ return {
     end,
   },
 
-  -- {
-  --   "echasnovski/mini.pick",
-  --   dependencies = "echasnovski/mini.extra",
-  --   event = "VeryLazy",
-  --   version = false,
-  --   keys = {
-  --     { mode = { "n" }, "<leader>ff", desc = "MiniPick find files" },
-  --     { mode = { "n" }, "<leader>fw", desc = "MiniPick grep files" },
-  --     { mode = { "n" }, "<leader>fW", desc = "MiniPick live grep files" },
-  --     { mode = { "n" }, "<leader>fb", desc = "MiniPick find buffers" },
-  --     { mode = { "n" }, "<leader>fH", desc = "MiniPick find help" },
-  --     { mode = { "n" }, "<leader>fr", desc = "MiniPick latest picker" },
-  --     { mode = { "n" }, "<leader>fz", desc = "MiniPick buffer lines" },
-  --     { mode = { "n" }, "<leader>fm", desc = "MiniPick marks" },
-  --     { mode = { "n" }, "<leader>th", desc = "MiniPick nvchad themes" },
-  --     -- spellchecker: disable-line
-  --     { mode = { "n" }, "<leader>fo", desc = "MiniPick oldfiles" },
-  --     { mode = { "n" }, "<leader>fs", desc = "MiniPick spell suggestions" },
-  --     { mode = { "n" }, "<leader>fgb", desc = "MiniPick git branches" },
-  --     { mode = { "n" }, "<leader>fgc", desc = "MiniPick git commits" },
-  --     { mode = { "n" }, "<leader>fgf", desc = "MiniPick git files" },
-  --     { mode = { "n" }, "<leader>fgh", desc = "MiniPick git hunks" },
-  --     { mode = { "n" }, "<leader>fsh", desc = "MiniPick history" },
-  --     { mode = { "n" }, "<leader>fhl", desc = "MiniPick highlight groups" },
-  --     { mode = { "n" }, "<leader>fch", desc = "MiniPick keymaps" },
-  --   },
-  --   config = function(_, opts)
-  --     require("mini.pick").setup(opts)
-  --     require "plugins.mappings.mini-pick-keys"
-  --   end,
-  -- },
-  --
-  -- {
-  --   "echasnovski/mini.extra",
-  --   version = false,
-  -- },
+  {
+    "echasnovski/mini.pick",
+    dependencies = "echasnovski/mini.extra",
+    event = "VeryLazy",
+    enabled = false,
+    version = false,
+    keys = {
+      { mode = { "n" }, "<leader>ff", desc = "MiniPick find files" },
+      { mode = { "n" }, "<leader>fw", desc = "MiniPick grep files" },
+      { mode = { "n" }, "<leader>fW", desc = "MiniPick live grep files" },
+      { mode = { "n" }, "<leader>fb", desc = "MiniPick find buffers" },
+      { mode = { "n" }, "<leader>fH", desc = "MiniPick find help" },
+      { mode = { "n" }, "<leader>fr", desc = "MiniPick latest picker" },
+      { mode = { "n" }, "<leader>fz", desc = "MiniPick buffer lines" },
+      { mode = { "n" }, "<leader>fm", desc = "MiniPick marks" },
+      { mode = { "n" }, "<leader>th", desc = "MiniPick nvchad themes" },
+      -- spellchecker: disable-line
+      { mode = { "n" }, "<leader>fo", desc = "MiniPick oldfiles" },
+      { mode = { "n" }, "<leader>fs", desc = "MiniPick spell suggestions" },
+      { mode = { "n" }, "<leader>fgb", desc = "MiniPick git branches" },
+      { mode = { "n" }, "<leader>fgc", desc = "MiniPick git commits" },
+      { mode = { "n" }, "<leader>fgf", desc = "MiniPick git files" },
+      { mode = { "n" }, "<leader>fgh", desc = "MiniPick git hunks" },
+      { mode = { "n" }, "<leader>fsh", desc = "MiniPick history" },
+      { mode = { "n" }, "<leader>fhl", desc = "MiniPick highlight groups" },
+      { mode = { "n" }, "<leader>fch", desc = "MiniPick keymaps" },
+    },
+    config = function(_, opts)
+      require("mini.pick").setup(opts)
+      require "plugins.mappings.mini-pick-keys"
+    end,
+  },
+
+  {
+    "echasnovski/mini.extra",
+    enabled = false,
+    version = false,
+  },
 
   {
     "echasnovski/mini.move",
@@ -799,7 +805,7 @@ return {
       { mode = { "n", "x" }, "<M-k>", desc = "code block up" },
       { mode = { "n", "x" }, "<M-l>", desc = "code block right" },
     },
-    config = true,
+    opts = {},
   },
 
   {
@@ -831,7 +837,7 @@ return {
 
   {
     "artemave/workspace-diagnostics.nvim",
-    config = true,
+    opts = {},
   },
 
   {
