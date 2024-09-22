@@ -4,6 +4,10 @@ local map = require("langmapper").map
 local lsp_buf = vim.lsp.buf
 local actions_preview = require "actions-preview"
 
+local function toggle_inlay_hints()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end
+
 local M = {}
 
 function M.on_attach(bufnr)
@@ -17,6 +21,7 @@ function M.on_attach(bufnr)
     ["<leader>wr"] = { func = lsp_buf.remove_workspace_folder, desc = "LSP remove workspace folder" },
     ["gr"] = { func = lsp_buf.references, desc = "LSP show references" },
     ["<leader>D"] = { func = lsp_buf.type_definition, desc = "LSP go to type definition" },
+    ["<F10>"] = { modes = { "n" }, func = toggle_inlay_hints, desc = "LSP toggle inlay hints" },
     ["<leader>wl"] = {
       func = function()
         print(vim.inspect(lsp_buf.list_workspace_folders()))
