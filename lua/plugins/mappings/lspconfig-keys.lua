@@ -21,7 +21,7 @@ function M.on_attach(bufnr)
     ["<leader>wr"] = { func = lsp_buf.remove_workspace_folder, desc = "LSP remove workspace folder" },
     ["gr"] = { func = lsp_buf.references, desc = "LSP show references" },
     ["<leader>D"] = { func = lsp_buf.type_definition, desc = "LSP go to type definition" },
-    ["<F10>"] = { modes = { "n" }, func = toggle_inlay_hints, desc = "LSP toggle inlay hints" },
+    ["<F10>"] = { func = toggle_inlay_hints, desc = "LSP toggle inlay hints" },
     ["<leader>wl"] = {
       func = function()
         print(vim.inspect(lsp_buf.list_workspace_folders()))
@@ -38,7 +38,6 @@ function M.on_attach(bufnr)
       desc = "LSP code action",
     },
     ["<leader>X"] = {
-      modes = { "n" },
       func = function()
         for _, client in ipairs(vim.lsp.get_clients()) do
           require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
