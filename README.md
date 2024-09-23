@@ -48,12 +48,15 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
 - [nvim-telescope/telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
-- [nvim-telescope/telescope-project.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope-project.nvim)
 - [tsakirist/telescope-lazy.nvim](https://dotfyle.com/plugins/tsakirist/telescope-lazy.nvim)
 - [danielfalk/smart-open.nvim](https://dotfyle.com/plugins/danielfalk/smart-open.nvim)
 - [jvgrootveld/telescope-zoxide](https://dotfyle.com/plugins/jvgrootveld/telescope-zoxide)
 - [Marskey/telescope-sg](https://dotfyle.com/plugins/Marskey/telescope-sg)
 - [echasnovski/mini.pick](https://dotfyle.com/plugins/echasnovski/mini.pick) (disabled)
+
+### project
+
+- [nvim-telescope/telescope-project.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope-project.nvim)
 
 ### formatting
 
