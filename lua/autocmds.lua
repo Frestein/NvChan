@@ -12,7 +12,7 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-  pattern = { "help", "lazy" },
+  pattern = { "lazy" },
   callback = function()
     wo.winfixbuf = true
   end,
