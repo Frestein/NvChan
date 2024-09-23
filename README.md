@@ -92,7 +92,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### ai
 
-- [supermaven-inc/supermaven-nvim](https://github.com/supermaven-inc/supermaven-nvim)
+- [supermaven-inc/supermaven-nvim](https://dotfyle.com/plugins/supermaven-inc/supermaven-nvim)
 - [Exafunction/codeium.nvim](https://dotfyle.com/plugins/Exafunction/codeium.nvim) (disabled)
 - [monkoose/neocodeium](https://dotfyle.com/plugins/monkoose/neocodeium) (disabled)
 
