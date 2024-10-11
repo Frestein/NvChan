@@ -828,14 +828,6 @@ return {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
-    event = "User FilePost",
-    config = function()
-      require "plugins.configs.colorizer-conf"
-    end,
-  },
-
-  {
     "artemave/workspace-diagnostics.nvim",
     opts = {},
   },
