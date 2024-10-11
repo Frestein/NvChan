@@ -107,3 +107,8 @@ args
 F10
 winfixbuf
 autocmd
+dotfiles
+hyprland
+mattermost
+tailscale
+systray
