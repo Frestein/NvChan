@@ -1,8 +1,5 @@
 local opts = {
   debounce_delay = 30000,
-  execution_message = {
-    enabled = false,
-  },
   callbacks = {
     before_saving = function()
       -- save global autoformat status
