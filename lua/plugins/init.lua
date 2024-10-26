@@ -103,45 +103,6 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    cmd = "Oil",
-    keys = {
-      { mode = { "n" }, "<leader>e", desc = "oil toggle current directory (float)" },
-      { mode = { "n" }, "<leader>E", desc = "oil open current directory" },
-    },
-    config = function()
-      require "plugins.configs.oil-conf"
-      require "plugins.mappings.oil-keys"
-    end,
-  },
-
-  {
-    "SirZenith/oil-vcs-status",
-    enabled = false,
-    dependencies = "stevearc/oil.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return require "plugins.options.oil-vcs-status-opts"
-    end,
-  },
-
-  {
-    "mikavilpas/yazi.nvim",
-    enabled = false,
-    dependencies = "nvim-lua/plenary.nvim",
-    keys = {
-      { mode = { "n" }, "<leader>-", desc = "yazi open" },
-    },
-    opts = require "plugins.options.yazi-opts",
-    config = function(_, opts)
-      require("yazi").setup(opts)
-      require "plugins.mappings.yazi-keys"
-    end,
-  },
-
-  {
     "supermaven-inc/supermaven-nvim",
     event = "InsertEnter",
     keys = {
@@ -153,32 +114,6 @@ return {
     config = function(_, opts)
       require("supermaven-nvim").setup(opts)
     end,
-  },
-
-  {
-    "monkoose/neocodeium",
-    enabled = false,
-    event = "InsertEnter",
-    opts = require "plugins.options.neocodeium-opts",
-    keys = {
-      { mode = { "i" }, "<C-f>", desc = "neocodeium accept suggestion" },
-      { mode = { "i" }, "<C-w>", desc = "neocodeium accept word" },
-      { mode = { "i" }, "<C-l>", desc = "neocodeium accept line" },
-      { mode = { "i" }, "<C-e>", desc = "neocodeium cycle or complete" },
-      { mode = { "i" }, "<C-r>", desc = "neocodeium cycle or complete (reverse)" },
-      { mode = { "i" }, "<C-c>", desc = "neocodeium clear" },
-      { mode = { "n" }, "<leader>tc", desc = "neocodeium chat" },
-    },
-    config = function(_, opts)
-      require("neocodeium").setup(opts)
-      require "plugins.mappings.neocodeium-keys"
-    end,
-  },
-
-  {
-    enabled = false,
-    "jcdickinson/codeium.nvim",
-    opts = require "plugins.options.codeium-opts",
   },
 
   {
