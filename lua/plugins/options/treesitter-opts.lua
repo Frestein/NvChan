@@ -5,7 +5,7 @@ local xdg_config = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
 
 ---@param path string
 local function have(path)
-  return vim.uv.fs_stat(xdg_config .. "/" .. path) ~= nil
+  return vim.uv.fs_stat(vim.env.HOME .. "/" .. path) or vim.uv.fs_stat(xdg_config .. "/" .. path) ~= nil
 end
 
 vim.filetype.add {
@@ -23,38 +23,39 @@ vim.filetype.add {
 }
 
 opts.ensure_installed = {
+  "bash",
+  "c",
+  "css",
+  "desktop",
   "diff",
+  "dockerfile",
+  "git_config",
+  "git_rebase",
+  "gitattributes",
+  "gitcommit",
+  "gitignore",
   "go",
   "gomod",
-  "gowork",
   "gosum",
-  "ini",
-  "vim",
-  "vimdoc",
-  "lua",
-  "luap",
-  "luadoc",
-  "bash",
-  "python",
-  "css",
-  "scss",
+  "gowork",
   "html",
-  "yaml",
-  "dockerfile",
-  "toml",
+  "ini",
   "json",
   "json5",
   "jsonc",
-  "c",
-  "norg",
+  "lua",
+  "luadoc",
+  "luap",
   "markdown",
   "markdown_inline",
+  "norg",
+  "python",
   "regex",
-  "gitcommit",
-  "git_config",
-  "git_rebase",
-  "gitignore",
-  "gitattributes",
+  "toml",
+  "vim",
+  "vimdoc",
+  "xml",
+  "yaml",
 }
 
 local function add(lang)
@@ -73,6 +74,14 @@ end
 
 if have "rofi" or have "wofi" then
   add "rasi"
+end
+
+if have "zathura" then
+  add "zathurarc"
+end
+
+if have ".Xresources" then
+  add "xresources"
 end
 
 return opts
