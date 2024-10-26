@@ -63,6 +63,7 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
+    url = "https://github.com/iguanacucumber/magazine.nvim",
     dependencies = {
       -- { "jcdickinson/codeium.nvim" },
       "onsails/lspkind.nvim",
