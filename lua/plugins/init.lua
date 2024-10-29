@@ -65,14 +65,12 @@ return {
     "hrsh7th/nvim-cmp",
     url = "https://github.com/iguanacucumber/magazine.nvim",
     dependencies = {
-      -- { "jcdickinson/codeium.nvim" },
       "onsails/lspkind.nvim",
     },
     opts = function()
       require "plugins.options.cmp-opts"
     end,
     config = function(_, opts)
-      -- table.insert(opts.sources, { name = "codeium" })
       require("cmp").setup(opts)
     end,
   },
