@@ -64,6 +64,14 @@ return {
   {
     "hrsh7th/nvim-cmp",
     url = "https://github.com/iguanacucumber/magazine.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp", url = "https://github.com/iguanacucumber/mag-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua", url = "https://github.com/iguanacucumber/mag-nvim-lua" },
+      { "hrsh7th/cmp-buffer", url = "https://github.com/iguanacucumber/mag-buffer" },
+      { "hrsh7th/cmp-cmdline", url = "https://github.com/iguanacucumber/mag-cmdline" },
+      { "hrsh7th/cmp-path" },
+    },
     opts = function()
       require "plugins.options.cmp-opts"
     end,
