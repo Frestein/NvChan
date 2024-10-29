@@ -64,20 +64,12 @@ return {
   {
     "hrsh7th/nvim-cmp",
     url = "https://github.com/iguanacucumber/magazine.nvim",
-    dependencies = {
-      "onsails/lspkind.nvim",
-    },
     opts = function()
       require "plugins.options.cmp-opts"
     end,
     config = function(_, opts)
       require("cmp").setup(opts)
     end,
-  },
-
-  {
-    "onsails/lspkind.nvim",
-    opts = require "plugins.options.lspkind-opts",
   },
 
   {

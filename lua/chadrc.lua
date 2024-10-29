@@ -95,7 +95,7 @@ M.ui = {
 
   cmp = {
     --- @diagnostic disable-next-line: assign-type-mismatch
-    style = "nvchan_colored",
+    style = "default",
     lspkind_text = false,
   },
 
@@ -204,20 +204,6 @@ M.base46 = {
 
   transparency = false,
 }
-
-if M.ui.cmp.style == "nvchan" or M.ui.cmp.style == "nvchan_colored" then
-  M.base46.hl_override = vim.tbl_extend("force", M.base46.hl_override, {
-    ["CmpPmenu"] = { bg = "darker_black" },
-  })
-  if M.ui.cmp.style == "nvchan_colored" then
-    M.base46.hl_override = vim.tbl_extend("force", M.base46.hl_override, {
-      ["PmenuSel"] = {
-        bg = "grey",
-        fg = "NONE",
-      },
-    })
-  end
-end
 
 M.lsp = {
   signature = false,
