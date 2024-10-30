@@ -50,6 +50,7 @@ M.nvdash = {
     { txt = "  Select Session", keys = "Spc q s", cmd = "lua require('persistence').select()" },
     { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
     { txt = "  Find Project", keys = "Spc f p", cmd = "Telescope project" },
+    { txt = "  Find Dotfiles", keys = "Spc f D", cmd = "Telescope chezmoi find_files" },
     { txt = "󱐁  Zoxide List", keys = "Spc f Z", cmd = "Telescope zoxide list" },
     { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
     { txt = "  Bookmarks", keys = "Spc f m", cmd = "Telescope marks" },
