@@ -167,36 +167,9 @@ M.base46 = {
   },
 
   hl_add = {
-    ["HighlightUndo"] = {
-      bg = { "black", "blue", 40 },
-    },
-    ["HighlightRedo"] = {
-      bg = { "black", "red", 40 },
-    },
-    ["Twilight"] = {
-      bg = "black",
-      fg = "grey_fg",
-    },
-    ["GitSignsCurrentLineBlame"] = {
-      fg = "light_grey",
-      italic = true,
-    },
     ["NvimSeparator"] = {
       bg = "NONE",
       fg = "line",
-    },
-    ["TroubleStatusline1"] = {
-      fg = "light_grey",
-      bg = "one_bg",
-    },
-    ["TroubleSeparatorHighlight"] = {
-      fg = "yellow",
-      bg = "one_bg",
-    },
-    ["NeoCodeiumSuggestion"] = { fg = "light_grey" },
-    ["LazyUpdates"] = {
-      fg = "green",
-      bg = "NONE",
     },
     ["WinBar"] = {
       fg = "light_grey",
@@ -210,9 +183,49 @@ M.base46 = {
       fg = "light_grey",
       bg = "black",
     },
+    -- lazy.nvim statusline module
+    ["LazyUpdates"] = {
+      fg = "green",
+      bg = "NONE",
+    },
+    -- highlight-undo.nvim {{{
+    ["HighlightUndo"] = {
+      bg = { "black", "blue", 40 },
+    },
+    ["HighlightRedo"] = {
+      bg = { "black", "red", 40 },
+    },
+    -- }}}
+    -- twilight.nvim {{{
+    ["Twilight"] = {
+      bg = "black",
+      fg = "grey_fg",
+    },
+    -- }}}
+    -- gitsigns.nvim {{{
+    ["GitSignsCurrentLineBlame"] = {
+      fg = "light_grey",
+      italic = true,
+    },
+    -- }}}
+    -- trouble.nvim {{{
+    ["TroubleStatusline1"] = {
+      fg = "light_grey",
+      bg = "one_bg",
+    },
+    ["TroubleSeparatorHighlight"] = {
+      fg = "yellow",
+      bg = "one_bg",
+    },
+    -- }}}
+    -- neocodeium {{{
+    ["NeoCodeiumSuggestion"] = { fg = "light_grey" },
+    -- }}}
+    -- nvim-tree.lua {{{
     ["NvimTreeEndOfBuffer"] = { bg = "NONE" },
     ["NvimTreeWinSeparator"] = { bg = "NONE" },
-    -- Symbol-Usage {{{
+    -- }}}
+    -- symbol-usage.nvim {{{
     ["SymbolUsageRounding"] = {
       fg = "one_bg",
       italic = true,
