@@ -273,6 +273,12 @@ return {
   },
 
   {
+    "tzachar/highlight-undo.nvim",
+    keys = { { "u" }, { "<C-r>" }, { "p" }, { "P" } },
+    opts = {},
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
     dependencies = {

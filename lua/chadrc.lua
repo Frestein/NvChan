@@ -167,6 +167,12 @@ M.base46 = {
   },
 
   hl_add = {
+    ["HighlightUndo"] = {
+      bg = { "black", "blue", 40 },
+    },
+    ["HighlightRedo"] = {
+      bg = { "black", "red", 40 },
+    },
     ["Twilight"] = {
       bg = "black",
       fg = "grey_fg",
