@@ -65,6 +65,14 @@ map("v", "<leader>/", "gc", { desc = "code toggle comment", remap = true })
 map("n", "<S-tab>", tabufline.prev, { desc = "buffer goto prev buffer" })
 map("n", "<tab>", tabufline.next, { desc = "buffer goto next buffer" })
 
+map("n", "<A-Left>", function()
+  tabufline.move_buf(-1)
+end, { desc = "buffer move to left" })
+
+map("n", "<A-Right>", function()
+  tabufline.move_buf(1)
+end, { desc = "buffer move to right" })
+
 map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tab last tab" })
 map("n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tab first tab" })
 
