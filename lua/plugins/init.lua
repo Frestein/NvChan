@@ -74,6 +74,7 @@ return {
       { "hrsh7th/cmp-nvim-lua", url = "https://github.com/iguanacucumber/mag-nvim-lua" },
       { "hrsh7th/cmp-buffer", url = "https://github.com/iguanacucumber/mag-buffer" },
       { "hrsh7th/cmp-path" },
+      { "saadparwaiz1/cmp_luasnip" },
     },
     opts = function()
       require "plugins.options.cmp-opts"
