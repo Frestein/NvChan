@@ -535,6 +535,14 @@ return {
   },
 
   {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      dofile(vim.g.base46_cache .. "devicons")
+      return require "plugins.options.web-devicons-opts"
+    end,
+  },
+
+  {
     "stevearc/overseer.nvim",
     enabled = false,
     keys = {
