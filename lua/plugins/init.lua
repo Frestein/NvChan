@@ -98,6 +98,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     enabled = false,
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     opts = require "plugins.options.tree-opts",
   },
 
