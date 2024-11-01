@@ -1,125 +1,15 @@
 -- vim:fileencoding=utf-8:foldmethod=marker
 
 local statusline = require "statusline"
-
-math.randomseed(os.time())
-
-local header = {}
-
-local headers = {
-  ["default"] = {
-    {
-      "                             ",
-      "⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕",
-      "⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕",
-      "⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱",
-      "⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀",
-      "⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗",
-      "⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕",
-      "⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵",
-      "⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-      "⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿",
-      "⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁",
-      "                             ",
-      "       Hello, master!      ",
-      "                             ",
-    },
-    {
-      "                            ",
-      "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
-      "   ▄▀███▄     ▄██ █████▀    ",
-      "   ██▄▀███▄   ███           ",
-      "   ███  ▀███▄ ███           ",
-      "   ███    ▀██ ███           ",
-      "   ███      ▀ ███           ",
-      "   ▀██ █████▄▀█▀▄██████▄    ",
-      "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
-      "                            ",
-      "     Powered By  eovim    ",
-      "                            ",
-    },
-  },
-  ["halloween"] = {
-    {
-      "                                                                     ",
-      "                                              ,           ^'^  _     ",
-      "                                              )               (_) ^'^",
-      "         _/\\_                    .---------. ((        ^'^          ",
-      "         (('>                    )`'`'`'`'`( ||                 ^'^  ",
-      "    _    /^|                    /`'`'`'`'`'`\\||           ^'^       ",
-      "    =>--/__|m---               /`'`'`'`'`'`'`\\|                     ",
-      "         ^^           ,,,,,,, /`'`'`'`'`'`'`'`\\      ,              ",
-      "                     .-------.`|`````````````|`  .   )               ",
-      "                   / .^. .^. \\|  ,^^, ,^^,  |  / \\ ((              ",
-      "                  /  |_| |_|  \\  |__| |__|  | /,-,\\||              ",
-      '       _         /_____________\\ |")| |  |  |/ |_| \\|              ',
-      "      (\")         |  __   __  |  '==' '=='  /_______\\     _        ",
-      "     (' ')        | /  \\ /  \\ |   _______   |,^, ,^,|    (\")      ",
-      "      \\  \\        | |--| |--| |  ((--.--))  ||_| |_||   (' ')      ",
-      '     _  ^^^ _      | |__| |("| |  ||  |  ||  |,-, ,-,|   /  /        ',
-      "   ,' ',  ,' ',    |           |  ||  |  ||  ||_| |_||   ^^^         ",
-      ".,,|RIP|,.|RIP|,.,,'==========='==''=='==''=='=======',,....,,,,.,ldb",
-      "                                                                     ",
-      "                         👻 Happy Halloween! 🎃                      ",
-      "                                                                     ",
-    },
-  },
-}
-
-local themed_days = {
-  { theme = "new_year", month = 1, day = 1 },
-  { theme = "halloween", month = 10, day = 31 },
-}
-
-local current_date = os.date "*t"
-
-local found_theme = false
-
-for _, themed_day in ipairs(themed_days) do
-  if current_date.month == themed_day.month and current_date.day == themed_day.day then
-    local random_index = math.random(#headers[themed_day.theme])
-    header = headers[themed_day.theme][random_index]
-    found_theme = true
-    break
-  end
-end
-
-if not found_theme then
-  local random_index = math.random(#headers["default"])
-  header = headers["default"][random_index]
-end
+local dashboard = require "dashboard.config"
 
 ---@type ChadrcConfig
 local M = {}
 
 M.nvdash = {
-  header = header,
+  header = dashboard.get_header(),
+  buttons = dashboard.buttons,
   load_on_startup = true,
-  buttons = {
-    { txt = "  Select Session", keys = "Spc q s", cmd = "lua require('persistence').select()" },
-    { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
-    { txt = "  Find Project", keys = "Spc f p", cmd = "Telescope project" },
-    { txt = "  Find Dotfiles", keys = "Spc f D", cmd = "Telescope chezmoi find_files" },
-    { txt = "󱐁  Zoxide List", keys = "Spc f Z", cmd = "Telescope zoxide list" },
-    { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
-    { txt = "  Bookmarks", keys = "Spc f m", cmd = "Telescope marks" },
-    { txt = "  Themes", keys = "Spc t H", cmd = "Telescope themes" },
-    { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
-
-    { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
-
-    {
-      txt = function()
-        local stats = require("lazy").stats()
-        local ms = math.floor(stats.startuptime) .. " ms"
-        return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
-      end,
-      hl = "NvDashFooter",
-      no_gap = true,
-    },
-
-    { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
-  },
 }
 
 M.ui = {
