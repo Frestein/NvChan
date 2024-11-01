@@ -164,6 +164,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
       { mode = { "n" }, "<leader>ff", desc = "telescope find files" },
