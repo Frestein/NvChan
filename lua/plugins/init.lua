@@ -372,8 +372,9 @@ return {
       { mode = { "n" }, "<leader>xq", desc = "trouble toggle quickfix list" },
       { mode = { "n" }, "<leader>xs", desc = "trouble toggle document symbols" },
     },
-    config = function()
-      require("trouble").setup {}
+    opts = require "plugins.options.trouble-opts",
+    config = function(_, opts)
+      require("trouble").setup(opts)
       require "plugins.mappings.trouble-keys"
 
       dofile(vim.g.base46_cache .. "trouble")
