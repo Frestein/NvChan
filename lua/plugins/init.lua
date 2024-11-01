@@ -69,14 +69,26 @@ return {
       { "hrsh7th/cmp-nvim-lsp", url = "https://github.com/iguanacucumber/mag-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua", url = "https://github.com/iguanacucumber/mag-nvim-lua" },
       { "hrsh7th/cmp-buffer", url = "https://github.com/iguanacucumber/mag-buffer" },
-      -- { "hrsh7th/cmp-cmdline", url = "https://github.com/iguanacucumber/mag-cmdline" },
       { "hrsh7th/cmp-path" },
     },
     opts = function()
       require "plugins.options.cmp-opts"
     end,
-    config = function(_, opts)
-      require("cmp").setup(opts)
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = "rafamadriz/friendly-snippets",
+    config = function()
+      require "plugins.configs.luasnip-conf"
+    end,
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require "plugins.configs.autopairs-conf"
     end,
   },
 
