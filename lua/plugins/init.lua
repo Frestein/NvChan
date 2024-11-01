@@ -11,6 +11,7 @@ return {
   {
     "williamboman/mason.nvim",
     enabled = false,
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     keys = {
       { mode = { "n" }, "<leader>mm", desc = "mason open home" },
       { mode = { "n" }, "<leader>mi", desc = "mason install all packages" },
