@@ -1,9 +1,9 @@
-local lsplines = require "lsp_lines"
+local lsp_lines = require "lsp_lines"
 
 local autocmd = vim.api.nvim_create_autocmd
 local diag_conf = vim.diagnostic.config
 
-lsplines.setup()
+lsp_lines.setup()
 
 diag_conf({
   virtual_text = true,

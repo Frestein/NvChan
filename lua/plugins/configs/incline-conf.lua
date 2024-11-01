@@ -1,7 +1,7 @@
 local devicons = require "nvim-web-devicons"
-local helpers = require "incline.helpers"
+local incline = require "incline"
 
-require("incline").setup {
+local modules = {
   render = function(props)
     local function get_git_diff()
       local icons = { added = "", changed = "", removed = "" }
@@ -73,3 +73,5 @@ require("incline").setup {
     }
   end,
 }
+
+incline.setup(modules)
