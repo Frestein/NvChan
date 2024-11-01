@@ -305,6 +305,7 @@ M.base46 = {
   integrations = {
     "notify",
     "neogit",
+    "diffview",
     "trouble",
     "todo",
   },

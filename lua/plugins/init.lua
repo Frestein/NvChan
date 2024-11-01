@@ -281,12 +281,6 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
-    dependencies = {
-      {
-        "sindrets/diffview.nvim",
-        opts = {},
-      },
-    },
     opts = require "plugins.options.gitsigns-opts",
   },
 
@@ -305,6 +299,15 @@ return {
 
       dofile(vim.g.base46_cache .. "git")
       dofile(vim.g.base46_cache .. "neogit")
+    end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    config = function(_, opts)
+      require("diffview").setup(opts)
+
+      dofile(vim.g.base46_cache .. "diffview")
     end,
   },
 
@@ -348,8 +351,9 @@ return {
     },
     config = function()
       require("trouble").setup {}
-      dofile(vim.g.base46_cache .. "trouble")
       require "plugins.mappings.trouble-keys"
+
+      dofile(vim.g.base46_cache .. "trouble")
     end,
   },
 
@@ -365,8 +369,9 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     config = function(_, opts)
       require("todo-comments").setup(opts)
-      dofile(vim.g.base46_cache .. "todo")
       require "plugins.mappings.todo-comments-keys"
+
+      dofile(vim.g.base46_cache .. "todo")
     end,
   },
 
