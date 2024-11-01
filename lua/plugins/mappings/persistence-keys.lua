@@ -12,7 +12,6 @@ end
 
 -- @param save_session boolean Indicates whether to save the session before quitting.
 local function quit_all(save_session)
-  close_plugin("neominimap", "off")
   close_plugin("aerial", "close_all")
 
   if not save_session then

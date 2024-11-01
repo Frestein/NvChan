@@ -493,33 +493,6 @@ return {
   },
 
   {
-    "Isrothy/neominimap.nvim",
-    version = "*",
-    keys = {
-      { mode = { "n" }, "<leader>nm", desc = "minimap toggle global minimap" },
-      { mode = { "n" }, "<leader>nr", desc = "minimap refresh global minimap" },
-      { mode = { "n" }, "<leader>nw", desc = "minimap toggle minimap for current window" },
-      { mode = { "n" }, "<leader>nt", desc = "minimap toggle minimap for current tab" },
-      { mode = { "n" }, "<leader>nb", desc = "minimap toggle minimap for current buffer" },
-      { mode = { "n" }, "<leader>nf", desc = "minimap switch focus on minimap" },
-    },
-    init = function()
-      vim.g.neominimap = {
-        layout = "split",
-        split = {
-          close_if_last_window = true,
-        },
-        search = {
-          enabled = true,
-        },
-      }
-    end,
-    config = function()
-      require "plugins.mappings.neominimap-keys"
-    end,
-  },
-
-  {
     "stevearc/aerial.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
