@@ -1,4 +1,7 @@
-local opts = require "nvchad.configs.treesitter"
+pcall(function()
+  dofile(vim.g.base46_cache .. "syntax")
+  dofile(vim.g.base46_cache .. "treesitter")
+end)
 
 ---@type string
 local xdg_config = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
@@ -22,40 +25,49 @@ vim.filetype.add {
   },
 }
 
-opts.ensure_installed = {
-  "bash",
-  "c",
-  "css",
-  "desktop",
-  "diff",
-  "dockerfile",
-  "git_config",
-  "git_rebase",
-  "gitattributes",
-  "gitcommit",
-  "gitignore",
-  "go",
-  "gomod",
-  "gosum",
-  "gowork",
-  "html",
-  "ini",
-  "json",
-  "json5",
-  "jsonc",
-  "lua",
-  "luadoc",
-  "luap",
-  "markdown",
-  "markdown_inline",
-  "norg",
-  "python",
-  "regex",
-  "toml",
-  "vim",
-  "vimdoc",
-  "xml",
-  "yaml",
+local opts = {
+  ensure_installed = {
+    "bash",
+    "c",
+    "css",
+    "desktop",
+    "diff",
+    "dockerfile",
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+    "go",
+    "gomod",
+    "gosum",
+    "gowork",
+    "html",
+    "ini",
+    "json",
+    "json5",
+    "jsonc",
+    "lua",
+    "luadoc",
+    "luap",
+    "markdown",
+    "markdown_inline",
+    "norg",
+    "python",
+    "regex",
+    "toml",
+    "vim",
+    "vimdoc",
+    "xml",
+    "yaml",
+  },
+
+  highlight = {
+    enable = true,
+    use_languagetree = true,
+  },
+
+  indent = { enable = true },
 }
 
 local function add(lang)
