@@ -131,6 +131,14 @@ return {
   },
 
   {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "User FilePost",
+    config = function()
+      require "plugins.configs.indent-blankline-conf"
+    end,
+  },
+
+  {
     "~whynothugo/lsp_lines.nvim",
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = "LspAttach",
