@@ -1,4 +1,21 @@
 return {
+  "nvim-lua/plenary.nvim",
+
+  {
+    "nvchad/ui",
+    config = function()
+      require "nvchad"
+    end,
+  },
+
+  {
+    "nvchad/base46",
+    lazy = true,
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+  },
+
   {
     "Wansmer/langmapper.nvim",
     lazy = false,
@@ -39,7 +56,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
     config = function()
-      require("plugins.configs.lspconfig-conf")
+      require "plugins.configs.lspconfig-conf"
     end,
   },
 
@@ -74,8 +91,8 @@ return {
       { "hrsh7th/cmp-nvim-lsp", url = "https://github.com/iguanacucumber/mag-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua", url = "https://github.com/iguanacucumber/mag-nvim-lua" },
       { "hrsh7th/cmp-buffer", url = "https://github.com/iguanacucumber/mag-buffer" },
-      { "hrsh7th/cmp-path" },
-      { "saadparwaiz1/cmp_luasnip" },
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       require "plugins.options.cmp-opts"
