@@ -72,7 +72,6 @@ M.ui = {
   },
 
   cmp = {
-    --- @diagnostic disable-next-line: assign-type-mismatch
     style = "default",
     lspkind_text = false,
   },
