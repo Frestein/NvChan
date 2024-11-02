@@ -1,6 +1,44 @@
-require("nvchad.configs.lspconfig").defaults()
+local lspconfig = require "lspconfig"
+local schemastore = require "schemastore"
 
-local defaults = require "nvchad.configs.lspconfig"
+local M = {}
+
+M.diagnostic_config = function()
+  local x = vim.diagnostic.severity
+
+  vim.diagnostic.config {
+    virtual_text = { prefix = "" },
+    signs = { text = { [x.ERROR] = "󰅙", [x.WARN] = "", [x.INFO] = "󰋼", [x.HINT] = "󰌵" } },
+    underline = true,
+    float = { border = "single" },
+  }
+end
+
+M.on_init = function(client, _)
+  if client.supports_method "textDocument/semanticTokens" then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
+end
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+M.capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
 
 local function get_filetypes(command)
   local filetypes = {}
@@ -23,8 +61,7 @@ local function get_filetypes(command)
   return filetypes
 end
 
-local lspconfig = require "lspconfig"
-local servers = {
+M.servers = {
   html = {},
   cssls = {},
   bashls = {},
@@ -34,7 +71,7 @@ local servers = {
     -- lazy-load schemastore when needed
     on_new_config = function(new_config)
       new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-      vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+      vim.list_extend(new_config.settings.json.schemas, schemastore.json.schemas())
     end,
     settings = {
       json = {
@@ -58,7 +95,7 @@ local servers = {
     -- lazy-load schemastore when needed
     on_new_config = function(new_config)
       new_config.settings.yaml.schemas =
-        vim.tbl_deep_extend("force", new_config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
+        vim.tbl_deep_extend("force", new_config.settings.yaml.schemas or {}, schemastore.yaml.schemas())
     end,
     settings = {
       redhat = { telemetry = { enabled = false } },
@@ -175,13 +212,4 @@ local servers = {
   },
 }
 
-for name, opts in pairs(servers) do
-  opts.on_init = defaults.on_init
-  opts.capabilities = defaults.capabilities
-
-  opts.on_attach = function(_, bufnr)
-    require("plugins.mappings.lspconfig-keys").on_attach(bufnr)
-  end
-
-  require("lspconfig")[name].setup(opts)
-end
+return M
