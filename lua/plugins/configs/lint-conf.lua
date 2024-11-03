@@ -1,4 +1,5 @@
 local lint = require "lint"
+local opts = require "plugins.options.lint-opts"
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
@@ -53,22 +54,13 @@ local function setup_linting()
   end
 end
 
-lint.linters_by_ft = {
-  lua = { "selene" },
-  python = { "ruff" },
-  yaml = { "yamllint" },
-  bash = { "shellharden", "shellcheck" },
-  ["yaml.ansible"] = { "ansible_lint" },
-  dockerfile = { "hadolint" },
-  go = { "golangcilint" },
-  gomod = { "golangcilint" },
-}
+lint.linters_by_ft = opts.linters_by_ft
 
 local lint_augroup = augroup("nvim_lint", { clear = true })
 
 -- FIX:: Disable the linter if the configuration for Selene is not found,
 -- and ensure the notification about the missing config is shown only once.
-autocmd({ "LspAttach", "BufEnter", "TextChanged" }, {
+autocmd(opts.events, {
   group = lint_augroup,
   callback = function()
     local clients = vim.lsp.get_clients()
