@@ -1,4 +1,4 @@
-local base30 = require("base46").get_theme_tb "base_30"
+local colors = dofile(vim.g.base46_cache .. "colors")
 
 local opts = {
   keymaps = {
@@ -7,7 +7,7 @@ local opts = {
     clear_suggestion = "<C-c>",
   },
   color = {
-    suggestion_color = base30.light_grey,
+    suggestion_color = colors.light_grey,
   },
   log_level = "off",
 }

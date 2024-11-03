@@ -15,16 +15,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_options = require "plugins.options.lazy-opts"
+local lazyopts = require "plugins.options.lazy-opts"
 
 -- Setup lazy.nvim
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_options)
+require("lazy").setup({ {
+  import = "plugins",
+} }, lazyopts)

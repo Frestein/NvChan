@@ -29,8 +29,8 @@ function M.trouble_statusline()
   elseif symbols and symbols.has() then
     local statusline_symbols = symbols.get()
 
-    local base30 = require("base46").get_theme_tb "base_30"
-    vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = base30.light_grey, bg = base30.black })
+    local colors = dofile(vim.g.base46_cache .. "colors")
+    vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = colors.light_grey, bg = colors.black })
 
     return " " .. statusline_symbols
   else
@@ -55,8 +55,8 @@ function M.trouble_file()
       if symbols and symbols.has() then
         statusline_symbols = symbols.get()
 
-        local base30 = require("base46").get_theme_tb "base_30"
-        vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = base30.light_grey, bg = base30.one_bg })
+        local colors = dofile(vim.g.base46_cache .. "colors")
+        vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = colors.light_grey, bg = colors.one_bg })
 
         return { icon, name, statusline_symbols }
       else

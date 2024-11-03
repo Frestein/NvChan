@@ -1,10 +1,10 @@
-local base30 = require("base46").get_theme_tb "base_30"
+local colors = dofile(vim.g.base46_cache .. "colors")
 
 local opts = {
   dimming = {
     alpha = 1.0,
-    color = { base30.grey_fg },
-    term_bg = base30.black,
+    color = { colors.grey_fg },
+    term_bg = colors.black,
   },
 }
 

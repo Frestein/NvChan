@@ -1,8 +1,8 @@
-local base30 = require("base46").get_theme_tb "base_30"
+local colors = dofile(vim.g.base46_cache .. "colors")
 
 local opts = {
   hi = {
-    fg = base30.line,
+    fg = colors.line,
   },
 }
 
