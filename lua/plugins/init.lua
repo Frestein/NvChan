@@ -28,21 +28,6 @@ return {
   },
 
   {
-    "williamboman/mason.nvim",
-    enabled = false,
-    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-    keys = {
-      { mode = { "n" }, "<leader>mm", desc = "mason open home" },
-      { mode = { "n" }, "<leader>mi", desc = "mason install all packages" },
-      { mode = { "n" }, "<leader>mu", desc = "mason update packages" },
-    },
-    config = function()
-      require "plugins.configs.mason-conf"
-      require "plugins.mappings.mason-keys"
-    end,
-  },
-
-  {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     keys = {

@@ -77,10 +77,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [Wansmer/symbol-usage.nvim](https://dotfyle.com/plugins/Wansmer/symbol-usage.nvim)
 - [aznhe21/actions-preview.nvim](https://dotfyle.com/plugins/aznhe21/actions-preview.nvim)
 
-### lsp-installer
-
-- [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim) (disabled)
-
 ### motion
 
 - [folke/flash.nvim](https://dotfyle.com/plugins/folke/flash.nvim)

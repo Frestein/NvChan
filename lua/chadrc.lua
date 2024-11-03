@@ -197,7 +197,6 @@ M.base46 = {
     "devicons",
     "diffview",
     "git",
-    "mason",
     "neogit",
     "notify",
     "nvcheatsheet",
