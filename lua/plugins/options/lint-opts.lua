@@ -6,13 +6,13 @@ return {
     "TextChanged",
   },
   linters_by_ft = {
-    lua = { "selene" },
-    python = { "ruff" },
-    yaml = { "yamllint" },
-    bash = { "shellharden", "shellcheck" },
     ["yaml.ansible"] = { "ansible_lint" },
+    bash = { "shellharden", "shellcheck" },
     dockerfile = { "hadolint" },
     go = { "golangcilint" },
     gomod = { "golangcilint" },
+    lua = { "selene" },
+    python = { "ruff" },
+    yaml = { "yamllint" },
   },
 }
