@@ -164,7 +164,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### colorscheme
 
-- [NvChad/base46](https://github.com/NvChad/base46)
+- [NvChad/base46](https://dotfyle.com/plugins/NvChad/base46)
 
 ### comment
 
