@@ -215,6 +215,23 @@ M.base46 = {
   transparency = false,
 }
 
+M.cheatsheet = {
+  theme = "simple",
+  excluded_groups = {
+    ":help (i)",
+    ":help",
+    "LM (x)",
+    "LSP (v)",
+    "Nvim",
+    "Opens",
+    "autopairs",
+    "general (i)",
+    "motion (x)",
+    "scroll (v)",
+    "terminal (t)",
+  },
+}
+
 M.lsp = {
   signature = false,
 }
