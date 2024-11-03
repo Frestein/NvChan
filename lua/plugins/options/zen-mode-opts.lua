@@ -1,9 +1,7 @@
-local opts = {
+return {
   plugins = {
     options = {
       laststatus = 1,
     },
   },
 }
-
-return opts

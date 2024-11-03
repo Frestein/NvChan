@@ -1,17 +1,8 @@
-local opts = {
+return {
   defaults = { lazy = true },
   checker = { enabled = true },
   install = { colorscheme = { "nvchad" } },
-
-  ui = {
-    icons = {
-      ft = "",
-      lazy = "󰂠 ",
-      loaded = "",
-      not_loaded = "",
-    },
-  },
-
+  ui = { icons = { ft = "", lazy = "󰂠 ", loaded = "", not_loaded = "" } },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -46,5 +37,3 @@ local opts = {
     },
   },
 }
-
-return opts

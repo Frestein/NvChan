@@ -1,6 +1,6 @@
 local colors = dofile(vim.g.base46_cache .. "colors")
 
-local opts = {
+return {
   keymaps = {
     accept_suggestion = "<C-f>",
     accept_word = "<C-w>",
@@ -11,5 +11,3 @@ local opts = {
   },
   log_level = "off",
 }
-
-return opts

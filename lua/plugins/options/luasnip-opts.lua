@@ -1,6 +1,4 @@
-local opts = {
+return {
   history = true,
   updateevents = "TextChanged,TextChangedI",
 }
-
-return opts

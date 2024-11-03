@@ -1,4 +1,4 @@
-local opts = {
+return {
   override = {
     default_icon = { icon = "󰈚", name = "Default" },
     js = { icon = "󰌞", name = "js" },
@@ -7,5 +7,3 @@ local opts = {
     ["robots.txt"] = { icon = "󰚩", name = "robots" },
   },
 }
-
-return opts

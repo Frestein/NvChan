@@ -1,4 +1,4 @@
-local opts = {
+return {
   easing = "quadratic",
   pre_hook = function(info)
     if info == "cursorline" then
@@ -11,5 +11,3 @@ local opts = {
     end
   end,
 }
-
-return opts

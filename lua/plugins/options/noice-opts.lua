@@ -1,4 +1,4 @@
-local opts = {
+return {
   lsp = {
     progress = {
       throttle = 1000 / 30,
@@ -15,7 +15,7 @@ local opts = {
           max_width = 65,
           max_height = 20,
         },
-      }
+      },
     },
   },
   presets = {
@@ -33,9 +33,7 @@ local opts = {
     hover = {
       size = {
         max_width = 80,
-      }
-    }
+      },
+    },
   },
 }
-
-return opts

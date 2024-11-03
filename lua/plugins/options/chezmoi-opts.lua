@@ -1,4 +1,4 @@
-local opts = {
+return {
   edit = {
     watch = true,
   },
@@ -7,5 +7,3 @@ local opts = {
     on_apply = false,
   },
 }
-
-return opts

@@ -1,4 +1,4 @@
-local opts = {
+return {
   debounce_delay = 30000,
   callbacks = {
     before_saving = function()
@@ -24,5 +24,3 @@ local opts = {
     end,
   },
 }
-
-return opts

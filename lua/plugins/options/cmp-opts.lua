@@ -2,7 +2,7 @@ dofile(vim.g.base46_cache .. "cmp")
 
 local cmp = require "cmp"
 
-local opts = {
+return {
   completion = { completeopt = "menu,menuone" },
 
   snippet = {
@@ -53,5 +53,3 @@ local opts = {
     { name = "path" },
   },
 }
-
-return opts

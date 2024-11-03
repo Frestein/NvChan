@@ -1,7 +1,5 @@
-local options = {
+return {
   preview = {
     type = "split",
   },
 }
-
-return options

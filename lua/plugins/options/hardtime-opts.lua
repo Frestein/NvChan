@@ -1,4 +1,4 @@
-local opts = {
+return {
   restricted_keys = {
     ["j"] = { "x" },
     ["k"] = { "x" },
@@ -6,5 +6,3 @@ local opts = {
     ["l"] = { "x" },
   },
 }
-
-return opts

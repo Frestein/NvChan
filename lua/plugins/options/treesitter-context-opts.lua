@@ -1,4 +1,4 @@
-local opts = {
+return {
   throttle = true,
   max_lines = 0,
   patterns = {
@@ -9,5 +9,3 @@ local opts = {
     },
   },
 }
-
-return opts
