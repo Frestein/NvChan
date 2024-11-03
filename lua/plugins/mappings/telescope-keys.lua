@@ -15,7 +15,12 @@ local keymaps = {
   ["<leader>fz"] = { func = telescope_builtin.current_buffer_fuzzy_find, desc = "telescope find in current buffer" },
   ["<leader>fd"] = { func = telescope_builtin.diagnostics, desc = "telescope find diagnostics" },
   ["<leader>ft"] = { func = telescope.extensions.terms.terms, desc = "telescope find terms" },
-  ["<leader>th"] = { func = telescope.extensions.themes.themes, desc = "telescope nvchad themes" },
+  ["<leader>th"] = {
+    func = function()
+      require("nvchad.themes").open { style = "bordered", border = true }
+    end,
+    desc = "telescope nvchad themes",
+  },
 }
 
 set_keymaps(map, keymaps)

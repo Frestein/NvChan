@@ -16,6 +16,8 @@ return {
     end,
   },
 
+  "nvchad/volt",
+
   {
     "Wansmer/langmapper.nvim",
     lazy = false,
