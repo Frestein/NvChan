@@ -27,6 +27,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [echasnovski/mini.move](https://dotfyle.com/plugins/echasnovski/mini.move)
 - [okuuva/auto-save.nvim](https://dotfyle.com/plugins/okuuva/auto-save.nvim)
 - [debugloop/telescope-undo.nvim](https://dotfyle.com/plugins/debugloop/telescope-undo.nvim)
+- [tzachar/highlight-undo.nvim](https://dotfyle.com/plugins/tzachar/highlight-undo.nvim)
 - [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
 - [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
 - [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
@@ -36,9 +37,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### file-explorer
 
 - [echasnovski/mini.files](https://dotfyle.com/plugins/echasnovski/mini.files)
-- [stevearc/oil.nvim](https://dotfyle.com/plugins/stevearc/oil.nvim) (disabled)
-- [mikavilpas/yazi.nvim](https://dotfyle.com/plugins/mikavilpas/yazi.nvim) (disabled)
-- [nvim-tree/nvim-tree.lua](https://dotfyle.com/plugins/nvim-tree/nvim-tree.lua) (disabled)
 
 ### code-runner
 
@@ -69,13 +67,13 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### lsp
 
-- [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
 - [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 - [zeioth/garbage-day.nvim](https://dotfyle.com/plugins/zeioth/garbage-day.nvim)
 - [stevearc/aerial.nvim](https://dotfyle.com/plugins/stevearc/aerial.nvim)
 - [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
 - [Wansmer/symbol-usage.nvim](https://dotfyle.com/plugins/Wansmer/symbol-usage.nvim)
 - [aznhe21/actions-preview.nvim](https://dotfyle.com/plugins/aznhe21/actions-preview.nvim)
+- [b0o/SchemaStore.nvim](https://dotfyle.com/plugins/b0o/SchemaStore.nvim)
 
 ### motion
 
@@ -92,8 +90,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### ai
 
 - [supermaven-inc/supermaven-nvim](https://dotfyle.com/plugins/supermaven-inc/supermaven-nvim)
-- [Exafunction/codeium.nvim](https://dotfyle.com/plugins/Exafunction/codeium.nvim) (disabled)
-- [monkoose/neocodeium](https://dotfyle.com/plugins/monkoose/neocodeium) (disabled)
 
 ### note-taking
 
@@ -116,7 +112,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
 - [NeogitOrg/neogit](https://dotfyle.com/plugins/NeogitOrg/neogit)
 - [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
-- [SirZenith/oil-vcs-status](https://github.com/SirZenith/oil-vcs-status) (disabled)
 
 ### diagnostics
 
@@ -166,15 +161,10 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### color
 
 - [folke/twilight.nvim](https://dotfyle.com/plugins/folke/twilight.nvim)
-- [NvChad/nvim-colorizer.lua](https://dotfyle.com/plugins/NvChad/nvim-colorizer.lua)
 
 ### colorscheme
 
 - [NvChad/base46](https://github.com/NvChad/base46)
-
-### ui
-
-- [NvChad/ui](https://github.com/NvChad/ui)
 
 ### comment
 
@@ -200,13 +190,14 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### utility
 
+- [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
+- [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
+- [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
+- [NvChad/ui](https://dotfyle.com/plugins/NvChad/ui)
+- [NvChad/volt](https://dotfyle.com/plugins/NvChad/volt)
 - [michaelrommel/nvim-silicon](https://dotfyle.com/plugins/michaelrommel/nvim-silicon)
 - [xvzc/chezmoi.nvim](https://dotfyle.com/plugins/xvzc/chezmoi.nvim)
 - [alker0/chezmoi.vim](https://github.com/alker0/chezmoi.vim)
-- [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
-- [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
-- [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
-- [Isrothy/neominimap.nvim](https://dotfyle.com/plugins/Isrothy/neominimap.nvim)
 - [echasnovski/mini.extra](https://dotfyle.com/plugins/echasnovski/mini.extra) (disabled)
 
 ### fun
@@ -262,5 +253,3 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - ruff_format
 - black
 - taplo
-
-NvChan is based on [NvChad](https://github.com/NvChad/NvChad).

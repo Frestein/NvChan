@@ -200,7 +200,6 @@ M.base46 = {
     "neogit",
     "notify",
     "nvcheatsheet",
-    "nvimtree",
     "statusline",
     "syntax",
     "tbline",
