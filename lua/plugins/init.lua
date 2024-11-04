@@ -329,10 +329,9 @@ return {
     opts = require "plugins.options.neogit-opts",
     config = function(_, opts)
       require("neogit").setup(opts)
-      require "plugins.mappings.neogit-keys"
-
       dofile(vim.g.base46_cache .. "git")
       dofile(vim.g.base46_cache .. "neogit")
+      require "plugins.mappings.neogit-keys"
     end,
   },
 
