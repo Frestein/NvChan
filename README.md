@@ -52,10 +52,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
 - [tsakirist/telescope-lazy.nvim](https://dotfyle.com/plugins/tsakirist/telescope-lazy.nvim)
 
-### project
-
-- [nvim-telescope/telescope-project.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope-project.nvim)
-
 ### formatting
 
 - [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)

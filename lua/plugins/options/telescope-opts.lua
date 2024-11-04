@@ -24,7 +24,6 @@ return {
     "import",
     "lazy",
     "noice",
-    "project",
     "smart_open",
     "terms",
     "themes",
@@ -52,6 +51,19 @@ return {
     },
     heading = {
       treesitter = true,
+    },
+    zoxide = {
+      mappings = {
+        ["<C-f>"] = {
+          action = function(selection)
+            vim.cmd.cd(selection.path)
+            require("telescope").extensions.smart_open.smart_open {
+              cwd_only = true,
+              filename_first = true,
+            }
+          end,
+        },
+      },
     },
   },
 }

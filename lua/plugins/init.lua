@@ -58,7 +58,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
@@ -175,9 +175,9 @@ return {
       { mode = { "n" }, "<leader>fm", desc = "telescope find marks" },
       { mode = { "n" }, "<leader>fw", desc = "telescope live grep" },
       { mode = { "n" }, "<leader>fb", desc = "telescope find buffers" },
-      { mode = { "n" }, "<leader>fH", desc = "telescope help page" },
+      { mode = { "n" }, "<leader>fh", desc = "telescope help page" },
       -- spellchecker: disable-line
-      { mode = { "n" }, "<leader>fo", desc = "telescope find oldfiles" },
+      { mode = { "n" }, "<leader>fr", desc = "telescope recent files" },
       { mode = { "n" }, "<leader>fz", desc = "telescope find in current buffer" },
       { mode = { "n" }, "<leader>fd", desc = "telescope find diagnostics" },
       { mode = { "n" }, "<leader>ft", desc = "telescope find terms" },
@@ -240,19 +240,6 @@ return {
   },
 
   {
-    "nvim-telescope/telescope-project.nvim",
-    dependencies = "nvim-telescope/telescope.nvim",
-    keys = {
-      {
-        mode = { "n" },
-        "<leader>fp",
-        "<cmd>Telescope project<cr>",
-        desc = "telescope find projects",
-      },
-    },
-  },
-
-  {
     "piersolenski/telescope-import.nvim",
     dependencies = "nvim-telescope/telescope.nvim",
     keys = {
@@ -271,7 +258,7 @@ return {
     keys = {
       {
         mode = { "n" },
-        "<leader>fh",
+        "<leader>fH",
         "<cmd>Telescope heading<cr>",
         desc = "telescope heading list",
       },
@@ -284,7 +271,7 @@ return {
     keys = {
       {
         mode = { "n" },
-        "<leader>fZ",
+        "<leader>zl",
         "<cmd>Telescope zoxide list<cr>",
         desc = "telescope zoxide list",
       },
@@ -721,7 +708,7 @@ return {
       { mode = { "n" }, "<leader>fw", desc = "MiniPick grep files" },
       { mode = { "n" }, "<leader>fW", desc = "MiniPick live grep files" },
       { mode = { "n" }, "<leader>fb", desc = "MiniPick find buffers" },
-      { mode = { "n" }, "<leader>fH", desc = "MiniPick find help" },
+      { mode = { "n" }, "<leader>fh", desc = "MiniPick find help" },
       { mode = { "n" }, "<leader>fr", desc = "MiniPick latest picker" },
       { mode = { "n" }, "<leader>fz", desc = "MiniPick buffer lines" },
       { mode = { "n" }, "<leader>fm", desc = "MiniPick marks" },
