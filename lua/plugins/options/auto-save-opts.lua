@@ -1,5 +1,5 @@
 return {
-  debounce_delay = 30000,
+  debounce_delay = 60000,
   callbacks = {
     before_saving = function()
       -- save global autoformat status
