@@ -1,5 +1,8 @@
 return {
   "nvim-lua/plenary.nvim",
+  "nvchad/volt",
+  { "wakatime/vim-wakatime", lazy = false },
+  { "artemave/workspace-diagnostics.nvim", opts = {} },
 
   {
     "nvchad/ui",
@@ -16,8 +19,6 @@ return {
     end,
   },
 
-  "nvchad/volt",
-
   {
     "Wansmer/langmapper.nvim",
     lazy = false,
@@ -29,7 +30,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
+    event = "BufReadPost",
     keys = {
       { mode = { "n", "v" }, "<leader>fc", desc = "code format code" },
     },
@@ -78,7 +79,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     url = "https://github.com/iguanacucumber/magazine.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp", url = "https://github.com/iguanacucumber/mag-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua", url = "https://github.com/iguanacucumber/mag-nvim-lua" },
@@ -272,7 +273,6 @@ return {
         mode = { "n" },
         "<leader>fh",
         "<cmd>Telescope heading<cr>",
-
         desc = "telescope heading list",
       },
     },
@@ -286,7 +286,6 @@ return {
         mode = { "n" },
         "<leader>fZ",
         "<cmd>Telescope zoxide list<cr>",
-
         desc = "telescope zoxide list",
       },
     },
@@ -339,16 +338,15 @@ return {
 
   {
     "sindrets/diffview.nvim",
-    config = function(_, opts)
-      require("diffview").setup(opts)
-
+    opts = function()
       dofile(vim.g.base46_cache .. "diffview")
+      return {}
     end,
   },
 
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    lazy = false,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
@@ -433,13 +431,9 @@ return {
   },
 
   {
-    "wakatime/vim-wakatime",
-    lazy = false,
-  },
-
-  {
     "okuuva/auto-save.nvim",
-    event = { "InsertLeave", "TextChanged" },
+    version = "*",
+    event = "InsertLeave",
     opts = require "plugins.options.auto-save-opts",
   },
 
@@ -484,11 +478,11 @@ return {
   {
     "nvim-neorg/neorg",
     dependencies = {
-      { "nvim-neorg/neorg-telescope" },
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
+      "nvim-neorg/neorg-telescope",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
-    ft = { "norg" },
+    ft = "norg",
     version = "*",
     opts = require "plugins.options.neorg-opts",
     config = function(_, opts)
@@ -671,7 +665,7 @@ return {
   {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = require "plugins.options.garbage-day-opts",
   },
 
@@ -791,11 +785,6 @@ return {
       dofile(vim.g.base46_cache .. "whichkey")
       return {}
     end,
-  },
-
-  {
-    "artemave/workspace-diagnostics.nvim",
-    opts = {},
   },
 
   {
