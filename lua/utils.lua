@@ -23,14 +23,12 @@ end
 -- @return boolean indicating whether the current directory is a Git repository.
 function M.is_git_repo()
   local handle = io.popen "git rev-parse --is-inside-work-tree 2>/dev/null"
-
   if handle then
     local result = handle:read "*a"
     handle:close()
     return result:match "^true" ~= nil
-  else
-    return false
   end
+  return false
 end
 
 -- Helper function to parse output
@@ -54,24 +52,26 @@ function M.new_git_status()
     __index = function(self, key)
       local ignore_proc = vim.system(
         { "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" },
-        {
-          cwd = key,
-          text = true,
-        }
+        { cwd = key, text = true }
       )
-      local tracked_proc = vim.system({ "git", "ls-tree", "HEAD", "--name-only" }, {
-        cwd = key,
-        text = true,
-      })
-      local ret = {
-        ignored = parse_output(ignore_proc),
-        tracked = parse_output(tracked_proc),
-      }
+      local tracked_proc = vim.system({ "git", "ls-tree", "HEAD", "--name-only" }, { cwd = key, text = true })
+      local ret = { ignored = parse_output(ignore_proc), tracked = parse_output(tracked_proc) }
 
       rawset(self, key, ret)
       return ret
     end,
   })
+end
+
+--- Get the current color scheme from the base46 cache.
+-- @return table|nil Returns a table containing colors if the loading is successful.
+function M.get_base46_colors()
+  local success, colors = pcall(dofile, vim.g.base46_cache .. "colors")
+  if not success then
+    vim.notify("Cache file not found. Please restart Neovim.", vim.log.levels.WARN)
+    return nil
+  end
+  return colors
 end
 
 return M

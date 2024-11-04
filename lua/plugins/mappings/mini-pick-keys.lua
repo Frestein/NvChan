@@ -5,7 +5,7 @@ local MiniPick = require "mini.pick"
 local MiniExtra = require "mini.extra"
 
 local function reload_theme(name)
-  require("nvconfig").ui.theme = name
+  require("chadrc").base46.theme = name
   require("base46").load_all_highlights()
   vim.api.nvim_exec_autocmds("User", { pattern = "NvChadThemeReload" })
 end
@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 local selected_theme
 
 hooks.pre_hooks.Themes = function()
-  selected_theme = require("nvconfig").ui.theme
+  selected_theme = require("chadrc").base46.theme
 end
 
 hooks.post_hooks.Themes = function()

@@ -1,3 +1,5 @@
+dofile(vim.g.base46_cache .. "devicons")
+
 return {
   override = {
     default_icon = { icon = "󰈚", name = "Default" },

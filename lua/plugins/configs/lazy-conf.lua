@@ -18,6 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 local lazyopts = require "plugins.options.lazy-opts"
 
 -- Setup lazy.nvim
-require("lazy").setup({ {
-  import = "plugins",
-} }, lazyopts)
+require("lazy").setup({
+  { import = "plugins" },
+}, lazyopts)

@@ -1,3 +1,5 @@
 return {
-  telescope = require "plugins.options.telescope-opts",
+  telescope = function()
+    return require "plugins.options.telescope-opts"
+  end,
 }

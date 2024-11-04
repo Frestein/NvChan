@@ -1,7 +1,13 @@
-local colors = dofile(vim.g.base46_cache .. "colors")
+local colors = require("utils").get_base46_colors()
 
-return {
+local opts = {
   hi = {
-    fg = colors.line,
+    fg = "#1F3442",
   },
 }
+
+if colors then
+  opts.hi.fg = colors.line
+end
+
+return opts

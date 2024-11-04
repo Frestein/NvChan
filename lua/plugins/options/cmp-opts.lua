@@ -2,7 +2,7 @@ dofile(vim.g.base46_cache .. "cmp")
 
 local cmp = require "cmp"
 
-return {
+local opts = {
   completion = { completeopt = "menu,menuone" },
 
   snippet = {
@@ -53,3 +53,5 @@ return {
     { name = "path" },
   },
 }
+
+return vim.tbl_deep_extend("force", opts, require "nvchad.cmp")

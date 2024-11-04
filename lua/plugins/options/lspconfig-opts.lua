@@ -20,7 +20,16 @@ M.on_init = function(client, _)
   end
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local has_blink, blink = pcall(require, "blink.cmp")
+
+M.capabilities = vim.tbl_deep_extend(
+  "force",
+  {},
+  vim.lsp.protocol.make_client_capabilities(),
+  has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+  has_blink and blink.get_lsp_capabilities() or {}
+)
 
 M.capabilities.textDocument.completion.completionItem = {
   documentationFormat = { "markdown", "plaintext" },

@@ -82,7 +82,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
-      require "plugins.options.cmp-opts"
+      return require "plugins.options.cmp-opts"
     end,
   },
 
@@ -177,9 +177,12 @@ return {
       { mode = { "n" }, "<leader>ft", desc = "telescope find terms" },
       { mode = { "n" }, "<leader>th", desc = "telescope nvchad themes" },
     },
-    opts = require "plugins.options.telescope-opts",
+    opts = function()
+      return require "plugins.options.telescope-opts"
+    end,
     config = function(_, opts)
       require("telescope").setup(opts)
+      dofile(vim.g.base46_cache .. "telescope")
       require "plugins.mappings.telescope-keys"
     end,
   },
@@ -198,7 +201,7 @@ return {
     keys = {
       {
         "<leader><leader>",
-        require("plugins.mappings.telescope-extensions-keys").smart,
+        "<cmd>Telescope smart_open<cr>",
         desc = "telescope smart open",
       },
     },
@@ -211,7 +214,7 @@ return {
       {
         mode = { "n" },
         "<leader>fW",
-        require("plugins.mappings.telescope-extensions-keys").sg,
+        "<cmd>Telescope ast_grep<cr>",
         desc = "telescope live grep (sg)",
       },
     },
@@ -224,7 +227,7 @@ return {
       {
         mode = { "n" },
         "<leader>fP",
-        require("plugins.mappings.telescope-extensions-keys").lazy,
+        "<cmd>Telescope lazy<cr>",
         desc = "telescope installed plugins",
       },
     },
@@ -237,7 +240,7 @@ return {
       {
         mode = { "n" },
         "<leader>fp",
-        require("plugins.mappings.telescope-extensions-keys").project,
+        "<cmd>Telescope project<cr>",
         desc = "telescope find projects",
       },
     },
@@ -250,7 +253,7 @@ return {
       {
         mode = { "n" },
         "<leader>fi",
-        require("plugins.mappings.telescope-extensions-keys").import,
+        "<cmd>Telescope import<cr>",
         desc = "telescope find imports",
       },
     },
@@ -263,7 +266,8 @@ return {
       {
         mode = { "n" },
         "<leader>fh",
-        require("plugins.mappings.telescope-extensions-keys").heading,
+        "<cmd>Telescope heading<cr>",
+
         desc = "telescope heading list",
       },
     },
@@ -271,14 +275,13 @@ return {
 
   {
     "jvgrootveld/telescope-zoxide",
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" },
-    },
+    dependencies = "nvim-telescope/telescope.nvim",
     keys = {
       {
         mode = { "n" },
         "<leader>fZ",
-        require("plugins.mappings.telescope-extensions-keys").zoxide,
+        "<cmd>Telescope zoxide list<cr>",
+
         desc = "telescope zoxide list",
       },
     },
@@ -291,7 +294,7 @@ return {
       {
         mode = { "n" },
         "<leader>fu",
-        require("plugins.mappings.telescope-extensions-keys").undo,
+        "<cmd>Telescope undo<cr>",
         desc = "telescope find undo",
       },
     },
@@ -306,7 +309,9 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
-    opts = require "plugins.options.gitsigns-opts",
+    opts = function()
+      return require "plugins.options.gitsigns-opts"
+    end,
   },
 
   {
@@ -377,9 +382,8 @@ return {
     opts = require "plugins.options.trouble-opts",
     config = function(_, opts)
       require("trouble").setup(opts)
-      require "plugins.mappings.trouble-keys"
-
       dofile(vim.g.base46_cache .. "trouble")
+      require "plugins.mappings.trouble-keys"
     end,
   },
 
@@ -395,9 +399,8 @@ return {
     dependencies = "nvim-telescope/telescope.nvim",
     config = function(_, opts)
       require("todo-comments").setup(opts)
-      require "plugins.mappings.todo-comments-keys"
-
       dofile(vim.g.base46_cache .. "todo")
+      require "plugins.mappings.todo-comments-keys"
     end,
   },
 
@@ -438,7 +441,7 @@ return {
   {
     "xvzc/chezmoi.nvim",
     dependencies = {
-      { "nvim-lua/plenary.nvim" },
+      "nvim-lua/plenary.nvim",
       {
         "alker0/chezmoi.vim",
         init = function()
@@ -450,7 +453,7 @@ return {
       {
         mode = { "n" },
         "<leader>fD",
-        require("plugins.mappings.telescope-extensions-keys").chezmoi,
+        "<cmd>Telescope chezmoi find_files<cr>",
         desc = "telescope find dotfiles",
       },
     },
@@ -539,7 +542,6 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     opts = function()
-      dofile(vim.g.base46_cache .. "devicons")
       return require "plugins.options.web-devicons-opts"
     end,
   },
