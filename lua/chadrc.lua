@@ -17,10 +17,8 @@ M.ui = {
     theme = "minimal",
     separator_style = "block",
     modules = {
-      trouble_statusline = statusline.trouble_statusline,
-      lazy = function()
-        return "%#LazyUpdates#" .. statusline.lazy()
-      end,
+      trouble = statusline.trouble,
+      lazy = statusline.lazy
     },
     order = {
       "mode",
@@ -29,7 +27,7 @@ M.ui = {
       "git",
       "%=",
       "lsp_msg",
-      "trouble_statusline",
+      "trouble",
       "%=",
       "lsp",
       "cwd",
@@ -129,7 +127,7 @@ M.base46 = {
     -- trouble.nvim {{{
     ["TroubleStatusline1"] = {
       fg = "light_grey",
-      bg = "one_bg",
+      bg = "black",
     },
     ["TroubleSeparatorHighlight"] = {
       fg = "yellow",

@@ -1,8 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local wo = vim.wo
 
-local statusline = require "statusline"
-
 -- user event that loads after UIEnter + only if file buf is there
 autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
@@ -57,11 +55,5 @@ autocmd("BufReadPost", {
     then
       vim.cmd 'normal! g`"'
     end
-  end,
-})
-
-autocmd("LspAttach", {
-  callback = function()
-    statusline.set_lsp_attached(true)
   end,
 })
