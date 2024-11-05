@@ -23,8 +23,10 @@ return {
     "Wansmer/langmapper.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require "plugins.configs.langmapper-conf"
+    opts = require "plugins.options.langmapper-opts",
+    config = function(_, opts)
+      require("langmapper").setup(opts)
+      require("langmapper").hack_get_keymap()
     end,
   },
 

@@ -90,6 +90,20 @@ M.base46 = {
       fg = "light_grey",
       bg = "black",
     },
+    -- foldtext.lua {{{
+    ["FoldedSpace"] = {
+      fg = "NONE",
+      bg = "NONE",
+    },
+    ["FoldedIcon"] = {
+      fg = "NONE",
+    },
+    ["FoldedText"] = {
+      bg = "NONE",
+      fg = "light_grey",
+      italic = true,
+    },
+    -- }}}
     -- lazy.nvim statusline module
     ["LazyUpdates"] = {
       fg = "green",
@@ -134,27 +148,26 @@ M.base46 = {
     -- }}}
     -- symbol-usage.nvim {{{
     ["SymbolUsageRounding"] = {
-      fg = "one_bg",
-      italic = true,
+      fg = "NONE",
     },
     ["SymbolUsageContent"] = {
-      bg = "one_bg",
+      bg = "NONE",
       fg = "light_grey",
       italic = true,
     },
     ["SymbolUsageRef"] = {
       fg = "nord_blue",
-      bg = "one_bg",
+      bg = "NONE",
       italic = true,
     },
     ["SymbolUsageDef"] = {
       fg = "dark_purple",
-      bg = "one_bg",
+      bg = "NONE",
       italic = true,
     },
     ["SymbolUsageImpl"] = {
       fg = "yellow",
-      bg = "one_bg",
+      bg = "NONE",
       italic = true,
     },
     -- }}}

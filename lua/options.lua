@@ -1,72 +1,107 @@
-local opt = vim.opt
-local o = vim.o
 local g = vim.g
 
-o.laststatus = 3
-o.scrolloff = 5
-o.showmode = false
+local function escape(str)
+  local escape_chars = [[;,."|\]]
+  return vim.fn.escape(str, escape_chars)
+end
 
-o.clipboard = "unnamedplus"
-o.cursorline = true
-local cursor_options = {
-  "n-v-c:block",
-  "i-ci-ve:ver25",
-  "r-cr:hor20",
-  "o:hor50",
-  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-  "sm:block-blinkwait175-blinkoff150-blinkon175",
+local en = [[qwertyuiop[]asdfghjkl;zxcvbnm,.]]
+local ru = [[йцукенгшщзхъфывапролджячсмитьбю]]
+local en_shift = [[QWERTYUIOP{}ASDFGHJKL:ZXCVBNM<>]]
+local ru_shift = [[ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЯЧСМИТЬБЮ]]
+local langmap = vim.fn.join({
+  escape(ru_shift) .. ";" .. escape(en_shift),
+  escape(ru) .. ";" .. escape(en),
+}, ",")
+
+local options = {
+  --- UI ---
+  number = true,
+  numberwidth = 2,
+  relativenumber = true,
+  ruler = false,
+  showmode = false,
+  pumblend = 15,
+  laststatus = 3,
+  scrolloff = 5,
+  cursorline = true,
+  signcolumn = "yes",
+  guicursor = table.concat({
+    "n-v-c:block",
+    "i-ci-ve:ver25",
+    "r-cr:hor20",
+    "o:hor50",
+    "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    "sm:block-blinkwait175-blinkoff150-blinkon175",
+  }, ","),
+  cursorlineopt = "both",
+  fillchars = table.concat({
+    "eob: ",
+    "fold: ",
+    "foldopen:",
+    "foldclose:",
+    "foldsep: ", -- or "│" to use bar for show fold area
+  }, ","),
+
+  --- Indents, Spaces, Tabulation ---
+  expandtab = true,
+  smartindent = true,
+  shiftwidth = 2,
+  tabstop = 2,
+  softtabstop = 2,
+
+  --- Search ---
+  ignorecase = true,
+  smartcase = true,
+  hlsearch = true,
+  infercase = true,
+
+  --- Folds ---
+  foldlevelstart = 99,
+  foldlevel = 99,
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldtext = require "modules.foldtext",
+
+  --- Swap ---
+  swapfile = false,
+
+  -- Interval for writing swap file to disk, also used by gitsigns
+  updatetime = 250,
+
+  --- Spell Checking ---
+  spelllang = "en_us",
+  spellfile = os.getenv "HOME" .. "/.config/nvim/spell/en.utf-8.add",
+
+  --- Other ---
+  timeoutlen = 400,
+  clipboard = "unnamedplus",
+  undofile = true,
+  splitbelow = true,
+  splitright = true,
+  mouse = "a",
+  langmap = langmap,
+
+  -- Disable nvim intro
+  shortmess = vim.o.shortmess .. "sI",
+
+  -- Go to previous/next line with h,l,left arrow and right arrow
+  -- when cursor reaches end/beginning of line
+  whichwrap = vim.o.whichwrap .. "<,>,[,],h,l",
 }
-o.guicursor = table.concat(cursor_options, ",")
-o.cursorlineopt = "both"
 
--- Indenting
-o.expandtab = true
-o.shiftwidth = 2
-o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
-
-opt.fillchars = { eob = " " }
-o.ignorecase = true
-o.smartcase = true
-o.mouse = "a"
-
--- Numbers
-o.number = true
-o.numberwidth = 2
-o.relativenumber = true
-o.ruler = false
-
--- disable nvim intro
-opt.shortmess:append "sI"
-
-o.signcolumn = "yes"
-o.splitbelow = true
-o.splitright = true
-o.timeoutlen = 400
-o.undofile = true
-
--- Folds. Start with folds open
-o.foldlevelstart = 99
-o.foldlevel = 99
-
--- Swap
-o.updatetime = 250 -- interval for writing swap file to disk, also used by gitsigns
-o.swapfile = false
-
--- Spell checking
-o.spelllang = "en_us"
-o.spellfile = os.getenv "HOME" .. "/.config/nvim/spell/en.utf-8.add"
-
--- Transparent background
-o.pumblend = 15
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
-
--- disable some default providers
+-- Disable default providers
 g.loaded_node_provider = 0
 g.loaded_python3_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
+
+for option_name, value in pairs(options) do
+  -- To avoid errors on toggle nvim version
+  local ok, _ = pcall(vim.api.nvim_get_option_info2, option_name, {})
+  if ok then
+    vim.o[option_name] = value
+  else
+    vim.notify("Option " .. option_name .. " is not supported", vim.log.levels.WARN)
+  end
+end
