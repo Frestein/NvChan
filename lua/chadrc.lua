@@ -21,15 +21,12 @@ M.ui = {
       lazy = function()
         return "%#LazyUpdates#" .. statusline.lazy()
       end,
-      git_branch = function()
-        return "%#St_gitIcons#" .. statusline.git_branch()
-      end,
     },
     order = {
       "mode",
       "file",
       "lazy",
-      "git_branch",
+      "git",
       "%=",
       "lsp_msg",
       "trouble_statusline",
