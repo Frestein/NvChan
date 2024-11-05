@@ -91,6 +91,16 @@ return {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter-refactor",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    event = "BufReadPost",
+    opts = require "plugins.options.treesitter-refactor-opts",
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     url = "https://github.com/iguanacucumber/magazine.nvim",
     event = "BufReadPost",
