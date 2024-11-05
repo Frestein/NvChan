@@ -3,6 +3,18 @@ return {
   "nvchad/volt",
   { "wakatime/vim-wakatime", lazy = false },
   { "artemave/workspace-diagnostics.nvim", opts = {} },
+  { "Bilal2453/luvit-meta", lazy = true },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    cmd = "LazyDev",
+    opts = {
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 
   {
     "nvchad/ui",
