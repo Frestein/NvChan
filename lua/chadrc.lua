@@ -18,7 +18,7 @@ M.ui = {
     separator_style = "block",
     modules = {
       trouble = statusline.trouble,
-      lazy = statusline.lazy
+      lazy = statusline.lazy,
     },
     order = {
       "mode",
@@ -85,6 +85,11 @@ M.base46 = {
       fg = "light_grey",
       bg = "black",
     },
+    -- noice.nvim {{{
+    ["NoiceLspProgressTitle"] = {
+      fg = { "white", -20 },
+    },
+    -- }}}
     -- foldtext.lua {{{
     ["FoldedSpace"] = {
       fg = "NONE",
