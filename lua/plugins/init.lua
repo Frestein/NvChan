@@ -125,10 +125,10 @@ return {
   },
 
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
+    "echasnovski/mini.pairs",
+    event = "BufReadPre",
     config = function()
-      require "plugins.configs.autopairs-conf"
+      require "plugins.configs.mini-pairs-conf"
     end,
   },
 
