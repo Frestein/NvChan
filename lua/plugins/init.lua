@@ -126,7 +126,7 @@ return {
 
   {
     "echasnovski/mini.pairs",
-    event = "BufReadPre",
+    event = "BufReadPost",
     config = function()
       require "plugins.configs.mini-pairs-conf"
     end,
@@ -419,7 +419,7 @@ return {
 
   {
     "folke/ts-comments.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = {},
   },
 
