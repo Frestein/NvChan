@@ -1,6 +1,6 @@
 local M = {}
 
----@param name string
+--- @param name string
 function M.get_plugin(name)
 	return require("lazy.core.config").spec.plugins[name]
 end
@@ -10,7 +10,7 @@ function M.is_loaded(name)
 	return Config.plugins[name] and Config.plugins[name]._.loaded
 end
 
----@param name string
+--- @param name string
 function M.opts(name)
 	local plugin = M.get_plugin(name)
 	if not plugin then
@@ -23,7 +23,7 @@ end
 --- Sets key mappings for the specified modes.
 --- @param map function The function used to set the key mappings.
 --- @param keymaps table A table containing keys and their parameters (functions and descriptions).
--- Each entry can include:
+--- Each entry can include:
 ---   - `func`: The function to be called when the key is pressed.
 ---   - `desc`: A description of the key.
 ---   - `modes` (optional): A table of modes for the key mapping. If not provided, defaults to normal mode ("n").

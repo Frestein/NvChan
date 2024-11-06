@@ -488,12 +488,8 @@ return {
 		"xvzc/chezmoi.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{
-				"alker0/chezmoi.vim",
-				init = function()
-					vim.g["chezmoi#use_tmp_buffer"] = true
-				end,
-			},
+			"nvim-telescope/telescope.nvim",
+			"alker0/chezmoi.vim",
 		},
 		keys = {
 			{
@@ -503,7 +499,32 @@ return {
 				desc = "telescope find dotfiles",
 			},
 		},
-		opts = require "plugins.options.chezmoi-opts",
+		opts = require "plugins.options.chezmoi-nvim-opts",
+		config = function(_, opts)
+			require("chezmoi").setup(opts)
+		end,
+	},
+
+	{
+		"alker0/chezmoi.vim",
+		lazy = false,
+		opts = require "plugins.options.chezmoi-vim-opts",
+		config = function(_, opts)
+			for key, value in pairs(opts) do
+				vim.g["chezmoi#" .. key] = value
+			end
+
+			vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+				pattern = { os.getenv "HOME" .. "/.local/share/chezmoi/*" },
+				callback = function(ev)
+					local bufnr = ev.buf
+					local edit_watch = function()
+						require("chezmoi.commands.__edit").watch(bufnr)
+					end
+					vim.schedule(edit_watch)
+				end,
+			})
+		end,
 	},
 
 	{
@@ -527,6 +548,7 @@ return {
 		dependencies = {
 			"nvim-neorg/neorg-telescope",
 			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
 		ft = "norg",
