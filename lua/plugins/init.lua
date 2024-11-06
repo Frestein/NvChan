@@ -44,7 +44,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     keys = {
       { mode = { "n", "v" }, "<leader>fc", desc = "code format code" },
     },
@@ -86,14 +86,14 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = require "plugins.options.treesitter-context-opts",
   },
 
   {
     "nvim-treesitter/nvim-treesitter-refactor",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = require "plugins.options.treesitter-refactor-opts",
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
@@ -103,7 +103,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     url = "https://github.com/iguanacucumber/magazine.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp", url = "https://github.com/iguanacucumber/mag-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua", url = "https://github.com/iguanacucumber/mag-nvim-lua" },
@@ -421,7 +421,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
-    event = "BufReadPost",
+    event = "VeryLazy",
     keys = {
       { mode = { "n" }, "<leader>tt", desc = "todo-comments show the todo list" },
       { mode = { "n" }, "<leader>tq", desc = "todo-comments show quickfix" },
@@ -437,7 +437,7 @@ return {
 
   {
     "folke/ts-comments.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {},
   },
 
@@ -614,7 +614,7 @@ return {
 
   {
     "folke/flash.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     -- stylua: ignore
     keys = {
       { mode = { "n", "x", "o" }, "s",      desc = "flash jump" },
@@ -692,7 +692,7 @@ return {
   {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
-    event = "BufReadPost",
+    event = "LspAttach",
     opts = require "plugins.options.garbage-day-opts",
   },
 
@@ -797,7 +797,7 @@ return {
 
   {
     "b0o/incline.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     config = function()
       require "plugins.configs.incline-conf"
     end,
