@@ -670,6 +670,12 @@ return {
   },
 
   {
+    "andrewferrier/debugprint.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  {
     "folke/drop.nvim",
     event = "VimEnter",
     opts = require "plugins.options.drop-opts",
