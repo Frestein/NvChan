@@ -1,6 +1,6 @@
 local M = {}
 
-function M.plain_text(symbol)
+M.plain_text = function(symbol)
   local fragments = {}
 
   -- Indicator that shows if there are any other symbols in the same line
@@ -23,7 +23,7 @@ function M.plain_text(symbol)
   return table.concat(fragments, ", ") .. stacked_functions
 end
 
-function M.plain_text_symbol(symbol)
+M.plain_text_symbol = function(symbol)
   local res = {}
 
   -- Indicator that shows if there are any other symbols in the same line
