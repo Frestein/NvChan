@@ -465,11 +465,15 @@ return {
 	},
 
 	{
-		"aznhe21/actions-preview.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
-		opts = require "plugins.options.actions-preview-opts",
+		"rachartier/tiny-code-action.nvim",
+		event = "LspAttach",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = require "plugins.options.tiny-code-action-opts",
 		config = function(_, opts)
-			require("actions-preview").setup(opts)
+			require("tiny-code-action").setup(opts)
 		end,
 	},
 

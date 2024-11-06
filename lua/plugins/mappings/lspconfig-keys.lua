@@ -2,7 +2,6 @@ local set_keymaps = require("utils").set_keymaps
 local map = require("langmapper").map
 
 local lsp_buf = vim.lsp.buf
-local actions_preview = require "actions-preview"
 
 local function toggle_inlay_hints()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -36,7 +35,7 @@ function M.on_attach(bufnr)
 		["<leader>ca"] = {
 			modes = { "n", "v" },
 			func = function()
-				actions_preview.code_actions()
+				require("tiny-code-action").code_action()
 			end,
 			desc = "LSP code action",
 		},
