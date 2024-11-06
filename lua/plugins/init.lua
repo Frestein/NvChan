@@ -126,10 +126,28 @@ return {
 
   {
     "echasnovski/mini.pairs",
-    event = "BufReadPost",
+    event = "VeryLazy",
+    version = false,
     config = function()
       require "plugins.configs.mini-pairs-conf"
     end,
+  },
+
+  {
+    "echasnovski/mini.surround",
+    event = "VeryLazy",
+    version = false,
+    opts = {
+      mappings = {
+        add = "gsa",
+        delete = "gsd",
+        find = "gsf",
+        find_left = "gsF",
+        highlight = "gsh",
+        replace = "gsr",
+        update_n_lines = "gsn",
+      },
+    },
   },
 
   {
@@ -609,13 +627,6 @@ return {
       require("flash").setup(opts)
       require "plugins.mappings.flash-keys"
     end,
-  },
-
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "BufReadPost",
-    opts = {},
   },
 
   {
