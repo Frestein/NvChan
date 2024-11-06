@@ -418,6 +418,12 @@ return {
   },
 
   {
+    "folke/ts-comments.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  {
     "michaelrommel/nvim-silicon",
     keys = {
       { mode = { "v" }, "<leader>ss", desc = "snapshot screenshot code" },
