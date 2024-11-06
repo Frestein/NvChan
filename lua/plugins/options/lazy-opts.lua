@@ -3,6 +3,13 @@ return {
 	checker = { enabled = true },
 	install = { colorscheme = { "nvchad" } },
 	ui = { icons = { ft = "", lazy = "󰂠 ", loaded = "", not_loaded = "" } },
+	dev = {
+		---@type string | fun(plugin: LazyPlugin): string directory where you store your local plugin projects
+		path = "~/Projects/plugins/nvim/",
+		---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+		patterns = { "Frestein" }, -- For example {"folke"}
+		fallback = true, -- Fallback to git when local plugin doesn't exist
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {
