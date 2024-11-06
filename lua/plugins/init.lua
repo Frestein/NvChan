@@ -137,17 +137,7 @@ return {
     "echasnovski/mini.surround",
     event = "VeryLazy",
     version = false,
-    opts = {
-      mappings = {
-        add = "gsa",
-        delete = "gsd",
-        find = "gsf",
-        find_left = "gsF",
-        highlight = "gsh",
-        replace = "gsr",
-        update_n_lines = "gsn",
-      },
-    },
+    opts = require "plugins.options.mini-surround-opts",
   },
 
   {
