@@ -4,7 +4,7 @@ local map = require("langmapper").map
 local wtf = require "wtf"
 
 local keymaps = {
-  ["<leader>ws"] = { func = wtf.search, desc = "wtf search diagnostic with duckduckgo" },
+	["<leader>ws"] = { func = wtf.search, desc = "wtf search diagnostic with duckduckgo" },
 }
 
 set_keymaps(map, keymaps)

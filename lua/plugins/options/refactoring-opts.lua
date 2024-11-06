@@ -1,3 +1,3 @@
 return {
-  show_success_message = true,
+	show_success_message = true,
 }

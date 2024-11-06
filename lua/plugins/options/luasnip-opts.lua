@@ -1,4 +1,4 @@
 return {
-  history = true,
-  updateevents = "TextChanged,TextChangedI",
+	history = true,
+	updateevents = "TextChanged,TextChangedI",
 }

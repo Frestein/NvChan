@@ -1,3 +1,3 @@
 return {
-  staticTitle = "Find and Replace",
+	staticTitle = "Find and Replace",
 }

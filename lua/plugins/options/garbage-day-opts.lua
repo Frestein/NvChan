@@ -1,3 +1,3 @@
 return {
-  grace_period = 60 * 10,
+	grace_period = 60 * 10,
 }

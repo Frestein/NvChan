@@ -3,13 +3,14 @@ local map = require("langmapper").map
 
 local neogit = require "neogit"
 
--- stylua: ignore
 local keymaps = {
-  ["<leader>gg"] = { func = neogit.open, desc = "neogit open" },
-  ["<leader>gl"] = {
-    func = function() neogit.open { "log" } end,
-    desc = "neogit log",
-  },
+	["<leader>gg"] = { func = neogit.open, desc = "neogit open" },
+	["<leader>gl"] = {
+		func = function()
+			neogit.open { "log" }
+		end,
+		desc = "neogit log",
+	},
 }
 
 set_keymaps(map, keymaps)

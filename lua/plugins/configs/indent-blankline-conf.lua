@@ -1,6 +1,6 @@
-local opts = require "plugins.options.indent-blankline-opts"
-local ibl = require "ibl"
 local hooks = require "ibl.hooks"
+local ibl = require "ibl"
+local opts = require "plugins.options.indent-blankline-opts"
 
 dofile(vim.g.base46_cache .. "blankline")
 

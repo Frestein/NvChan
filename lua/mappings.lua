@@ -40,11 +40,11 @@ map("n", "<C-s>", "<cmd>w<CR>", { desc = "file save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole file" })
 
 map("n", "<leader>cf", function()
-  vim.fn.setreg("+", vim.fn.expand "%:t")
+	vim.fn.setreg("+", vim.fn.expand "%:t")
 end, { desc = "file copy name" })
 
 map("n", "<leader>cp", function()
-  vim.fn.setreg("+", vim.fn.expand "%:p")
+	vim.fn.setreg("+", vim.fn.expand "%:p")
 end, { desc = "file copy path" })
 
 -- }}}
@@ -66,11 +66,11 @@ map("n", "<S-tab>", tabufline.prev, { desc = "buffer goto prev buffer" })
 map("n", "<tab>", tabufline.next, { desc = "buffer goto next buffer" })
 
 map("n", "<A-Left>", function()
-  tabufline.move_buf(-1)
+	tabufline.move_buf(-1)
 end, { desc = "buffer move to left" })
 
 map("n", "<A-Right>", function()
-  tabufline.move_buf(1)
+	tabufline.move_buf(1)
 end, { desc = "buffer move to right" })
 
 map("n", "<leader>$", "<cmd>tablast<CR>", { desc = "tab last tab" })
@@ -90,15 +90,15 @@ map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 -- end, { desc = "terminal new vertical window" })
 
 map({ "n", "t" }, "<leader><M-v>", function()
-  term.toggle { pos = "vsp", id = "vtoggleTerm" }
+	term.toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggle vertical term" })
 
 map({ "n", "t" }, "<leader><M-h>", function()
-  term.toggle { pos = "sp", id = "htoggleTerm" }
+	term.toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggle horizontal term" })
 
 map({ "n", "t" }, "<leader><M-i>", function()
-  term.toggle { pos = "float", id = "floatTerm" }
+	term.toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
 -- }}}
@@ -107,25 +107,25 @@ end, { desc = "terminal toggle floating term" })
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 
 map("n", "<leader>wk", function()
-  vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
+	vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
 end, { desc = "whichkey query lookup" })
 
 -- }}}
 -- Blankline {{{
 
 map("n", "<leader>cc", function()
-  local config = { scope = {} }
-  config.scope.exclude = { language = {}, node_type = {} }
-  config.scope.include = { node_type = {} }
-  local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
+	local config = { scope = {} }
+	config.scope.exclude = { language = {}, node_type = {} }
+	config.scope.include = { node_type = {} }
+	local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
 
-  if node then
-    local start_row, _, end_row, _ = node:range()
-    if start_row ~= end_row then
-      vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
-      vim.api.nvim_feedkeys("_", "n", true)
-    end
-  end
+	if node then
+		local start_row, _, end_row, _ = node:range()
+		if start_row ~= end_row then
+			vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
+			vim.api.nvim_feedkeys("_", "n", true)
+		end
+	end
 end, { desc = "blankline jump to current context" })
 
 -- }}}

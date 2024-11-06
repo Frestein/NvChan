@@ -1,7 +1,7 @@
 return {
-  plugins = {
-    options = {
-      laststatus = 1,
-    },
-  },
+	plugins = {
+		options = {
+			laststatus = 1,
+		},
+	},
 }

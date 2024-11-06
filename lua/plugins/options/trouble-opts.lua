@@ -1,5 +1,5 @@
 return {
-  preview = {
-    type = "split",
-  },
+	preview = {
+		type = "split",
+	},
 }
