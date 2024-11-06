@@ -1,13 +1,33 @@
 local M = {}
 
+---@param name string
+function M.get_plugin(name)
+	return require("lazy.core.config").spec.plugins[name]
+end
+
+function M.is_loaded(name)
+	local Config = require "lazy.core.config"
+	return Config.plugins[name] and Config.plugins[name]._.loaded
+end
+
+---@param name string
+function M.opts(name)
+	local plugin = M.get_plugin(name)
+	if not plugin then
+		return {}
+	end
+	local Plugin = require "lazy.core.plugin"
+	return Plugin.values(plugin, "opts", false)
+end
+
 --- Sets key mappings for the specified modes.
--- @param map The function used to set the key mappings.
--- @param keymaps A table containing keys and their parameters (functions and descriptions).
+--- @param map function The function used to set the key mappings.
+--- @param keymaps table A table containing keys and their parameters (functions and descriptions).
 -- Each entry can include:
---   - `func`: The function to be called when the key is pressed.
---   - `desc`: A description of the key.
---   - `modes` (optional): A table of modes for the key mapping. If not provided, defaults to normal mode ("n").
--- @param bufnr (optional) The buffer number, if key mappings should be set only for a specific buffer.
+---   - `func`: The function to be called when the key is pressed.
+---   - `desc`: A description of the key.
+---   - `modes` (optional): A table of modes for the key mapping. If not provided, defaults to normal mode ("n").
+--- @param bufnr number The buffer number, if key mappings should be set only for a specific buffer. (optional)
 function M.set_keymaps(map, keymaps, bufnr)
 	for key, value in pairs(keymaps) do
 		local modes = value.modes or "n"
@@ -20,7 +40,7 @@ function M.set_keymaps(map, keymaps, bufnr)
 end
 
 --- Checks if the current directory is a Git repository.
--- @return boolean indicating whether the current directory is a Git repository.
+--- @return boolean indicating whether the current directory is a Git repository.
 function M.is_git_repo()
 	local handle = io.popen "git rev-parse --is-inside-work-tree 2>/dev/null"
 	if handle then
@@ -45,8 +65,8 @@ local function parse_output(proc)
 	return ret
 end
 
--- Build git status cache
--- @return A table that caches ignored and tracked files in the specified Git repository.
+--- Build git status cache
+--- @return table A table that caches ignored and tracked files in the specified Git repository.
 function M.new_git_status()
 	return setmetatable({}, {
 		__index = function(self, key)
@@ -64,7 +84,7 @@ function M.new_git_status()
 end
 
 --- Get the current color scheme from the base46 cache.
--- @return table|nil Returns a table containing colors if the loading is successful.
+--- @return table|nil Returns a table containing colors if the loading is successful.
 function M.get_base46_colors()
 	local success, colors = pcall(dofile, vim.g.base46_cache .. "colors")
 	if not success then
