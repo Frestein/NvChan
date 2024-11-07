@@ -1,3 +1,5 @@
+require("utils.plugin").lazy_file()
+
 return {
 	"nvim-lua/plenary.nvim",
 	"nvchad/volt",
@@ -44,7 +46,7 @@ return {
 
 	{
 		"stevearc/conform.nvim",
-		event = "VeryLazy",
+		cmd = "ConformInfo",
 		keys = {
 			{ mode = { "n", "v" }, "<leader>fc", desc = "code format code" },
 		},
@@ -56,7 +58,7 @@ return {
 
 	{
 		"neovim/nvim-lspconfig",
-		event = "User FilePost",
+		event = "LazyFile",
 		config = function()
 			require "plugins.configs.lspconfig-conf"
 		end,
@@ -64,7 +66,7 @@ return {
 
 	{
 		"mfussenegger/nvim-lint",
-		event = "LspAttach",
+		event = "LazyFile",
 		config = function()
 			require "plugins.configs.lint-conf"
 		end,
@@ -73,7 +75,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false,
-		event = "VeryLazy",
+		event = { "LazyFile", "VeryLazy" },
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
 		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
@@ -195,7 +197,7 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "User FilePost",
+		event = "LazyFile",
 		config = function()
 			require "plugins.configs.indent-blankline-conf"
 		end,
@@ -351,7 +353,7 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "User FilePost",
+		event = "LazyFile",
 		opts = function()
 			return require "plugins.options.gitsigns-opts"
 		end,
@@ -431,7 +433,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
-		event = "VeryLazy",
+		event = "LazyFile",
 		keys = {
 			{ mode = { "n" }, "<leader>tt", desc = "todo-comments show the todo list" },
 			{ mode = { "n" }, "<leader>tq", desc = "todo-comments show quickfix" },
@@ -601,6 +603,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
+		event = "LazyFile",
 		keys = {
 			{ mode = { "n" }, "<leader>aa", desc = "aerial toggle" },
 			{ mode = { "n" }, "<leader>an", desc = "aerial navigation toggle" },
