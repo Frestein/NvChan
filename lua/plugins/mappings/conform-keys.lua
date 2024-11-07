@@ -17,7 +17,7 @@ local keymaps = {
 				end
 			end)
 		end,
-		desc = "code format code",
+		"code format code",
 	},
 }
 

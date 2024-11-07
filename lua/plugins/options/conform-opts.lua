@@ -1,3 +1,5 @@
+---@module "conform"
+---@type conform.setupOpts
 return {
 	formatters_by_ft = {
 		c = { "clang-format" },
