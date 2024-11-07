@@ -76,9 +76,9 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		version = false,
 		event = { "LazyFile", "VeryLazy" },
+		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 		keys = {
 			{ "<c-space>", desc = "treesitter increment selection" },
 			{ mode = "x", "<bs>", desc = "treesitter decrement selection" },
@@ -103,14 +103,12 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		dependencies = "nvim-treesitter/nvim-treesitter",
 		event = "VeryLazy",
 		opts = require "plugins.options.treesitter-context-opts",
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-refactor",
-		dependencies = "nvim-treesitter/nvim-treesitter",
 		event = "VeryLazy",
 		opts = require "plugins.options.treesitter-refactor-opts",
 		config = function(_, opts)
