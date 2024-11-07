@@ -1,17 +1,17 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local lazy = require "lazy"
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>ll"] = { func = lazy.home, desc = "lazy open home" },
-	["<leader>lL"] = { func = lazy.log, desc = "lazy recent updates" },
-	["<leader>li"] = { func = lazy.install, desc = "lazy install missing plugins" },
-	["<leader>lc"] = { func = lazy.check, desc = "lazy check updates" },
-	["<leader>lu"] = { func = lazy.update, desc = "lazy update plugins" },
-	["<leader>ls"] = { func = lazy.sync, desc = "lazy sync plugins" },
-	["<leader>lh"] = { func = lazy.health, desc = "lazy open health" },
-	["<leader>lp"] = { func = lazy.profile, desc = "lazy open profile" },
+	{ "<leader>ll", lazy.home, "lazy open home" },
+	{ "<leader>lL", lazy.log, "lazy recent updates" },
+	{ "<leader>li", lazy.install, "lazy install missing plugins" },
+	{ "<leader>lc", lazy.check, "lazy check updates" },
+	{ "<leader>lu", lazy.update, "lazy update plugins" },
+	{ "<leader>ls", lazy.sync, "lazy sync plugins" },
+	{ "<leader>lh", lazy.health, "lazy open health" },
+	{ "<leader>lp", lazy.profile, "lazy open profile" },
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

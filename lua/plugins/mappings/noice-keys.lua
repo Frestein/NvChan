@@ -1,34 +1,38 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local noice = require "noice"
 
+--- @type Keymap[]
 local keymaps = {
-	-- spellchecker: disable-line
-	["<leader>nd"] = {
-		func = function()
+	{
+		-- spellchecker: disable-line
+		"<leader>nd",
+		function()
 			noice.cmd "dismiss"
 		end,
-		desc = "notices dismiss all visible messages",
+		"notices dismiss all visible messages",
 	},
-	["<leader>nl"] = {
-		func = function()
+	{
+		"<leader>nl",
+		function()
 			noice.cmd "last"
 		end,
-		desc = "notices show the last message",
+		"notices show the last message",
 	},
-	["<leader>nh"] = {
-		func = function()
+	{
+		"<leader>nh",
+		function()
 			noice.cmd "history"
 		end,
-		desc = "notices show the notice history",
+		"notices show the notice history",
 	},
-	["<leader>fn"] = {
-		func = function()
+	{
+		"<leader>fn",
+		function()
 			noice.cmd "telescope"
 		end,
-		desc = "telescope find notices",
+		"telescope find notices",
 	},
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

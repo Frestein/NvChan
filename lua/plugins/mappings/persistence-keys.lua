@@ -1,6 +1,5 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local persistence = require "persistence"
 
 local function close_plugin(plugin_name, close_function)
@@ -23,27 +22,31 @@ local function quit_all(save_session)
 	end)
 end
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>qs"] = { func = persistence.select, desc = "session select session" },
-	["<leader>qL"] = { func = persistence.load, desc = "session restore session" },
-	["<leader>ql"] = {
-		func = function()
+	{ "<leader>qs", persistence.select, "session select session" },
+	{ "<leader>qL", persistence.load, "session restore session" },
+	{
+		"<leader>ql",
+		function()
 			persistence.load { last = true }
 		end,
-		desc = "session last session",
+		"session last session",
 	},
-	["<leader>qq"] = {
-		func = function()
+	{
+		"<leader>qq",
+		function()
 			quit_all(true)
 		end,
-		desc = "session quit all",
+		"session quit all",
 	},
-	["<leader>qQ"] = {
-		func = function()
+	{
+		"<leader>qQ",
+		function()
 			quit_all(false)
 		end,
-		desc = "session quit all without save session",
+		"session quit all without save session",
 	},
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

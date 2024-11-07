@@ -1,34 +1,14 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local flash = require "flash"
 
+--- @type Keymap[]
 local keymaps = {
-	["s"] = {
-		modes = { "n", "x", "o" },
-		func = flash.jump,
-		desc = "flash jump",
-	},
-	["S"] = {
-		modes = { "n", "x", "o" },
-		func = flash.treesitter,
-		desc = "flash treesitter",
-	},
-	["R"] = {
-		modes = { "x", "o" },
-		func = flash.treesitter_search,
-		desc = "flash treesitter search",
-	},
-	["r"] = {
-		modes = { "o" },
-		func = flash.remote,
-		desc = "flash remote",
-	},
-	["<c-s>"] = {
-		modes = { "c" },
-		func = flash.toggle,
-		desc = "flash toggle flash search",
-	},
+	{ mode = { "n", "x", "o" }, "s", flash.jump, "flash jump" },
+	{ mode = { "n", "x", "o" }, "S", flash.treesitter, "flash treesitter" },
+	{ mode = { "x", "o" }, "R", flash.treesitter_search, "flash treesitter search" },
+	{ mode = { "o" }, "r", flash.remote, "flash remote" },
+	{ mode = { "c" }, "<c-s>", flash.toggle, "flash toggle flash search" },
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

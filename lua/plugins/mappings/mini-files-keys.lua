@@ -1,9 +1,8 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
+local map = map_handler
 local new_git_status = require("utils").new_git_status
-
 local MiniFiles = require "mini.files"
-
 local autocmd = vim.api.nvim_create_autocmd
 
 local function minifiles_toggle(...)
@@ -15,7 +14,7 @@ end
 -- Set custom marks {{{
 
 local set_mark = function(id, path, desc)
-	MiniFiles.set_bookmark(id, path, { desc = desc })
+	MiniFiles.set_bookmark(id, path, { desc })
 end
 
 vim.api.nvim_create_autocmd("User", {
@@ -124,7 +123,7 @@ autocmd("User", {
 -- Mappings to modify target window via new tab {{{
 
 local map_tab = function(buf_id, lhs)
-	local rhs = function()
+	local function rhs()
 		local fs_entry = MiniFiles.get_fs_entry()
 
 		if fs_entry then
@@ -148,7 +147,7 @@ autocmd("User", {
 -- Mappings to modify target window via split {{{
 
 local map_split = function(buf_id, lhs, direction)
-	local rhs = function()
+	local function rhs()
 		-- Make new window and set it as target
 		local cur_target = MiniFiles.get_explorer_state().target_window
 
@@ -176,21 +175,24 @@ autocmd("User", {
 
 -- }}}
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>e"] = {
-		func = function()
+	{
+		"<leader>e",
+		function()
 			minifiles_toggle(vim.api.nvim_buf_get_name(0))
 		end,
-		desc = "MiniFiles toggle current directory",
+		"MiniFiles toggle current directory",
 	},
-	["<leader>E"] = {
-		func = function()
+	{
+		"<leader>E",
+		function()
 			minifiles_toggle()
 		end,
-		desc = "MiniFiles toggle root directory",
+		"MiniFiles toggle root directory",
 	},
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)
 
 -- vim:fileencoding=utf-8:foldmethod=marker

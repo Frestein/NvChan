@@ -1,10 +1,11 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>tt"] = { func = "<cmd>TodoTrouble<cr>", desc = "todo-comments show the todo-list" },
-	["<leader>tq"] = { func = "<cmd>TodoQuickFix<cr>", desc = "todo-comments show quickfix" },
-	["<leader>fT"] = { func = "<cmd>TodoTelescope<cr>", desc = "telescope todo-list" },
+	{ "<leader>tt", "<cmd>TodoTrouble<cr>", "todo-comments show the todo-list" },
+	{ "<leader>tq", "<cmd>TodoQuickFix<cr>", "todo-comments show quickfix" },
+	{ "<leader>fT", "<cmd>TodoTelescope<cr>", "telescope todo-list" },
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

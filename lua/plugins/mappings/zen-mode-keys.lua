@@ -1,10 +1,10 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local zen_mode = require "zen-mode"
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>z"] = { func = zen_mode.toggle, desc = "toggle zen-mode" },
+	{ "<leader>z", zen_mode.toggle, "toggle zen-mode" },
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

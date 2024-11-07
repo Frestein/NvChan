@@ -1,28 +1,22 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
-local gitsigns = package.loaded.gitsigns
-local telescope_builtin = require "telescope.builtin"
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 
 local M = {}
 
 M.on_attach = function(bufnr)
+	--- @type Keymap[]
 	local keymaps = {
-		["<leader>grh"] = { func = gitsigns.reset_hunk, desc = "gitsigns reset hunk" },
-		["<leader>gph"] = { func = gitsigns.preview_hunk, desc = "gitsigns preview hunk" },
-		["<leader>gb"] = { func = gitsigns.blame_line, desc = "gitsigns blame line" },
-		["<leader>gtb"] = { func = gitsigns.toggle_current_line_blame, desc = "gitsigns toggle blame line" },
-		["<leader>gtd"] = { func = gitsigns.toggle_deleted, desc = "gitsigns toggle deleted" },
-		["<leader>gtn"] = { func = gitsigns.toggle_numhl, desc = "gitsigns toggle number highlight" },
-		["<leader>gc"] = { func = telescope_builtin.git_commits, desc = "telescope git commits" },
-		["<leader>gs"] = { func = telescope_builtin.git_status, desc = "telescope git status" },
+		{ "<leader>grh", "<cmd>Telescope reset_hunk<cr>", "telescope reset hunk" },
+		{ "<leader>gph", "<cmd>Telescope preview_hunk<cr>", "telescope preview hunk" },
+		{ "<leader>gb", "<cmd>telescope blame_line<cr>", "gitsigns blame line" },
+		{ "<leader>gtb", "<cmd>Telescope toggle_current_line_blame<cr>", "gitsigns toggle blame line" },
+		{ "<leader>gtd", "<cmd>Telescope toggle_deleted<cr>", "gitsigns toggle deleted" },
+		{ "<leader>gtn", "<cmd>Telescope toggle_numhl<cr>", "gitsigns toggle number highlight" },
+		{ "<leader>gc", "<cmd>Telescope git_commits<cr>", "telescope git commits" },
+		{ "<leader>gs", "<cmd>Telescope git_status<cr>", "telescope git status" },
 	}
-
-	for _, keymap in pairs(keymaps) do
-		keymap.modes = { "n" }
-	end
-
-	set_keymaps(map, keymaps, bufnr)
+	keymap_utils.add_params_to_desc(keymaps, { buffer = bufnr })
+	keymap_utils.map(map_handler, keymaps)
 end
 
 return M

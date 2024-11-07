@@ -1,16 +1,17 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local neogit = require "neogit"
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>gg"] = { func = neogit.open, desc = "neogit open" },
-	["<leader>gl"] = {
-		func = function()
+	{ "<leader>gg", neogit.open, "neogit open" },
+	{
+		"<leader>gl",
+		function()
 			neogit.open { "log" }
 		end,
-		desc = "neogit log",
+		"neogit log",
 	},
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

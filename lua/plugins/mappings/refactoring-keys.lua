@@ -1,60 +1,68 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local refactoring = require "refactoring"
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>re"] = {
-		modes = { "x" },
-		func = function()
+	{
+		mode = { "x" },
+		"<leader>re",
+		function()
 			refactoring.refactor "Extract Function"
 		end,
-		desc = "refactor extract function",
+		"refactor extract function",
 	},
-	["<leader>rf"] = {
-		modes = { "x" },
-		func = function()
+	{
+		mode = { "x" },
+		"<leader>rf",
+		function()
 			refactoring.refactor "Extract Function To File"
 		end,
-		desc = "refactor extract function to file",
+		"refactor extract function to file",
 	},
-	["<leader>rv"] = {
-		modes = { "x" },
-		func = function()
+	{
+		mode = { "x" },
+		"<leader>rv",
+		function()
 			refactoring.refactor "Extract Variable"
 		end,
-		desc = "refactor extract variable",
+		"refactor extract variable",
 	},
-	["<leader>rI"] = {
-		func = function()
+	{
+		"<leader>rI",
+		function()
 			refactoring.refactor "Inline Function"
 		end,
-		desc = "refactor inline function",
+		"refactor inline function",
 	},
-	["<leader>ri"] = {
-		modes = { "n", "x" },
-		func = function()
+	{
+		mode = { "n", "x" },
+		"<leader>ri",
+		function()
 			refactoring.refactor "Inline Variable"
 		end,
-		desc = "refactor inline variable",
+		"refactor inline variable",
 	},
-	["<leader>rb"] = {
-		func = function()
+	{
+		"<leader>rb",
+		function()
 			refactoring.refactor "Extract Block"
 		end,
-		desc = "refactor extract block",
+		"refactor extract block",
 	},
-	["<leader>rB"] = {
-		func = function()
+	{
+		"<leader>rB",
+		function()
 			refactoring.refactor "Extract Block To File"
 		end,
-		desc = "refactor extract block to file",
+		"refactor extract block to file",
 	},
-	["<leader>rr"] = {
-		modes = { "n", "x" },
-		func = refactoring.select_refactor,
-		desc = "refactor select refactor",
+	{
+		mode = { "n", "x" },
+		"<leader>rr",
+		refactoring.select_refactor,
+		"refactor select refactor",
 	},
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

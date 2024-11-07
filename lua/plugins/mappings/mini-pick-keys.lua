@@ -1,6 +1,5 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local MiniExtra = require "mini.extra"
 local MiniPick = require "mini.pick"
 
@@ -18,7 +17,7 @@ local hooks = {
 vim.api.nvim_create_autocmd({ "User" }, {
 	pattern = "MiniPickStart",
 	group = vim.api.nvim_create_augroup("minipick-pre-hooks", { clear = true }),
-	desc = "Invoke pre_hook for specific picker based on source.name.",
+	"Invoke pre_hook for specific picker based on source.name.",
 	callback = function(...)
 		local opts = MiniPick.get_picker_opts() or {}
 		local pre_hook = hooks.pre_hooks[opts.source.name] or function(...) end
@@ -29,7 +28,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 vim.api.nvim_create_autocmd({ "User" }, {
 	pattern = "MiniPickStop",
 	group = vim.api.nvim_create_augroup("minipick-post-hooks", { clear = true }),
-	desc = "Invoke post_hook for specific picker based on source.name.",
+	"Invoke post_hook for specific picker based on source.name.",
 	callback = function(...)
 		local opts = MiniPick.get_picker_opts() or {}
 		local post_hook = hooks.post_hooks[opts.source.name] or function(...) end
@@ -64,36 +63,39 @@ MiniPick.registry.themes = function()
 	}
 end
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>ff"] = {
-		func = function()
+	{
+		"<leader>ff",
+		function()
 			MiniPick.builtin.files { tool = "rg" }
 		end,
-		desc = "MiniPick find files",
+		"MiniPick find files",
 	},
-	["<leader>fw"] = { func = MiniPick.builtin.grep, desc = "MiniPick grep files" },
-	["<leader>fW"] = { func = MiniPick.builtin.grep_live, desc = "MiniPick live grep files" },
-	["<leader>fb"] = { func = MiniPick.builtin.buffers, desc = "MiniPick find buffers" },
-	["<leader>fH"] = { func = MiniPick.builtin.help, desc = "MiniPick find help" },
-	["<leader>fr"] = { func = MiniPick.builtin.resume, desc = "MiniPick latest picker" },
-	["<leader>fz"] = {
-		func = function()
+	{ "<leader>fw", MiniPick.builtin.grep, "MiniPick grep files" },
+	{ "<leader>fW", MiniPick.builtin.grep_live, "MiniPick live grep files" },
+	{ "<leader>fb", MiniPick.builtin.buffers, "MiniPick find buffers" },
+	{ "<leader>fH", MiniPick.builtin.help, "MiniPick find help" },
+	{ "<leader>fr", MiniPick.builtin.resume, "MiniPick latest picker" },
+	{
+		"<leader>fz",
+		function()
 			MiniExtra.pickers.buf_lines { scope = "current" }
 		end,
-		desc = "MiniPick buffer lines",
+		"MiniPick buffer lines",
 	},
-	["<leader>fm"] = { func = MiniExtra.pickers.marks, desc = "MiniPick marks" },
-	["<leader>th"] = { func = MiniPick.registry.themes, desc = "MiniPick nvchad themes" },
+	{ "<leader>fm", MiniExtra.pickers.marks, "MiniPick marks" },
+	{ "<leader>th", MiniPick.registry.themes, "MiniPick nvchad themes" },
 	-- spellchecker: disable-line
-	["<leader>fo"] = { func = MiniExtra.pickers.oldfiles, desc = "MiniPick oldfiles" },
-	["<leader>fs"] = { func = MiniExtra.pickers.spellsuggest, desc = "MiniPick spell suggestions" },
-	["<leader>fgb"] = { func = MiniExtra.pickers.git_branches, desc = "MiniPick git branches" },
-	["<leader>fgc"] = { func = MiniExtra.pickers.git_commits, desc = "MiniPick git commits" },
-	["<leader>fgf"] = { func = MiniExtra.pickers.git_files, desc = "MiniPick git files" },
-	["<leader>fgh"] = { func = MiniExtra.pickers.git_hunks, desc = "MiniPick git hunks" },
-	["<leader>fsh"] = { func = MiniExtra.pickers.history, desc = "MiniPick history" },
-	["<leader>fhl"] = { func = MiniExtra.pickers.hl_groups, desc = "MiniPick highlight groups" },
-	["<leader>fch"] = { func = MiniExtra.pickers.keymaps, desc = "MiniPick keymaps" },
+	{ "<leader>fo", MiniExtra.pickers.oldfiles, "MiniPick oldfiles" },
+	{ "<leader>fs", MiniExtra.pickers.spellsuggest, "MiniPick spell suggestions" },
+	{ "<leader>fgb", MiniExtra.pickers.git_branches, "MiniPick git branches" },
+	{ "<leader>fgc", MiniExtra.pickers.git_commits, "MiniPick git commits" },
+	{ "<leader>fgf", MiniExtra.pickers.git_files, "MiniPick git files" },
+	{ "<leader>fgh", MiniExtra.pickers.git_hunks, "MiniPick git hunks" },
+	{ "<leader>fsh", MiniExtra.pickers.history, "MiniPick history" },
+	{ "<leader>fhl", MiniExtra.pickers.hl_groups, "MiniPick highlight groups" },
+	{ "<leader>fch", MiniExtra.pickers.keymaps, "MiniPick keymaps" },
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)

@@ -1,18 +1,19 @@
-local set_keymaps = require("utils").set_keymaps
-local map = require("langmapper").map
-
+local keymap_utils = require "utils.keymap"
+local map_handler = require("langmapper").map
 local treesj = require "treesj"
 
+--- @type Keymap[]
 local keymaps = {
-	["<leader>m"] = { func = treesj.toggle, desc = "treesj toggle node under cursor" },
-	["<leader>M"] = {
-		func = function()
+	{ "<leader>m", treesj.toggle, "treesj toggle node under cursor" },
+	{
+		"<leader>M",
+		function()
 			treesj.toggle { split = { recursive = true } }
 		end,
-		desc = "treesj toggle node recursive under cursor",
+		"treesj toggle node recursive under cursor",
 	},
-	["<leader>j"] = { func = treesj.join, desc = "treesj join node under cursor" },
-	["<leader>s"] = { func = treesj.split, desc = "treesj split node under cursor" },
+	{ "<leader>j", treesj.join, "treesj join node under cursor" },
+	{ "<leader>s", treesj.split, "treesj split node under cursor" },
 }
 
-set_keymaps(map, keymaps)
+keymap_utils.map(map_handler, keymaps)
