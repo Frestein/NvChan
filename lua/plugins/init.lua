@@ -220,6 +220,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
+		event = "VeryLazy",
 		dependencies = "nvim-lua/plenary.nvim",
 		keys = {
 			{ mode = { "n" }, "<leader>ff", desc = "telescope find files" },
@@ -436,7 +437,6 @@ return {
 			{ mode = { "n" }, "<leader>tq", desc = "todo-comments show quickfix" },
 			{ mode = { "n" }, "<leader>fT", desc = "telescope todo list" },
 		},
-		dependencies = "nvim-telescope/telescope.nvim",
 		config = function(_, opts)
 			require("todo-comments").setup(opts)
 			dofile(vim.g.base46_cache .. "todo")
@@ -466,10 +466,16 @@ return {
 
 	{
 		"rachartier/tiny-code-action.nvim",
-		event = "LspAttach",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
+		},
+		keys = {
+			{
+				mode = { "n" },
+				"<leader>ca",
+				desc = "LSP code action",
+			},
 		},
 		opts = require "plugins.options.tiny-code-action-opts",
 		config = function(_, opts)

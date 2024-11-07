@@ -49,6 +49,7 @@ M.ui = {
 
 M.base46 = {
 	theme = "gruvbox",
+	transparency = false,
 
 	hl_override = {
 		Comment = {
@@ -192,8 +193,6 @@ M.base46 = {
 		"trouble",
 		"whichkey",
 	},
-
-	transparency = false,
 }
 
 M.cheatsheet = {
