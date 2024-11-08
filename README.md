@@ -160,7 +160,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### colorscheme
 
-- [NvChad/base46](https://dotfyle.com/plugins/NvChad/base46)
+- [Frestein/base46](https://github.com/Frestein/base46)
 
 ### comment
 
@@ -186,8 +186,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### utility
 
-- [NvChad/ui](https://dotfyle.com/plugins/NvChad/ui)
-- [NvChad/volt](https://dotfyle.com/plugins/NvChad/volt)
+- [Frestein/ui](https://github.com/Frestein/ui)
 - [alker0/chezmoi.vim](https://github.com/alker0/chezmoi.vim)
 - [echasnovski/mini.extra](https://dotfyle.com/plugins/echasnovski/mini.extra) (disabled)
 - [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)

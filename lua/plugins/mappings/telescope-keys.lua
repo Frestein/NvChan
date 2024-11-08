@@ -12,20 +12,10 @@ local keymaps = {
 	{ "<leader>fh", telescope_builtin.help_tags, "telescope help page" },
 	-- spellchecker: disable-line
 	{ "<leader>fr", telescope_builtin.oldfiles, "telescope recent files" },
-	{
-		"<leader>fz",
-		telescope_builtin.current_buffer_fuzzy_find,
-		"telescope find in current buffer",
-	},
+	{ "<leader>fz", telescope_builtin.current_buffer_fuzzy_find, "telescope find in current buffer" },
 	{ "<leader>fd", telescope_builtin.diagnostics, "telescope find diagnostics" },
 	{ "<leader>ft", telescope.extensions.terms.terms, "telescope find terms" },
-	{
-		"<leader>th",
-		function()
-			require("nvchad.themes").open { style = "bordered", border = true }
-		end,
-		"telescope nvchad themes",
-	},
+	{ "<leader>th", telescope.extensions.themes.themes, "telescope find themes" },
 }
 
 keymap_utils.map(map_handler, keymaps)

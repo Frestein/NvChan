@@ -85,7 +85,7 @@ local keymaps = {
 		"MiniPick buffer lines",
 	},
 	{ "<leader>fm", MiniExtra.pickers.marks, "MiniPick marks" },
-	{ "<leader>th", MiniPick.registry.themes, "MiniPick nvchad themes" },
+	{ "<leader>th", MiniPick.registry.themes, "MiniPick find themes" },
 	-- spellchecker: disable-line
 	{ "<leader>fo", MiniExtra.pickers.oldfiles, "MiniPick oldfiles" },
 	{ "<leader>fs", MiniExtra.pickers.spellsuggest, "MiniPick spell suggestions" },

@@ -2,13 +2,12 @@ require("utils.plugin").lazy_file()
 
 return {
 	{ "nvim-lua/plenary.nvim" },
-	{ "nvzone/volt" },
 	{ "wakatime/vim-wakatime", lazy = false },
 	{ "artemave/workspace-diagnostics.nvim", opts = {} },
 	{ "Bilal2453/luvit-meta", lazy = true },
 
 	{
-		"nvzone/showkeys",
+		"Frestein/showkeys",
 		cmd = "ShowkeysToggle",
 		opts = require "plugins.options.showkeys-opts",
 	},
@@ -25,14 +24,14 @@ return {
 	},
 
 	{
-		"nvchad/ui",
+		"Frestein/ui",
 		config = function()
 			require "nvchad"
 		end,
 	},
 
 	{
-		"nvchad/base46",
+		"Frestein/base46",
 		lazy = true,
 		build = function()
 			require("base46").load_all_highlights()
@@ -239,7 +238,7 @@ return {
 			{ mode = { "n" }, "<leader>fz", desc = "telescope find in current buffer" },
 			{ mode = { "n" }, "<leader>fd", desc = "telescope find diagnostics" },
 			{ mode = { "n" }, "<leader>ft", desc = "telescope find terms" },
-			{ mode = { "n" }, "<leader>th", desc = "telescope nvchad themes" },
+			{ mode = { "n" }, "<leader>th", desc = "telescope find themes" },
 		},
 		opts = function()
 			return require "plugins.options.telescope-opts"
@@ -804,7 +803,7 @@ return {
 			{ mode = { "n" }, "<leader>fr", desc = "MiniPick latest picker" },
 			{ mode = { "n" }, "<leader>fz", desc = "MiniPick buffer lines" },
 			{ mode = { "n" }, "<leader>fm", desc = "MiniPick marks" },
-			{ mode = { "n" }, "<leader>th", desc = "MiniPick nvchad themes" },
+			{ mode = { "n" }, "<leader>th", desc = "MiniPick find themes" },
 			-- spellchecker: disable-line
 			{ mode = { "n" }, "<leader>fo", desc = "MiniPick oldfiles" },
 			{ mode = { "n" }, "<leader>fs", desc = "MiniPick spell suggestions" },
