@@ -1,11 +1,17 @@
 require("utils.plugin").lazy_file()
 
 return {
-	"nvim-lua/plenary.nvim",
-	"nvchad/volt",
+	{ "nvim-lua/plenary.nvim" },
+	{ "nvzone/volt" },
 	{ "wakatime/vim-wakatime", lazy = false },
 	{ "artemave/workspace-diagnostics.nvim", opts = {} },
 	{ "Bilal2453/luvit-meta", lazy = true },
+
+	{
+		"nvzone/showkeys",
+		cmd = "ShowkeysToggle",
+		opts = require "plugins.options.showkeys-opts",
+	},
 
 	{
 		"folke/lazydev.nvim",
