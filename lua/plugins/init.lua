@@ -84,6 +84,7 @@ return {
 		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
+		opts_extend = { "ensure_installed" },
 		keys = {
 			{ "<c-space>", desc = "treesitter increment selection" },
 			{ mode = "x", "<bs>", desc = "treesitter decrement selection" },
@@ -858,6 +859,7 @@ return {
 		event = "VeryLazy",
 		keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
 		cmd = "WhichKey",
+		opts_extend = { "spec" },
 		opts = function()
 			dofile(vim.g.base46_cache .. "whichkey")
 			return {}
