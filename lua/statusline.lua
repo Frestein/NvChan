@@ -1,6 +1,6 @@
 local utils = require "utils"
 
-M = {}
+local M = {}
 
 local symbols, colors
 
