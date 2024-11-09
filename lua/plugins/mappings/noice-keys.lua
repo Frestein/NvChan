@@ -13,20 +13,6 @@ local keymaps = {
 		"notices dismiss all visible messages",
 	},
 	{
-		"<leader>nl",
-		function()
-			noice.cmd "last"
-		end,
-		"notices show the last message",
-	},
-	{
-		"<leader>nh",
-		function()
-			noice.cmd "history"
-		end,
-		"notices show the notice history",
-	},
-	{
 		"<leader>fn",
 		function()
 			noice.cmd "telescope"

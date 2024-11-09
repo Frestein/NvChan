@@ -52,9 +52,7 @@ return {
 	{
 		"stevearc/conform.nvim",
 		cmd = "ConformInfo",
-		keys = {
-			{ mode = { "n", "v" }, "<leader>fc", desc = "code format code" },
-		},
+		keys = { { mode = { "n", "v" }, "<leader>fc", desc = "code format code" } },
 		config = function()
 			require "plugins.configs.conform-conf"
 			require "plugins.mappings.conform-keys"
@@ -175,8 +173,8 @@ return {
 		event = "VeryLazy",
 		version = false,
 		keys = {
-			{ mode = { "n" }, "<leader>e", desc = "MiniFiles toggle current directory" },
-			{ mode = { "n" }, "<leader>E", desc = "MiniFiles toggle root directory" },
+			{ "<leader>e", desc = "MiniFiles toggle current directory" },
+			{ "<leader>E", desc = "MiniFiles toggle root directory" },
 		},
 		opts = require("plugins.options.mini-files-opts").opts,
 		config = function(_, opts)
@@ -229,17 +227,16 @@ return {
 		event = "VeryLazy",
 		dependencies = "nvim-lua/plenary.nvim",
 		keys = {
-			{ mode = { "n" }, "<leader>ff", desc = "telescope find files" },
-			{ mode = { "n" }, "<leader>fm", desc = "telescope find marks" },
-			{ mode = { "n" }, "<leader>fw", desc = "telescope live grep" },
-			{ mode = { "n" }, "<leader>fb", desc = "telescope find buffers" },
-			{ mode = { "n" }, "<leader>fh", desc = "telescope help page" },
-			-- spellchecker: disable-line
-			{ mode = { "n" }, "<leader>fr", desc = "telescope recent files" },
-			{ mode = { "n" }, "<leader>fz", desc = "telescope find in current buffer" },
-			{ mode = { "n" }, "<leader>fd", desc = "telescope find diagnostics" },
-			{ mode = { "n" }, "<leader>ft", desc = "telescope find terms" },
-			{ mode = { "n" }, "<leader>th", desc = "telescope find themes" },
+			{ "<leader>ff", desc = "telescope find files" },
+			{ "<leader>fm", desc = "telescope find marks" },
+			{ "<leader>fw", desc = "telescope live grep" },
+			{ "<leader>fb", desc = "telescope find buffers" },
+			{ "<leader>fh", desc = "telescope help page" },
+			{ "<leader>fr", desc = "telescope recent files" },
+			{ "<leader>fz", desc = "telescope find in current buffer" },
+			{ "<leader>fd", desc = "telescope find diagnostics" },
+			{ "<leader>ft", desc = "telescope find terms" },
+			{ "<leader>th", desc = "telescope find themes" },
 		},
 		opts = function()
 			return require "plugins.options.telescope-opts"
@@ -262,91 +259,43 @@ return {
 			},
 		},
 		branch = "0.2.x",
-		keys = {
-			{
-				"<leader><leader>",
-				"<cmd>Telescope smart_open<cr>",
-				desc = "telescope smart open",
-			},
-		},
+		keys = { { "<leader><leader>", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
 	},
 
 	{
 		"Marskey/telescope-sg",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>fW",
-				"<cmd>Telescope ast_grep<cr>",
-				desc = "telescope live grep (sg)",
-			},
-		},
+		keys = { { "<leader>fW", "<cmd>Telescope ast_grep<cr>", desc = "telescope live grep (sg)" } },
 	},
 
 	{
 		"tsakirist/telescope-lazy.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>fP",
-				"<cmd>Telescope lazy<cr>",
-				desc = "telescope installed plugins",
-			},
-		},
+		keys = { { "<leader>fP", "<cmd>Telescope lazy<cr>", desc = "telescope installed plugins" } },
 	},
 
 	{
 		"piersolenski/telescope-import.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>fi",
-				"<cmd>Telescope import<cr>",
-				desc = "telescope find imports",
-			},
-		},
+		keys = { { "<leader>fi", "<cmd>Telescope import<cr>", desc = "telescope find imports" } },
 	},
 
 	{
 		"crispgm/telescope-heading.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>fH",
-				"<cmd>Telescope heading<cr>",
-				desc = "telescope heading list",
-			},
-		},
+		keys = { { "<leader>fH", "<cmd>Telescope heading<cr>", desc = "telescope heading list" } },
 	},
 
 	{
 		"jvgrootveld/telescope-zoxide",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>zl",
-				"<cmd>Telescope zoxide list<cr>",
-				desc = "telescope zoxide list",
-			},
-		},
+		keys = { { "<leader>zl", "<cmd>Telescope zoxide list<cr>", desc = "telescope zoxide list" } },
 	},
 
 	{
 		"debugloop/telescope-undo.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>fu",
-				"<cmd>Telescope undo<cr>",
-				desc = "telescope find undo",
-			},
-		},
+		keys = { { "<leader>fu", "<cmd>Telescope undo<cr>", desc = "telescope find undo" } },
 	},
 
 	{
@@ -368,8 +317,8 @@ return {
 		cmd = "Neogit",
 		ft = { "diff" },
 		keys = {
-			{ mode = { "n" }, "<leader>gg", desc = "neogit open" },
-			{ mode = { "n" }, "<leader>gl", desc = "neogit log" },
+			{ "<leader>gg", desc = "neogit open" },
+			{ "<leader>gl", desc = "neogit log" },
 		},
 		opts = require "plugins.options.neogit-opts",
 		config = function(_, opts)
@@ -396,11 +345,8 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		keys = {
-			-- spellchecker: disable-line
-			{ mode = { "n" }, "<leader>nd", desc = "notices dismiss all visible messages" },
-			{ mode = { "n" }, "<leader>nl", desc = "notices show the last message" },
-			{ mode = { "n" }, "<leader>nh", desc = "notices show the notice history" },
-			{ mode = { "n" }, "<leader>fn", desc = "telescope find notices" },
+			{ "<leader>un", desc = "Dismiss All Notifications" },
+			{ "<leader>fn", desc = "telescope find notices" },
 		},
 		config = function()
 			require "plugins.configs.noice-conf"
@@ -416,15 +362,16 @@ return {
 
 	{
 		"folke/trouble.nvim",
-		cmd = { "Trouble" },
+		event = "VeryLazy",
+		cmd = "Trouble",
 		dependencies = "folke/todo-comments.nvim",
 		keys = {
-			{ mode = { "n" }, "<leader>x", desc = "trouble toggle diagnostics" },
-			{ mode = { "n" }, "<leader>xx", desc = "trouble toggle buffer diagnostics" },
-			{ mode = { "n" }, "<leader>cl", desc = "trouble LSP definitions / references / ..." },
-			{ mode = { "n" }, "<leader>xl", desc = "trouble toggle location list" },
-			{ mode = { "n" }, "<leader>xq", desc = "trouble toggle quickfix list" },
-			{ mode = { "n" }, "<leader>xs", desc = "trouble toggle document symbols" },
+			{ "<leader>x", desc = "trouble toggle diagnostics" },
+			{ "<leader>xx", desc = "trouble toggle buffer diagnostics" },
+			{ "<leader>cl", desc = "trouble LSP definitions / references / ..." },
+			{ "<leader>xl", desc = "trouble toggle location list" },
+			{ "<leader>xq", desc = "trouble toggle quickfix list" },
+			{ "<leader>xs", desc = "trouble toggle document symbols" },
 		},
 		opts = require "plugins.options.trouble-opts",
 		config = function(_, opts)
@@ -439,9 +386,9 @@ return {
 		cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
 		event = "LazyFile",
 		keys = {
-			{ mode = { "n" }, "<leader>tt", desc = "todo-comments show the todo list" },
-			{ mode = { "n" }, "<leader>tq", desc = "todo-comments show quickfix" },
-			{ mode = { "n" }, "<leader>fT", desc = "telescope todo list" },
+			{ "<leader>tt", desc = "todo-comments show the todo list" },
+			{ "<leader>tq", desc = "todo-comments show quickfix" },
+			{ "<leader>fT", desc = "telescope todo list" },
 		},
 		config = function(_, opts)
 			require("todo-comments").setup(opts)
@@ -476,13 +423,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>ca",
-				desc = "LSP code action",
-			},
-		},
+		keys = { { "<leader>ca", desc = "LSP code action" } },
 		opts = require "plugins.options.tiny-code-action-opts",
 		config = function(_, opts)
 			require("tiny-code-action").setup(opts)
@@ -503,14 +444,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"alker0/chezmoi.vim",
 		},
-		keys = {
-			{
-				mode = { "n" },
-				"<leader>fD",
-				"<cmd>Telescope chezmoi find_files<cr>",
-				desc = "telescope find dotfiles",
-			},
-		},
+		keys = { { "<leader>fD", "<cmd>Telescope chezmoi find_files<cr>", desc = "telescope find dotfiles" } },
 		opts = require "plugins.options.chezmoi-nvim-opts",
 		config = function(_, opts)
 			require("chezmoi").setup(opts)
@@ -541,9 +475,7 @@ return {
 
 	{
 		"folke/zen-mode.nvim",
-		keys = {
-			{ mode = { "n" }, "<leader>z", desc = "toggle zen-mode" },
-		},
+		keys = { { "<leader>z", desc = "toggle zen-mode" } },
 		config = function()
 			require "plugins.configs.zen-mode-conf"
 			require "plugins.mappings.zen-mode-keys"
@@ -583,11 +515,11 @@ return {
 		"folke/persistence.nvim",
 		event = "BufReadPre",
 		keys = {
-			{ mode = { "n" }, "<leader>qs", desc = "session select session" },
-			{ mode = { "n" }, "<leader>qL", desc = "session restore session" },
-			{ mode = { "n" }, "<leader>ql", desc = "session restore last session" },
-			{ mode = { "n" }, "<leader>qq", desc = "session quit all" },
-			{ mode = { "n" }, "<leader>qQ", desc = "session quit all without save session" },
+			{ "<leader>qs", desc = "session select session" },
+			{ "<leader>qL", desc = "session restore session" },
+			{ "<leader>ql", desc = "session restore last session" },
+			{ "<leader>qq", desc = "session quit all" },
+			{ "<leader>qQ", desc = "session quit all without save session" },
 		},
 		config = function(_, opts)
 			require("persistence").setup(opts)
@@ -609,9 +541,9 @@ return {
 		},
 		event = "LazyFile",
 		keys = {
-			{ mode = { "n" }, "<leader>aa", desc = "aerial toggle" },
-			{ mode = { "n" }, "<leader>an", desc = "aerial navigation toggle" },
-			{ mode = { "n" }, "<leader>fa", desc = "telescope aerial" },
+			{ "<leader>aa", desc = "aerial toggle" },
+			{ "<leader>an", desc = "aerial navigation toggle" },
+			{ "<leader>fa", desc = "telescope aerial" },
 		},
 		opts = require "plugins.options.aerial-opts",
 		config = function(_, opts)
@@ -630,9 +562,7 @@ return {
 	{
 		"stevearc/overseer.nvim",
 		enabled = false,
-		keys = {
-			{ mode = { "n" }, "<leader>o", desc = "overseer toggle" },
-		},
+		keys = { { "<leader>o", desc = "overseer toggle" } },
 		config = function(_, opts)
 			require("overseer").setup(opts)
 			require "plugins.mappings.overseer-keys"
@@ -679,10 +609,10 @@ return {
 		"Wansmer/treesj",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		keys = {
-			{ mode = { "n" }, "<leader>m", desc = "treesj toggle node under cursor" },
-			{ mode = { "n" }, "<leader>M", desc = "treesj toggle node recursive under cursor" },
-			{ mode = { "n" }, "<leader>j", desc = "treesj join node under cursor" },
-			{ mode = { "n" }, "<leader>s", desc = "treesj split node under cursor" },
+			{ "<leader>m", desc = "treesj toggle node under cursor" },
+			{ "<leader>M", desc = "treesj toggle node recursive under cursor" },
+			{ "<leader>j", desc = "treesj join node under cursor" },
+			{ "<leader>s", desc = "treesj split node under cursor" },
 		},
 		opts = require "plugins.options.treesj-opts",
 		config = function(_, opts)
@@ -701,10 +631,10 @@ return {
 			{ mode = { "x" }, "<leader>re", desc = "refactor extract function" },
 			{ mode = { "x" }, "<leader>rf", desc = "refactor extract function to file" },
 			{ mode = { "x" }, "<leader>rv", desc = "refactor extract variable" },
-			{ mode = { "n" }, "<leader>rI", desc = "refactor inline function" },
+			{ "<leader>rI", desc = "refactor inline function" },
 			{ mode = { "n", "x" }, "<leader>ri", desc = "refactor inline variable" },
-			{ mode = { "n" }, "<leader>rb", desc = "refactor extract block" },
-			{ mode = { "n" }, "<leader>rB", desc = "refactor extract block to file" },
+			{ "<leader>rb", desc = "refactor extract block" },
+			{ "<leader>rB", desc = "refactor extract block to file" },
 			{ mode = { "n", "x" }, "<leader>rr", desc = "refactor select refactor" },
 		},
 		opts = require "plugins.options.refactoring-opts",
@@ -717,8 +647,8 @@ return {
 	{
 		"MagicDuck/grug-far.nvim",
 		keys = {
-			{ mode = { "n" }, "<leader>rw", "grug-far open with word under cursor" },
-			{ mode = { "n" }, "<leader>rc", "grug-far open for current file" },
+			{ "<leader>rw", "grug-far open with word under cursor" },
+			{ "<leader>rc", "grug-far open for current file" },
 			{ mode = { "x" }, "<leader>rC", "grug-far open with visual selection" },
 		},
 		opts = require "plugins.options.grug-far-opts",
@@ -761,9 +691,7 @@ return {
 	{
 		"piersolenski/wtf.nvim",
 		dependencies = "MunifTanjim/nui.nvim",
-		keys = {
-			{ mode = { "n" }, "<leader>ws", desc = "wtf search diagnostic with duckduckgo" },
-		},
+		keys = { { "<leader>ws", desc = "wtf search diagnostic with duckduckgo" } },
 		opts = require "plugins.options.wtf-opts",
 		config = function(_, opts)
 			require("wtf").setup(opts)
@@ -780,8 +708,8 @@ return {
 		"echasnovski/mini.bufremove",
 		version = false,
 		keys = {
-			{ mode = { "n" }, "<leader>bd", desc = "buffer delete buffer" },
-			{ mode = { "n" }, "<leader>bD", desc = "buffer delete buffer (force)" },
+			{ "<leader>bd", desc = "buffer delete buffer" },
+			{ "<leader>bD", desc = "buffer delete buffer (force)" },
 		},
 		config = function(_, opts)
 			require("mini.bufremove").setup(opts)
@@ -796,25 +724,25 @@ return {
 		enabled = false,
 		version = false,
 		keys = {
-			{ mode = { "n" }, "<leader>ff", desc = "MiniPick find files" },
-			{ mode = { "n" }, "<leader>fw", desc = "MiniPick grep files" },
-			{ mode = { "n" }, "<leader>fW", desc = "MiniPick live grep files" },
-			{ mode = { "n" }, "<leader>fb", desc = "MiniPick find buffers" },
-			{ mode = { "n" }, "<leader>fh", desc = "MiniPick find help" },
-			{ mode = { "n" }, "<leader>fr", desc = "MiniPick latest picker" },
-			{ mode = { "n" }, "<leader>fz", desc = "MiniPick buffer lines" },
-			{ mode = { "n" }, "<leader>fm", desc = "MiniPick marks" },
-			{ mode = { "n" }, "<leader>th", desc = "MiniPick find themes" },
+			{ "<leader>ff", desc = "MiniPick find files" },
+			{ "<leader>fw", desc = "MiniPick grep files" },
+			{ "<leader>fW", desc = "MiniPick live grep files" },
+			{ "<leader>fb", desc = "MiniPick find buffers" },
+			{ "<leader>fh", desc = "MiniPick find help" },
+			{ "<leader>fr", desc = "MiniPick latest picker" },
+			{ "<leader>fz", desc = "MiniPick buffer lines" },
+			{ "<leader>fm", desc = "MiniPick marks" },
+			{ "<leader>th", desc = "MiniPick find themes" },
 			-- spellchecker: disable-line
-			{ mode = { "n" }, "<leader>fo", desc = "MiniPick oldfiles" },
-			{ mode = { "n" }, "<leader>fs", desc = "MiniPick spell suggestions" },
-			{ mode = { "n" }, "<leader>fgb", desc = "MiniPick git branches" },
-			{ mode = { "n" }, "<leader>fgc", desc = "MiniPick git commits" },
-			{ mode = { "n" }, "<leader>fgf", desc = "MiniPick git files" },
-			{ mode = { "n" }, "<leader>fgh", desc = "MiniPick git hunks" },
-			{ mode = { "n" }, "<leader>fsh", desc = "MiniPick history" },
-			{ mode = { "n" }, "<leader>fhl", desc = "MiniPick highlight groups" },
-			{ mode = { "n" }, "<leader>fch", desc = "MiniPick keymaps" },
+			{ "<leader>fo", desc = "MiniPick oldfiles" },
+			{ "<leader>fs", desc = "MiniPick spell suggestions" },
+			{ "<leader>fgb", desc = "MiniPick git branches" },
+			{ "<leader>fgc", desc = "MiniPick git commits" },
+			{ "<leader>fgf", desc = "MiniPick git files" },
+			{ "<leader>fgh", desc = "MiniPick git hunks" },
+			{ "<leader>fsh", desc = "MiniPick history" },
+			{ "<leader>fhl", desc = "MiniPick highlight groups" },
+			{ "<leader>fch", desc = "MiniPick keymaps" },
 		},
 		config = function(_, opts)
 			require("mini.pick").setup(opts)
@@ -869,19 +797,19 @@ return {
 	{
 		"mrjones2014/smart-splits.nvim",
 		keys = {
-			{ mode = { "n" }, "<C-S-Left>", desc = "split resize left" },
-			{ mode = { "n" }, "<C-S-Down>", desc = "split resize down" },
-			{ mode = { "n" }, "<C-S-Up>", desc = "split resize up" },
-			{ mode = { "n" }, "<C-S-Right>", desc = "split resize right" },
-			{ mode = { "n" }, "<C-h>", desc = "split move cursor left" },
-			{ mode = { "n" }, "<C-j>", desc = "split move cursor down" },
-			{ mode = { "n" }, "<C-k>", desc = "split move cursor up" },
-			{ mode = { "n" }, "<C-l>", desc = "split move cursor right" },
-			{ mode = { "n" }, "<C-\\>", desc = "split move cursor previous" },
-			{ mode = { "n" }, "<leader><leader>h", desc = "split swap buffer left" },
-			{ mode = { "n" }, "<leader><leader>j", desc = "split swap buffer down" },
-			{ mode = { "n" }, "<leader><leader>k", desc = "split swap buffer up" },
-			{ mode = { "n" }, "<leader><leader>l", desc = "split swap buffer right" },
+			{ "<C-S-Left>", desc = "split resize left" },
+			{ "<C-S-Down>", desc = "split resize down" },
+			{ "<C-S-Up>", desc = "split resize up" },
+			{ "<C-S-Right>", desc = "split resize right" },
+			{ "<C-h>", desc = "split move cursor left" },
+			{ "<C-j>", desc = "split move cursor down" },
+			{ "<C-k>", desc = "split move cursor up" },
+			{ "<C-l>", desc = "split move cursor right" },
+			{ "<C-\\>", desc = "split move cursor previous" },
+			{ "<leader><leader>h", desc = "split swap buffer left" },
+			{ "<leader><leader>j", desc = "split swap buffer down" },
+			{ "<leader><leader>k", desc = "split swap buffer up" },
+			{ "<leader><leader>l", desc = "split swap buffer right" },
 		},
 		config = function(_, opts)
 			require("smart-splits").setup(opts)

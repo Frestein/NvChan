@@ -1,21 +1,22 @@
 local keymap_utils = require "utils.keymap"
 local map_handler = require("langmapper").map
-local telescope = require "telescope"
-local telescope_builtin = require "telescope.builtin"
 
 --- @type Keymap[]
 local keymaps = {
-	{ "<leader>ff", telescope_builtin.find_files, "telescope find files" },
-	{ "<leader>fm", telescope_builtin.marks, "telescope find marks" },
-	{ "<leader>fw", telescope_builtin.live_grep, "telescope live grep" },
-	{ "<leader>fb", telescope_builtin.buffers, "telescope find buffers" },
-	{ "<leader>fh", telescope_builtin.help_tags, "telescope help page" },
-	-- spellchecker: disable-line
-	{ "<leader>fr", telescope_builtin.oldfiles, "telescope recent files" },
-	{ "<leader>fz", telescope_builtin.current_buffer_fuzzy_find, "telescope find in current buffer" },
-	{ "<leader>fd", telescope_builtin.diagnostics, "telescope find diagnostics" },
-	{ "<leader>ft", telescope.extensions.terms.terms, "telescope find terms" },
-	{ "<leader>th", telescope.extensions.themes.themes, "telescope find themes" },
+	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope find files" },
+	{ "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Telescope find marks" },
+	{ "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
+	{
+		"<leader>fb",
+		"<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
+		desc = "Telescope find buffers",
+	},
+	{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Telescope help page" },
+	{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Telescope recent files" },
+	{ "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope find in current buffer" },
+	{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Telescope find diagnostics" },
+	{ "<leader>ft", "<cmd>Telescope terms<cr>", desc = "Telescope find terms" },
+	{ "<leader>th", "<cmd>Telescope themes<cr>", desc = "Telescope find themes" },
 }
 
 keymap_utils.map(map_handler, keymaps)
