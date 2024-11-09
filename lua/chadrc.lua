@@ -19,6 +19,7 @@ M.ui = {
 		modules = {
 			trouble = statusline.trouble,
 			lazy = statusline.lazy,
+			aw = statusline.aw,
 		},
 		order = {
 			"mode",
@@ -85,6 +86,9 @@ M.base46 = {
 		["StatusLineNC"] = {
 			fg = "light_grey",
 			bg = "black",
+		},
+		["AwConnected"] = {
+			fg = { "light_grey", 5 },
 		},
 		-- noice.nvim {{{
 		["NoiceLspProgressTitle"] = {

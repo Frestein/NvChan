@@ -37,4 +37,11 @@ function M.lazy()
 	return "%#LazyUpdates#" .. lazy_updates
 end
 
+function M.aw()
+	local has_aw, _ = pcall(require, "aw_watcher")
+	if has_aw then
+		return require("aw_watcher").is_connected() and "%#AwConnected#" .. " "
+	end
+end
+
 return M

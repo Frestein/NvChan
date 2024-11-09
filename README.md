@@ -148,7 +148,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### time-tracking
 
-- [wakatime/vim-wakatime](https://github.com/wakatime/vim-wakatime)
+- [Luxed/aw-watcher-nvim](https://github.com/Luxed/aw-watcher-nvim)
 
 ### icon
 

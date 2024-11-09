@@ -2,7 +2,7 @@ require("utils.plugin").lazy_file()
 
 return {
 	{ "nvim-lua/plenary.nvim" },
-	{ "wakatime/vim-wakatime", lazy = false },
+	{ "Luxed/aw-watcher-nvim", lazy = false },
 	{ "artemave/workspace-diagnostics.nvim", opts = {} },
 	{ "Bilal2453/luvit-meta", lazy = true },
 
