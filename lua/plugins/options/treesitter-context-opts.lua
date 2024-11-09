@@ -1,11 +1,16 @@
+local tsc = require "treesitter-context"
+Snacks.toggle({
+	name = "Treesitter Context",
+	get = tsc.enabled,
+	set = function(state)
+		if state then
+			tsc.enable()
+		else
+			tsc.disable()
+		end
+	end,
+}):map "<leader>ut"
+
 return {
-	throttle = true,
-	max_lines = 0,
-	patterns = {
-		default = {
-			"class",
-			"function",
-			"method",
-		},
-	},
+	multiwindow = true,
 }

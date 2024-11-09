@@ -5,12 +5,11 @@ local noice = require "noice"
 --- @type Keymap[]
 local keymaps = {
 	{
-		-- spellchecker: disable-line
-		"<leader>nd",
+		"<leader>un",
 		function()
-			noice.cmd "dismiss"
+			Snacks.notifier.hide()
 		end,
-		"notices dismiss all visible messages",
+		"Dismiss All Notifications",
 	},
 	{
 		"<leader>fn",

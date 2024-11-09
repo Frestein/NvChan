@@ -24,6 +24,18 @@ return {
 	},
 
 	{
+		"folke/snacks.nvim",
+		lazy = false,
+		priority = 999,
+		opts = function()
+			return require "plugins.options.snacks-opts"
+		end,
+		init = function()
+			_G.Snacks = require "snacks"
+		end,
+	},
+
+	{
 		"Frestein/ui",
 		config = function()
 			require "nvchad"
@@ -108,7 +120,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		event = "VeryLazy",
-		opts = require "plugins.options.treesitter-context-opts",
+		opts = function()
+			return require "plugins.options.treesitter-context-opts"
+		end,
 	},
 
 	{
