@@ -273,7 +273,7 @@ return {
 			},
 		},
 		branch = "0.2.x",
-		keys = { { "<leader><leader>", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
+		keys = { { "<leader>fF", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
 	},
 
 	{
