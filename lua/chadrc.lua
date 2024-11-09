@@ -24,34 +24,29 @@ M.ui = {
 		order = {
 			"mode",
 			"file",
-			"lazy",
 			"git",
 			"%=",
 			"lsp_msg",
 			"trouble",
 			"%=",
 			"lsp",
+			"lazy",
 			"cwd",
 			"cursor",
 		},
 	},
-
 	cmp = {
 		style = "default",
 		lspkind_text = false,
 	},
-
 	tabufline = { order = { "treeOffset", "buffers", "tabs" } },
-
 	telescope = { style = "borderless" },
-
 	border = { style = "rounded" },
 }
 
 M.base46 = {
 	theme = "gruvbox",
 	transparency = false,
-
 	hl_override = {
 		Comment = {
 			fg = "light_grey",
@@ -69,7 +64,6 @@ M.base46 = {
 		["TbBufOffClose"] = { bg = "NONE" },
 		-- }}}
 	},
-
 	hl_add = {
 		["NvimSeparator"] = {
 			bg = "NONE",
