@@ -1,7 +1,7 @@
 -- vim:fileencoding=utf-8:foldmethod=marker
 
-local dashboard = require "dashboard.config"
-local statusline = require "statusline"
+local dashboard = require "modules.dashboard.config"
+local statusline = require "modules.statusline"
 
 ---@type ChadrcConfig
 local M = {}

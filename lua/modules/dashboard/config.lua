@@ -1,7 +1,7 @@
 local M = {}
 
 function M.get_header()
-	local utils = require "dashboard.utils"
+	local utils = require "modules.dashboard.utils"
 	local headers = M.headers
 	local themes = M.themes
 
