@@ -165,10 +165,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
 
-### bars-and-lines
-
-- [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)
-
 ### session
 
 - [folke/persistence.nvim](https://dotfyle.com/plugins/folke/persistence.nvim)
