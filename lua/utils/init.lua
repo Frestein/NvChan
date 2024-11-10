@@ -100,4 +100,8 @@ function M.create_undo()
 	end
 end
 
+function M.is_win()
+	return vim.uv.os_uname().sysname:find "Windows" ~= nil
+end
+
 return M

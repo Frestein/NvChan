@@ -15,7 +15,6 @@ local keymaps = {
 	{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Telescope recent files" },
 	{ "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope find in current buffer" },
 	{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Telescope find diagnostics" },
-	{ "<leader>ft", "<cmd>Telescope terms<cr>", desc = "Telescope find terms" },
 	{ "<leader>th", "<cmd>Telescope themes<cr>", desc = "Telescope find themes" },
 }
 

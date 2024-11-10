@@ -3,7 +3,6 @@ return {
 		"BufReadPost",
 		"BufWritePost",
 		"InsertLeave",
-		"TextChanged",
 	},
 	linters_by_ft = {
 		["yaml.ansible"] = { "ansible_lint" },

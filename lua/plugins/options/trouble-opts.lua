@@ -1,5 +1,6 @@
+---@type trouble.Config
 return {
 	preview = {
-		type = "split",
+		type = "main",
 	},
 }

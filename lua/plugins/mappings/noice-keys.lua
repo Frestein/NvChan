@@ -5,13 +5,6 @@ local noice = require "noice"
 --- @type Keymap[]
 local keymaps = {
 	{
-		"<leader>un",
-		function()
-			Snacks.notifier.hide()
-		end,
-		"Dismiss All Notifications",
-	},
-	{
 		"<leader>fn",
 		function()
 			noice.cmd "telescope"

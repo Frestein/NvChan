@@ -249,7 +249,6 @@ return {
 			{ "<leader>fr", desc = "telescope recent files" },
 			{ "<leader>fz", desc = "telescope find in current buffer" },
 			{ "<leader>fd", desc = "telescope find diagnostics" },
-			{ "<leader>ft", desc = "telescope find terms" },
 			{ "<leader>th", desc = "telescope find themes" },
 		},
 		opts = function()
@@ -273,7 +272,7 @@ return {
 			},
 		},
 		branch = "0.2.x",
-		keys = { { "<leader>fF", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
+		keys = { { "<leader>F", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
 	},
 
 	{
@@ -327,23 +326,6 @@ return {
 	},
 
 	{
-		"NeogitOrg/neogit",
-		cmd = "Neogit",
-		ft = { "diff" },
-		keys = {
-			{ "<leader>gg", desc = "neogit open" },
-			{ "<leader>gl", desc = "neogit log" },
-		},
-		opts = require "plugins.options.neogit-opts",
-		config = function(_, opts)
-			require("neogit").setup(opts)
-			dofile(vim.g.base46_cache .. "git")
-			dofile(vim.g.base46_cache .. "neogit")
-			require "plugins.mappings.neogit-keys"
-		end,
-	},
-
-	{
 		"sindrets/diffview.nvim",
 		opts = function()
 			dofile(vim.g.base46_cache .. "diffview")
@@ -358,10 +340,7 @@ return {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
-		keys = {
-			{ "<leader>un", desc = "Dismiss All Notifications" },
-			{ "<leader>fn", desc = "telescope find notices" },
-		},
+		keys = { { "<leader>fn", desc = "telescope find notices" } },
 		config = function()
 			require "plugins.configs.noice-conf"
 			require "plugins.mappings.noice-keys"
@@ -370,8 +349,19 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-		opts = {},
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load { plugins = { "dressing.nvim" } }
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load { plugins = { "dressing.nvim" } }
+				return vim.ui.input(...)
+			end
+		end,
 	},
 
 	{
@@ -380,12 +370,40 @@ return {
 		cmd = "Trouble",
 		dependencies = "folke/todo-comments.nvim",
 		keys = {
-			{ "<leader>x", desc = "trouble toggle diagnostics" },
-			{ "<leader>xx", desc = "trouble toggle buffer diagnostics" },
-			{ "<leader>cl", desc = "trouble LSP definitions / references / ..." },
-			{ "<leader>xl", desc = "trouble toggle location list" },
-			{ "<leader>xq", desc = "trouble toggle quickfix list" },
+			{ "<leader>xx", desc = "trouble toggle diagnostics" },
+			{ "<leader>xX", desc = "trouble toggle buffer diagnostics" },
+			{ "<leader>xL", desc = "trouble toggle location list" },
+			{ "<leader>xQ", desc = "trouble toggle quickfix list" },
 			{ "<leader>xs", desc = "trouble toggle document symbols" },
+			{ "<leader>xS", desc = "trouble LSP definitions / references / ..." },
+			{
+				"[q",
+				function()
+					if require("trouble").is_open() then
+						require("trouble").prev { skip_groups = true, jump = true }
+					else
+						local ok, err = pcall(vim.cmd.cprev)
+						if not ok then
+							vim.notify(err, vim.log.levels.ERROR)
+						end
+					end
+				end,
+				desc = "Previous Trouble/Quickfix Item",
+			},
+			{
+				"]q",
+				function()
+					if require("trouble").is_open() then
+						require("trouble").next { skip_groups = true, jump = true }
+					else
+						local ok, err = pcall(vim.cmd.cnext)
+						if not ok then
+							vim.notify(err, vim.log.levels.ERROR)
+						end
+					end
+				end,
+				desc = "Next Trouble/Quickfix Item",
+			},
 		},
 		opts = require "plugins.options.trouble-opts",
 		config = function(_, opts)
@@ -716,19 +734,6 @@ return {
 	{
 		"b0o/schemastore.nvim",
 		version = false,
-	},
-
-	{
-		"echasnovski/mini.bufremove",
-		version = false,
-		keys = {
-			{ "<leader>bd", desc = "buffer delete buffer" },
-			{ "<leader>bD", desc = "buffer delete buffer (force)" },
-		},
-		config = function(_, opts)
-			require("mini.bufremove").setup(opts)
-			require "plugins.mappings.mini-bufremove-keys"
-		end,
 	},
 
 	{
