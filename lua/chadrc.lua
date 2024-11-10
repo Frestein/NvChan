@@ -179,7 +179,6 @@ M.base46 = {
 		"devicons",
 		"diffview",
 		"git",
-		"neogit",
 		"notify",
 		"nvcheatsheet",
 		"statusline",

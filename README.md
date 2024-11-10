@@ -105,7 +105,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### git
 
-- [NeogitOrg/neogit](https://dotfyle.com/plugins/NeogitOrg/neogit)
 - [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
 - [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
 
@@ -176,7 +175,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### split-and-window
 
-- [echasnovski/mini.bufremove](https://dotfyle.com/plugins/echasnovski/mini.bufremove)
 - [mrjones2014/smart-splits.nvim](https://dotfyle.com/plugins/mrjones2014/smart-splits.nvim)
 - [nvim-zh/colorful-winsep.nvim](https://dotfyle.com/plugins/nvim-zh/colorful-winsep.nvim)
 
