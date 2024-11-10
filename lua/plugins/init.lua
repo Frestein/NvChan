@@ -126,15 +126,6 @@ return {
 	},
 
 	{
-		"nvim-treesitter/nvim-treesitter-refactor",
-		event = "VeryLazy",
-		opts = require "plugins.options.treesitter-refactor-opts",
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
-	},
-
-	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "VeryLazy",
 		config = function()
