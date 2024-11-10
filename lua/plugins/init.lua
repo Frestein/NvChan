@@ -521,19 +521,22 @@ return {
 
 	{
 		"nvim-neorg/neorg",
-		dependencies = {
-			"nvim-neorg/neorg-telescope",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		ft = "norg",
 		version = "*",
+		ft = "norg",
+		event = "VeryLazy",
 		opts = require "plugins.options.neorg-opts",
 		config = function(_, opts)
 			require("neorg").setup(opts)
 			require "plugins.mappings.neorg-keys"
 		end,
+	},
+
+	{
+		"nvim-neorg/neorg-telescope",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 
 	{
