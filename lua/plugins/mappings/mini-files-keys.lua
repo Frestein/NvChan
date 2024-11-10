@@ -101,7 +101,7 @@ local map_split = function(buf_id, lhs, direction)
 	map("n", lhs, rhs, { buffer = buf_id, desc = "Split " .. direction })
 end
 
-vim.api.nvim_create_autocmd("User", {
+autocmd("User", {
 	pattern = "MiniFilesExplorerOpen",
 	callback = function()
 		set_mark("c", vim.fn.stdpath "config", "Config") -- path
