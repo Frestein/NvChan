@@ -64,7 +64,7 @@ M.buttons = {
 	{ txt = "󰈚  Recent Files", keys = "Spc f r", cmd = "Telescope oldfiles" },
 	{ txt = "  Bookmarks", keys = "Spc f m", cmd = "Telescope marks" },
 	{ txt = "  Themes", keys = "Spc t H", cmd = "Telescope themes" },
-	{ txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
+	{ txt = "  Mappings", keys = "Spc f k", cmd = "Telescope keymaps" },
 
 	{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 

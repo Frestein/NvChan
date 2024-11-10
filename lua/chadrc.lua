@@ -180,7 +180,6 @@ M.base46 = {
 		"diffview",
 		"git",
 		"notify",
-		"nvcheatsheet",
 		"statusline",
 		"syntax",
 		"tbline",

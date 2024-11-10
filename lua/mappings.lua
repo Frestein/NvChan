@@ -191,11 +191,7 @@ local mappings = {
 	},
 
 	--- Other ---
-	{ "n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "general nvcheatsheet" } },
 	{ "n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" } },
-	{ "n", "<leader>n", "<cmd>set nu!<CR>", { desc = "general toggle line number" } },
-	{ "n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "general toggle relative number" } },
-	{ { "n", "i" }, "<F11>", "<cmd>set spell!<CR>", { desc = "general toggle spell check" } },
 	{
 		"n",
 		"<leader>un",
@@ -209,4 +205,15 @@ local mappings = {
 for _, mapping in ipairs(mappings) do
 	local mode, lhs, rhs, opts = table.unpack(mapping)
 	map(mode, lhs, rhs, opts)
+end
+
+-- Toggle options
+Snacks.toggle.option("spell", { name = "Spelling" }):map "<leader>us"
+Snacks.toggle.option("wrap", {name = "Wrap"}):map("<leader>uw")
+Snacks.toggle.line_number():map("<leader>ul")
+Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map "<leader>uL"
+Snacks.toggle.diagnostics():map("<leader>ud")
+Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
+if vim.lsp.inlay_hint then
+  Snacks.toggle.inlay_hints():map("<leader>uh")
 end

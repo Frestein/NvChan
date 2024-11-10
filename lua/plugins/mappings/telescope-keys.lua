@@ -16,6 +16,7 @@ local keymaps = {
 	{ "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope find in current buffer" },
 	{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Telescope find diagnostics" },
 	{ "<leader>th", "<cmd>Telescope themes<cr>", desc = "Telescope find themes" },
+	{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Telescope find keymaps" },
 }
 
 keymap_utils.map(map_handler, keymaps)

@@ -250,6 +250,7 @@ return {
 			{ "<leader>fz", desc = "telescope find in current buffer" },
 			{ "<leader>fd", desc = "telescope find diagnostics" },
 			{ "<leader>th", desc = "telescope find themes" },
+			{ "<leader>fk", desc = "telescope find keymaps" },
 		},
 		opts = function()
 			return require "plugins.options.telescope-opts"
