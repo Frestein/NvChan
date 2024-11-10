@@ -14,6 +14,13 @@ function M.on_attach(bufnr)
 		{ "<leader>wa", lsp_buf.add_workspace_folder, "LSP add workspace folder" },
 		{ "<leader>wr", lsp_buf.remove_workspace_folder, "LSP remove workspace folder" },
 		{ "gr", lsp_buf.references, "LSP show references" },
+		{
+			"<leader>cR",
+			function()
+				Snacks.rename.rename_file()
+			end,
+			"Rename File",
+		},
 		{ "<leader>D", lsp_buf.type_definition, "LSP go to type definition" },
 		{
 			"<leader>wl",
