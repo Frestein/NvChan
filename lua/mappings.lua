@@ -9,8 +9,6 @@ local mappings = {
 	{ { "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "motion down", expr = true, silent = true } },
 	{ { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "motion up", expr = true, silent = true } },
 	{ { "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "motion up", expr = true, silent = true } },
-	{ { "n", "o", "x" }, "<S-h>", "^", { desc = "motion jump to beginning of line" } },
-	{ { "n", "o", "x" }, "<S-l>", "$", { desc = "motion jump to end of line" } },
 	{ "i", "<C-b>", "<ESC>^i", { desc = "motion beginning of line" } },
 	{ "i", "<C-e>", "<End>", { desc = "motion end of line" } },
 	{ "i", "<C-h>", "<Left>", { desc = "motion left" } },
@@ -23,7 +21,7 @@ local mappings = {
 	{ "n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole file" } },
 	{
 		"n",
-		"<leader>cf",
+		"<leader>cF",
 		function()
 			vim.fn.setreg("+", vim.fn.expand "%:t")
 		end,
@@ -31,7 +29,7 @@ local mappings = {
 	},
 	{
 		"n",
-		"<leader>cp",
+		"<leader>cP",
 		function()
 			vim.fn.setreg("+", vim.fn.expand "%:p")
 		end,
@@ -44,9 +42,16 @@ local mappings = {
 	{ "n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true } },
 	{ "n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true } },
 
-	--- Code ---
+	--- Keywordprg ---
+	{ "n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" } },
+
+	--- Comments ---
+	{ "n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" } },
+	{ "n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" } },
 	{ "n", "<leader>/", "gcc", { desc = "code toggle comment", remap = true } },
 	{ "v", "<leader>/", "gc", { desc = "code toggle comment", remap = true } },
+
+	--- Code ---
 	{
 		"n",
 		"[[",
@@ -65,6 +70,9 @@ local mappings = {
 	},
 
 	--- Tabufline ---
+	{ "n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" } },
+	{ "n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" } },
+	{ "n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" } },
 	{
 		"n",
 		"<leader>bd",
@@ -73,8 +81,15 @@ local mappings = {
 		end,
 		{ desc = "Delete Buffer" },
 	},
-	{ "n", "<S-tab>", tabufline.prev, { desc = "buffer goto prev buffer" } },
-	{ "n", "<tab>", tabufline.next, { desc = "buffer goto next buffer" } },
+	{
+		"n",
+		"<leader>bo",
+		function()
+			Snacks.bufdelete.other()
+		end,
+		{ desc = "Delete Other Buffers" },
+	},
+	{ "n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" } },
 	{
 		"n",
 		"<A-Left>",
@@ -91,8 +106,15 @@ local mappings = {
 		end,
 		{ desc = "buffer move to right" },
 	},
-	{ "n", "<leader>$", "<cmd>tablast<CR>", { desc = "tab last tab" } },
-	{ "n", "<leader>^", "<cmd>tabfirst<CR>", { desc = "tab first tab" } },
+
+	--- Tabs ---
+	{ "n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" } },
+	{ "n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" } },
+	{ "n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" } },
+	{ "n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" } },
+	{ "n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" } },
+	{ "n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" } },
+	{ "n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" } },
 
 	--- Terminal ---
 	{
@@ -189,6 +211,11 @@ local mappings = {
 		end,
 		{ desc = "blankline jump to current context" },
 	},
+
+	--- Add undo break-points ---
+	{ "i", ",", ",<c-g>u" },
+	{ "i", ".", ".<c-g>u" },
+	{ "i", ";", ";<c-g>u" },
 
 	--- Other ---
 	{ "n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" } },

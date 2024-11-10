@@ -6,7 +6,7 @@ local conform = require "conform"
 local keymaps = {
 	{
 		mode = { "n", "v" },
-		"<leader>fc",
+		"<leader>cf",
 		function()
 			conform.format({ async = true }, function(err)
 				if not err then

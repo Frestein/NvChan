@@ -64,7 +64,7 @@ return {
 	{
 		"stevearc/conform.nvim",
 		cmd = "ConformInfo",
-		keys = { { mode = { "n", "v" }, "<leader>fc", desc = "code format code" } },
+		keys = { { mode = { "n", "v" }, "<leader>cf", desc = "code format code" } },
 		config = function()
 			require "plugins.configs.conform-conf"
 			require "plugins.mappings.conform-keys"
