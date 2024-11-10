@@ -26,16 +26,25 @@ return {
 		},
 	},
 	statuscolumn = {
-		left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-		right = { "fold", "git" }, -- priority of signs on the right (high to low)
 		folds = {
-			open = true, -- show open fold icons
-			git_hl = true, -- use Git Signs hl for fold icons
+			open = true,
+			git_hl = true,
 		},
-		git = {
-			-- patterns to match Git signs
-			patterns = { "GitSign", "MiniDiffSign" },
+	},
+	gitbrowse = {
+		url_patterns = {
+			["github.com"] = {
+				branch = "/tree/{branch}",
+				file = "/blob/{branch}/{file}#L{line}",
+			},
+			["gitlab.com"] = {
+				branch = "/-/tree/{branch}",
+				file = "/-/blob/{branch}/{file}#L{line}",
+			},
+			["codeberg.org"]= {
+				branch = "/src/branch/{branch}",
+				file = "/src/branch/{branch}/{file}#L{line}",
+			}
 		},
-		refresh = 50, -- refresh at most every 50ms
 	},
 }
