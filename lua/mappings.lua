@@ -1,7 +1,7 @@
 require "plugins.mappings.lazy-keys"
 
+local buffer_utils = require "utils.buffer"
 local map = require("langmapper").map
-local tabufline = require "nvchad.tabufline"
 
 local mappings = {
 	-- Motion
@@ -78,7 +78,7 @@ local mappings = {
 		{ desc = "Next Reference" },
 	},
 
-	--- Tabufline ---
+	--- Bufferline ---
 	{ "n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" } },
 	{ "n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" } },
 	{ "n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" } },
@@ -103,7 +103,7 @@ local mappings = {
 		"n",
 		"<A-Left>",
 		function()
-			tabufline.move_buf(-1)
+			buffer_utils.move_buf(-1)
 		end,
 		{ desc = "buffer move to left" },
 	},
@@ -111,7 +111,7 @@ local mappings = {
 		"n",
 		"<A-Right>",
 		function()
-			tabufline.move_buf(1)
+			buffer_utils.move_buf(1)
 		end,
 		{ desc = "buffer move to right" },
 	},
