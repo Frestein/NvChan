@@ -1,5 +1,13 @@
 return {
-	backend = "vim",
+	backend = "delta",
+	backend_opts = {
+		delta = {
+			header_lines_to_remove = 4,
+			args = {
+				"--diff-highlight",
+			},
+		},
+	},
 	telescope_opts = {
 		sorting_strategy = "descending",
 		layout_strategy = "vertical",
