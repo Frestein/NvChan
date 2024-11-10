@@ -17,30 +17,30 @@ local set_mark = function(id, path, desc)
 end
 
 -- Mapping to set current working directory
-local files_set_cwd = function(path)
+local set_cwd = function(path)
 	-- Works only if cursor is on the valid file system entry
-	local cur_entry_path = mini_files.get_fs_entry().path
-	local cur_directory = vim.fs.dirname(cur_entry_path)
-	vim.fn.chdir(cur_directory)
+	local entry_path = mini_files.get_fs_entry().path
+	local cwd = vim.fs.dirname(entry_path)
+	vim.fn.chdir(cwd)
 end
 
 -- Mapping to use grug-far for search in the current directory
-local files_grug_far_replace = function(path)
+local replace = function(path)
 	-- Works only if cursor is on the valid file system entry
-	local cur_entry_path = mini_files.get_fs_entry().path
-	local prefills = { paths = vim.fs.dirname(cur_entry_path) }
-	local grug_far = require "grug-far"
+	local entry_path = mini_files.get_fs_entry().path
+	local prefills = { paths = vim.fs.dirname(entry_path) }
+	local gf = require "grug-far"
 
-	if not grug_far.has_instance "explorer" then
-		grug_far.open {
+	if not gf.has_instance "explorer" then
+		gf.open {
 			instanceName = "explorer",
 			prefills = prefills,
 			staticTitle = "Find and Replace from Explorer",
 		}
 	else
-		grug_far.open_instance "explorer"
+		gf.open_instance "explorer"
 		-- Updating the prefills without crealing the search and other fields
-		grug_far.update_instance_prefills("explorer", prefills, false)
+		gf.update_instance_prefills("explorer", prefills, false)
 	end
 end
 
@@ -114,8 +114,8 @@ autocmd("User", {
 	pattern = "MiniFilesBufferCreate",
 	callback = function(args)
 		local buf_id = args.data.buf_id
-		map("n", "g~", files_set_cwd, { buffer = args.data.buf_id, desc = "Set cwd" })
-		map("n", "gs", files_grug_far_replace, { buffer = args.data.buf_id, desc = "Search in directory" })
+		map("n", "g~", set_cwd, { buffer = args.data.buf_id, desc = "Set cwd" })
+		map("n", "gs", replace, { buffer = args.data.buf_id, desc = "Search in directory" })
 		map("n", "g.", toggle_dotfiles, { buffer = buf_id, desc = "Toggle hidden" })
 		map("n", "<C-p>", toggle_preview, { buffer = buf_id, desc = "Toggle preview" })
 		map_tab(buf_id, "<C-t>")
