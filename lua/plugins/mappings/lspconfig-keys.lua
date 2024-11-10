@@ -2,10 +2,6 @@ local keymap_utils = require "utils.keymap"
 local map_handler = require("langmapper").map
 local lsp_buf = vim.lsp.buf
 
-local function toggle_inlay_hints()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end
-
 local M = {}
 
 function M.on_attach(bufnr)
@@ -19,7 +15,6 @@ function M.on_attach(bufnr)
 		{ "<leader>wr", lsp_buf.remove_workspace_folder, "LSP remove workspace folder" },
 		{ "gr", lsp_buf.references, "LSP show references" },
 		{ "<leader>D", lsp_buf.type_definition, "LSP go to type definition" },
-		{ "<F10>", toggle_inlay_hints, "LSP toggle inlay hints" },
 		{
 			"<leader>wl",
 			function()
