@@ -171,7 +171,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### split-and-window
 
-- [mrjones2014/smart-splits.nvim](https://dotfyle.com/plugins/mrjones2014/smart-splits.nvim)
 - [nvim-zh/colorful-winsep.nvim](https://dotfyle.com/plugins/nvim-zh/colorful-winsep.nvim)
 
 ### statusline

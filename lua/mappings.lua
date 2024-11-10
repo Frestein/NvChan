@@ -37,10 +37,19 @@ local mappings = {
 	},
 
 	--- Windows ---
-	{ "n", "<leader>w", "<c-w>", { desc = "Windows", remap = true } },
 	{ "n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true } },
 	{ "n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true } },
-	{ "n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true } },
+	{ "n", "<C-\\>", "<C-W>p", { desc = "Go to Previous Window", remap = true } },
+	-- Move to window using the <ctrl> hjkl keys
+	{ "n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true } },
+	{ "n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true } },
+	{ "n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true } },
+	{ "n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true } },
+	-- Resize window using <ctrl> arrow keys
+	{ "n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" } },
+	{ "n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" } },
+	{ "n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" } },
+	{ "n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" } },
 
 	--- Keywordprg ---
 	{ "n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" } },

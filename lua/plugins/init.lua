@@ -807,27 +807,4 @@ return {
 			return {}
 		end,
 	},
-
-	{
-		"mrjones2014/smart-splits.nvim",
-		keys = {
-			{ "<C-S-Left>", desc = "split resize left" },
-			{ "<C-S-Down>", desc = "split resize down" },
-			{ "<C-S-Up>", desc = "split resize up" },
-			{ "<C-S-Right>", desc = "split resize right" },
-			{ "<C-h>", desc = "split move cursor left" },
-			{ "<C-j>", desc = "split move cursor down" },
-			{ "<C-k>", desc = "split move cursor up" },
-			{ "<C-l>", desc = "split move cursor right" },
-			{ "<C-\\>", desc = "split move cursor previous" },
-			{ "<leader><leader>h", desc = "split swap buffer left" },
-			{ "<leader><leader>j", desc = "split swap buffer down" },
-			{ "<leader><leader>k", desc = "split swap buffer up" },
-			{ "<leader><leader>l", desc = "split swap buffer right" },
-		},
-		config = function(_, opts)
-			require("smart-splits").setup(opts)
-			require "plugins.mappings.smart-splits-keys"
-		end,
-	},
 }
