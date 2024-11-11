@@ -1,6 +1,6 @@
 require("utils.plugin").lazy_file()
-local utils = require "utils"
 local mini_utils = require "utils.mini"
+local utils = require "utils"
 
 return {
 	{ "nvim-lua/plenary.nvim" },
