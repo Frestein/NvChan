@@ -9,12 +9,6 @@ return {
 	{ "Bilal2453/luvit-meta", lazy = true },
 
 	{
-		"Frestein/showkeys",
-		cmd = "ShowkeysToggle",
-		opts = require "plugins.options.showkeys-opts",
-	},
-
-	{
 		"folke/lazydev.nvim",
 		ft = "lua",
 		cmd = "LazyDev",
