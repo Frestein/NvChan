@@ -1,4 +1,11 @@
 return {
-	indent = { char = "│", highlight = "IblChar" },
-	scope = { char = "│", highlight = "IblScopeChar" },
+	indent = {
+		char = "│",
+		highlight = "IblChar",
+	},
+	scope = {
+		enabled = false,
+		char = "│",
+		highlight = "IblScopeChar",
+	},
 }

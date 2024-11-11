@@ -65,6 +65,9 @@ M.base46 = {
 		-- }}}
 	},
 	hl_add = {
+		["MiniIndentscopeSymbol"] = {
+			fg = "grey",
+		},
 		["NvimSeparator"] = {
 			bg = "NONE",
 			fg = "line",
