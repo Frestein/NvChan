@@ -1,4 +1,5 @@
 require("utils.plugin").lazy_file()
+local utils = require "utils"
 local mini_utils = require "utils.mini"
 
 return {
@@ -229,7 +230,7 @@ return {
 		end,
 		config = function(_, opts)
 			require("mini.ai").setup(opts)
-			require("utils").on_load("which-key.nvim", function()
+			utils.on_load("which-key.nvim", function()
 				vim.schedule(function()
 					mini_utils.ai_whichkey(opts)
 				end)
@@ -240,6 +241,23 @@ return {
 	{
 		"echasnovski/mini.surround",
 		event = "VeryLazy",
+		keys = function(_, keys)
+			-- Populate the keys based on the user's options
+			local opts = utils.opts "mini.surround"
+			local mappings = {
+				{ opts.mappings.add, desc = "Add Surrounding", mode = { "n", "v" } },
+				{ opts.mappings.delete, desc = "Delete Surrounding" },
+				{ opts.mappings.find, desc = "Find Right Surrounding" },
+				{ opts.mappings.find_left, desc = "Find Left Surrounding" },
+				{ opts.mappings.highlight, desc = "Highlight Surrounding" },
+				{ opts.mappings.replace, desc = "Replace Surrounding" },
+				{ opts.mappings.update_n_lines, desc = "Update `MiniSurround.config.n_lines`" },
+			}
+			mappings = vim.tbl_filter(function(m)
+				return m[1] and #m[1] > 0
+			end, mappings)
+			return vim.list_extend(mappings, keys)
+		end,
 		opts = require "plugins.options.mini-surround-opts",
 	},
 
