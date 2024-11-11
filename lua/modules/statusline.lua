@@ -24,7 +24,7 @@ function M.trouble()
 				vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = colors.light_grey, bg = colors.black })
 			end
 		end
-		return statusline_symbols
+		return " " .. statusline_symbols
 	end
 end
 
