@@ -1,5 +1,3 @@
--- vim:fileencoding=utf-8:foldmethod=marker
-
 local dashboard = require "modules.dashboard.config"
 local statusline = require "modules.statusline"
 
@@ -57,18 +55,14 @@ M.base46 = {
 			fg = "light_grey",
 			italic = true,
 		},
-		-- Tabufline {{{
+		--- tabufline ---
 		["TbFill"] = { bg = "NONE" },
 		["TbBufOn"] = { bg = "NONE" },
 		["TbBufOnClose"] = { bg = "NONE" },
 		["TbBufOff"] = { bg = "NONE" },
 		["TbBufOffClose"] = { bg = "NONE" },
-		-- }}}
 	},
 	hl_add = {
-		["MiniIndentscopeSymbol"] = {
-			fg = "grey",
-		},
 		["NvimSeparator"] = {
 			bg = "NONE",
 			fg = "line",
@@ -85,15 +79,19 @@ M.base46 = {
 			fg = "light_grey",
 			bg = "black",
 		},
+		--- mini.indentscope ---
+		["MiniIndentscopeSymbol"] = {
+			fg = "grey",
+		},
+		--- aw-watcher-nvim ---
 		["AwConnected"] = {
 			fg = { "light_grey", 5 },
 		},
-		-- noice.nvim {{{
+		-- noice.nvim ---
 		["NoiceLspProgressTitle"] = {
 			fg = { "white", -20 },
 		},
-		-- }}}
-		-- foldtext.lua {{{
+		--- foldtext.lua ---
 		["FoldedSpace"] = {
 			fg = "NONE",
 			bg = "NONE",
@@ -106,33 +104,29 @@ M.base46 = {
 			fg = "light_grey",
 			italic = true,
 		},
-		-- }}}
-		-- lazy.nvim statusline module
+		--- lazy.nvim  ---
 		["LazyUpdates"] = {
 			fg = "green",
 			bg = "NONE",
 		},
-		-- highlight-undo.nvim {{{
+		--- highlight-undo.nvim ---
 		["HighlightUndo"] = {
 			bg = { "black", "blue", 40 },
 		},
 		["HighlightRedo"] = {
 			bg = { "black", "red", 40 },
 		},
-		-- }}}
-		-- twilight.nvim {{{
+		--- twilight.nvim ---
 		["Twilight"] = {
 			bg = "black",
 			fg = "grey_fg",
 		},
-		-- }}}
-		-- gitsigns.nvim {{{
+		--- gitsigns.nvim ---
 		["GitSignsCurrentLineBlame"] = {
 			fg = "light_grey",
 			italic = true,
 		},
-		-- }}}
-		-- trouble.nvim {{{
+		--- trouble.nvim ---
 		["TroubleStatusline1"] = {
 			fg = "light_grey",
 			bg = "black",
@@ -141,15 +135,7 @@ M.base46 = {
 			fg = "yellow",
 			bg = "one_bg",
 		},
-		-- }}}
-		-- neocodeium {{{
-		["NeoCodeiumSuggestion"] = { fg = "light_grey" },
-		-- }}}
-		-- nvim-tree.lua {{{
-		["NvimTreeEndOfBuffer"] = { bg = "NONE" },
-		["NvimTreeWinSeparator"] = { bg = "NONE" },
-		-- }}}
-		-- symbol-usage.nvim {{{
+		--- symbol-usage.nvim ---
 		["SymbolUsageRounding"] = {
 			fg = "NONE",
 		},
@@ -173,7 +159,6 @@ M.base46 = {
 			bg = "NONE",
 			italic = true,
 		},
-		-- }}}
 	},
 
 	integrations = {
