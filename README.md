@@ -26,13 +26,14 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [Wansmer/treesj](https://dotfyle.com/plugins/Wansmer/treesj)
 - [debugloop/telescope-undo.nvim](https://dotfyle.com/plugins/debugloop/telescope-undo.nvim)
+- [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
 - [echasnovski/mini.move](https://dotfyle.com/plugins/echasnovski/mini.move)
+- [echasnovski/mini.pairs](https://dotfyle.com/plugins/echasnovski/mini.pairs)
+- [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
 - [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
-- [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
 - [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
 - [okuuva/auto-save.nvim](https://dotfyle.com/plugins/okuuva/auto-save.nvim)
 - [tzachar/highlight-undo.nvim](https://dotfyle.com/plugins/tzachar/highlight-undo.nvim)
-- [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
 
 ### file-explorer
 
@@ -41,6 +42,14 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### code-runner
 
 - [stevearc/overseer.nvim](https://dotfyle.com/plugins/stevearc/overseer.nvim) (disabled)
+
+### debugging
+
+- [andrewferrier/debugprint.nvim](https://dotfyle.com/plugins/andrewferrier/debugprint.nvim)
+### indent
+
+- [echasnovski/mini.indentscope](https://dotfyle.com/plugins/echasnovski/mini.indentscope)
+- [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
 
 ### fuzzy-finder
 
@@ -64,10 +73,10 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### lsp
 
 - [Wansmer/symbol-usage.nvim](https://dotfyle.com/plugins/Wansmer/symbol-usage.nvim)
-- [aznhe21/actions-preview.nvim](https://dotfyle.com/plugins/aznhe21/actions-preview.nvim)
 - [b0o/SchemaStore.nvim](https://dotfyle.com/plugins/b0o/SchemaStore.nvim)
 - [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
 - [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
+- [rachartier/tiny-code-action.nvim](https://dotfyle.com/plugins/rachartier/tiny-code-action.nvim)
 - [stevearc/aerial.nvim](https://dotfyle.com/plugins/stevearc/aerial.nvim)
 - [zeioth/garbage-day.nvim](https://dotfyle.com/plugins/zeioth/garbage-day.nvim)
 
@@ -96,6 +105,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### nvim-dev
 
 - [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
+- [folke/lazydev.nvim](https://dotfyle.com/plugins/folke/lazydev.nvim)
 - [kkharji/sqlite.lua](https://dotfyle.com/plugins/kkharji/sqlite.lua)
 - [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
 
@@ -121,7 +131,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### syntax
 
-- [kylechui/nvim-surround](https://dotfyle.com/plugins/kylechui/nvim-surround)
+- [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
 - [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
 
 ### snippet
@@ -164,6 +174,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### comment
 
 - [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
+- [folke/ts-comments.nvim](https://dotfyle.com/plugins/folke/ts-comments.nvim)
 
 ### session
 
