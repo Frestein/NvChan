@@ -1,6 +1,39 @@
 local M = {}
 
 local cur_buf = vim.api.nvim_get_current_buf
+local set_buf = vim.api.nvim_set_current_buf
+
+local function buf_index(bufnr)
+  for i, value in ipairs(vim.t.bufs) do
+    if value == bufnr then
+      return i
+    end
+  end
+end
+
+M.next = function()
+  local bufs = vim.t.bufs
+  local curbufIndex = buf_index(cur_buf())
+
+  if not curbufIndex then
+    set_buf(vim.t.bufs[1])
+    return
+  end
+
+  set_buf((curbufIndex == #bufs and bufs[1]) or bufs[curbufIndex + 1])
+end
+
+M.prev = function()
+  local bufs = vim.t.bufs
+  local curbufIndex = buf_index(cur_buf())
+
+  if not curbufIndex then
+    set_buf(vim.t.bufs[1])
+    return
+  end
+
+  set_buf((curbufIndex == 1 and bufs[#bufs]) or bufs[curbufIndex - 1])
+end
 
 M.move_buf = function(n)
   local bufs = vim.t.bufs

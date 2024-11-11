@@ -79,8 +79,8 @@ local mappings = {
 	},
 
 	--- Bufferline ---
-	{ "n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" } },
-	{ "n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" } },
+	{ "n", "<S-h>", buffer_utils.prev, { desc = "Prev Buffer" } },
+	{ "n", "<S-l>", buffer_utils.next, { desc = "Next Buffer" } },
 	{ "n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" } },
 	{
 		"n",
