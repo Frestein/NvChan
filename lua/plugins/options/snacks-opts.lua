@@ -41,10 +41,10 @@ return {
 				branch = "/-/tree/{branch}",
 				file = "/-/blob/{branch}/{file}#L{line}",
 			},
-			["codeberg.org"]= {
+			["codeberg.org"] = {
 				branch = "/src/branch/{branch}",
 				file = "/src/branch/{branch}/{file}#L{line}",
-			}
+			},
 		},
 	},
 }
