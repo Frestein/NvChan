@@ -175,7 +175,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### statusline
 
-- [b0o/incline.nvim](https://dotfyle.com/plugins/b0o/incline.nvim)
+- [b0o/incline.nvim](https://dotfyle.com/plugins/b0o/incline.nvim) (disabled)
 
 ### utility
 

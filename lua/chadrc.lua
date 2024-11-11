@@ -29,6 +29,7 @@ M.ui = {
 			"lsp_msg",
 			"trouble",
 			"%=",
+			"diagnostics",
 			"lsp",
 			"lazy",
 			"cwd",
