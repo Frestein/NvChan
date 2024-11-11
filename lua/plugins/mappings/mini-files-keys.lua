@@ -2,24 +2,23 @@ local keymap_utils = require "utils.keymap"
 local map_handler = require("langmapper").map
 local map = map_handler
 local new_git_status = require("utils").new_git_status
-local mini_files = require "mini.files"
 local autocmd = vim.api.nvim_create_autocmd
 
 local function minifiles_toggle(...)
-	if not mini_files.close() then
-		mini_files.open(...)
+	if not MiniFiles.close() then
+		MiniFiles.open(...)
 	end
 end
 
 -- Set custom marks
 local set_mark = function(id, path, desc)
-	mini_files.set_bookmark(id, path, { desc })
+	MiniFiles.set_bookmark(id, path, { desc })
 end
 
 -- Mapping to set current working directory
 local set_cwd = function(path)
 	-- Works only if cursor is on the valid file system entry
-	local entry_path = mini_files.get_fs_entry().path
+	local entry_path = MiniFiles.get_fs_entry().path
 	local cwd = vim.fs.dirname(entry_path)
 	vim.fn.chdir(cwd)
 end
@@ -27,7 +26,7 @@ end
 -- Mapping to use grug-far for search in the current directory
 local replace = function(path)
 	-- Works only if cursor is on the valid file system entry
-	local entry_path = mini_files.get_fs_entry().path
+	local entry_path = MiniFiles.get_fs_entry().path
 	local prefills = { paths = vim.fs.dirname(entry_path) }
 	local gf = require "grug-far"
 
@@ -58,7 +57,7 @@ local filter_hide = require("plugins.options.mini-files-opts").create_filter
 local toggle_dotfiles = function()
 	show_hidden = not show_hidden
 	local new_filter = show_hidden and filter_show or filter_hide(git_status)
-	mini_files.refresh { content = { filter = new_filter } }
+	MiniFiles.refresh { content = { filter = new_filter } }
 end
 
 -- Mapping to show/hide preview window
@@ -66,16 +65,16 @@ local show_preview = false
 
 local toggle_preview = function()
 	show_preview = not show_preview
-	mini_files.refresh { windows = { preview = show_preview } }
+	MiniFiles.refresh { windows = { preview = show_preview } }
 end
 
 -- Mappings to modify target window via new tab
 local map_tab = function(buf_id, lhs)
 	local function rhs()
-		local fs_entry = mini_files.get_fs_entry()
+		local fs_entry = MiniFiles.get_fs_entry()
 
 		if fs_entry then
-			mini_files.close()
+			MiniFiles.close()
 			vim.cmd("tabnew " .. fs_entry.path)
 		end
 	end
@@ -87,14 +86,14 @@ end
 local map_split = function(buf_id, lhs, direction)
 	local function rhs()
 		-- Make new window and set it as target
-		local cur_target = mini_files.get_explorer_state().target_window
+		local cur_target = MiniFiles.get_explorer_state().target_window
 
 		local new_target = vim.api.nvim_win_call(cur_target, function()
 			vim.cmd(direction .. " split")
 			return vim.api.nvim_get_current_win()
 		end)
 
-		mini_files.set_target_window(new_target)
+		MiniFiles.set_target_window(new_target)
 	end
 
 	-- Adding `desc` will result into `show_help` entries

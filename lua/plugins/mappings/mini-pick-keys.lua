@@ -1,7 +1,5 @@
 local keymap_utils = require "utils.keymap"
 local map_handler = require("langmapper").map
-local MiniExtra = require "mini.extra"
-local MiniPick = require "mini.pick"
 
 local function reload_theme(name)
 	require("chadrc").base46.theme = name
