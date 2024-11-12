@@ -34,7 +34,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
 - [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
 - [okuuva/auto-save.nvim](https://dotfyle.com/plugins/okuuva/auto-save.nvim)
-- [saecki/live-rename.nvim](https://github.com/saecki/live-rename.nvim)
 - [tzachar/highlight-undo.nvim](https://dotfyle.com/plugins/tzachar/highlight-undo.nvim)
 
 ### file-explorer
@@ -80,6 +79,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
 - [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 - [rachartier/tiny-code-action.nvim](https://dotfyle.com/plugins/rachartier/tiny-code-action.nvim)
+- [saecki/live-rename.nvim](https://dotfyle.com/plugins/saecki/live-rename.nvim)
 - [stevearc/aerial.nvim](https://dotfyle.com/plugins/stevearc/aerial.nvim)
 - [zeioth/garbage-day.nvim](https://dotfyle.com/plugins/zeioth/garbage-day.nvim)
 
