@@ -640,7 +640,6 @@ return {
 		"nvim-neorg/neorg",
 		version = "*",
 		ft = "norg",
-		event = "VeryLazy",
 		opts = require "plugins.options.neorg-opts",
 		config = function(_, opts)
 			require("neorg").setup(opts)
