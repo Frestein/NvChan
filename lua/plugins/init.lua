@@ -14,6 +14,8 @@ return {
 		cmd = "LazyDev",
 		opts = {
 			library = {
+				"lazy.nvim",
+				"snacks.nvim",
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
 			},
 		},
