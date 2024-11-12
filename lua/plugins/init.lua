@@ -760,12 +760,7 @@ return {
 	{
 		"Wansmer/treesj",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		keys = {
-			{ "<leader>m", desc = "treesj toggle node under cursor" },
-			{ "<leader>M", desc = "treesj toggle node recursive under cursor" },
-			{ "<leader>j", desc = "treesj join node under cursor" },
-			{ "<leader>s", desc = "treesj split node under cursor" },
-		},
+		keys = { { "gS", desc = "Toggle arguments" } },
 		opts = require "plugins.options.treesj-opts",
 		config = function(_, opts)
 			require("treesj").setup(opts)
