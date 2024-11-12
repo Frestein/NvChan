@@ -929,4 +929,17 @@ return {
 			return {}
 		end,
 	},
+
+	{
+		"danymat/neogen",
+		keys = {
+			{ "<leader>nf", desc = "Neogen function" },
+			{ "<leader>nc", desc = "Neogen class" },
+			{ "<leader>nt", desc = "Neogen type" },
+		},
+		config = function(_, opts)
+			require("neogen").setup(opts)
+			require "plugins.mappings.neogen-keys"
+		end,
+	},
 }

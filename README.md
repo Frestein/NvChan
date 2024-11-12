@@ -46,6 +46,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### debugging
 
 - [andrewferrier/debugprint.nvim](https://dotfyle.com/plugins/andrewferrier/debugprint.nvim)
+
 ### indent
 
 - [echasnovski/mini.indentscope](https://dotfyle.com/plugins/echasnovski/mini.indentscope)
@@ -173,6 +174,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### comment
 
+- [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
 - [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
 - [folke/ts-comments.nvim](https://dotfyle.com/plugins/folke/ts-comments.nvim)
 
