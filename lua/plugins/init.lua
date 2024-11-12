@@ -16,6 +16,7 @@ return {
 			library = {
 				"lazy.nvim",
 				"snacks.nvim",
+				"mini.files",
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
 			},
 		},
