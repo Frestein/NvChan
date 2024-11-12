@@ -114,11 +114,9 @@ function HighlightedFoldtext()
 end
 
 local function set_fold_hl()
-	local colors = require("utils").get_base46_colors()
-	if colors then
-		vim.api.nvim_set_hl(0, "FoldedIcon", { fg = "NONE" })
-		vim.api.nvim_set_hl(0, "FoldedText", { bg = "NONE", fg = colors.light_grey, italic = true })
-	end
+	local comment = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
+	vim.api.nvim_set_hl(0, "FoldedIcon", { fg = "NONE" })
+	vim.api.nvim_set_hl(0, "FoldedText", { bg = "NONE", fg = comment.fg, italic = true })
 end
 
 set_fold_hl()
