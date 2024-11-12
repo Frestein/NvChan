@@ -28,11 +28,13 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [debugloop/telescope-undo.nvim](https://dotfyle.com/plugins/debugloop/telescope-undo.nvim)
 - [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
 - [echasnovski/mini.move](https://dotfyle.com/plugins/echasnovski/mini.move)
+- [echasnovski/mini.operators](https://dotfyle.com/plugins/echasnovski/mini.operators)
 - [echasnovski/mini.pairs](https://dotfyle.com/plugins/echasnovski/mini.pairs)
 - [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
 - [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
 - [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
 - [okuuva/auto-save.nvim](https://dotfyle.com/plugins/okuuva/auto-save.nvim)
+- [saecki/live-rename.nvim](https://github.com/saecki/live-rename.nvim)
 - [tzachar/highlight-undo.nvim](https://dotfyle.com/plugins/tzachar/highlight-undo.nvim)
 
 ### file-explorer
