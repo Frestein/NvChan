@@ -13,7 +13,7 @@ require "plugins.configs.lazy-conf"
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
--- Load options
+-- Load autocmds and mappings
 require "autocmds"
 require "mappings"
 
