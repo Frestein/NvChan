@@ -945,4 +945,9 @@ return {
 			require "plugins.mappings.neogen-keys"
 		end,
 	},
+
+	{
+		"saecki/live-rename.nvim",
+		opts = {},
+	},
 }

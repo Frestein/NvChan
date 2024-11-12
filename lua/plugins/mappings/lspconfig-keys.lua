@@ -32,9 +32,16 @@ function M.on_attach(bufnr)
 		{
 			"<leader>ra",
 			function()
-				require "nvchad.lsp.renamer"()
+				require("live-rename").rename { insert = true }
 			end,
 			"LSP rename",
+		},
+		{
+			"<leader>rA",
+			function()
+				require("live-rename").rename { text = "", insert = true }
+			end,
+			"LSP rename (empty)",
 		},
 		{
 			"<leader>ca",
