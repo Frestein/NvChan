@@ -852,6 +852,12 @@ return {
 	},
 
 	{
+		"echasnovski/mini.operators",
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	{
 		"echasnovski/mini.pick",
 		dependencies = "echasnovski/mini.extra",
 		event = "VeryLazy",

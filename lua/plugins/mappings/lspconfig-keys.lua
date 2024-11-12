@@ -1,31 +1,31 @@
 local keymap_utils = require "utils.keymap"
 local map_handler = require("langmapper").map
-local lsp_buf = vim.lsp.buf
+local lsp = vim.lsp.buf
 
 local M = {}
 
 function M.on_attach(bufnr)
 	--- @type Keymap[]
 	local keymaps = {
-		{ "gD", lsp_buf.declaration, "LSP go to declaration" },
-		{ "gd", lsp_buf.definition, "LSP go to definition" },
-		{ "gi", lsp_buf.implementation, "LSP go to implementation" },
-		{ "<leader>sh", lsp_buf.signature_help, "LSP show signature help" },
-		{ "<leader>wa", lsp_buf.add_workspace_folder, "LSP add workspace folder" },
-		{ "<leader>wr", lsp_buf.remove_workspace_folder, "LSP remove workspace folder" },
-		{ "gr", lsp_buf.references, "LSP show references" },
+		{ "gd", lsp.definition, "LSP go to definition" },
+		{ "gD", lsp.declaration, "LSP go to declaration" },
+		{ "gi", lsp.implementation, "LSP go to implementation" },
+		{ "gR", lsp.references, "LSP show references" },
+		{ "<leader>sh", lsp.signature_help, "LSP show signature help" },
+		{ "<leader>wa", lsp.add_workspace_folder, "LSP add workspace folder" },
+		{ "<leader>wr", lsp.remove_workspace_folder, "LSP remove workspace folder" },
 		{
-			"<leader>cR",
+			"<leader>rf",
 			function()
 				Snacks.rename.rename_file()
 			end,
 			"Rename File",
 		},
-		{ "<leader>D", lsp_buf.type_definition, "LSP go to type definition" },
+		{ "<leader>D", lsp.type_definition, "LSP go to type definition" },
 		{
 			"<leader>wl",
 			function()
-				print(vim.inspect(lsp_buf.list_workspace_folders()))
+				print(vim.inspect(lsp.list_workspace_folders()))
 			end,
 			"LSP list workspace folders",
 		},
