@@ -161,6 +161,7 @@ return {
 
 	{
 		"hrsh7th/nvim-cmp",
+		enabled = false,
 		url = "https://github.com/iguanacucumber/magazine.nvim",
 		event = "VeryLazy",
 		dependencies = {
@@ -172,6 +173,65 @@ return {
 		},
 		opts = function()
 			return require "plugins.options.cmp-opts"
+		end,
+	},
+
+	{
+		"saghen/blink.cmp",
+		lazy = false,
+		build = "cargo build --release",
+		opts_extend = {
+			"sources.completion.enabled_providers",
+			"sources.compat",
+		},
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			highlight = {
+				use_nvim_cmp_as_default = true,
+			},
+			windows = {
+				autocomplete = {
+					border = "single",
+					scrollbar = false,
+					winblend = vim.o.pumblend,
+				},
+				documentation = {
+					auto_show = true,
+				},
+			},
+			sources = {
+				compat = {},
+				completion = {
+					enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
+				},
+				providers = {
+					-- dont show LuaLS require statements when lazydev has items
+					lsp = {
+						fallback_for = { "lazydev" },
+					},
+					lazydev = {
+						name = "lazydev",
+						module = "lazydev.integrations.blink",
+					},
+				},
+			},
+		},
+		---@param opts blink.cmp.Config | { sources: { compat: string[] } }
+		config = function(_, opts)
+			dofile(vim.g.base46_cache .. "cmp")
+			local enabled = opts.sources.completion.enabled_providers
+			for _, source in ipairs(opts.sources.compat or {}) do
+				opts.sources.providers[source] = vim.tbl_deep_extend(
+					"force",
+					{ name = source, module = "blink.compat.source" },
+					opts.sources.providers[source] or {}
+				)
+				if type(enabled) == "table" and not vim.tbl_contains(enabled, source) then
+					table.insert(enabled, source)
+				end
+			end
+			require("blink.cmp").setup(opts)
 		end,
 	},
 

@@ -89,7 +89,8 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### completion
 
-- [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
+- [Saghen/blink.cmp](https://dotfyle.com/plugins/Saghen/blink.cmp)
+- [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp) (disabled)
 
 ### refactoring
 

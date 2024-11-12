@@ -79,6 +79,15 @@ M.base46 = {
 			fg = "light_grey",
 			bg = "black",
 		},
+		--- blink.cmp ---
+		["BlinkCmpGhostText"] = {
+			fg = "light_grey",
+			bg = "black2",
+		},
+		["BlinkCmpMenuBorder"] = {
+			fg = "light_grey",
+			bg = "one_bg",
+		},
 		--- mini.indentscope ---
 		["MiniIndentscopeSymbol"] = {
 			fg = "grey",
