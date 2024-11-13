@@ -20,6 +20,7 @@ vim.filetype.add {
 		[".*/waybar/config"] = "jsonc",
 		[".*/mako/config"] = "dosini",
 		[".*/kitty/.+%.conf"] = "bash",
+		[".*/ghostty/config"] = "bash",
 		[".*/hypr/.+%.conf"] = "hyprlang",
 		["%.env%.[%w_.-]+"] = "sh",
 	},
