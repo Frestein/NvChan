@@ -396,14 +396,6 @@ return {
 	},
 
 	{
-		"Frestein/lsp_lines.nvim",
-		event = "LspAttach",
-		config = function()
-			require "plugins.configs.lsplines-conf"
-		end,
-	},
-
-	{
 		"ray-x/go.nvim",
 		ft = { "go", "gomod" },
 		config = function(_, opts)
