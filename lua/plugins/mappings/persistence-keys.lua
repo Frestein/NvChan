@@ -2,16 +2,16 @@ local keymap_utils = require "utils.keymap"
 local map_handler = require("langmapper").map
 local persistence = require "persistence"
 
-local function close_plugin(plugin_name, close_function)
-	local status, plugin = pcall(require, plugin_name)
-	if status and plugin[close_function] then
-		plugin[close_function]()
+local function close_plugin(plugin, command)
+	local status, require = pcall(require, plugin)
+	if status and require[command] then
+		require[command]()
 	end
 end
 
--- @param save_session boolean Indicates whether to save the session before quitting.
+---@param save_session boolean Indicates whether to save the session before quitting.
 local function quit_all(save_session)
-	close_plugin("aerial", "close_all")
+	close_plugin("trouble", "close")
 
 	if not save_session then
 		persistence.stop()

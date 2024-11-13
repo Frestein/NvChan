@@ -5,38 +5,102 @@ local trouble = require "trouble"
 --- @type Keymap[]
 local keymaps = {
 	{
+		"gd",
+		function()
+			trouble.toggle { mode = "lsp_definitions" }
+		end,
+		"LSP Definitions",
+	},
+	{
+		"gD",
+		function()
+			trouble.toggle { mode = "lsp_declarations" }
+		end,
+		"LSP Declarations",
+	},
+	{
+		"gi",
+		function()
+			trouble.toggle { mode = "lsp_implementations" }
+		end,
+		"LSP Implementations",
+	},
+	{
+		"gR",
+		function()
+			trouble.toggle { mode = "lsp_references" }
+		end,
+		"LSP References",
+	},
+	{
+		"ga",
+		function()
+			trouble.toggle { mode = "lsp" }
+		end,
+		"LSP Definitions/References/...",
+	},
+	{
 		"<leader>xx",
 		function()
-			trouble.toggle "diagnostics"
+			trouble.toggle { mode = "diagnostics" }
 		end,
-		"trouble toggle diagnostics",
-	},
-	{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "trouble toggle buffer diagnostics" },
-	{
-		"<leader>xL",
-		function()
-			trouble.toggle "loclist"
-		end,
-		"trouble toggle location list",
+		"Toggle Diagnostics",
 	},
 	{
-		"<leader>xQ",
+		"<leader>xX",
 		function()
-			trouble.toggle "qflist"
+			trouble.toggle { mode = "diagnostics", filter = { buf = 0 } }
 		end,
-		"trouble toggle quickfix list",
+		"Toggle Diagnostics (buffer)",
+	},
+	{
+		"<leader>xl",
+		function()
+			trouble.toggle { mode = "loclist" }
+		end,
+		"Toggle Loclist",
+	},
+	{
+		"<leader>xq",
+		function()
+			trouble.toggle { mode = "qflist" }
+		end,
+		"Toggle Quickfix",
 	},
 	{
 		"<leader>cs",
 		function()
-			trouble.toggle "symbols"
+			trouble.toggle { mode = "symbols", title = false, win = { size = 25, position = "left" } }
 		end,
-		"trouble toggle document symbols",
+		"Toggle Document Symbols",
 	},
 	{
-		"<leader>cS",
-		"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-		"trouble LSP definitions / references / ...",
+		"[q",
+		function()
+			if require("trouble").is_open() then
+				require("trouble").prev { skip_groups = true, jump = true }
+			else
+				local ok, err = pcall(vim.cmd.cprev)
+				if not ok then
+					vim.notify(err, vim.log.levels.ERROR)
+				end
+			end
+		end,
+		"Previous Trouble/Quickfix Item",
+	},
+	{
+		"]q",
+		function()
+			if require("trouble").is_open() then
+				require("trouble").next { skip_groups = true, jump = true }
+			else
+				local ok, err = pcall(vim.cmd.cnext)
+				if not ok then
+					vim.notify(err, vim.log.levels.ERROR)
+				end
+			end
+		end,
+		desc = "Next Trouble/Quickfix Item",
 	},
 }
 

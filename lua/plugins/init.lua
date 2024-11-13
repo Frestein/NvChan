@@ -539,40 +539,18 @@ return {
 		cmd = "Trouble",
 		dependencies = "folke/todo-comments.nvim",
 		keys = {
-			{ "<leader>xx", desc = "trouble toggle diagnostics" },
-			{ "<leader>xX", desc = "trouble toggle buffer diagnostics" },
-			{ "<leader>xL", desc = "trouble toggle location list" },
-			{ "<leader>xQ", desc = "trouble toggle quickfix list" },
-			{ "<leader>xs", desc = "trouble toggle document symbols" },
-			{ "<leader>xS", desc = "trouble LSP definitions / references / ..." },
-			{
-				"[q",
-				function()
-					if require("trouble").is_open() then
-						require("trouble").prev { skip_groups = true, jump = true }
-					else
-						local ok, err = pcall(vim.cmd.cprev)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
-					end
-				end,
-				desc = "Previous Trouble/Quickfix Item",
-			},
-			{
-				"]q",
-				function()
-					if require("trouble").is_open() then
-						require("trouble").next { skip_groups = true, jump = true }
-					else
-						local ok, err = pcall(vim.cmd.cnext)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
-					end
-				end,
-				desc = "Next Trouble/Quickfix Item",
-			},
+			{ "gd", desc = "LSP Definitions" },
+			{ "gD", desc = "LSP Declarations" },
+			{ "gi", desc = "LSP Implementations" },
+			{ "gR", desc = "LSP References" },
+			{ "ga", desc = "LSP Definitions/References/..." },
+			{ "<leader>xx", desc = "Toggle Diagnostics" },
+			{ "<leader>xX", desc = "Toggle Diagnostics (buffer)" },
+			{ "<leader>xl", desc = "Toggle Loclist" },
+			{ "<leader>xq", desc = "Toggle Quickfix" },
+			{ "<leader>cs", desc = "Toggle Document Symbols" },
+			{ "[q", desc = "Previous Trouble/Quickfix Item" },
+			{ "]q", desc = "Next Trouble/Quickfix Item" },
 		},
 		opts = require "plugins.options.trouble-opts",
 		config = function(_, opts)
@@ -734,25 +712,6 @@ return {
 		"Wansmer/symbol-usage.nvim",
 		event = "LspAttach",
 		opts = require("plugins.options.symbol-usage-opts").opts,
-	},
-
-	{
-		"stevearc/aerial.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-		event = "LazyFile",
-		keys = {
-			{ "<leader>aa", desc = "aerial toggle" },
-			{ "<leader>an", desc = "aerial navigation toggle" },
-			{ "<leader>fa", desc = "telescope aerial" },
-		},
-		opts = require "plugins.options.aerial-opts",
-		config = function(_, opts)
-			require("aerial").setup(opts)
-			require("plugins.mappings.aerial-keys").lazy()
-		end,
 	},
 
 	{

@@ -57,6 +57,8 @@ return {
 				["<C-b>"] = actions.preview_scrolling_up,
 			},
 			n = {
+				["<c-q>"] = open_with_trouble,
+				["<a-q>"] = open_with_trouble,
 				["q"] = actions.close,
 			},
 		},
@@ -68,7 +70,6 @@ return {
 		},
 	},
 	extensions_list = {
-		"aerial",
 		"ast_grep",
 		"chezmoi",
 		"fzf",

@@ -80,7 +80,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 - [rachartier/tiny-code-action.nvim](https://dotfyle.com/plugins/rachartier/tiny-code-action.nvim)
 - [saecki/live-rename.nvim](https://dotfyle.com/plugins/saecki/live-rename.nvim)
-- [stevearc/aerial.nvim](https://dotfyle.com/plugins/stevearc/aerial.nvim)
 - [zeioth/garbage-day.nvim](https://dotfyle.com/plugins/zeioth/garbage-day.nvim)
 
 ### motion

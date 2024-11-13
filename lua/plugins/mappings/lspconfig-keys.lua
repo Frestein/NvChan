@@ -7,11 +7,7 @@ local M = {}
 function M.on_attach(bufnr)
 	--- @type Keymap[]
 	local keymaps = {
-		{ "gd", lsp.definition, "LSP go to definition" },
-		{ "gD", lsp.declaration, "LSP go to declaration" },
-		{ "gi", lsp.implementation, "LSP go to implementation" },
-		{ "gR", lsp.references, "LSP show references" },
-		{ "<leader>sh", lsp.signature_help, "LSP show signature help" },
+		{ "<leader>cS", lsp.signature_help, "LSP show signature help" },
 		{ "<leader>wa", lsp.add_workspace_folder, "LSP add workspace folder" },
 		{ "<leader>wr", lsp.remove_workspace_folder, "LSP remove workspace folder" },
 		{
