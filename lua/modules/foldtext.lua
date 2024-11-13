@@ -113,16 +113,4 @@ function HighlightedFoldtext()
 	return result
 end
 
-local function set_fold_hl()
-	local comment = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
-	vim.api.nvim_set_hl(0, "FoldedIcon", { fg = "NONE" })
-	vim.api.nvim_set_hl(0, "FoldedText", { bg = "NONE", fg = comment.fg, italic = true })
-end
-
-set_fold_hl()
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = set_fold_hl,
-})
-
 return 'luaeval("HighlightedFoldtext")()'

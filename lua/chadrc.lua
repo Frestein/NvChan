@@ -56,127 +56,127 @@ M.base46 = {
 			italic = true,
 		},
 		--- tabufline ---
-		["TbFill"] = { bg = "NONE" },
-		["TbBufOn"] = { bg = "NONE" },
-		["TbBufOnClose"] = { bg = "NONE" },
-		["TbBufOff"] = { bg = "NONE" },
-		["TbBufOffClose"] = { bg = "NONE" },
+		TbFill = { bg = "NONE" },
+		TbBufOn = { bg = "NONE" },
+		TbBufOnClose = { bg = "NONE" },
+		TbBufOff = { bg = "NONE" },
+		TbBufOffClose = { bg = "NONE" },
 	},
 	hl_add = {
-		["NvimSeparator"] = {
+		NvimSeparator = {
 			bg = "NONE",
 			fg = "line",
 		},
-		["WinBar"] = {
+		WinBar = {
 			fg = "light_grey",
 			bg = "NONE",
 		},
-		["WinBarNC"] = {
+		WinBarNC = {
 			fg = "light_grey",
 			bg = "NONE",
 		},
-		["StatusLineNC"] = {
+		StatusLineNC = {
 			fg = "light_grey",
 			bg = "black",
 		},
-		["FloatBorder"] = {
+		FloatBorder = {
 			fg = "light_grey",
 			bg = "darker_black",
 		},
 		--- mini.files ---
-		["MiniFilesTitle"] = {
+		MiniFilesTitle = {
 			fg = "light_grey",
 			bg = "darker_black",
 		},
-		["MiniFilesTitleFocused"] = {
+		MiniFilesTitleFocused = {
 			fg = { "light_grey", 10 },
 			bg = "darker_black",
 		},
 		--- blink.cmp ---
-		["BlinkCmpGhostText"] = {
+		BlinkCmpGhostText = {
 			fg = "light_grey",
 			bg = "black2",
 		},
-		["BlinkCmpMenuBorder"] = {
+		BlinkCmpMenuBorder = {
 			fg = "light_grey",
 			bg = "one_bg",
 		},
 		--- mini.indentscope ---
-		["MiniIndentscopeSymbol"] = {
+		MiniIndentscopeSymbol = {
 			fg = "grey",
 		},
 		--- aw-watcher-nvim ---
-		["AwConnected"] = {
+		AwConnected = {
 			fg = { "light_grey", 5 },
 		},
 		-- noice.nvim ---
-		["NoiceLspProgressTitle"] = {
+		NoiceLspProgressTitle = {
 			fg = { "white", -20 },
 		},
 		--- foldtext.lua ---
-		["FoldedSpace"] = {
+		FoldedSpace = {
 			fg = "NONE",
 			bg = "NONE",
 		},
-		["FoldedIcon"] = {
+		FoldedIcon = {
 			fg = "NONE",
 		},
-		["FoldedText"] = {
+		FoldedText = {
 			bg = "NONE",
 			fg = "light_grey",
 			italic = true,
 		},
 		--- lazy.nvim  ---
-		["LazyUpdates"] = {
+		LazyUpdates = {
 			fg = "green",
 			bg = "NONE",
 		},
 		--- highlight-undo.nvim ---
-		["HighlightUndo"] = {
+		HighlightUndo = {
 			bg = { "black", "blue", 40 },
 		},
-		["HighlightRedo"] = {
+		HighlightRedo = {
 			bg = { "black", "red", 40 },
 		},
 		--- twilight.nvim ---
-		["Twilight"] = {
+		Twilight = {
 			bg = "black",
 			fg = "grey_fg",
 		},
 		--- gitsigns.nvim ---
-		["GitSignsCurrentLineBlame"] = {
+		GitSignsCurrentLineBlame = {
 			fg = "light_grey",
 			italic = true,
 		},
 		--- trouble.nvim ---
-		["TroubleStatusline1"] = {
+		TroubleStatusline1 = {
 			fg = "light_grey",
 			bg = "black",
 		},
-		["TroubleSeparatorHighlight"] = {
+		TroubleSeparatorHighlight = {
 			fg = "yellow",
 			bg = "one_bg",
 		},
 		--- symbol-usage.nvim ---
-		["SymbolUsageRounding"] = {
+		SymbolUsageRounding = {
 			fg = "NONE",
 		},
-		["SymbolUsageContent"] = {
+		SymbolUsageContent = {
 			bg = "NONE",
 			fg = "light_grey",
 			italic = true,
 		},
-		["SymbolUsageRef"] = {
+		SymbolUsageRef = {
 			fg = "nord_blue",
 			bg = "NONE",
 			italic = true,
 		},
-		["SymbolUsageDef"] = {
+		SymbolUsageDef = {
 			fg = "dark_purple",
 			bg = "NONE",
 			italic = true,
 		},
-		["SymbolUsageImpl"] = {
+		SymbolUsageImpl = {
 			fg = "yellow",
 			bg = "NONE",
 			italic = true,
@@ -184,21 +184,10 @@ M.base46 = {
 	},
 
 	integrations = {
-		"blankline",
-		"cmp",
-		"defaults",
-		"devicons",
 		"diffview",
-		"git",
 		"notify",
-		"statusline",
-		"syntax",
-		"tbline",
-		"telescope",
 		"todo",
-		"treesitter",
 		"trouble",
-		"whichkey",
 	},
 }
 

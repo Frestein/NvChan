@@ -1,5 +1,3 @@
-local colors = require("utils").get_base46_colors()
-
 local opts = {
 	keymaps = {
 		accept_suggestion = "<C-\\>",
@@ -7,13 +5,9 @@ local opts = {
 		clear_suggestion = "<C-c>",
 	},
 	color = {
-		suggestion_color = "#ffffff",
+		suggestion_color = vim.api.nvim_get_hl(0, { name = "Comment", link = true }).fg,
 	},
 	log_level = "off",
 }
-
-if colors then
-	opts.color.suggestion_color = colors.light_grey
-end
 
 return opts
