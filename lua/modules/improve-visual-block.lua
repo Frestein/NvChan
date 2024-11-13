@@ -11,7 +11,7 @@ M.is_append = false
 M.opts = {
 	hls = {
 		preview = "Search",
-		edited_text = "IncSearch",
+		edited_text = "CurSearch",
 	},
 }
 
@@ -71,7 +71,7 @@ function M.setup(opts)
 								virt_text = { { spaces, "NonText" }, { text, M.opts.hls.preview } },
 								virt_text_pos = "inline",
 								strict = false,
-								-- TODO: find right priority to avoid conflict with indent-blankline
+								priority = 100,
 							})
 						end
 					end
