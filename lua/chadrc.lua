@@ -79,6 +79,19 @@ M.base46 = {
 			fg = "light_grey",
 			bg = "black",
 		},
+		["FloatBorder"] = {
+			fg = "light_grey",
+			bg = "darker_black",
+		},
+		--- mini.files ---
+		["MiniFilesTitle"] = {
+			fg = "light_grey",
+			bg = "darker_black",
+		},
+		["MiniFilesTitleFocused"] = {
+			fg = { "light_grey", 10 },
+			bg = "darker_black",
+		},
 		--- blink.cmp ---
 		["BlinkCmpGhostText"] = {
 			fg = "light_grey",
