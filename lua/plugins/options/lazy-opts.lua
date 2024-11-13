@@ -2,7 +2,35 @@ return {
 	defaults = { lazy = true },
 	checker = { enabled = true },
 	install = { colorscheme = { "nvchad" } },
-	ui = { icons = { ft = "", lazy = "󰂠 ", loaded = "", not_loaded = "" } },
+	ui = {
+		icons = {
+			ft = "",
+			cmd = "󰞷",
+			lazy = "󰂠 ",
+			event = "󰪓",
+			loaded = "",
+			not_loaded = "",
+			keys = " ",
+			source = "",
+			runtime = "󰢱",
+			require = "󰌹",
+			start = "",
+			list = {
+				"●",
+				"",
+				"",
+				"",
+			},
+		},
+		custom_keys = {
+			["<localleader>y"] = {
+				function(plugin)
+					require("lazy.util").float_term { "yazi", plugin.dir }
+				end,
+				desc = "Open yazi in plugin dir",
+			},
+		},
+	},
 	dev = {
 		---@type string | fun(plugin: LazyPlugin): string directory where you store your local plugin projects
 		path = "~/Projects/plugins/nvim/",

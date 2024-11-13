@@ -17,6 +17,18 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazyopts = require "plugins.options.lazy-opts"
 
+local augroup = vim.api.nvim_create_augroup("LazyUserGroup", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "lazy",
+	desc = "Quit lazy with <Esc>",
+	callback = function()
+		vim.keymap.set("n", "<Esc>", function()
+			vim.api.nvim_win_close(0, false)
+		end, { buffer = true, nowait = true })
+	end,
+	group = augroup,
+})
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	{ import = "plugins" },
