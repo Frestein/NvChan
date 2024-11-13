@@ -37,9 +37,6 @@ local mappings = {
 	},
 
 	--- Windows ---
-	{ "n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true } },
-	{ "n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true } },
-	{ "n", "<C-\\>", "<C-W>p", { desc = "Go to Previous Window", remap = true } },
 	-- Move to window using the <ctrl> hjkl keys
 	{ "n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true } },
 	{ "n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true } },
