@@ -22,6 +22,7 @@ vim.filetype.add {
 		[".*/kitty/.+%.conf"] = "bash",
 		[".*/ghostty/config"] = "bash",
 		[".*/hypr/.+%.conf"] = "hyprlang",
+		[".*/zathura/themes/.+"] = "zathurarc",
 		["%.env%.[%w_.-]+"] = "sh",
 	},
 }
