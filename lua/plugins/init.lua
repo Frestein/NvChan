@@ -441,19 +441,13 @@ return {
 			},
 		},
 		branch = "0.2.x",
-		keys = { { "<leader>F", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
+		keys = { { "<leader><leader>", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
 	},
 
 	{
 		"Marskey/telescope-sg",
 		dependencies = "nvim-telescope/telescope.nvim",
 		keys = { { "<leader>fW", "<cmd>Telescope ast_grep<cr>", desc = "telescope live grep (sg)" } },
-	},
-
-	{
-		"tsakirist/telescope-lazy.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fP", "<cmd>Telescope lazy<cr>", desc = "telescope installed plugins" } },
 	},
 
 	{

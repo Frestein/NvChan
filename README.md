@@ -61,7 +61,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [jvgrootveld/telescope-zoxide](https://dotfyle.com/plugins/jvgrootveld/telescope-zoxide)
 - [nvim-telescope/telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 - [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-- [tsakirist/telescope-lazy.nvim](https://dotfyle.com/plugins/tsakirist/telescope-lazy.nvim)
 
 ### formatting
 
