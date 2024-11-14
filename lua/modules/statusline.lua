@@ -2,12 +2,12 @@ local utils = require "utils"
 
 local M = {}
 
-local symbols, colors
+local trouble_stl, colors
 
 function M.trouble()
-	if not symbols then
+	if not trouble_stl then
 		utils.on_load("trouble.nvim", function()
-			symbols = require("trouble").statusline {
+			trouble_stl = require("trouble").statusline {
 				mode = "symbols",
 				groups = {},
 				title = false,
@@ -16,27 +16,27 @@ function M.trouble()
 				hl_group = "trouble_statusline",
 			}
 		end)
-	elseif symbols.has() then
-		local statusline_symbols = symbols.get()
+	elseif trouble_stl.has() then
+		local result = trouble_stl.get()
 		if not colors then
 			colors = utils.get_base46_colors()
 			if colors then
 				vim.api.nvim_set_hl(0, "TroubleStatusline1", { fg = colors.light_grey, bg = colors.black })
 			end
 		end
-		return " " .. statusline_symbols
+		return " " .. result
 	end
 end
 
 function M.lazy()
-	local lazy_status = require "lazy.status"
-	return lazy_status.has_updates() and ("%#LazyUpdates#" .. " " .. lazy_status.updates() .. " ") or ""
+	local status = require "lazy.status"
+	return status.has_updates() and ("%#LazyUpdates#" .. " " .. status.updates() .. " ") or ""
 end
 
 function M.aw()
-	local has_aw, _ = pcall(require, "aw_watcher")
-	if has_aw then
-		return require("aw_watcher").is_connected() and "%#AwConnected#" .. " "
+	local ok, aw = pcall(require, "aw_watcher")
+	if ok then
+		return aw.is_connected() and "%#AwConnected#" .. " "
 	end
 end
 

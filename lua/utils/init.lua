@@ -85,10 +85,10 @@ end
 --- Get the current color scheme from the base46 cache.
 --- @return table|nil Returns a table containing colors if the loading is successful.
 function M.get_base46_colors()
-	local success, colors = pcall(dofile, vim.g.base46_cache .. "colors")
-	if not success then
+	local ok, colors = pcall(dofile, vim.g.base46_cache .. "colors")
+	if not ok then
 		vim.notify("Cache file not found. Please restart Neovim.", vim.log.levels.WARN)
-		return nil
+		return
 	end
 	return colors
 end

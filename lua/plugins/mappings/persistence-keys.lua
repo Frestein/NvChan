@@ -3,8 +3,8 @@ local map_handler = require("langmapper").map
 local persistence = require "persistence"
 
 local function close_plugin(plugin, command)
-	local status, require = pcall(require, plugin)
-	if status and require[command] then
+	local ok, require = pcall(require, plugin)
+	if ok and require[command] then
 		require[command]()
 	end
 end
