@@ -546,6 +546,7 @@ return {
 			{ "gi", desc = "LSP Implementations" },
 			{ "gR", desc = "LSP References" },
 			{ "ga", desc = "LSP Definitions/References/..." },
+			{ "<leader>cd", desc = "LSP Type Definitions" },
 			{ "<leader>xx", desc = "Toggle Diagnostics" },
 			{ "<leader>xX", desc = "Toggle Diagnostics (buffer)" },
 			{ "<leader>xl", desc = "Toggle Loclist" },

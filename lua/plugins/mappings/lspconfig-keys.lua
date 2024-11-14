@@ -17,7 +17,6 @@ function M.on_attach(bufnr)
 			end,
 			"Rename File",
 		},
-		{ "<leader>D", lsp.type_definition, "LSP go to type definition" },
 		{
 			"<leader>wl",
 			function()

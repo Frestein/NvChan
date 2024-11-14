@@ -40,6 +40,13 @@ local keymaps = {
 		"LSP Definitions/References/...",
 	},
 	{
+		"<leader>cd",
+		function()
+			trouble.toggle { mode = "lsp_type_definitions" }
+		end,
+		"LSP Type Definitions",
+	},
+	{
 		"<leader>xx",
 		function()
 			trouble.toggle { mode = "diagnostics" }
