@@ -203,15 +203,23 @@ return {
 			sources = {
 				compat = {},
 				completion = {
-					enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
+					enabled_providers = {
+						"lsp",
+						"path",
+						"snippets",
+						"buffer",
+						"lazydev",
+					},
 				},
 				providers = {
 					-- dont show LuaLS require statements when lazydev has items
 					lsp = {
+						name = "LSP",
+						module = "blink.cmp.sources.lsp",
 						fallback_for = { "lazydev" },
 					},
 					lazydev = {
-						name = "lazydev",
+						name = "LazyDev",
 						module = "lazydev.integrations.blink",
 					},
 				},
