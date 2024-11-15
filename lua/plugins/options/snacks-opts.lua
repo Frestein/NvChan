@@ -12,6 +12,10 @@ local map_handler = require("langmapper").map
 
 ---@type snacks.Config
 return {
+	bigfile = { enabled = true },
+	notifier = { enabled = true },
+	quickfile = { enabled = true },
+	words = { enabled = true },
 	toggle = {
 		map = map_handler,
 	},
@@ -26,6 +30,7 @@ return {
 		},
 	},
 	statuscolumn = {
+		enabled = true,
 		folds = {
 			open = true,
 			git_hl = true,
