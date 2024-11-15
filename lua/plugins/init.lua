@@ -758,11 +758,11 @@ return {
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		keys = {
-			{ mode = { "n", "x", "o" }, "s", desc = "flash jump" },
-			{ mode = { "n", "x", "o" }, "S", desc = "flash treesitter" },
-			{ mode = { "x", "o" }, "R", desc = "flash treesitter search" },
-			{ mode = { "o" }, "r", desc = "flash remote" },
-			{ mode = { "c" }, "<C-s>", desc = "flash toggle flash search" },
+			{ mode = { "n", "x", "o" }, "s", desc = "Flash" },
+			{ mode = { "n", "x", "o" }, "S", desc = "Flash Treesitter" },
+			{ mode = { "x", "o" }, "R", desc = "Flash Treesitter (search)" },
+			{ mode = { "o" }, "r", desc = "Remote Flash" },
+			{ mode = { "c" }, "<C-s>", desc = "Toggle Flash Search" },
 		},
 		config = function(_, opts)
 			require("flash").setup(opts)
