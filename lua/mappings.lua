@@ -2,16 +2,16 @@ local buffer_utils = require "utils.buffer"
 
 local mappings = {
 	-- Motion
-	{ { "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true } },
-	{ { "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true } },
-	{ { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up", expr = true, silent = true } },
-	{ { "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up", expr = true, silent = true } },
-	{ "i", "<C-^>", "<ESC>^i", { desc = "Move to beginning of line" } },
-	{ "i", "<C-4>", "<End>", { desc = "Move to end of line" } },
-	{ "i", "<C-h>", "<Left>", { desc = "Move left" } },
-	{ "i", "<C-l>", "<Right>", { desc = "Move right" } },
-	{ "i", "<C-j>", "<Down>", { desc = "Move down" } },
-	{ "i", "<C-k>", "<Up>", { desc = "Move up" } },
+	{ { "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move Down", expr = true, silent = true } },
+	{ { "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Move Down", expr = true, silent = true } },
+	{ { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move Up", expr = true, silent = true } },
+	{ { "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Move Up", expr = true, silent = true } },
+	{ "i", "<C-h>", "<Left>", { desc = "Move Left" } },
+	{ "i", "<C-l>", "<Right>", { desc = "Move Right" } },
+	{ "i", "<C-j>", "<Down>", { desc = "Move Down" } },
+	{ "i", "<C-k>", "<Up>", { desc = "Move Up" } },
+	{ "i", "<C-^>", "<ESC>^i", { desc = "Move Beginning of Line" } },
+	{ "i", "<C-4>", "<End>", { desc = "Move End of Line" } },
 
 	--- File ---
 	{ { "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" } },

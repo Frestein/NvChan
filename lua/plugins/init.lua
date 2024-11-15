@@ -788,10 +788,10 @@ return {
 	{
 		"echasnovski/mini.move",
 		keys = {
-			{ mode = { "n", "x" }, "<M-h>", desc = "code block left" },
-			{ mode = { "n", "x" }, "<M-j>", desc = "code block down" },
-			{ mode = { "n", "x" }, "<M-k>", desc = "code block up" },
-			{ mode = { "n", "x" }, "<M-l>", desc = "code block right" },
+			{ mode = { "n", "x" }, "<M-h>", desc = "Move Left" },
+			{ mode = { "n", "x" }, "<M-j>", desc = "Move Down" },
+			{ mode = { "n", "x" }, "<M-k>", desc = "Move Up" },
+			{ mode = { "n", "x" }, "<M-l>", desc = "Move Right" },
 		},
 		opts = {},
 	},
