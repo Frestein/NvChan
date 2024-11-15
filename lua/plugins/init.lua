@@ -718,4 +718,23 @@ return {
 		keys = require "plugins.mappings.neogen-keys",
 		opts = {},
 	},
+
+	{
+		"lewis6991/hover.nvim",
+		event = "VeryLazy",
+		keys = require "plugins.mappings.hover-keys",
+		opts = {},
+		init = function()
+			utils.on_load("hover.nvim", function()
+				vim.api.nvim_create_autocmd("LspAttach", {
+					callback = function()
+						require("hover.providers.lsp")
+					end,
+				})
+				require "hover.providers.fold_preview"
+				require "hover.providers.diagnostic"
+				require "hover.providers.man"
+			end)
+		end,
+	},
 }
