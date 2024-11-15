@@ -3,10 +3,47 @@ local mini_utils = require "utils.mini"
 local utils = require "utils"
 
 return {
+	{ "Bilal2453/luvit-meta" },
+
 	{ "nvim-lua/plenary.nvim" },
-	{ "Luxed/aw-watcher-nvim", lazy = false },
-	{ "artemave/workspace-diagnostics.nvim", opts = {} },
-	{ "Bilal2453/luvit-meta", lazy = true },
+
+	{
+		"Luxed/aw-watcher-nvim",
+		lazy = false,
+	},
+
+	{
+		"andrewferrier/debugprint.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	{
+		"artemave/workspace-diagnostics.nvim",
+		opts = {},
+	},
+
+	{
+		"b0o/schemastore.nvim",
+		version = false,
+	},
+
+	{
+		"echasnovski/mini.extra",
+		enabled = false,
+		version = false,
+	},
+
+	{
+		"echasnovski/mini.operators",
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	{
+		"saecki/live-rename.nvim",
+		opts = {},
+	},
 
 	{
 		"folke/lazydev.nvim",
@@ -70,7 +107,6 @@ return {
 
 	{
 		"Frestein/base46",
-		lazy = true,
 		build = function()
 			require("base46").load_all_highlights()
 		end,
@@ -120,10 +156,14 @@ return {
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
 		opts_extend = { "ensure_installed" },
-		keys = {
-			{ "<c-space>", desc = "treesitter increment selection" },
-			{ mode = "x", "<bs>", desc = "treesitter decrement selection" },
-		},
+		keys = require "plugins.mappings.treesitter-keys",
+		opts = function()
+			return require "plugins.options.treesitter-opts"
+		end,
+		---@param opts TSConfig
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
 		init = function(plugin)
 			-- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
 			-- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
@@ -132,13 +172,6 @@ return {
 			-- during startup.
 			require("lazy.core.loader").add_to_rtp(plugin)
 			require "nvim-treesitter.query_predicates"
-		end,
-		opts = function()
-			return require "plugins.options.treesitter-opts"
-		end,
-		---@param opts TSConfig
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
 
@@ -183,62 +216,8 @@ return {
 			"sources.completion.enabled_providers",
 			"sources.compat",
 		},
-		---@module 'blink.cmp'
-		---@type blink.cmp.Config
-		opts = {
-			highlight = {
-				use_nvim_cmp_as_default = true,
-			},
-			windows = {
-				autocomplete = {
-					border = "single",
-					scrollbar = false,
-					winblend = vim.o.pumblend,
-				},
-				documentation = {
-					auto_show = true,
-				},
-			},
-			sources = {
-				compat = {},
-				completion = {
-					enabled_providers = {
-						"lsp",
-						"path",
-						"snippets",
-						"buffer",
-						"lazydev",
-					},
-				},
-				providers = {
-					-- dont show LuaLS require statements when lazydev has items
-					lsp = {
-						name = "LSP",
-						module = "blink.cmp.sources.lsp",
-						fallback_for = { "lazydev" },
-					},
-					lazydev = {
-						name = "LazyDev",
-						module = "lazydev.integrations.blink",
-					},
-				},
-			},
-		},
-		---@param opts blink.cmp.Config | { sources: { compat: string[] } }
-		config = function(_, opts)
-			dofile(vim.g.base46_cache .. "cmp")
-			local enabled = opts.sources.completion.enabled_providers
-			for _, source in ipairs(opts.sources.compat or {}) do
-				opts.sources.providers[source] = vim.tbl_deep_extend(
-					"force",
-					{ name = source, module = "blink.compat.source" },
-					opts.sources.providers[source] or {}
-				)
-				if type(enabled) == "table" and not vim.tbl_contains(enabled, source) then
-					table.insert(enabled, source)
-				end
-			end
-			require("blink.cmp").setup(opts)
+		opts = function()
+			return require "plugins.options.blink-opts"
 		end,
 	},
 
@@ -262,42 +241,8 @@ return {
 	{
 		"echasnovski/mini.ai",
 		event = "VeryLazy",
-		opts = function()
-			local ai = require "mini.ai"
-			return {
-				n_lines = 500,
-				custom_textobjects = {
-					o = ai.gen_spec.treesitter { -- code block
-						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-					},
-					f = ai.gen_spec.treesitter { a = "@function.outer", i = "@function.inner" }, -- function
-					c = ai.gen_spec.treesitter { a = "@class.outer", i = "@class.inner" }, -- class
-					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-					d = { "%f[%d]%d+" }, -- digits
-					e = { -- Word with case
-						{
-							"%u[%l%d]+%f[^%l%d]",
-							"%f[%S][%l%d]+%f[^%l%d]",
-							"%f[%P][%l%d]+%f[^%l%d]",
-							"^[%l%d]+%f[^%l%d]",
-						},
-						"^().*()$",
-					},
-					i = mini_utils.ai_indent, -- indent
-					g = mini_utils.ai_buffer, -- buffer
-					u = ai.gen_spec.function_call(), -- u for "Usage"
-					U = ai.gen_spec.function_call { name_pattern = "[%w_]" }, -- without dot in function name
-				},
-			}
-		end,
-		config = function(_, opts)
-			require("mini.ai").setup(opts)
-			utils.on_load("which-key.nvim", function()
-				vim.schedule(function()
-					mini_utils.ai_whichkey(opts)
-				end)
-			end)
+		config = function()
+			return require "plugins.configs.mini-ai-conf"
 		end,
 	},
 
@@ -337,11 +282,6 @@ return {
 	{
 		"supermaven-inc/supermaven-nvim",
 		event = "InsertEnter",
-		keys = {
-			{ mode = { "i" }, "<C-f>", desc = "supermaven accept suggestion" },
-			{ mode = { "i" }, "<C-w>", desc = "supermaven accept word" },
-			{ mode = { "i" }, "<C-c>", desc = "supermaven clear suggestion" },
-		},
 		opts = require "plugins.options.supermaven-opts",
 		config = function(_, opts)
 			require("supermaven-nvim").setup(opts)
@@ -361,14 +301,10 @@ return {
 		"echasnovski/mini.indentscope",
 		event = "LazyFile",
 		opts = function()
-			return {
-				symbol = "│",
-				options = { try_as_border = true },
-				draw = {
-					delay = 0,
-					animation = require("mini.indentscope").gen_animation.none(),
-				},
-			}
+			return require "plugins.options.mini-indentscope-opts"
+		end,
+		config = function(_, opts)
+			require("mini.indentscope").setup(opts)
 		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
@@ -392,9 +328,6 @@ return {
 					vim.b.miniindentscope_disable = true
 				end,
 			})
-		end,
-		config = function(_, opts)
-			require("mini.indentscope").setup(opts)
 		end,
 	},
 
@@ -504,7 +437,6 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
-		lazy = true,
 		init = function()
 			---@diagnostic disable-next-line: duplicate-set-field
 			vim.ui.select = function(...)
@@ -592,22 +524,8 @@ return {
 	{
 		"alker0/chezmoi.vim",
 		lazy = false,
-		opts = require "plugins.options.chezmoi-vim-opts",
-		config = function(_, opts)
-			for key, value in pairs(opts) do
-				vim.g["chezmoi#" .. key] = value
-			end
-
-			vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-				pattern = { os.getenv "HOME" .. "/.local/share/chezmoi/*" },
-				callback = function(ev)
-					local bufnr = ev.buf
-					local edit_watch = function()
-						require("chezmoi.commands.__edit").watch(bufnr)
-					end
-					vim.schedule(edit_watch)
-				end,
-			})
+		init = function()
+			require "plugins.configs.chezmoi-vim-conf"
 		end,
 	},
 
@@ -720,12 +638,6 @@ return {
 	},
 
 	{
-		"andrewferrier/debugprint.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-
-	{
 		"folke/drop.nvim",
 		event = "VimEnter",
 		opts = require "plugins.options.drop-opts",
@@ -757,22 +669,11 @@ return {
 	},
 
 	{
-		"b0o/schemastore.nvim",
-		version = false,
-	},
-
-	{
-		"echasnovski/mini.operators",
-		event = "VeryLazy",
-		opts = {},
-	},
-
-	{
 		"echasnovski/mini.pick",
-		dependencies = "echasnovski/mini.extra",
-		event = "VeryLazy",
 		enabled = false,
+		event = "VeryLazy",
 		version = false,
+		dependencies = "echasnovski/mini.extra",
 		keys = function()
 			return require "plugins.mappings.mini-pick-keys"
 		end,
@@ -780,19 +681,8 @@ return {
 	},
 
 	{
-		"echasnovski/mini.extra",
-		enabled = false,
-		version = false,
-	},
-
-	{
 		"echasnovski/mini.move",
-		keys = {
-			{ mode = { "n", "x" }, "<M-h>", desc = "Move Left" },
-			{ mode = { "n", "x" }, "<M-j>", desc = "Move Down" },
-			{ mode = { "n", "x" }, "<M-k>", desc = "Move Up" },
-			{ mode = { "n", "x" }, "<M-l>", desc = "Move Right" },
-		},
+		keys = require "plugins.mappings.mini-move-keys",
 		opts = {},
 	},
 
@@ -826,11 +716,6 @@ return {
 	{
 		"danymat/neogen",
 		keys = require "plugins.mappings.neogen-keys",
-		opts = {},
-	},
-
-	{
-		"saecki/live-rename.nvim",
 		opts = {},
 	},
 }
