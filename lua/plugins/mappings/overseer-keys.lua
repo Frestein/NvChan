@@ -1,16 +1,9 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local overseer = require "overseer"
-
---- @type Keymap[]
-local keymaps = {
+return {
 	{
 		"<leader>o",
 		function()
-			overseer.toggle()
+			require("overseer").toggle()
 		end,
-		"overseer toggle",
+		desc = "Toggle Overseer",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

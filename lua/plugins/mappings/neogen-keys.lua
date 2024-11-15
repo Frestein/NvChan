@@ -1,30 +1,23 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local neogen = require "neogen"
-
---- @type Keymap[]
-local keymaps = {
+return {
 	{
 		"<leader>nf",
 		function()
-			neogen.generate { type = "func" }
+			require "neogen".generate { type = "func" }
 		end,
-		"Neogen Function",
+		desc = "Add Function Annotation",
 	},
 	{
 		"<leader>nc",
 		function()
-			neogen.generate { type = "class" }
+			require "neogen".generate { type = "class" }
 		end,
-		"Neogen Function",
+		desc = "Add Class Annotation",
 	},
 	{
 		"<leader>nt",
 		function()
-			neogen.generate { type = "type" }
+			require "neogen".generate { type = "type" }
 		end,
-		"Neogen Function",
+		desc = "Add Type Annotation",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

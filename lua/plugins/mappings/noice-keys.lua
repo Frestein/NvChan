@@ -1,16 +1,9 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local noice = require "noice"
-
---- @type Keymap[]
-local keymaps = {
+return {
 	{
 		"<leader>fn",
 		function()
-			noice.cmd "telescope"
+			require("noice").cmd "telescope"
 		end,
-		"telescope find notices",
+		desc = "Find Notices",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

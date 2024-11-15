@@ -1,8 +1,6 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local map = map_handler
-local new_git_status = require("utils").new_git_status
 local autocmd = vim.api.nvim_create_autocmd
+local map = vim.keymap.set
+local new_git_status = require("utils").new_git_status
 
 local function minifiles_toggle(...)
 	if not MiniFiles.close() then
@@ -130,22 +128,19 @@ autocmd("User", {
 	end,
 })
 
---- @type Keymap[]
-local keymaps = {
+return {
 	{
 		"<leader>e",
 		function()
 			minifiles_toggle(vim.api.nvim_buf_get_name(0))
 		end,
-		"MiniFiles toggle current directory",
+		desc = "Toggle Current Directory",
 	},
 	{
 		"<leader>E",
 		function()
 			minifiles_toggle()
 		end,
-		"MiniFiles toggle root directory",
+		desc = "Toggle Root Directory",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

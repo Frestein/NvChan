@@ -1,10 +1,9 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local zen_mode = require "zen-mode"
-
---- @type Keymap[]
-local keymaps = {
-	{ "<leader>z", zen_mode.toggle, "toggle zen-mode" },
+return {
+	{
+		"<leader>z",
+		function()
+			require("zen-mode").toggle()
+		end,
+		desc = "Toggle Zen-Mode",
+	},
 }
-
-keymap_utils.map(map_handler, keymaps)

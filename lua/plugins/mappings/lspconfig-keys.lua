@@ -1,50 +1,36 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local lsp = vim.lsp.buf
-
 local M = {}
 
 function M.on_attach(bufnr)
-	--- @type Keymap[]
+	local lsp = vim.lsp.buf
+
 	local keymaps = {
-		{ "<leader>cS", lsp.signature_help, "LSP show signature help" },
-		{ "<leader>wa", lsp.add_workspace_folder, "LSP add workspace folder" },
-		{ "<leader>wr", lsp.remove_workspace_folder, "LSP remove workspace folder" },
 		{
-			"<leader>rf",
+			"<leader>cS",
 			function()
-				Snacks.rename.rename_file()
+				lsp.signature_help()
 			end,
-			"Rename File",
+			desc = "Show Signature",
+		},
+		{
+			"<leader>wa",
+			function()
+				lsp.add_workspace_folder()
+			end,
+			desc = "Add Workspace Folder (LSP)",
+		},
+		{
+			"<leader>wr",
+			function()
+				lsp.remove_workspace_folder()
+			end,
+			desc = "Remove Workspace Folder (LSP)",
 		},
 		{
 			"<leader>wl",
 			function()
 				print(vim.inspect(lsp.list_workspace_folders()))
 			end,
-			"LSP list workspace folders",
-		},
-		{
-			"<leader>ra",
-			function()
-				require("live-rename").rename { insert = true }
-			end,
-			"LSP rename",
-		},
-		{
-			"<leader>rA",
-			function()
-				require("live-rename").rename { text = "", insert = true }
-			end,
-			"LSP rename (empty)",
-		},
-		{
-			"<leader>ca",
-			mode = { "n", "v" },
-			function()
-				require("tiny-code-action").code_action()
-			end,
-			"LSP code action",
+			desc = "List Workspace Folders (LSP)",
 		},
 		{
 			"<leader>X",
@@ -53,11 +39,42 @@ function M.on_attach(bufnr)
 					require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
 				end
 			end,
-			"LSP populate workspace diagnostics",
+			desc = "Populate Workspace Diagnostics (LSP)",
+		},
+		{
+			"<leader>rf",
+			function()
+				Snacks.rename.rename_file()
+			end,
+			desc = "Rename File",
+		},
+		{
+			"<leader>ra",
+			function()
+				require("live-rename").rename { insert = true }
+			end,
+			desc = "Rename",
+		},
+		{
+			"<leader>rA",
+			function()
+				require("live-rename").rename { text = "", insert = true }
+			end,
+			desc = "Clear Rename",
+		},
+		{
+			"<leader>ca",
+			mode = { "n", "v" },
+			function()
+				require("tiny-code-action").code_action()
+			end,
+			desc = "Code Action",
 		},
 	}
-	keymap_utils.add_params_to_desc(keymaps, { buffer = bufnr })
-	keymap_utils.map(map_handler, keymaps)
+
+	for _, keymap in ipairs(keymaps) do
+		vim.keymap.set("n", keymap[1], keymap[2], { desc = keymap.desc, buffer = bufnr })
+	end
 end
 
 return M

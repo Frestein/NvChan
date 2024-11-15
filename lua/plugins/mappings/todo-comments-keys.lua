@@ -1,11 +1,5 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-
---- @type Keymap[]
-local keymaps = {
-	{ "<leader>tt", "<cmd>TodoTrouble<cr>", "todo-comments show the todo-list" },
-	{ "<leader>tq", "<cmd>TodoQuickFix<cr>", "todo-comments show quickfix" },
-	{ "<leader>fT", "<cmd>TodoTelescope<cr>", "telescope todo-list" },
+return {
+	{ "<leader>tt", "<cmd>TodoTrouble<cr>", desc = "Todo-List (trouble)" },
+	{ "<leader>tq", "<cmd>TodoQuickFix<cr>", desc = "Todo-List (quickfix)" },
+	{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find Todo" },
 }
-
-keymap_utils.map(map_handler, keymaps)

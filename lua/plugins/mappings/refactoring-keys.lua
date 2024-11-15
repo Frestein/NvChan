@@ -1,68 +1,63 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local refactoring = require "refactoring"
-
---- @type Keymap[]
-local keymaps = {
+return {
 	{
-		mode = { "x" },
-		"<leader>re",
+		mode = { "n", "x" },
+		"<leader>rr",
 		function()
-			refactoring.refactor "Extract Function"
+			require("refactoring").select_refactor()
 		end,
-		"refactor extract function",
-	},
-	{
-		mode = { "x" },
-		"<leader>rf",
-		function()
-			refactoring.refactor "Extract Function To File"
-		end,
-		"refactor extract function to file",
+		desc = "Select Refactor",
 	},
 	{
 		mode = { "x" },
 		"<leader>rv",
 		function()
-			refactoring.refactor "Extract Variable"
+			require("refactoring").refactor "Extract Variable"
 		end,
-		"refactor extract variable",
+		desc = "Extract Variable",
 	},
 	{
-		"<leader>rI",
+		mode = { "x" },
+		"<leader>re",
 		function()
-			refactoring.refactor "Inline Function"
+			require("refactoring").refactor "Extract Function"
 		end,
-		"refactor inline function",
+		desc = "Extract Function",
+	},
+	{
+		mode = { "x" },
+		"<leader>rf",
+		function()
+			require("refactoring").refactor "Extract Function To File"
+		end,
+		desc = "Extract Function (file)",
+	},
+	{
+		"<leader>rb",
+		function()
+			require("refactoring").refactor "Extract Block"
+		end,
+		desc = "Extract Block",
+	},
+	{
+		"<leader>rB",
+		function()
+			require("refactoring").refactor "Extract Block To File"
+		end,
+		desc = "Extract Block (file)",
 	},
 	{
 		mode = { "n", "x" },
 		"<leader>ri",
 		function()
-			refactoring.refactor "Inline Variable"
+			require("refactoring").refactor "Inline Variable"
 		end,
-		"refactor inline variable",
+		desc = "Inline Variable",
 	},
 	{
-		"<leader>rb",
+		"<leader>rI",
 		function()
-			refactoring.refactor "Extract Block"
+			require("refactoring").refactor "Inline Function"
 		end,
-		"refactor extract block",
-	},
-	{
-		"<leader>rB",
-		function()
-			refactoring.refactor "Extract Block To File"
-		end,
-		"refactor extract block to file",
-	},
-	{
-		mode = { "n", "x" },
-		"<leader>rr",
-		refactoring.select_refactor,
-		"refactor select refactor",
+		desc = "Inline Function",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

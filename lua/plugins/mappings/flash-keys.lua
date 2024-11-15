@@ -1,69 +1,78 @@
-local flash = require "flash"
-local keymap_utils = require "utils.keymap"
-local langmapper = require "langmapper"
-local map_handler = langmapper.map
-local original_set_keymap = langmapper.original_set_keymap
+local mode_s = { "n", "x", "o" }
+local mode_R = { "x", "o" }
+local mode_r = "o"
 
-local labels = "олджавыфгнрткепимйцуячсшщзьбюАВЫФОЛДЖЙЦУКЕНГШЩЗ"
+require("utils").on_load("flash.nvim", function()
+	local map = require("langmapper").original_set_keymap
+	local labels = "олджавыфгнрткепимйцуячсшщзьбюАВЫФОЛДЖЙЦУКЕНГШЩЗ"
 
-for _, mode in pairs { "n", "x", "o" } do
-	original_set_keymap(mode, "s", "", {
-		desc = "Flash",
-		callback = flash.jump,
+	for _, mode in pairs(mode_s) do
+		map(mode, "s", "", {
+			desc = "Flash",
+			callback = require("flash").jump,
+		})
+		map(mode, "ы", "", {
+			desc = "Flash",
+			callback = function()
+				require("flash").jump {
+					labels = labels,
+				}
+			end,
+		})
+		map(mode, "S", "", {
+			desc = "Flash Treesitter",
+			callback = require("flash").treesitter,
+		})
+		map(mode, "Ы", "", {
+			desc = "Flash Treesitter",
+			callback = function()
+				require("flash").treesitter {
+					labels = labels,
+				}
+			end,
+		})
+	end
+
+	for _, mode in pairs(mode_R) do
+		map(mode, "R", "", {
+			desc = "Flash Treesitter (search)",
+			callback = require("flash").treesitter_search,
+		})
+		map(mode, "К", "", {
+			desc = "Flash Treesitter (search)",
+			callback = function()
+				require("flash").treesitter_search {
+					labels = labels,
+				}
+			end,
+		})
+	end
+
+	map(mode_r, "r", "", {
+		desc = "Remote Flash",
+		callback = require("flash").remote,
 	})
-	original_set_keymap(mode, "ы", "", {
-		desc = "Flash",
+	map(mode_r, "к", "", {
+		desc = "Remote Flash",
 		callback = function()
-			flash.jump {
+			require("flash").remote {
 				labels = labels,
 			}
 		end,
 	})
-	original_set_keymap(mode, "S", "", {
-		desc = "Flash Treesitter",
-		callback = flash.treesitter,
-	})
-	original_set_keymap(mode, "Ы", "", {
-		desc = "Flash Treesitter",
-		callback = function()
-			flash.treesitter {
-				labels = labels,
-			}
+end)
+
+return {
+	{ mode = mode_s, "s", desc = "Flash" },
+	{ mode = mode_s, "S", desc = "Flash Treesitter" },
+	{ mode = mode_R, "R", desc = "Flash Treesitter (search)" },
+	{ mode = mode_r, "r", desc = "Remote Flash" },
+	{
+		mode = { "c" },
+		"<c-s>",
+		function()
+			require("flash").toggle()
 		end,
-	})
-end
-
-for _, mode in pairs { "x", "o" } do
-	original_set_keymap(mode, "R", "", {
-		desc = "Flash Treesitter (search)",
-		callback = flash.treesitter_search,
-	})
-	original_set_keymap(mode, "К", "", {
-		desc = "Flash Treesitter (search)",
-		callback = function()
-			flash.treesitter_search {
-				labels = labels,
-			}
-		end,
-	})
-end
-
-original_set_keymap("o", "r", "", {
-	desc = "Remote Flash",
-	callback = flash.remote,
-})
-original_set_keymap("o", "к", "", {
-	desc = "Remote Flash",
-	callback = function()
-		flash.remote {
-			labels = labels,
-		}
-	end,
-})
-
---- @type Keymap[]
-local keymaps = {
-	{ mode = { "c" }, "<c-s>", flash.toggle, "Toggle Flash Search" },
+		desc = "Toggle Flash Search",
+	},
 }
-
-keymap_utils.map(map_handler, keymaps)

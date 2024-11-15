@@ -1,7 +1,3 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local persistence = require "persistence"
-
 local function close_plugin(plugin, command)
 	local ok, require = pcall(require, plugin)
 	if ok and require[command] then
@@ -14,7 +10,7 @@ local function quit_all(save_session)
 	close_plugin("trouble", "close")
 
 	if not save_session then
-		persistence.stop()
+		require("persistence").stop()
 	end
 
 	vim.schedule(function()
@@ -22,31 +18,33 @@ local function quit_all(save_session)
 	end)
 end
 
---- @type Keymap[]
-local keymaps = {
-	{ "<leader>qs", persistence.select, "session select session" },
-	{ "<leader>qL", persistence.load, "session restore session" },
+return {
+	{
+		"<leader>qs",
+		function()
+			require("persistence").select()
+		end,
+		desc = "Select Session",
+	},
 	{
 		"<leader>ql",
 		function()
-			persistence.load { last = true }
+			require("persistence").load { last = true }
 		end,
-		"session last session",
+		desc = "Load Session (last)",
 	},
 	{
 		"<leader>qq",
 		function()
 			quit_all(true)
 		end,
-		"session quit all",
+		desc = "Close Neovim (save session)",
 	},
 	{
 		"<leader>qQ",
 		function()
 			quit_all(false)
 		end,
-		"session quit all without save session",
+		desc = "Close Neovim (discard session)",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

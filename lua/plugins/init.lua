@@ -25,7 +25,7 @@ return {
 	{
 		"folke/snacks.nvim",
 		lazy = false,
-		priority = 999,
+		priority = 1000,
 		opts = function()
 			return require "plugins.options.snacks-opts"
 		end,
@@ -79,7 +79,7 @@ return {
 	{
 		"Wansmer/langmapper.nvim",
 		lazy = false,
-		priority = 1000,
+		priority = 1,
 		opts = require "plugins.options.langmapper-opts",
 		config = function(_, opts)
 			require("langmapper").setup(opts)
@@ -90,10 +90,9 @@ return {
 	{
 		"stevearc/conform.nvim",
 		cmd = "ConformInfo",
-		keys = { { mode = { "n", "v" }, "<leader>cf", desc = "code format code" } },
+		keys = require "plugins.mappings.conform-keys",
 		config = function()
 			require "plugins.configs.conform-conf"
-			require "plugins.mappings.conform-keys"
 		end,
 	},
 
@@ -329,15 +328,10 @@ return {
 		"echasnovski/mini.files",
 		event = "VeryLazy",
 		version = false,
-		keys = {
-			{ "<leader>e", desc = "MiniFiles toggle current directory" },
-			{ "<leader>E", desc = "MiniFiles toggle root directory" },
-		},
-		opts = require("plugins.options.mini-files-opts").opts,
-		config = function(_, opts)
-			require("mini.files").setup(opts)
-			require "plugins.mappings.mini-files-keys"
+		keys = function()
+			return require "plugins.mappings.mini-files-keys"
 		end,
+		opts = require("plugins.options.mini-files-opts").opts,
 	},
 
 	{
@@ -357,6 +351,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "LazyFile",
+		keys = require "plugins.mappings.indent-blankline-keys",
 		config = function()
 			require "plugins.configs.indent-blankline-conf"
 		end,
@@ -416,25 +411,13 @@ return {
 		cmd = "Telescope",
 		event = "VeryLazy",
 		dependencies = "nvim-lua/plenary.nvim",
-		keys = {
-			{ "<leader>ff", desc = "telescope find files" },
-			{ "<leader>fm", desc = "telescope find marks" },
-			{ "<leader>fw", desc = "telescope live grep" },
-			{ "<leader>fb", desc = "telescope find buffers" },
-			{ "<leader>fh", desc = "telescope help page" },
-			{ "<leader>fr", desc = "telescope recent files" },
-			{ "<leader>fz", desc = "telescope find in current buffer" },
-			{ "<leader>fd", desc = "telescope find diagnostics" },
-			{ "<leader>th", desc = "telescope find themes" },
-			{ "<leader>fk", desc = "telescope find keymaps" },
-		},
+		keys = require "plugins.mappings.telescope-keys",
 		opts = function()
 			return require "plugins.options.telescope-opts"
 		end,
 		config = function(_, opts)
 			require("telescope").setup(opts)
 			dofile(vim.g.base46_cache .. "telescope")
-			require "plugins.mappings.telescope-keys"
 		end,
 	},
 
@@ -449,37 +432,37 @@ return {
 			},
 		},
 		branch = "0.2.x",
-		keys = { { "<leader><leader>", "<cmd>Telescope smart_open<cr>", desc = "telescope smart open" } },
+		keys = { { "<leader><leader>", "<cmd>Telescope smart_open<cr>", desc = "Find Files (smart)" } },
 	},
 
 	{
 		"Marskey/telescope-sg",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fW", "<cmd>Telescope ast_grep<cr>", desc = "telescope live grep (sg)" } },
+		keys = { { "<leader>fW", "<cmd>Telescope ast_grep<cr>", desc = "Find Pattern (sg)" } },
 	},
 
 	{
 		"piersolenski/telescope-import.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fi", "<cmd>Telescope import<cr>", desc = "telescope find imports" } },
+		keys = { { "<leader>fi", "<cmd>Telescope import<cr>", desc = "Find Imports" } },
 	},
 
 	{
 		"crispgm/telescope-heading.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fH", "<cmd>Telescope heading<cr>", desc = "telescope heading list" } },
+		keys = { { "<leader>fH", "<cmd>Telescope heading<cr>", desc = "Find Headings" } },
 	},
 
 	{
 		"jvgrootveld/telescope-zoxide",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>zl", "<cmd>Telescope zoxide list<cr>", desc = "telescope zoxide list" } },
+		keys = { { "<leader>zl", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide List" } },
 	},
 
 	{
 		"debugloop/telescope-undo.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fu", "<cmd>Telescope undo<cr>", desc = "telescope find undo" } },
+		keys = { { "<leader>fu", "<cmd>Telescope undo<cr>", desc = "Find Undo" } },
 	},
 
 	{
@@ -511,10 +494,11 @@ return {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
-		keys = { { "<leader>fn", desc = "telescope find notices" } },
+		keys = function()
+			return require "plugins.mappings.noice-keys"
+		end,
 		config = function()
 			require "plugins.configs.noice-conf"
-			require "plugins.mappings.noice-keys"
 		end,
 	},
 
@@ -540,26 +524,11 @@ return {
 		event = "VeryLazy",
 		cmd = "Trouble",
 		dependencies = "folke/todo-comments.nvim",
-		keys = {
-			{ "gd", desc = "LSP Definitions" },
-			{ "gD", desc = "LSP Declarations" },
-			{ "gi", desc = "LSP Implementations" },
-			{ "gR", desc = "LSP References" },
-			{ "ga", desc = "LSP Definitions/References/..." },
-			{ "<leader>cd", desc = "LSP Type Definitions" },
-			{ "<leader>xx", desc = "Toggle Diagnostics" },
-			{ "<leader>xX", desc = "Toggle Diagnostics (buffer)" },
-			{ "<leader>xl", desc = "Toggle Loclist" },
-			{ "<leader>xq", desc = "Toggle Quickfix" },
-			{ "<leader>cs", desc = "Toggle Document Symbols" },
-			{ "[q", desc = "Previous Trouble/Quickfix Item" },
-			{ "]q", desc = "Next Trouble/Quickfix Item" },
-		},
+		keys = require "plugins.mappings.trouble-keys",
 		opts = require "plugins.options.trouble-opts",
 		config = function(_, opts)
 			require("trouble").setup(opts)
 			dofile(vim.g.base46_cache .. "trouble")
-			require "plugins.mappings.trouble-keys"
 		end,
 	},
 
@@ -567,15 +536,10 @@ return {
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
 		event = "LazyFile",
-		keys = {
-			{ "<leader>tt", desc = "todo-comments show the todo list" },
-			{ "<leader>tq", desc = "todo-comments show quickfix" },
-			{ "<leader>fT", desc = "telescope todo list" },
-		},
+		keys = require "plugins.mappings.todo-comments-keys",
 		config = function(_, opts)
 			require("todo-comments").setup(opts)
 			dofile(vim.g.base46_cache .. "todo")
-			require "plugins.mappings.todo-comments-keys"
 		end,
 	},
 
@@ -587,16 +551,8 @@ return {
 
 	{
 		"michaelrommel/nvim-silicon",
-		keys = {
-			{ mode = { "v" }, "<leader>ss", desc = "snapshot screenshot code" },
-			{ mode = { "v" }, "<leader>sf", desc = "snapshot screenshot code as file" },
-			{ mode = { "v" }, "<leader>sc", desc = "snapshot screenshot code to clipboard" },
-		},
+		keys = require "plugins.mappings.silicon-keys",
 		opts = require "plugins.options.silicon-opts",
-		config = function(_, opts)
-			require("nvim-silicon").setup(opts)
-			require "plugins.mappings.silicon-keys"
-		end,
 	},
 
 	{
@@ -626,7 +582,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"alker0/chezmoi.vim",
 		},
-		keys = { { "<leader>fD", "<cmd>Telescope chezmoi find_files<cr>", desc = "telescope find dotfiles" } },
+		keys = { { "<leader>fD", "<cmd>Telescope chezmoi find_files<cr>", desc = "Find Dotfiles" } },
 		opts = require "plugins.options.chezmoi-nvim-opts",
 		config = function(_, opts)
 			require("chezmoi").setup(opts)
@@ -657,10 +613,9 @@ return {
 
 	{
 		"folke/zen-mode.nvim",
-		keys = { { "<leader>z", desc = "toggle zen-mode" } },
+		keys = require "plugins.mappings.zen-mode-keys",
 		config = function()
 			require "plugins.configs.zen-mode-conf"
-			require "plugins.mappings.zen-mode-keys"
 		end,
 	},
 
@@ -698,17 +653,10 @@ return {
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
-		keys = {
-			{ "<leader>qs", desc = "session select session" },
-			{ "<leader>qL", desc = "session restore session" },
-			{ "<leader>ql", desc = "session restore last session" },
-			{ "<leader>qq", desc = "session quit all" },
-			{ "<leader>qQ", desc = "session quit all without save session" },
-		},
-		config = function(_, opts)
-			require("persistence").setup(opts)
-			require "plugins.mappings.persistence-keys"
+		keys = function()
+			return require "plugins.mappings.persistence-keys"
 		end,
+		opts = {},
 	},
 
 	{
@@ -727,58 +675,32 @@ return {
 	{
 		"stevearc/overseer.nvim",
 		enabled = false,
-		keys = { { "<leader>o", desc = "overseer toggle" } },
-		config = function(_, opts)
-			require("overseer").setup(opts)
-			require "plugins.mappings.overseer-keys"
-		end,
+		keys = require "plugins.mappings.overseer-keys",
+		opts = {},
 	},
 
 	{
 		"karb94/neoscroll.nvim",
-		keys = {
-			{ mode = { "n", "v" }, "<C-u>", desc = "scroll scroll up half a page" },
-			{ mode = { "n", "v" }, "<C-d>", desc = "scroll scroll down half a page" },
-			{ mode = { "n", "v" }, "<C-b>", desc = "scroll scroll up one full page" },
-			{ mode = { "n", "v" }, "<C-f>", desc = "scroll scroll down one full page" },
-			{ mode = { "n", "v" }, "<C-y>", desc = "scroll scroll up a little without moving the cursor" },
-			{ mode = { "n", "v" }, "<C-e>", desc = "scroll scroll down a little without moving the cursor" },
-			{ mode = { "n", "v" }, "zt", desc = "scroll move the current line to the top of the window" },
-			{ mode = { "n", "v" }, "zz", desc = "scroll center the current line in the window" },
-			{ mode = { "n", "v" }, "zb", desc = "scroll move the current line to the bottom of the window" },
-		},
-		opts = require "plugins.options.neoscroll-opts",
-		config = function(_, opts)
-			require("neoscroll").setup(opts)
-			require "plugins.mappings.neoscroll-keys"
+		keys = function()
+			return require "plugins.mappings.neoscroll-keys"
 		end,
+		opts = require "plugins.options.neoscroll-opts",
 	},
 
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		keys = {
-			{ mode = { "n", "x", "o" }, "s", desc = "Flash" },
-			{ mode = { "n", "x", "o" }, "S", desc = "Flash Treesitter" },
-			{ mode = { "x", "o" }, "R", desc = "Flash Treesitter (search)" },
-			{ mode = { "o" }, "r", desc = "Remote Flash" },
-			{ mode = { "c" }, "<C-s>", desc = "Toggle Flash Search" },
-		},
-		config = function(_, opts)
-			require("flash").setup(opts)
-			require "plugins.mappings.flash-keys"
+		keys = function()
+			return require "plugins.mappings.flash-keys"
 		end,
+		opts = {},
 	},
 
 	{
 		"Wansmer/treesj",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		keys = { { "gS", desc = "Toggle arguments" } },
+		keys = require "plugins.mappings.treesj-keys",
 		opts = require "plugins.options.treesj-opts",
-		config = function(_, opts)
-			require("treesj").setup(opts)
-			require "plugins.mappings.treesj-keys"
-		end,
 	},
 
 	{
@@ -787,35 +709,14 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		keys = {
-			{ mode = { "x" }, "<leader>re", desc = "refactor extract function" },
-			{ mode = { "x" }, "<leader>rf", desc = "refactor extract function to file" },
-			{ mode = { "x" }, "<leader>rv", desc = "refactor extract variable" },
-			{ "<leader>rI", desc = "refactor inline function" },
-			{ mode = { "n", "x" }, "<leader>ri", desc = "refactor inline variable" },
-			{ "<leader>rb", desc = "refactor extract block" },
-			{ "<leader>rB", desc = "refactor extract block to file" },
-			{ mode = { "n", "x" }, "<leader>rr", desc = "refactor select refactor" },
-		},
+		keys = require "plugins.mappings.refactoring-keys",
 		opts = require "plugins.options.refactoring-opts",
-		config = function(_, opts)
-			require("refactoring").setup(opts)
-			require "plugins.mappings.refactoring-keys"
-		end,
 	},
 
 	{
 		"MagicDuck/grug-far.nvim",
-		keys = {
-			{ "<leader>rw", "grug-far open with word under cursor" },
-			{ "<leader>rc", "grug-far open for current file" },
-			{ mode = { "x" }, "<leader>rC", "grug-far open with visual selection" },
-		},
+		keys = require "plugins.mappings.grug-far-keys",
 		opts = require "plugins.options.grug-far-opts",
-		config = function(_, opts)
-			require("grug-far").setup(opts)
-			require "plugins.mappings.grug-far-keys"
-		end,
 	},
 
 	{
@@ -851,12 +752,8 @@ return {
 	{
 		"piersolenski/wtf.nvim",
 		dependencies = "MunifTanjim/nui.nvim",
-		keys = { { "<leader>ws", desc = "wtf search diagnostic with duckduckgo" } },
+		keys = require "plugins.mappings.wtf-keys",
 		opts = require "plugins.options.wtf-opts",
-		config = function(_, opts)
-			require("wtf").setup(opts)
-			require "plugins.mappings.wtf-keys"
-		end,
 	},
 
 	{
@@ -876,31 +773,10 @@ return {
 		event = "VeryLazy",
 		enabled = false,
 		version = false,
-		keys = {
-			{ "<leader>ff", desc = "MiniPick find files" },
-			{ "<leader>fw", desc = "MiniPick grep files" },
-			{ "<leader>fW", desc = "MiniPick live grep files" },
-			{ "<leader>fb", desc = "MiniPick find buffers" },
-			{ "<leader>fh", desc = "MiniPick find help" },
-			{ "<leader>fr", desc = "MiniPick latest picker" },
-			{ "<leader>fz", desc = "MiniPick buffer lines" },
-			{ "<leader>fm", desc = "MiniPick marks" },
-			{ "<leader>th", desc = "MiniPick find themes" },
-			-- spellchecker: disable-line
-			{ "<leader>fo", desc = "MiniPick oldfiles" },
-			{ "<leader>fs", desc = "MiniPick spell suggestions" },
-			{ "<leader>fgb", desc = "MiniPick git branches" },
-			{ "<leader>fgc", desc = "MiniPick git commits" },
-			{ "<leader>fgf", desc = "MiniPick git files" },
-			{ "<leader>fgh", desc = "MiniPick git hunks" },
-			{ "<leader>fsh", desc = "MiniPick history" },
-			{ "<leader>fhl", desc = "MiniPick highlight groups" },
-			{ "<leader>fch", desc = "MiniPick keymaps" },
-		},
-		config = function(_, opts)
-			require("mini.pick").setup(opts)
-			require "plugins.mappings.mini-pick-keys"
+		keys = function()
+			return require "plugins.mappings.mini-pick-keys"
 		end,
+		opts = {},
 	},
 
 	{
@@ -937,27 +813,20 @@ return {
 
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
-		keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
 		cmd = "WhichKey",
+		event = "VeryLazy",
+		version = "*",
+		keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
 		opts_extend = { "spec" },
 		opts = function()
-			dofile(vim.g.base46_cache .. "whichkey")
-			return {}
+			return require "plugins.options.which-key-opts"
 		end,
 	},
 
 	{
 		"danymat/neogen",
-		keys = {
-			{ "<leader>nf", desc = "Neogen function" },
-			{ "<leader>nc", desc = "Neogen class" },
-			{ "<leader>nt", desc = "Neogen type" },
-		},
-		config = function(_, opts)
-			require("neogen").setup(opts)
-			require "plugins.mappings.neogen-keys"
-		end,
+		keys = require "plugins.mappings.neogen-keys",
+		opts = {},
 	},
 
 	{

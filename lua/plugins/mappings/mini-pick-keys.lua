@@ -1,99 +1,184 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
+require("utils").on_load("mini.pick", function()
+	local function reload_theme(name)
+		require("chadrc").base46.theme = name
+		require("base46").load_all_highlights()
+		vim.api.nvim_exec_autocmds("User", { pattern = "NvChadThemeReload" })
+	end
 
-local function reload_theme(name)
-	require("chadrc").base46.theme = name
-	require("base46").load_all_highlights()
-	vim.api.nvim_exec_autocmds("User", { pattern = "NvChadThemeReload" })
-end
-
-local hooks = {
-	pre_hooks = {},
-	post_hooks = {},
-}
-
-vim.api.nvim_create_autocmd({ "User" }, {
-	pattern = "MiniPickStart",
-	group = vim.api.nvim_create_augroup("minipick-pre-hooks", { clear = true }),
-	"Invoke pre_hook for specific picker based on source.name.",
-	callback = function(...)
-		local opts = MiniPick.get_picker_opts() or {}
-		local pre_hook = hooks.pre_hooks[opts.source.name] or function(...) end
-		pre_hook(...)
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "User" }, {
-	pattern = "MiniPickStop",
-	group = vim.api.nvim_create_augroup("minipick-post-hooks", { clear = true }),
-	"Invoke post_hook for specific picker based on source.name.",
-	callback = function(...)
-		local opts = MiniPick.get_picker_opts() or {}
-		local post_hook = hooks.post_hooks[opts.source.name] or function(...) end
-		post_hook(...)
-	end,
-})
-
-local selected_theme
-
-hooks.pre_hooks.Themes = function()
-	selected_theme = require("chadrc").base46.theme
-end
-
-hooks.post_hooks.Themes = function()
-	reload_theme(selected_theme)
-end
-
-MiniPick.registry.themes = function()
-	local themes = require("nvchad.utils").list_themes()
-	return MiniPick.start {
-		source = {
-			name = "Themes",
-			items = themes,
-			choose = function(item)
-				selected_theme = item
-			end,
-			preview = function(buf_id, item)
-				reload_theme(item)
-				vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, { item })
-			end,
-		},
+	local hooks = {
+		pre_hooks = {},
+		post_hooks = {},
 	}
-end
 
---- @type Keymap[]
-local keymaps = {
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = "MiniPickStart",
+		group = vim.api.nvim_create_augroup("minipick-pre-hooks", { clear = true }),
+		"Invoke pre_hook for specific picker based on source.name.",
+		callback = function(...)
+			local opts = MiniPick.get_picker_opts() or {}
+			local pre_hook = hooks.pre_hooks[opts.source.name] or function(...) end
+			pre_hook(...)
+		end,
+	})
+
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = "MiniPickStop",
+		group = vim.api.nvim_create_augroup("minipick-post-hooks", { clear = true }),
+		"Invoke post_hook for specific picker based on source.name.",
+		callback = function(...)
+			local opts = MiniPick.get_picker_opts() or {}
+			local post_hook = hooks.post_hooks[opts.source.name] or function(...) end
+			post_hook(...)
+		end,
+	})
+
+	local selected_theme
+
+	hooks.pre_hooks.Themes = function()
+		selected_theme = require("chadrc").base46.theme
+	end
+
+	hooks.post_hooks.Themes = function()
+		reload_theme(selected_theme)
+	end
+
+	MiniPick.registry.themes = function()
+		local themes = require("nvchad.utils").list_themes()
+		return MiniPick.start {
+			source = {
+				name = "Themes",
+				items = themes,
+				choose = function(item)
+					selected_theme = item
+				end,
+				preview = function(buf_id, item)
+					reload_theme(item)
+					vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, { item })
+				end,
+			},
+		}
+	end
+end)
+
+return {
 	{
 		"<leader>ff",
 		function()
 			MiniPick.builtin.files { tool = "rg" }
 		end,
-		"MiniPick find files",
+		desc = "Find Files",
 	},
-	{ "<leader>fw", MiniPick.builtin.grep, "MiniPick grep files" },
-	{ "<leader>fW", MiniPick.builtin.grep_live, "MiniPick live grep files" },
-	{ "<leader>fb", MiniPick.builtin.buffers, "MiniPick find buffers" },
-	{ "<leader>fH", MiniPick.builtin.help, "MiniPick find help" },
-	{ "<leader>fr", MiniPick.builtin.resume, "MiniPick latest picker" },
 	{
 		"<leader>fz",
 		function()
 			MiniExtra.pickers.buf_lines { scope = "current" }
 		end,
-		"MiniPick buffer lines",
+		desc = "Find Pattern (buffer)",
 	},
-	{ "<leader>fm", MiniExtra.pickers.marks, "MiniPick marks" },
-	{ "<leader>th", MiniPick.registry.themes, "MiniPick find themes" },
-	-- spellchecker: disable-line
-	{ "<leader>fo", MiniExtra.pickers.oldfiles, "MiniPick oldfiles" },
-	{ "<leader>fs", MiniExtra.pickers.spellsuggest, "MiniPick spell suggestions" },
-	{ "<leader>fgb", MiniExtra.pickers.git_branches, "MiniPick git branches" },
-	{ "<leader>fgc", MiniExtra.pickers.git_commits, "MiniPick git commits" },
-	{ "<leader>fgf", MiniExtra.pickers.git_files, "MiniPick git files" },
-	{ "<leader>fgh", MiniExtra.pickers.git_hunks, "MiniPick git hunks" },
-	{ "<leader>fsh", MiniExtra.pickers.history, "MiniPick history" },
-	{ "<leader>fhl", MiniExtra.pickers.hl_groups, "MiniPick highlight groups" },
-	{ "<leader>fch", MiniExtra.pickers.keymaps, "MiniPick keymaps" },
+	{
+		"<leader>fw",
+		function()
+			MiniPick.builtin.grep()
+		end,
+		desc = "Find Pattern (grep)",
+	},
+	{
+		"<leader>fW",
+		function()
+			MiniPick.builtin.grep_live()
+		end,
+		desc = "Find Pattern (live grep)",
+	},
+	{
+		"<leader>fb",
+		function()
+			MiniPick.builtin.buffers()
+		end,
+		desc = "Find Buffers",
+	},
+	{
+		"<leader>fH",
+		function()
+			MiniPick.builtin.help()
+		end,
+		desc = "Find Help",
+	},
+	{
+		"<leader>fm",
+		function()
+			MiniExtra.pickers.marks()
+		end,
+		desc = "Find Marks",
+	},
+	{
+		"<leader>th",
+		function()
+			MiniPick.registry.themes()
+		end,
+		desc = "Find Themes",
+	},
+	{
+		-- spellchecker: disable-line
+		"<leader>fo",
+		function()
+			MiniExtra.pickers.oldfiles()
+		end,
+		desc = "Find Files (recent)",
+	},
+	{
+		"<leader>fs",
+		function()
+			MiniExtra.pickers.spellsuggest()
+		end,
+		desc = "Find Spell Suggestions",
+	},
+	{
+		"<leader>fgb",
+		function()
+			MiniExtra.pickers.git_branches()
+		end,
+		desc = "Find Branches",
+	},
+	{
+		"<leader>fgc",
+		function()
+			MiniExtra.pickers.git_commits()
+		end,
+		desc = "Find Commits",
+	},
+	{
+		"<leader>fgf",
+		function()
+			MiniExtra.pickers.git_files()
+		end,
+		desc = "Find Files (git)",
+	},
+	{
+		"<leader>fgh",
+		function()
+			MiniExtra.pickers.git_hunks()
+		end,
+		desc = "Find Hunks",
+	},
+	{
+		"<leader>fsh",
+		function()
+			MiniExtra.pickers.history()
+		end,
+		desc = "Find History",
+	},
+	{
+		"<leader>fhl",
+		function()
+			MiniExtra.pickers.hl_groups()
+		end,
+		desc = "Find highlights",
+	},
+	{
+		"<leader>fk",
+		function()
+			MiniExtra.pickers.keymaps()
+		end,
+		desc = "Find Keymaps",
+	},
 }
-
-keymap_utils.map(map_handler, keymaps)

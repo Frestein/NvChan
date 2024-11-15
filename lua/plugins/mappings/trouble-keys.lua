@@ -1,85 +1,80 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local trouble = require "trouble"
-
---- @type Keymap[]
-local keymaps = {
+return {
 	{
 		"gd",
 		function()
-			trouble.toggle { mode = "lsp_definitions" }
+			require("trouble").toggle { mode = "lsp_definitions" }
 		end,
-		"LSP Definitions",
+		desc = "Show Definitions",
 	},
 	{
 		"gD",
 		function()
-			trouble.toggle { mode = "lsp_declarations" }
+			require("trouble").toggle { mode = "lsp_declarations" }
 		end,
-		"LSP Declarations",
+		desc = "Show Declarations",
 	},
 	{
 		"gi",
 		function()
-			trouble.toggle { mode = "lsp_implementations" }
+			require("trouble").toggle { mode = "lsp_implementations" }
 		end,
-		"LSP Implementations",
+		desc = "Show Implementations",
 	},
 	{
 		"gR",
 		function()
-			trouble.toggle { mode = "lsp_references" }
+			require("trouble").toggle { mode = "lsp_references" }
 		end,
-		"LSP References",
+		desc = "Show References",
 	},
 	{
 		"ga",
 		function()
-			trouble.toggle { mode = "lsp" }
+			require("trouble").toggle { mode = "lsp" }
 		end,
-		"LSP Definitions/References/...",
+		desc = "Show Definitions/References/...",
 	},
 	{
 		"<leader>cd",
 		function()
-			trouble.toggle { mode = "lsp_type_definitions" }
+			require("trouble").toggle { mode = "lsp_type_definitions" }
 		end,
-		"LSP Type Definitions",
+		desc = "Show Type Definitions",
 	},
 	{
 		"<leader>xx",
 		function()
-			trouble.toggle { mode = "diagnostics" }
+			require("trouble").toggle { mode = "diagnostics" }
 		end,
-		"Toggle Diagnostics",
+		desc = "Toggle Diagnostics",
 	},
 	{
 		"<leader>xX",
 		function()
-			trouble.toggle { mode = "diagnostics", filter = { buf = 0 } }
+			require("trouble").toggle { mode = "diagnostics", filter = { buf = 0 } }
 		end,
-		"Toggle Diagnostics (buffer)",
+		desc = "Toggle Diagnostics (buffer)",
 	},
 	{
 		"<leader>xl",
 		function()
-			trouble.toggle { mode = "loclist" }
+			require("trouble").toggle { mode = "loclist" }
 		end,
-		"Toggle Loclist",
+		desc = "Toggle Loclist",
 	},
 	{
 		"<leader>xq",
 		function()
-			trouble.toggle { mode = "qflist" }
+			require("trouble").toggle { mode = "qflist" }
 		end,
-		"Toggle Quickfix",
+		desc = "Toggle Quickfix",
 	},
 	{
 		"<leader>cs",
 		function()
-			trouble.toggle { mode = "symbols", title = false, win = { size = 25, position = "left" } }
+			require("trouble").toggle { mode = "symbols", title = false, win = { size = 25, position = "left" } }
 		end,
-		"Toggle Document Symbols",
+		desc = "Toggle Document Symbols",
 	},
 	{
 		"[q",
@@ -93,7 +88,7 @@ local keymaps = {
 				end
 			end
 		end,
-		"Previous Trouble/Quickfix Item",
+		desc = "Previous Trouble/Quickfix Item",
 	},
 	{
 		"]q",
@@ -110,5 +105,3 @@ local keymaps = {
 		desc = "Next Trouble/Quickfix Item",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)

@@ -1,16 +1,26 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local silicon = require "nvim-silicon"
-
---- @type Keymap[]
-local keymaps = {
-	{ "<leader>ss", silicon.shoot, "snapshot screenshot code" },
-	{ "<leader>sf", silicon.file, "snapshot screenshot code as file" },
-	{ "<leader>sc", silicon.clip, "snapshot screenshot code to clipboard" },
+return {
+	{
+		mode = "v",
+		"<leader>ss",
+		function()
+			require("nvim-silicon").shoot()
+		end,
+		desc = "Screenshot Code",
+	},
+	{
+		mode = "v",
+		"<leader>sf",
+		function()
+			require("nvim-silicon").file()
+		end,
+		desc = "Screenshot Code (file)",
+	},
+	{
+		mode = "v",
+		"<leader>sc",
+		function()
+			require("nvim-silicon").clip()
+		end,
+		desc = "Screenshot Code (clipboard)",
+	},
 }
-
-for _, keymap in pairs(keymaps) do
-	keymap.mode = { "v" }
-end
-
-keymap_utils.map(map_handler, keymaps)

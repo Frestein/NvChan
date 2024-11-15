@@ -1,31 +1,28 @@
-require "plugins.mappings.lazy-keys"
-
 local buffer_utils = require "utils.buffer"
-local map = require("langmapper").map
 
 local mappings = {
 	-- Motion
-	{ { "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "motion down", expr = true, silent = true } },
-	{ { "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "motion down", expr = true, silent = true } },
-	{ { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "motion up", expr = true, silent = true } },
-	{ { "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "motion up", expr = true, silent = true } },
-	{ "i", "<C-b>", "<ESC>^i", { desc = "motion beginning of line" } },
-	{ "i", "<C-e>", "<End>", { desc = "motion end of line" } },
-	{ "i", "<C-h>", "<Left>", { desc = "motion left" } },
-	{ "i", "<C-l>", "<Right>", { desc = "motion right" } },
-	{ "i", "<C-j>", "<Down>", { desc = "motion down" } },
-	{ "i", "<C-k>", "<Up>", { desc = "motion up" } },
+	{ { "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true } },
+	{ { "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down", expr = true, silent = true } },
+	{ { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up", expr = true, silent = true } },
+	{ { "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up", expr = true, silent = true } },
+	{ "i", "<C-^>", "<ESC>^i", { desc = "Move to beginning of line" } },
+	{ "i", "<C-4>", "<End>", { desc = "Move to end of line" } },
+	{ "i", "<C-h>", "<Left>", { desc = "Move left" } },
+	{ "i", "<C-l>", "<Right>", { desc = "Move right" } },
+	{ "i", "<C-j>", "<Down>", { desc = "Move down" } },
+	{ "i", "<C-k>", "<Up>", { desc = "Move up" } },
 
 	--- File ---
 	{ { "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" } },
-	{ "n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole file" } },
+	{ "n", "<C-c>", "<cmd>%y+<CR>", { desc = "Copy Whole File" } },
 	{
 		"n",
 		"<leader>cF",
 		function()
 			vim.fn.setreg("+", vim.fn.expand "%:t")
 		end,
-		{ desc = "file copy name" },
+		{ desc = "Copy Filename" },
 	},
 	{
 		"n",
@@ -33,7 +30,7 @@ local mappings = {
 		function()
 			vim.fn.setreg("+", vim.fn.expand "%:p")
 		end,
-		{ desc = "file copy path" },
+		{ desc = "Copy Path" },
 	},
 
 	--- Windows ---
@@ -48,14 +45,11 @@ local mappings = {
 	{ "n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" } },
 	{ "n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" } },
 
-	--- Keywordprg ---
-	{ "n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" } },
-
 	--- Comments ---
 	{ "n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" } },
 	{ "n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" } },
-	{ "n", "<leader>/", "gcc", { desc = "code toggle comment", remap = true } },
-	{ "v", "<leader>/", "gc", { desc = "code toggle comment", remap = true } },
+	{ "n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true } },
+	{ "v", "<leader>/", "gc", { desc = "Toggle comment", remap = true } },
 
 	--- Code ---
 	{
@@ -102,7 +96,7 @@ local mappings = {
 		function()
 			buffer_utils.move_buf(-1)
 		end,
-		{ desc = "buffer move to left" },
+		{ desc = "Move to Left (buffer)" },
 	},
 	{
 		"n",
@@ -110,7 +104,7 @@ local mappings = {
 		function()
 			buffer_utils.move_buf(1)
 		end,
-		{ desc = "buffer move to right" },
+		{ desc = "Move to Right (buffer)" },
 	},
 
 	--- Tabs ---
@@ -132,7 +126,7 @@ local mappings = {
 		{ desc = "Terminal (cwd)" },
 	},
 	{ "t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" } },
-	{ "t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" } },
+	{ "t", "<C-x>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" } },
 
 	--- Lazygit ---
 	{
@@ -186,36 +180,30 @@ local mappings = {
 		{ desc = "Lazygit Log" },
 	},
 
-	--- Which-Key ---
-	{ "n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" } },
+	--- lazy.nvim ---
 	{
 		"n",
-		"<leader>wk",
+		"<leader>ll",
 		function()
-			vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
+			require("lazy").home()
 		end,
-		{ desc = "whichkey query lookup" },
+		{ desc = "Lazy Home" },
 	},
-
-	--- Blankline ---
 	{
 		"n",
-		"<leader>cc",
+		"<leader>ls",
 		function()
-			local config = { scope = {} }
-			config.scope.exclude = { language = {}, node_type = {} }
-			config.scope.include = { node_type = {} }
-			local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
-
-			if node then
-				local start_row, _, end_row, _ = node:range()
-				if start_row ~= end_row then
-					vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
-					vim.api.nvim_feedkeys("_", "n", true)
-				end
-			end
+			require("lazy").sync()
 		end,
-		{ desc = "blankline jump to current context" },
+		{ desc = "Lazy Sync" },
+	},
+	{
+		"n",
+		"<leader>lp",
+		function()
+			require("lazy").profile()
+		end,
+		{ desc = "Lazy Profile" },
 	},
 
 	--- Add undo break-points ---
@@ -224,7 +212,8 @@ local mappings = {
 	{ "i", ";", ";<c-g>u" },
 
 	--- Other ---
-	{ "n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" } },
+	{ "n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" } },
+	{ "n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear Highlights" } },
 	{
 		"n",
 		"<leader>un",
@@ -237,5 +226,5 @@ local mappings = {
 
 for _, mapping in ipairs(mappings) do
 	local mode, lhs, rhs, opts = table.unpack(mapping)
-	map(mode, lhs, rhs, opts)
+	vim.keymap.set(mode, lhs, rhs, opts)
 end

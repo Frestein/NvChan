@@ -1,14 +1,9 @@
-local keymap_utils = require "utils.keymap"
-local map_handler = require("langmapper").map
-local conform = require "conform"
-
---- @type Keymap[]
-local keymaps = {
+return {
 	{
 		mode = { "n", "v" },
 		"<leader>cf",
 		function()
-			conform.format({ async = true }, function(err)
+			require("conform").format({ async = true }, function(err)
 				if not err then
 					local mode = vim.api.nvim_get_mode().mode
 					if vim.startswith(string.lower(mode), "v") then
@@ -17,8 +12,6 @@ local keymaps = {
 				end
 			end)
 		end,
-		"code format code",
+		desc = "code format code",
 	},
 }
-
-keymap_utils.map(map_handler, keymaps)
