@@ -1,75 +1,80 @@
 local lint = require "lint"
 local opts = require "plugins.options.lint-opts"
 
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
+local M = {}
 
-local function get_lsp_root()
-	local clients = vim.lsp.get_clients()
-	for _, client in ipairs(clients) do
-		if client.name == "lua_ls" then
-			return client.config.root_dir
+for name, linter in pairs(opts.linters) do
+	if type(linter) == "table" and type(lint.linters[name]) == "table" then
+		lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
+		if type(linter.prepend_args) == "table" then
+			lint.linters[name].args = lint.linters[name].args or {}
+			vim.list_extend(lint.linters[name].args, linter.prepend_args)
 		end
-	end
-	return nil
-end
-
-local function find_selene_config(root)
-	local config_paths = {
-		root .. "/.selene/selene.toml",
-		root .. "/.selene/config.toml",
-		root .. "/.selene/linter.toml",
-		root .. "/selene/selene.toml",
-		root .. "/selene/config.toml",
-		root .. "/selene/linter.toml",
-		root .. "/selene.toml",
-		root .. "/linter.toml",
-	}
-
-	for _, path in ipairs(config_paths) do
-		if vim.fn.filereadable(path) == 1 then
-			return path
-		end
-	end
-
-	return nil
-end
-
-local linter_error_notify = nil
-
-local function setup_linting()
-	local lua_root = get_lsp_root()
-	if lua_root then
-		local config_path = find_selene_config(lua_root)
-		if config_path then
-			local selene = lint.linters.selene
-			selene.args = { "--config", config_path, "--display-style", "json", "-" }
-		else
-			linter_error_notify = vim.notify(
-				"Configuration file for selene not found.",
-				vim.log.levels.ERROR,
-				{ title = "Linter", replace = linter_error_notify }
-			)
-		end
+	else
+		lint.linters[name] = linter
 	end
 end
-
 lint.linters_by_ft = opts.linters_by_ft
 
-local lint_augroup = augroup("nvim_lint", { clear = true })
+function M.debounce(ms, fn)
+	local timer = vim.uv.new_timer()
+	return function(...)
+		local argv = { ... }
+		timer:start(ms, 0, function()
+			timer:stop()
+			vim.schedule_wrap(fn)(unpack(argv))
+		end)
+	end
+end
 
--- FIX:: Disable the linter if the configuration for Selene is not found,
--- and ensure the notification about the missing config is shown only once.
-autocmd(opts.events, {
-	group = lint_augroup,
-	callback = function()
-		local clients = vim.lsp.get_clients()
-		for _, client in ipairs(clients) do
-			if client.name == "lua_ls" then
-				setup_linting()
-				break
-			end
+function M.lint()
+	-- Use nvim-lint's logic first:
+	-- * checks if linters exist for the full filetype first
+	-- * otherwise will split filetype by "." and add all those linters
+	-- * this differs from conform.nvim which only uses the first filetype that has a formatter
+	local names = lint._resolve_linter_by_ft(vim.bo.filetype)
+
+	-- Create a copy of the names table to avoid modifying the original.
+	names = vim.list_extend({}, names)
+
+	-- Add fallback linters.
+	if #names == 0 then
+		vim.list_extend(names, lint.linters_by_ft["_"] or {})
+	end
+
+	-- Add global linters.
+	vim.list_extend(names, lint.linters_by_ft["*"] or {})
+
+	-- Filter out linters that don't exist or don't match the condition.
+	local ctx = { filename = vim.api.nvim_buf_get_name(0) }
+	ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
+	names = vim.tbl_filter(function(name)
+		local linter = lint.linters[name]
+		if not linter then
+			Snacks.notify.warn("Linter not found: " .. name, { title = "nvim-lint" })
 		end
-		lint.try_lint()
-	end,
+		return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
+	end, names)
+
+	-- Run linters.
+	if #names > 0 then
+		lint.try_lint(names)
+	end
+end
+
+vim.api.nvim_create_autocmd(opts.events, {
+	group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+	callback = M.debounce(100, M.lint),
 })
+
+-- Show linters for the current buffer's file type
+vim.api.nvim_create_user_command("LintInfo", function()
+	local filetype = vim.bo.filetype
+	local linters = lint.linters_by_ft[filetype]
+
+	if linters then
+		Snacks.notify.info("Linters for " .. filetype .. ": " .. table.concat(linters, ", "), { title = "nvim-lint" })
+	else
+		Snacks.notify.warn("No linters configured for filetype: " .. filetype, { title = "nvim-lint" })
+	end
+end, {})

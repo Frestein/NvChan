@@ -728,7 +728,7 @@ return {
 			utils.on_load("hover.nvim", function()
 				vim.api.nvim_create_autocmd("LspAttach", {
 					callback = function()
-						require("hover.providers.lsp")
+						require "hover.providers.lsp"
 					end,
 				})
 				require "hover.providers.fold_preview"
