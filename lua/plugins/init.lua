@@ -283,9 +283,6 @@ return {
 		"supermaven-inc/supermaven-nvim",
 		event = "InsertEnter",
 		opts = require "plugins.options.supermaven-opts",
-		config = function(_, opts)
-			require("supermaven-nvim").setup(opts)
-		end,
 	},
 
 	{
@@ -302,9 +299,6 @@ return {
 		event = "LazyFile",
 		opts = function()
 			return require "plugins.options.mini-indentscope-opts"
-		end,
-		config = function(_, opts)
-			require("mini.indentscope").setup(opts)
 		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
@@ -495,9 +489,6 @@ return {
 		},
 		keys = { { "<leader>ca", desc = "LSP code action" } },
 		opts = require "plugins.options.tiny-code-action-opts",
-		config = function(_, opts)
-			require("tiny-code-action").setup(opts)
-		end,
 	},
 
 	{
@@ -516,9 +507,6 @@ return {
 		},
 		keys = { { "<leader>fD", "<cmd>Telescope chezmoi find_files<cr>", desc = "Find Dotfiles" } },
 		opts = require "plugins.options.chezmoi-nvim-opts",
-		config = function(_, opts)
-			require("chezmoi").setup(opts)
-		end,
 	},
 
 	{
