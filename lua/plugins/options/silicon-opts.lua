@@ -1,9 +1,10 @@
 return {
 	font = "Maple Mono NF=34",
 	to_clipboard = true,
-	theme = "Nord",
-	pad_horiz = 50,
+	theme = "gruvbox-dark",
+	pad_horiz = 40,
 	pad_vert = 40,
+	background = "#EDDCB1",
 	language = function()
 		return vim.bo.filetype
 	end,
