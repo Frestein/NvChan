@@ -12,6 +12,7 @@ Snacks.toggle({
 }):map "<leader>ut"
 
 return {
+	multiwindow = true,
 	mode = "cursor",
 	max_lines = 3,
 }
