@@ -48,6 +48,10 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 ### debugging
 
 - [andrewferrier/debugprint.nvim](https://dotfyle.com/plugins/andrewferrier/debugprint.nvim)
+- [leoluz/nvim-dap-go](https://github.com/leoluz/nvim-dap-go)
+- [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
+- [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
+- [theHamsta/nvim-dap-virtual-text](https://dotfyle.com/plugins/theHamsta/nvim-dap-virtual-text)
 
 ### indent
 
