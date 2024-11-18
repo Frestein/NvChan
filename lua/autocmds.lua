@@ -1,9 +1,13 @@
 local autocmd = vim.api.nvim_create_autocmd
 local wo = vim.wo
 
+local function augroup(name)
+	return vim.api.nvim_create_augroup("nvchan_" .. name, { clear = true })
+end
+
 -- user event that loads after UIEnter + only if file buf is there
 autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
-	group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
+	group = augroup "NvFilePost",
 	callback = function(args)
 		local file = vim.api.nvim_buf_get_name(args.buf)
 		local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
@@ -29,6 +33,7 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 
 autocmd("FileType", {
 	pattern = { "norg", "markdown" },
+	group = augroup "docs_folds",
 	callback = function()
 		wo.foldlevel = 99
 		wo.conceallevel = 2
@@ -37,14 +42,26 @@ autocmd("FileType", {
 
 autocmd("FileType", {
 	pattern = { "lazy" },
+	group = augroup "fix_buf",
 	callback = function()
 		wo.winfixbuf = true
+	end,
+})
+
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+	group = augroup "checktime",
+	callback = function()
+		if vim.o.buftype ~= "nofile" then
+			vim.cmd "checktime"
+		end
 	end,
 })
 
 -- Restore cursor position
 autocmd("BufReadPost", {
 	pattern = "*",
+	group = augroup "restore_cursor",
 	callback = function()
 		local line = vim.fn.line "'\""
 		if
@@ -55,5 +72,70 @@ autocmd("BufReadPost", {
 		then
 			vim.cmd 'normal! g`"'
 		end
+	end,
+})
+
+-- Resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+	group = augroup "resize_splits",
+	callback = function()
+		local current_tab = vim.fn.tabpagenr()
+		vim.cmd "tabdo wincmd ="
+		vim.cmd("tabnext " .. current_tab)
+	end,
+})
+
+-- Close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+	group = augroup "close_with_q",
+	pattern = {
+		"PlenaryTestPopup",
+		"checkhealth",
+		"dbout",
+		"gitsigns-blame",
+		"grug-far",
+		"help",
+		"lspinfo",
+		"neotest-output",
+		"neotest-output-panel",
+		"neotest-summary",
+		"notify",
+		"qf",
+		"snacks_win",
+		"spectre_panel",
+		"startuptime",
+		"tsplayground",
+	},
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+		vim.schedule(function()
+			vim.keymap.set("n", "q", function()
+				vim.cmd "close"
+				pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+			end, {
+				buffer = event.buf,
+				silent = true,
+				desc = "Quit buffer",
+			})
+		end)
+	end,
+})
+
+-- Wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	group = augroup "wrap_spell",
+	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown", "norg" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
+	end,
+})
+
+-- Fix conceallevel for json files
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	group = augroup "json_conceal",
+	pattern = { "json", "jsonc", "json5" },
+	callback = function()
+		vim.opt_local.conceallevel = 0
 	end,
 })
