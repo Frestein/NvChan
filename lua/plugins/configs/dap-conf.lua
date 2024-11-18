@@ -1,8 +1,10 @@
+dofile(vim.g.base46_cache .. "dap")
+
 vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
 local icons = {
-	Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
-	Breakpoint = " ",
+	Stopped = { " ", "DiagnosticWarn", "DapStoppedLine" },
+	Breakpoint = " ",
 	BreakpointCondition = " ",
 	BreakpointRejected = { " ", "DiagnosticError" },
 	LogPoint = ".>",

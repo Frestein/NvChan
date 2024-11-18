@@ -187,6 +187,7 @@ M.base46 = {
 		"diffview",
 		"notify",
 		"todo",
+		"dap",
 		"trouble",
 	},
 }
