@@ -1,4 +1,5 @@
 local g = vim.g
+local o = vim.o
 
 local function escape(str)
 	local escape_chars = [[;,."|\]]
@@ -83,11 +84,11 @@ local options = {
 	langmap = langmap,
 
 	-- Disable nvim intro
-	shortmess = vim.o.shortmess .. "sI",
+	shortmess = o.shortmess .. "sI",
 
 	-- Go to previous/next line with h,l,left arrow and right arrow
 	-- when cursor reaches end/beginning of line
-	whichwrap = vim.o.whichwrap .. "<,>,[,],h,l",
+	whichwrap = o.whichwrap .. "<,>,[,],h,l",
 }
 
 -- Disable default providers
@@ -100,7 +101,7 @@ for option_name, value in pairs(options) do
 	-- To avoid errors on toggle nvim version
 	local ok, _ = pcall(vim.api.nvim_get_option_info2, option_name, {})
 	if ok then
-		vim.o[option_name] = value
+		o[option_name] = value
 	else
 		vim.notify("Option " .. option_name .. " is not supported", vim.log.levels.WARN)
 	end
