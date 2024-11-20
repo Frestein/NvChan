@@ -49,7 +49,7 @@ autocmd("FileType", {
 })
 
 -- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	group = augroup "checktime",
 	callback = function()
 		if vim.o.buftype ~= "nofile" then
@@ -76,7 +76,7 @@ autocmd("BufReadPost", {
 })
 
 -- Resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
+autocmd({ "VimResized" }, {
 	group = augroup "resize_splits",
 	callback = function()
 		local current_tab = vim.fn.tabpagenr()
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 -- Close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	group = augroup "close_with_q",
 	pattern = {
 		"PlenaryTestPopup",
@@ -122,7 +122,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	group = augroup "wrap_spell",
 	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown", "norg" },
 	callback = function()
@@ -132,7 +132,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Fix conceallevel for json files
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
 	group = augroup "json_conceal",
 	pattern = { "json", "jsonc", "json5" },
 	callback = function()
