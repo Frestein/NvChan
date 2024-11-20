@@ -126,8 +126,8 @@ autocmd("FileType", {
 	group = augroup "wrap_spell",
 	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown", "norg" },
 	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
+		wo.wrap = true
+		wo.spell = true
 	end,
 })
 
@@ -136,6 +136,6 @@ autocmd({ "FileType" }, {
 	group = augroup "json_conceal",
 	pattern = { "json", "jsonc", "json5" },
 	callback = function()
-		vim.opt_local.conceallevel = 0
+		wo.conceallevel = 0
 	end,
 })
