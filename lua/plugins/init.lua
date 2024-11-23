@@ -63,6 +63,7 @@ return {
 		"folke/snacks.nvim",
 		lazy = false,
 		priority = 1000,
+		version = "*",
 		opts = function()
 			return require "plugins.options.snacks-opts"
 		end,
