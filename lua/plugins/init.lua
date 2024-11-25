@@ -651,13 +651,6 @@ return {
 	},
 
 	{
-		"piersolenski/wtf.nvim",
-		dependencies = "MunifTanjim/nui.nvim",
-		keys = require "plugins.mappings.wtf-keys",
-		opts = require "plugins.options.wtf-opts",
-	},
-
-	{
 		"echasnovski/mini.pick",
 		enabled = false,
 		event = "VeryLazy",

@@ -129,7 +129,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [artemave/workspace-diagnostics.nvim](https://dotfyle.com/plugins/artemave/workspace-diagnostics.nvim)
 - [folke/trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
-- [piersolenski/wtf.nvim](https://dotfyle.com/plugins/piersolenski/wtf.nvim)
 
 ### search
 

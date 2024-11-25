@@ -222,6 +222,30 @@ local mappings = {
 		end,
 		{ desc = "Dismiss All Notifications" },
 	},
+	{
+		"n",
+		"<leader>wn",
+		function()
+			Snacks.terminal.get "BROWSER=links newsboat"
+		end,
+		{ desc = "Show News" },
+	},
+	{
+		"n",
+		"<leader>ws",
+		function()
+			Snacks.terminal.get "BROWSER=links ddgr"
+		end,
+		{ desc = "Web Browser" },
+	},
+	{
+		"n",
+		"<leader>wd",
+		function()
+			require("modules.web").search()
+		end,
+		{ desc = "Search Diagnostic (web)" },
+	},
 }
 
 for _, mapping in ipairs(mappings) do
