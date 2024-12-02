@@ -6,8 +6,8 @@ local opts = {
 	highlight = {
 		use_nvim_cmp_as_default = true,
 	},
-	windows = {
-		autocomplete = {
+	completion = {
+		menu = {
 			border = "single",
 			scrollbar = false,
 			winblend = vim.o.pumblend,
