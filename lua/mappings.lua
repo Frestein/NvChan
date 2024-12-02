@@ -226,7 +226,7 @@ local mappings = {
 		"n",
 		"<leader>wn",
 		function()
-			Snacks.terminal.get "BROWSER=links newsboat"
+			Snacks.terminal.get "newsboat"
 		end,
 		{ desc = "Show News" },
 	},
