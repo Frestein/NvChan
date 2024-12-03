@@ -33,11 +33,4 @@ function M.lazy()
 	return status.has_updates() and ("%#LazyUpdates#" .. " " .. status.updates() .. " ") or ""
 end
 
-function M.aw()
-	local ok, aw = pcall(require, "aw_watcher")
-	if ok then
-		return aw.is_connected() and "%#AwConnected#" .. " "
-	end
-end
-
 return M

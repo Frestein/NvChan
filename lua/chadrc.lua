@@ -17,7 +17,6 @@ M.ui = {
 		modules = {
 			trouble = statusline.trouble,
 			lazy = statusline.lazy,
-			aw = statusline.aw,
 		},
 		order = {
 			"mode",
@@ -104,10 +103,6 @@ M.base46 = {
 		--- mini.indentscope ---
 		MiniIndentscopeSymbol = {
 			fg = "grey",
-		},
-		--- aw-watcher-nvim ---
-		AwConnected = {
-			fg = { "light_grey", 5 },
 		},
 		-- noice.nvim ---
 		NoiceLspProgressTitle = {

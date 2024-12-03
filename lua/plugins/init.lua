@@ -8,11 +8,6 @@ return {
 	{ "nvim-lua/plenary.nvim" },
 
 	{
-		"Luxed/aw-watcher-nvim",
-		lazy = false,
-	},
-
-	{
 		"andrewferrier/debugprint.nvim",
 		event = "VeryLazy",
 		opts = {},

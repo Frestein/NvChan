@@ -160,10 +160,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 - [karb94/neoscroll.nvim](https://dotfyle.com/plugins/karb94/neoscroll.nvim)
 
-### time-tracking
-
-- [Luxed/aw-watcher-nvim](https://github.com/Luxed/aw-watcher-nvim)
-
 ### icon
 
 - [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
