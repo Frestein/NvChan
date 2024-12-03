@@ -211,13 +211,17 @@ return {
 
 	{
 		"saghen/blink.cmp",
-		lazy = false,
+		event = "InsertEnter",
 		version = "*",
 		build = "cargo build --release",
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
-			{ "saghen/blink.compat", version = "*", opts = { impersonate_nvim_cmp = true } },
+			{
+				"saghen/blink.compat",
+				version = "*",
+				opts = { impersonate_nvim_cmp = true },
+			},
 		},
 		opts_extend = {
 			"sources.completion.enabled_providers",
