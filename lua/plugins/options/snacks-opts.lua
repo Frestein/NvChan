@@ -1,33 +1,31 @@
--- Terminal Mappings
-local function term_nav(dir)
-	---@param self snacks.terminal
-	return function(self)
-		return self:is_floating() and "<c-" .. dir .. ">" or vim.schedule(function()
-			vim.cmd.wincmd(dir)
-		end)
-	end
-end
-
-local map_handler = require("langmapper").map
-
 ---@type snacks.Config
 return {
 	bigfile = { enabled = true },
+	dashboard = { enabled = false },
+	indent = {
+		animate = {
+			enabled = false,
+		},
+		enabled = true,
+	},
+	input = { enabled = false },
 	notifier = { enabled = true },
 	quickfile = { enabled = true },
+	scope = { enabled = false },
+	scroll = {
+		enabled = false,
+		animate = {
+			easing = "linear",
+			fps = 75,
+			spamming = 1,
+			duration = { step = 15, total = 250 },
+		},
+	},
 	words = { enabled = true },
 	toggle = {
-		map = map_handler,
-	},
-	terminal = {
-		win = {
-			keys = {
-				nav_h = { "<C-h>", term_nav "h", desc = "Go to Left Window", expr = true, mode = "t" },
-				nav_j = { "<C-j>", term_nav "j", desc = "Go to Lower Window", expr = true, mode = "t" },
-				nav_k = { "<C-k>", term_nav "k", desc = "Go to Upper Window", expr = true, mode = "t" },
-				nav_l = { "<C-l>", term_nav "l", desc = "Go to Right Window", expr = true, mode = "t" },
-			},
-		},
+		map = require("langmapper").map,
+		which_key = true,
+		notify = true,
 	},
 	statuscolumn = {
 		enabled = true,

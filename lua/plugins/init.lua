@@ -288,46 +288,6 @@ return {
 	},
 
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "LazyFile",
-		keys = require "plugins.mappings.indent-blankline-keys",
-		config = function()
-			require "plugins.configs.indent-blankline-conf"
-		end,
-	},
-
-	{
-		"echasnovski/mini.indentscope",
-		event = "LazyFile",
-		opts = function()
-			return require "plugins.options.mini-indentscope-opts"
-		end,
-		init = function()
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = {
-					"Trouble",
-					"alpha",
-					"dashboard",
-					"fzf",
-					"help",
-					"lazy",
-					"mason",
-					"neo-tree",
-					"notify",
-					"snacks_notif",
-					"snacks_terminal",
-					"snacks_win",
-					"toggleterm",
-					"trouble",
-				},
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-		end,
-	},
-
-	{
 		"ray-x/go.nvim",
 		ft = { "go", "gomod" },
 		config = function(_, opts)

@@ -100,11 +100,17 @@ M.base46 = {
 			fg = "light_grey",
 			bg = "one_bg",
 		},
-		--- mini.indentscope ---
-		MiniIndentscopeSymbol = {
+		--- snacks.nvim ---
+		SnacksIndent = {
+			fg = { "grey", -8 },
+		},
+		SnacksIndentScope = {
 			fg = "grey",
 		},
-		-- noice.nvim ---
+		SnacksIndentChunk = {
+			fg = "grey",
+		},
+		--- noice.nvim ---
 		NoiceLspProgressTitle = {
 			fg = { "white", -20 },
 		},

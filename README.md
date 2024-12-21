@@ -53,11 +53,6 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 - [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
 - [theHamsta/nvim-dap-virtual-text](https://dotfyle.com/plugins/theHamsta/nvim-dap-virtual-text)
 
-### indent
-
-- [echasnovski/mini.indentscope](https://dotfyle.com/plugins/echasnovski/mini.indentscope)
-- [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
-
 ### fuzzy-finder
 
 - [Marskey/telescope-sg](https://dotfyle.com/plugins/Marskey/telescope-sg)
