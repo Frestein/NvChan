@@ -218,10 +218,6 @@ return {
 				opts = { impersonate_nvim_cmp = true },
 			},
 		},
-		opts_extend = {
-			"sources.completion.enabled_providers",
-			"sources.compat",
-		},
 		opts = function()
 			return require "plugins.options.blink-opts"
 		end,
