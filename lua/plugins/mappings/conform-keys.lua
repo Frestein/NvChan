@@ -12,6 +12,6 @@ return {
 				end
 			end)
 		end,
-		desc = "code format code",
+		desc = "Format code",
 	},
 }
