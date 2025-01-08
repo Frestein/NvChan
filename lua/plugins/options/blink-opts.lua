@@ -12,6 +12,9 @@ local opts = {
 			border = "single",
 			scrollbar = false,
 			winblend = vim.o.pumblend,
+			draw = {
+				treesitter = { "lsp" },
+			},
 		},
 		documentation = {
 			auto_show = true,
