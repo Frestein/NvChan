@@ -17,13 +17,14 @@ vim.filetype.add {
 		["vifmrc"] = "vim",
 	},
 	pattern = {
-		[".*/waybar/config"] = "jsonc",
-		[".*/mako/config"] = "dosini",
-		[".*/kitty/.+%.conf"] = "bash",
-		[".*/ghostty/config"] = "bash",
-		[".*/hypr/.+%.conf"] = "hyprlang",
-		[".*/zathura/themes/.+"] = "zathurarc",
 		["%.env%.[%w_.-]+"] = "sh",
+		[".*/.*%.hl"] = "hyprlang",
+		[".*/ghostty/config"] = "bash",
+		[".*/hypr.+%.conf"] = "hyprlang",
+		[".*/kitty/.+%.conf"] = "bash",
+		[".*/mako/config"] = "dosini",
+		[".*/waybar/config"] = "jsonc",
+		[".*/zathura/themes/.+"] = "zathurarc",
 	},
 }
 
