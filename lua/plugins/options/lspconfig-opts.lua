@@ -75,6 +75,7 @@ M.servers = {
 	cssls = {},
 	bashls = {},
 	hyprls = {},
+	fish_lsp = {},
 	taplo = {},
 	jsonls = {
 		-- lazy-load schemastore when needed

@@ -4,6 +4,7 @@ return {
 	formatters_by_ft = {
 		c = { "clang-format" },
 		css = { "prettier" },
+		fish = { "fish_indent" },
 		go = { "goimports", "gofumpt" },
 		html = { "prettier" },
 		javascript = { "prettier" },
