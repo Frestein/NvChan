@@ -139,3 +139,14 @@ autocmd({ "FileType" }, {
 		wo.conceallevel = 0
 	end,
 })
+
+-- Securing editor
+autocmd({"BufNewFile", "BufRead"}, {
+    pattern = "/dev/shm/gopass*",
+    callback = function()
+        wo.swapfile = false
+        wo.undofile = false
+        wo.backup = false
+        wo.shada = ""
+    end,
+})
