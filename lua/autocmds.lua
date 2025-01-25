@@ -1,5 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
+local bo = vim.bo
 local wo = vim.wo
+local o = vim.o
 
 local function augroup(name)
 	return vim.api.nvim_create_augroup("nvchan_" .. name, { clear = true })
@@ -141,12 +143,12 @@ autocmd({ "FileType" }, {
 })
 
 -- Securing editor
-autocmd({"BufNewFile", "BufRead"}, {
-    pattern = "/dev/shm/gopass*",
-    callback = function()
-        wo.swapfile = false
-        wo.undofile = false
-        wo.backup = false
-        wo.shada = ""
-    end,
+autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "/dev/shm/gopass*",
+	callback = function()
+		bo.swapfile = false
+		bo.undofile = false
+		o.backup = false
+		o.shada = ""
+	end,
 })
