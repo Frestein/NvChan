@@ -7,6 +7,7 @@ return {
 	linters_by_ft = {
 		["yaml.ansible"] = { "ansible_lint" },
 		bash = { "shellcheck", "bash" },
+		zsh = { "zsh" },
 		dockerfile = { "hadolint" },
 		fish = { "fish" },
 		go = { "golangcilint" },

@@ -16,6 +16,8 @@ return {
 		python = { "ruff_format", "black" },
 		scss = { "prettier" },
 		sh = { "shellharden", "shellcheck", "shfmt" },
+		bash = { "shellharden", "shellcheck", "shfmt" },
+		zsh = { "shfmt" },
 		toml = { "taplo" },
 		typescript = { "prettier" },
 		yaml = { "prettier" },
