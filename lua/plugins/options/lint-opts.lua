@@ -7,7 +7,6 @@ return {
 	linters_by_ft = {
 		["yaml.ansible"] = { "ansible_lint" },
 		bash = { "shellcheck", "bash" },
-		zsh = { "zsh" },
 		dockerfile = { "hadolint" },
 		fish = { "fish" },
 		go = { "golangcilint" },
@@ -17,6 +16,7 @@ return {
 		sh = { "shellcheck", "bash" },
 		systemd = { "systemd-analyze" },
 		yaml = { "yamllint" },
+		zsh = { "zsh" },
 	},
 	-- Extension to easily override linter options
 	-- or add custom linters.
