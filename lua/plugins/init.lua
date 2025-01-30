@@ -715,4 +715,9 @@ return {
 			end
 		end,
 	},
+
+	{
+		"xzbdmw/colorful-menu.nvim",
+		opts = require "plugins.options.colorful-menu",
+	},
 }

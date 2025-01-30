@@ -161,6 +161,7 @@ NVIM_APPNAME=Frestein/NvChan/ nvim
 
 ### color
 
+- [colorful-menu.nvim](https://dotfyle.com/plugins/xzbdmw/colorful-menu.nvim)
 - [folke/twilight.nvim](https://dotfyle.com/plugins/folke/twilight.nvim)
 
 ### colorscheme
