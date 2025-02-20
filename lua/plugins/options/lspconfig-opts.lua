@@ -169,20 +169,27 @@ M.servers = {
 		},
 	},
 	pyright = {
-		root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
 		settings = {
 			python = {
 				analysis = {
-					autoSearchPaths = true,
 					diagnosticMode = "workspace",
 					typeCheckingMode = "off",
 				},
 			},
 		},
 	},
-	ruff = {
-		root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt"),
-	},
+	-- basedpyright = {
+	-- 	settings = {
+	-- 		python = {
+	-- 			analysis = {
+	-- 				diagnosticMode = "workspace",
+	-- 				typeCheckingMode = "off",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+	-- pylyzer = {},
+	ruff = {},
 	ast_grep = {
 		default_config = {
 			cmd = { "ast-grep", "lsp" },

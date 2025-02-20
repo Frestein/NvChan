@@ -5,6 +5,13 @@ function M.on_attach(bufnr)
 
 	local keymaps = {
 		{
+			"<Tab>",
+			function()
+				lsp.hover()
+			end,
+			desc = "Show Information",
+		},
+		{
 			"<leader>cS",
 			function()
 				lsp.signature_help()

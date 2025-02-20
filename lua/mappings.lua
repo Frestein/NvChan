@@ -48,8 +48,6 @@ local mappings = {
 	--- Comments ---
 	{ "n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" } },
 	{ "n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" } },
-	{ "n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true } },
-	{ "v", "<leader>/", "gc", { desc = "Toggle comment", remap = true } },
 
 	--- Code ---
 	{
@@ -70,8 +68,8 @@ local mappings = {
 	},
 
 	--- Bufferline ---
-	{ "n", "<S-h>", buffer_utils.prev, { desc = "Prev Buffer" } },
-	{ "n", "<S-l>", buffer_utils.next, { desc = "Next Buffer" } },
+	{ "n", "J", buffer_utils.prev, { desc = "Prev Buffer" } },
+	{ "n", "K", buffer_utils.next, { desc = "Next Buffer" } },
 	{ "n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" } },
 	{
 		"n",
@@ -212,6 +210,15 @@ local mappings = {
 	{ "i", ";", ";<c-g>u" },
 
 	--- Other ---
+	{
+		"n",
+		"gj",
+		function()
+			local count = vim.v.count > 0 and vim.v.count or 1
+			vim.cmd("join " .. count)
+		end,
+		{ desc = "Join" },
+	},
 	{ "n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" } },
 	{ "n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear Highlights" } },
 	{
