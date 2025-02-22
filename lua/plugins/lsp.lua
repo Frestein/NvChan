@@ -168,17 +168,7 @@ return {
 					},
 				},
 			},
-			pyright = {
-				settings = {
-					python = {
-						analysis = {
-							diagnosticMode = "workspace",
-							typeCheckingMode = "off",
-						},
-					},
-				},
-			},
-			-- basedpyright = {
+			-- pyright = {
 			-- 	settings = {
 			-- 		python = {
 			-- 			analysis = {
@@ -188,6 +178,16 @@ return {
 			-- 		},
 			-- 	},
 			-- },
+			basedpyright = {
+				settings = {
+					basedpyright = {
+						analysis = {
+							diagnosticMode = "workspace",
+							typeCheckingMode = "off",
+						},
+					},
+				},
+			},
 			-- pylyzer = {},
 			ruff = {},
 			ast_grep = {
