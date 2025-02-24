@@ -57,7 +57,7 @@ end
 M.search = function()
 	local line = vim.fn.line "."
 	local diagnostics = M.get_diagnostics(line)
-	local selected_search_engine = "https://duckduckgo.com/?q="
+	local selected_search_engine = "https://4get.ducks.party/web?s="
 
 	if selected_search_engine == nil then
 		local message = "Invalid search engine"

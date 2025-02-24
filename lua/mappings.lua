@@ -231,22 +231,6 @@ local mappings = {
 	},
 	{
 		"n",
-		"<leader>wn",
-		function()
-			Snacks.terminal.get "newsboat"
-		end,
-		{ desc = "Show News" },
-	},
-	{
-		"n",
-		"<leader>ws",
-		function()
-			Snacks.terminal.get "BROWSER=links ddgr"
-		end,
-		{ desc = "Web Browser" },
-	},
-	{
-		"n",
 		"<leader>wd",
 		function()
 			require("modules.web").search()
