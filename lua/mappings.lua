@@ -49,44 +49,10 @@ local mappings = {
 	{ "n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" } },
 	{ "n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" } },
 
-	--- Code ---
-	{
-		"n",
-		"[[",
-		function()
-			Snacks.words.jump(-vim.v.count1)
-		end,
-		{ desc = "Prev Reference" },
-	},
-	{
-		"n",
-		"]]",
-		function()
-			Snacks.words.jump(vim.v.count1)
-		end,
-		{ desc = "Next Reference" },
-	},
-
 	--- Bufferline ---
 	{ "n", "J", buffer_utils.prev, { desc = "Prev Buffer" } },
 	{ "n", "K", buffer_utils.next, { desc = "Next Buffer" } },
 	{ "n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" } },
-	{
-		"n",
-		"<leader>bd",
-		function()
-			Snacks.bufdelete()
-		end,
-		{ desc = "Delete Buffer" },
-	},
-	{
-		"n",
-		"<leader>bo",
-		function()
-			Snacks.bufdelete.other()
-		end,
-		{ desc = "Delete Other Buffers" },
-	},
 	{ "n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" } },
 	{
 		"n",
@@ -115,68 +81,8 @@ local mappings = {
 	{ "n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" } },
 
 	--- Terminal ---
-	{
-		"n",
-		"<C-/>",
-		function()
-			Snacks.terminal()
-		end,
-		{ desc = "Terminal (cwd)" },
-	},
 	{ "t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" } },
 	{ "t", "<C-x>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" } },
-
-	--- Lazygit ---
-	{
-		"n",
-		"<leader>gg",
-		function()
-			if vim.fn.executable "lazygit" == 1 then
-				Snacks.lazygit()
-			end
-		end,
-		{ desc = "Lazygit (Root Dir)" },
-	},
-	{
-		"n",
-		"<leader>gb",
-		function()
-			if vim.fn.executable "lazygit" == 1 then
-				Snacks.git.blame_line()
-			end
-		end,
-		{ desc = "Git Blame Line" },
-	},
-	{
-		"n",
-		"<leader>gB",
-		function()
-			if vim.fn.executable "lazygit" == 1 then
-				Snacks.gitbrowse()
-			end
-		end,
-		{ desc = "Git Browse" },
-	},
-	{
-		"n",
-		"<leader>gf",
-		function()
-			if vim.fn.executable "lazygit" == 1 then
-				Snacks.lazygit.log_file()
-			end
-		end,
-		{ desc = "Lazygit Current File History" },
-	},
-	{
-		"n",
-		"<leader>gl",
-		function()
-			if vim.fn.executable "lazygit" == 1 then
-				Snacks.lazygit.log()
-			end
-		end,
-		{ desc = "Lazygit Log" },
-	},
 
 	--- lazy.nvim ---
 	{
@@ -221,14 +127,6 @@ local mappings = {
 	},
 	{ "n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" } },
 	{ "n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear Highlights" } },
-	{
-		"n",
-		"<leader>un",
-		function()
-			Snacks.notifier.hide()
-		end,
-		{ desc = "Dismiss All Notifications" },
-	},
 	{
 		"n",
 		"<leader>wd",

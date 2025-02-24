@@ -161,6 +161,16 @@ return {
 				},
 			}
 		end,
+		keys = {
+			--- Terminal ---
+			{
+				"<C-/>",
+				function()
+					Snacks.terminal()
+				end,
+				desc = "Terminal (cwd)",
+			},
+		},
 	},
 
 	{

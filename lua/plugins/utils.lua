@@ -22,6 +22,94 @@ return {
 				},
 			},
 		},
+		keys = {
+			--- Code ---
+			{
+				"[[",
+				function()
+					Snacks.words.jump(-vim.v.count1)
+				end,
+				desc = "Prev Reference",
+			},
+			{
+				"]]",
+				function()
+					Snacks.words.jump(vim.v.count1)
+				end,
+				desc = "Next Reference",
+			},
+
+			--- Bufferline ---
+			{
+				"<leader>bd",
+				function()
+					Snacks.bufdelete()
+				end,
+				desc = "Delete Buffer",
+			},
+			{
+				"<leader>bo",
+				function()
+					Snacks.bufdelete.other()
+				end,
+				desc = "Delete Other Buffers",
+			},
+
+			--- Lazygit ---
+			{
+				"<leader>gg",
+				function()
+					if vim.fn.executable "lazygit" == 1 then
+						Snacks.lazygit()
+					end
+				end,
+				desc = "Lazygit (Root Dir)",
+			},
+			{
+				"<leader>gb",
+				function()
+					if vim.fn.executable "lazygit" == 1 then
+						Snacks.git.blame_line()
+					end
+				end,
+				desc = "Git Blame Line",
+			},
+			{
+				"<leader>gB",
+				function()
+					if vim.fn.executable "lazygit" == 1 then
+						Snacks.gitbrowse()
+					end
+				end,
+				desc = "Git Browse",
+			},
+			{
+				"<leader>gf",
+				function()
+					if vim.fn.executable "lazygit" == 1 then
+						Snacks.lazygit.log_file()
+					end
+				end,
+				desc = "Lazygit Current File History",
+			},
+			{
+				"<leader>gl",
+				function()
+					if vim.fn.executable "lazygit" == 1 then
+						Snacks.lazygit.log()
+					end
+				end,
+				desc = "Lazygit Log",
+			},
+
+			{
+				"<leader>un",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "Dismiss All Notifications",
+			},
+		},
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
