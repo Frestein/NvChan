@@ -51,9 +51,74 @@ return {
 				return check_orig(state, key)
 			end
 
-			return {}
+			return {
+				preset = "helix",
+				spec = {
+					{
+						mode = { "n", "v" },
+						{ "<leader><tab>", group = "tabs" },
+						{ "<leader>l", group = "lazy" },
+						{ "<leader>b", group = "buffers" },
+						{ "<leader>c", group = "code" },
+						{ "<leader>cA", group = "annotations" },
+						{ "<leader>cw", group = "workspace" },
+						{ "<leader>d", group = "debug" },
+						{ "<leader>r", group = "refactor" },
+						{ "<leader>f", group = "file/find" },
+						{ "<leader>g", group = "git" },
+						{ "<leader>gh", group = "hunks" },
+						{ "<leader>q", group = "quit/session" },
+						{ "<leader>s", group = "search" },
+						{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+						{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+						{ "[", group = "prev" },
+						{ "]", group = "next" },
+						{ "g", group = "goto" },
+						{ "gs", group = "surround" },
+						{ "z", group = "fold" },
+						{
+							"<leader>b",
+							group = "buffer",
+							expand = function()
+								return require("which-key.extras").expand.buf()
+							end,
+						},
+						{
+							"<leader>w",
+							group = "windows",
+							proxy = "<c-w>",
+							expand = function()
+								return require("which-key.extras").expand.win()
+							end,
+						},
+					},
+				},
+			}
 		end,
-		keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+		keys = {
+			"<leader>",
+			"<c-w>",
+			'"',
+			"'",
+			"`",
+			"c",
+			"v",
+			"g",
+			{
+				"<leader>?",
+				function()
+					require("which-key").show { global = false }
+				end,
+				desc = "Buffer Keymaps (which-key)",
+			},
+			{
+				"<c-w><space>",
+				function()
+					require("which-key").show { keys = "<c-w>", loop = true }
+				end,
+				desc = "Window Hydra Mode (which-key)",
+			},
+		},
 	},
 
 	{
@@ -151,45 +216,69 @@ return {
 
 			return {
 				signs = {
-					delete = { text = "󰍵" },
+					delete = { text = "" },
+					topdelete = { text = "" },
+					changedelete = { text = "󱕖" },
+				},
+				signs_staged = {
+					delete = { text = "" },
+					topdelete = { text = "" },
 					changedelete = { text = "󱕖" },
 				},
 				current_line_blame = true,
 				current_line_blame_opts = { delay = 200 },
 				on_attach = function(bufnr)
-					local keymaps = {
-						{
-							"<leader>uD",
-							"<cmd>Gitsigns toggle_deleted<cr>",
-							desc = "Toggle Deleted Lines",
-						},
-						{
-							"<leader>ghp",
-							"<cmd>Gitsigns preview_hunk<cr>",
-							desc = "Preview hunk",
-						},
-						{
-							"<leader>ghr",
-							"<cmd>Gitsigns reset_hunk<cr>",
-							desc = "Reset Hunk",
-						},
-						{
-							"<leader>gc",
-							"<cmd>Telescope git_commits<cr>",
-							desc = "Git Commits",
-						},
-						{
-							"<leader>gs",
-							"<cmd>Telescope git_status<cr>",
-							desc = "Git Status",
-						},
-					}
+					local gs = package.loaded.gitsigns
 
-					for _, keymap in ipairs(keymaps) do
-						vim.keymap.set("n", keymap[1], keymap[2], { desc = keymap.desc, buffer = bufnr })
+					local function map(mode, l, r, desc)
+						vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
 					end
+
+					-- stylua: ignore start
+					map("n", "]h", function()
+					  if vim.wo.diff then
+						vim.cmd.normal({ "]c", bang = true })
+					  else
+						gs.nav_hunk("next")
+					  end
+					end, "Next Hunk")
+					map("n", "[h", function()
+					  if vim.wo.diff then
+						vim.cmd.normal({ "[c", bang = true })
+					  else
+						gs.nav_hunk("prev")
+					  end
+					end, "Prev Hunk")
+					map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+					map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+					map({ "n", "v" }, "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", "Stage Hunk")
+					map({ "n", "v" }, "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", "Reset Hunk")
+					map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+					map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+					map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+					map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+					map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+					map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
+					map("n", "<leader>ghd", gs.diffthis, "Diff This")
+					map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+					map("n", "<leader>ugd", "<cmd>Gitsigns toggle_deleted<cr>", "Toggle Deleted Lines")
 				end,
 			}
+		end,
+	},
+	{
+		"gitsigns.nvim",
+		opts = function()
+			Snacks.toggle({
+				name = "Git Signs",
+				get = function()
+					return require("gitsigns.config").config.signcolumn
+				end,
+				set = function(state)
+					require("gitsigns").toggle_signs(state)
+				end,
+			}):map "<leader>uG"
 		end,
 	},
 
@@ -197,8 +286,6 @@ return {
 		"folke/trouble.nvim",
 		event = "VeryLazy",
 		cmd = "Trouble",
-		dependencies = "folke/todo-comments.nvim",
-		---@type trouble.Config
 		opts = {
 			preview = {
 				type = "main",
@@ -289,7 +376,7 @@ return {
 				function()
 					require("trouble").toggle { mode = "symbols", title = false, win = { size = 25, position = "left" } }
 				end,
-				desc = "Toggle Document Symbols",
+				desc = "Toggle Symbols",
 			},
 			{
 				"[q",
@@ -324,16 +411,20 @@ return {
 
 	{
 		"folke/todo-comments.nvim",
-		cmd = { "TodoTrouble", "TodoQuickFix", "TodoTelescope" },
+		cmd = { "TodoTrouble", "TodoTelescope" },
 		event = "LazyFile",
 		config = function(_, opts)
 			require("todo-comments").setup(opts)
 			dofile(vim.g.base46_cache .. "todo")
 		end,
+		-- stylua: ignore
 		keys = {
-			{ "<leader>tt", "<cmd>TodoTrouble<cr>", desc = "Todo-List (trouble)" },
-			{ "<leader>tq", "<cmd>TodoQuickFix<cr>", desc = "Todo-List (quickfix)" },
-			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find Todo" },
+			{ "]t", function() require("todo-comments").jump_next() end, desc = "Next Todo Comment" },
+			{ "[t", function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
+			{ "<leader>xt", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
+			{ "<leader>xT", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+			{ "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
 		},
 	},
 }

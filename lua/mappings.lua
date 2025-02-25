@@ -91,7 +91,7 @@ local mappings = {
 		function()
 			require("lazy").home()
 		end,
-		{ desc = "Lazy Home" },
+		{ desc = "Home" },
 	},
 	{
 		"n",
@@ -99,7 +99,7 @@ local mappings = {
 		function()
 			require("lazy").sync()
 		end,
-		{ desc = "Lazy Sync" },
+		{ desc = "Sync" },
 	},
 	{
 		"n",
@@ -107,7 +107,7 @@ local mappings = {
 		function()
 			require("lazy").profile()
 		end,
-		{ desc = "Lazy Profile" },
+		{ desc = "Profile" },
 	},
 
 	--- Add undo break-points ---

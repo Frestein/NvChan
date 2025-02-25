@@ -60,11 +60,11 @@ M.buttons = {
 	{ txt = "  Select Session", keys = "Spc q s", cmd = "lua require('persistence').select()" },
 	{ txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
 	{ txt = "  Find Dotfiles", keys = "Spc f D", cmd = "Telescope chezmoi find_files" },
-	{ txt = "󱐁  Zoxide List", keys = "Spc z l", cmd = "Telescope zoxide list" },
+	{ txt = "󱐁  Zoxide List", keys = "Spc f z", cmd = "Telescope zoxide list" },
 	{ txt = "󰈚  Recent Files", keys = "Spc f r", cmd = "Telescope oldfiles" },
-	{ txt = "  Bookmarks", keys = "Spc f m", cmd = "Telescope marks" },
-	{ txt = "  Themes", keys = "Spc t H", cmd = "Telescope themes" },
-	{ txt = "  Mappings", keys = "Spc f k", cmd = "Telescope keymaps" },
+	{ txt = "  Bookmarks", keys = "Spc s m", cmd = "Telescope marks" },
+	{ txt = "  Themes", keys = "Spc f t", cmd = "Telescope themes" },
+	{ txt = "  Mappings", keys = "Spc s k", cmd = "Telescope keymaps" },
 
 	{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 

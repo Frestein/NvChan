@@ -255,59 +255,53 @@ return {
 						desc = "Show Signature",
 					},
 					{
-						"<leader>wa",
+						"<leader>cwa",
 						function()
 							lsp.add_workspace_folder()
 						end,
-						desc = "Add Workspace Folder (LSP)",
+						desc = "Add Folder (LSP)",
 					},
 					{
-						"<leader>wr",
+						"<leader>cwr",
 						function()
 							lsp.remove_workspace_folder()
 						end,
-						desc = "Remove Workspace Folder (LSP)",
+						desc = "Remove Folder (LSP)",
 					},
 					{
-						"<leader>wl",
+						"<leader>cwl",
 						function()
 							print(vim.inspect(lsp.list_workspace_folders()))
 						end,
-						desc = "List Workspace Folders (LSP)",
+						desc = "List Folders (LSP)",
 					},
 					{
-						"<leader>X",
+						"<leader>cwp",
 						function()
 							for _, client in ipairs(vim.lsp.get_clients()) do
 								require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
 							end
 						end,
-						desc = "Populate Workspace Diagnostics (LSP)",
+						desc = "Populate Diagnostics (LSP)",
 					},
 					{
-						"<leader>rf",
+						"<leader>cR",
 						function()
 							Snacks.rename.rename_file()
 						end,
 						desc = "Rename File",
 					},
 					{
-						"<leader>ra",
+						"<leader>cr",
 						function()
 							require("live-rename").rename { insert = true }
 						end,
 						desc = "Rename",
 					},
 					{
-						"<leader>rA",
-						function()
-							require("live-rename").rename { text = "", insert = true }
-						end,
-						desc = "Clear Rename",
-					},
-					{
-						"<leader>ca",
+						-- FIXME: not working
 						mode = { "n", "v" },
+						"<leader>ca",
 						function()
 							require("tiny-code-action").code_action()
 						end,

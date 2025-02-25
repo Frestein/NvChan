@@ -2,21 +2,21 @@ return {
 	"danymat/neogen",
 	keys = {
 		{
-			"<leader>nf",
+			"<leader>cAf",
 			function()
 				require("neogen").generate { type = "func" }
 			end,
 			desc = "Add Function Annotation",
 		},
 		{
-			"<leader>nc",
+			"<leader>cAc",
 			function()
 				require("neogen").generate { type = "class" }
 			end,
 			desc = "Add Class Annotation",
 		},
 		{
-			"<leader>nt",
+			"<leader>cAt",
 			function()
 				require("neogen").generate { type = "type" }
 			end,

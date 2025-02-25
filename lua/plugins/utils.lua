@@ -23,7 +23,6 @@ return {
 			},
 		},
 		keys = {
-			--- Code ---
 			{
 				"[[",
 				function()
@@ -38,8 +37,6 @@ return {
 				end,
 				desc = "Next Reference",
 			},
-
-			--- Bufferline ---
 			{
 				"<leader>bd",
 				function()
@@ -54,8 +51,6 @@ return {
 				end,
 				desc = "Delete Other Buffers",
 			},
-
-			--- Lazygit ---
 			{
 				"<leader>gg",
 				function()
@@ -72,7 +67,7 @@ return {
 						Snacks.git.blame_line()
 					end
 				end,
-				desc = "Git Blame Line",
+				desc = "Blame Line",
 			},
 			{
 				"<leader>gB",
@@ -101,7 +96,27 @@ return {
 				end,
 				desc = "Lazygit Log",
 			},
-
+			{
+				"<leader>z",
+				function()
+					Snacks.zen()
+				end,
+				desc = "Toggle Zen Mode",
+			},
+			{
+				"<leader>Z",
+				function()
+					Snacks.zen.zoom()
+				end,
+				desc = "Toggle Zoom",
+			},
+			{
+				"<leader>.",
+				function()
+					Snacks.scratch()
+				end,
+				desc = "Toggle Scratch Buffer",
+			},
 			{
 				"<leader>un",
 				function()
@@ -135,6 +150,12 @@ return {
 					if vim.lsp.inlay_hint then
 						Snacks.toggle.inlay_hints():map "<leader>uh"
 					end
+					Snacks.toggle
+						.option("background", { off = "light", on = "dark", name = "Dark Background" })
+						:map "<leader>ub"
+					Snacks.toggle.treesitter():map "<leader>uT"
+					Snacks.toggle.indent():map "<leader>ui"
+					Snacks.toggle.dim():map "<leader>uD"
 				end,
 			})
 		end,

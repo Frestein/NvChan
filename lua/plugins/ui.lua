@@ -18,11 +18,11 @@ return {
 		keys = function()
 			return {
 				{
-					"<leader>fn",
+					"<leader>sn",
 					function()
 						require("noice").cmd "telescope"
 					end,
-					desc = "Find Notices",
+					desc = "Notices",
 				},
 			}
 		end,

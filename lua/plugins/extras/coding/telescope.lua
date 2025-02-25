@@ -5,20 +5,44 @@ return {
 		event = "VeryLazy",
 		dependencies = "nvim-lua/plenary.nvim",
 		keys = {
+			{
+				"<leader>,",
+				"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+				desc = "Buffers",
+			},
+			{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			-- find
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Find Files (recent)" },
-			{ "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Find Pattern (live grep)" },
-			{ "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find Pattern (buffer)" },
+			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 			{
 				"<leader>fb",
 				"<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
-				desc = "Find Buffers",
+				desc = "Buffers",
 			},
-			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
-			{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
-			{ "<leader>th", "<cmd>Telescope themes<cr>", desc = "Find Themes" },
-			{ "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
-			{ "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Find Marks" },
+			{ "<leader>ft", "<cmd>Telescope themes<cr>", desc = "Find Themes" },
+			{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
+			-- git
+			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
+			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
+			-- search
+			{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
+			{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+			{ "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+			{ "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			{ "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+			{ "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
+			{ "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
+			{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+			{ "<leader>sj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
+			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+			{ "<leader>sl", "<cmd>Telescope loclist<cr>", desc = "Location List" },
+			{ "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+			{ "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+			{ "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+			{ "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+			{ "<leader>sq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
 		},
 		opts = function()
 			dofile(vim.g.base46_cache .. "telescope")
@@ -161,37 +185,31 @@ return {
 			},
 		},
 		branch = "0.2.x",
-		keys = { { "<leader><leader>", "<cmd>Telescope smart_open<cr>", desc = "Find Files (smart)" } },
+		keys = { { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Find Files (smart)" } },
 	},
 
 	{
 		"Marskey/telescope-sg",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fW", "<cmd>Telescope ast_grep<cr>", desc = "Find Pattern (sg)" } },
+		keys = { { "<leader>sG", "<cmd>Telescope ast_grep<cr>", desc = "Live Grep (sg)" } },
 	},
 
 	{
 		"piersolenski/telescope-import.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fi", "<cmd>Telescope import<cr>", desc = "Find Imports" } },
-	},
-
-	{
-		"crispgm/telescope-heading.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fH", "<cmd>Telescope heading<cr>", desc = "Find Headings" } },
+		keys = { { "<leader>si", "<cmd>Telescope import<cr>", desc = "Imports" } },
 	},
 
 	{
 		"jvgrootveld/telescope-zoxide",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>zl", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide List" } },
+		keys = { { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide List" } },
 	},
 
 	{
 		"debugloop/telescope-undo.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
-		keys = { { "<leader>fu", "<cmd>Telescope undo<cr>", desc = "Find Undo" } },
+		keys = { { "<leader>su", "<cmd>Telescope undo<cr>", desc = "Undo" } },
 	},
 
 	{

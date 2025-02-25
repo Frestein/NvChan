@@ -33,6 +33,6 @@ return {
 				},
 			},
 		},
-		keys = { { "<leader>ca", desc = "LSP code action" } },
+		keys = { { "<leader>ca", desc = "Code Action" } },
 	},
 }
