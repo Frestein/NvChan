@@ -39,6 +39,7 @@ return {
 					[".*/mako/config"] = "dosini",
 					[".*/waybar/config"] = "jsonc",
 					[".*/zathura/themes/.+"] = "zathurarc",
+					[".*/kanata/.+"] = "lisp",
 				},
 			}
 
