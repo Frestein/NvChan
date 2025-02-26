@@ -190,6 +190,7 @@ M.base46 = {
 		"todo",
 		"dap",
 		"trouble",
+		"rainbowdelimiters",
 	},
 }
 

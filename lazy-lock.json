@@ -49,6 +49,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "1020869742ecb191f260818234517f4a1515cfe8" },
   "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "rainbow-delimiters.nvim": { "branch": "master", "commit": "011d98eaa3a73b5a51d82ce5bc6b1397dde95562" },
   "refactoring.nvim": { "branch": "master", "commit": "eaa096df3f3a8ce879f841faea750c7c3fb2bf1c" },
   "schemastore.nvim": { "branch": "main", "commit": "acf16353b88d9ebf8ab69e7fd42522bbb277e0ba" },
   "smart-open.nvim": { "branch": "0.2.x", "commit": "560d8f16e17977c8303db6f9660db58a4415ca41" },

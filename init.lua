@@ -55,6 +55,7 @@ require("lazy").setup({
 	{ import = "plugins.extras.editor.tiny-code-actions" },
 	{ import = "plugins.extras.editor.treesj" },
 	{ import = "plugins.extras.editor.workspace-diagnostics" },
+	{ import = "plugins.extras.editor.rainbow-delimiters" },
 	{ import = "plugins.extras.fun.drop" },
 	{ import = "plugins.extras.lang.go" },
 	{ import = "plugins.extras.lang.json" },
