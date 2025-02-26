@@ -138,6 +138,6 @@ local mappings = {
 }
 
 for _, mapping in ipairs(mappings) do
-	local mode, lhs, rhs, opts = table.unpack(mapping)
-	vim.keymap.set(mode, lhs, rhs, opts)
+	local mode, l, r, opts = table.unpack(mapping)
+	vim.keymap.set(mode, l, r, opts)
 end

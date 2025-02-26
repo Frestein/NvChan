@@ -104,8 +104,8 @@ return {
 			end
 
 			-- Mappings to modify target window via new tab
-			local map_tab = function(buf_id, lhs)
-				local function rhs()
+			local map_tab = function(bufnr, l)
+				local function r()
 					local fs_entry = MiniFiles.get_fs_entry()
 
 					if fs_entry then
@@ -114,12 +114,12 @@ return {
 					end
 				end
 
-				map("n", lhs, rhs, { buffer = buf_id, desc = "Open in new tab" })
+				map("n", l, r, { buffer = bufnr, desc = "Open in new tab" })
 			end
 
 			-- Mappings to modify target window via split
-			local map_split = function(buf_id, lhs, direction)
-				local function rhs()
+			local map_split = function(bufnr, l, direction)
+				local function r()
 					-- Make new window and set it as target
 					local cur_target = MiniFiles.get_explorer_state().target_window
 
@@ -132,7 +132,7 @@ return {
 				end
 
 				-- Adding `desc` will result into `show_help` entries
-				map("n", lhs, rhs, { buffer = buf_id, desc = "Split " .. direction })
+				map("n", l, r, { buffer = bufnr, desc = "Split " .. direction })
 			end
 
 			autocmd("User", {
@@ -147,14 +147,14 @@ return {
 			autocmd("User", {
 				pattern = "MiniFilesBufferCreate",
 				callback = function(args)
-					local buf_id = args.data.buf_id
-					map("n", "g~", set_cwd, { buffer = args.data.buf_id, desc = "Set cwd" })
-					map("n", "gs", replace, { buffer = args.data.buf_id, desc = "Search in directory" })
-					map("n", "g.", toggle_dotfiles, { buffer = buf_id, desc = "Toggle hidden" })
-					map("n", "<C-p>", toggle_preview, { buffer = buf_id, desc = "Toggle preview" })
-					map_tab(buf_id, "<C-t>")
-					map_split(buf_id, "<C-s>", "belowright horizontal")
-					map_split(buf_id, "<C-v>", "belowright vertical")
+					local bufnr = args.data.bufnr
+					map("n", "g~", set_cwd, { buffer = args.data.bufnr, desc = "Set cwd" })
+					map("n", "gs", replace, { buffer = args.data.bufnr, desc = "Search in directory" })
+					map("n", "g.", toggle_dotfiles, { buffer = bufnr, desc = "Toggle hidden" })
+					map("n", "<C-p>", toggle_preview, { buffer = bufnr, desc = "Toggle preview" })
+					map_tab(bufnr, "<C-t>")
+					map_split(bufnr, "<C-s>", "belowright horizontal")
+					map_split(bufnr, "<C-v>", "belowright vertical")
 				end,
 			})
 
