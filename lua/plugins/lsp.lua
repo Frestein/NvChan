@@ -307,6 +307,34 @@ return {
 						end,
 						desc = "Code Action",
 					},
+					{
+						"<a-p>",
+						function()
+							Snacks.words.jump(-vim.v.count1)
+						end,
+						desc = "Prev Reference",
+					},
+					{
+						"<a-n>",
+						function()
+							Snacks.words.jump(vim.v.count1)
+						end,
+						desc = "Next Reference",
+					},
+					{
+						"[[",
+						function()
+							Snacks.words.jump(-vim.v.count1)
+						end,
+						desc = "Prev Reference",
+					},
+					{
+						"]]",
+						function()
+							Snacks.words.jump(vim.v.count1)
+						end,
+						desc = "Next Reference",
+					},
 				}
 
 				for _, keymap in ipairs(keymaps) do

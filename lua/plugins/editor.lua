@@ -316,7 +316,7 @@ return {
 				desc = "Show Declarations",
 			},
 			{
-				"gi",
+				"gI",
 				function()
 					require("trouble").toggle { mode = "lsp_implementations" }
 				end,
@@ -337,7 +337,7 @@ return {
 				desc = "Show Definitions/References/...",
 			},
 			{
-				"<leader>cd",
+				"gy",
 				function()
 					require("trouble").toggle { mode = "lsp_type_definitions" }
 				end,
