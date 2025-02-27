@@ -330,13 +330,6 @@ return {
 				desc = "Show References",
 			},
 			{
-				"ga",
-				function()
-					require("trouble").toggle { mode = "lsp" }
-				end,
-				desc = "Show Definitions/References/...",
-			},
-			{
 				"gy",
 				function()
 					require("trouble").toggle { mode = "lsp_type_definitions" }
