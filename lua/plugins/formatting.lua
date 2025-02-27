@@ -50,6 +50,9 @@ return {
 				require("conform").format { async = true, lsp_fallback = true, range = range }
 			end, { range = true })
 		end,
+		init = function()
+			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+		end,
 		keys = {
 			{
 				mode = { "n", "v" },
