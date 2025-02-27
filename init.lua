@@ -61,6 +61,7 @@ require("lazy").setup({
 	{ import = "plugins.extras.lang.go" },
 	{ import = "plugins.extras.lang.json" },
 	{ import = "plugins.extras.lang.yaml" },
+	{ import = "plugins.extras.lang.markdown" },
 	{ import = "plugins.extras.optimizations.garbage-day" },
 	{ import = "plugins.extras.optimizations.man-mode" },
 	{ import = "plugins.extras.ui.colorful-winsep" },

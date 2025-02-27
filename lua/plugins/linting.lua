@@ -18,6 +18,7 @@ return {
 				go = { "golangcilint" },
 				gomod = { "golangcilint" },
 				lua = { "selene" },
+				markdown = { "markdownlint-cli2" },
 				python = { "ruff" },
 				sh = { "shellcheck", "bash" },
 				systemd = { "systemd-analyze" },

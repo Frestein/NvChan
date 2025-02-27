@@ -18,7 +18,6 @@ return {
 				json5 = { "prettier" },
 				jsonc = { "prettier" },
 				lua = { "stylua" },
-				markdown = { "prettier" },
 				python = { "ruff_format", "ruff_organize_imports", "ruff_fix", "black" },
 				scss = { "prettier" },
 				sh = { "shellharden", "shellcheck", "shfmt" },
