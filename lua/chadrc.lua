@@ -1,13 +1,10 @@
-local dashboard = require "modules.dashboard.config"
 local statusline = require "modules.statusline"
 
 ---@type ChadrcConfig
 local M = {}
 
 M.nvdash = {
-	header = dashboard.get_header(),
-	buttons = dashboard.buttons,
-	load_on_startup = true,
+	load_on_startup = false,
 }
 
 M.ui = {

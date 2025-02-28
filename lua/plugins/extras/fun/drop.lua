@@ -18,7 +18,7 @@ local opts = {
 	max = 75,
 	interval = 150,
 	winblend = 50,
-	filetypes = { "dashboard", "alpha", "ministarter" },
+	filetypes = {},
 }
 
 local win_width = vim.api.nvim_win_get_width(0)

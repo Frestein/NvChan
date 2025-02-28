@@ -56,49 +56,68 @@ M.themes = {
 	{ theme = "xmas", from = { month = 12, day = 28 }, to = { month = 1, day = 14 } },
 }
 
-M.buttons = {
-	{ txt = "  Select Session", keys = "Spc q s", cmd = "lua require('persistence').select()" },
-	{ txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
-	{ txt = "  Find Dotfiles", keys = "Spc f D", cmd = "Telescope chezmoi find_files" },
-	{ txt = "󱐁  Zoxide List", keys = "Spc f z", cmd = "Telescope zoxide list" },
-	{ txt = "󰈚  Recent Files", keys = "Spc f r", cmd = "Telescope oldfiles" },
-	{ txt = "  Bookmarks", keys = "Spc s m", cmd = "Telescope marks" },
-	{ txt = "  Themes", keys = "Spc f t", cmd = "Telescope themes" },
-	{ txt = "  Mappings", keys = "Spc s k", cmd = "Telescope keymaps" },
-
-	{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
-
+---@type snacks.dashboard.Item[]
+M.keys = {
+	{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+	{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+	{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+	{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+	{ icon = " ", key = "s", desc = "Select Session", action = ":lua require('persistence').select()" },
 	{
-		txt = function()
-			local stats = require("lazy").stats()
-			local ms = math.floor(stats.startuptime) .. " ms"
-			return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
-		end,
-		hl = "NvDashFooter",
-		no_gap = true,
+		icon = "󰦛 ",
+		key = "l",
+		desc = "Restore Session",
+		action = ":lua require('persistence').load { last = true }",
 	},
-
-	{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
+	{
+		icon = " ",
+		key = "c",
+		desc = "Config",
+		action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
+	},
+	{ icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+	{ icon = "󱐁 ", key = "z", desc = "Zoxide", action = ":Telescope zoxide list" },
+	{ icon = " ", key = "k", desc = "Keymaps", action = ":lua Snacks.dashboard.pick('keymaps')" },
+	{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 }
+
+M.startup = function()
+	local stats = require("lazy").stats()
+	local ms = math.floor(stats.startuptime) .. " ms"
+
+	return {
+		align = "center",
+		text = {
+			{ " Loaded ", hl = "footer" },
+			{ stats.loaded .. "/" .. stats.count, hl = "special" },
+			{ " plugins in ", hl = "footer" },
+			{ ms .. "ms", hl = "special" },
+		},
+	}
+end
 
 M.headers = {
 	["default"] = {
-		{
-			"                                   ",
-			"   ⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕   ",
-			"   ⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕   ",
-			"   ⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱   ",
-			"   ⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀   ",
-			"   ⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗   ",
-			"   ⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕   ",
-			"   ⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵   ",
-			"   ⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   ",
-			"   ⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿   ",
-			"   ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁   ",
-			"                                   ",
-			"          Hello, master!         ",
-			"                                   ",
-		},
+		[[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+	},
+	["anime"] = {
+		[[
+⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕
+⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕
+⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱
+⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀
+⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗
+⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕
+⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵
+⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿
+⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁]],
 	},
 	["halloween"] = {
 		{

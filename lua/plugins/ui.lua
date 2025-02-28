@@ -1,3 +1,5 @@
+local dashboard = require "modules.dashboard.config"
+
 return {
 	{
 		"Frestein/ui",
@@ -162,7 +164,6 @@ return {
 			}
 		end,
 		keys = {
-			--- Terminal ---
 			{
 				"<C-/>",
 				function()
@@ -177,7 +178,18 @@ return {
 		"folke/snacks.nvim",
 		---@type snacks.Config
 		opts = {
-			dashboard = { enabled = false },
+			dashboard = {
+				enabled = true,
+				preset = {
+					header = dashboard.get_header(),
+					keys = dashboard.keys,
+				},
+				sections = {
+					{ section = "header" },
+					{ section = "keys", gap = 1, padding = 1 },
+					{ dashboard.startup },
+				},
+			},
 		},
 	},
 
