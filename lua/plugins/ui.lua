@@ -136,7 +136,7 @@ return {
 					},
 					enabled = true,
 				},
-				input = { enabled = false },
+				input = { enabled = true },
 				notifier = { enabled = true },
 				scope = { enabled = false },
 				scroll = {
