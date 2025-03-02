@@ -45,12 +45,4 @@ return {
 			end)
 		end,
 	},
-
-	{
-		"nvim-neorg/neorg-telescope",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
 }
