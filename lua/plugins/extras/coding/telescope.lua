@@ -11,6 +11,7 @@ return {
 				desc = "Buffers",
 			},
 			{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			{ "<leader>n", "<cmd>Telescope noice<cr>", desc = "Notification History" },
 			-- find
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },

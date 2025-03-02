@@ -17,17 +17,6 @@ return {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
-		keys = function()
-			return {
-				{
-					"<leader>sn",
-					function()
-						require("noice").cmd "telescope"
-					end,
-					desc = "Notices",
-				},
-			}
-		end,
 		config = function()
 			local noice = require "noice"
 			local notify = require "notify"

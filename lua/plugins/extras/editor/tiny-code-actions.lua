@@ -33,6 +33,9 @@ return {
 				},
 			},
 		},
-		keys = { { "<leader>ca", desc = "Code Action" } },
+		-- stylua: ignore
+		keys = {
+			{ "<leader>ca", function() require("tiny-code-action").code_action() end, desc = "Code Action" },
+		},
 	},
 }

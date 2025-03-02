@@ -239,42 +239,13 @@ return {
 			opts.on_attach = function(_, bufnr)
 				local lsp = vim.lsp.buf
 
+				-- stylua: ignore
 				local keymaps = {
-					{
-						"<Tab>",
-						function()
-							lsp.hover()
-						end,
-						desc = "Show Information",
-					},
-					{
-						"<leader>cS",
-						function()
-							lsp.signature_help()
-						end,
-						desc = "Show Signature",
-					},
-					{
-						"<leader>cwa",
-						function()
-							lsp.add_workspace_folder()
-						end,
-						desc = "Add Folder (LSP)",
-					},
-					{
-						"<leader>cwr",
-						function()
-							lsp.remove_workspace_folder()
-						end,
-						desc = "Remove Folder (LSP)",
-					},
-					{
-						"<leader>cwl",
-						function()
-							print(vim.inspect(lsp.list_workspace_folders()))
-						end,
-						desc = "List Folders (LSP)",
-					},
+					{ "<Tab>", function() lsp.hover() end, desc = "Show Information" },
+					{ "<leader>cS", function() lsp.signature_help() end, desc = "Show Signature" },
+					{ "<leader>cwa", function() lsp.add_workspace_folder() end, desc = "Add Folder (LSP)" },
+					{ "<leader>cwr", function() lsp.remove_workspace_folder() end, desc = "Remove Folder (LSP)" },
+					{ "<leader>cwl", function() print(vim.inspect(lsp.list_workspace_folders())) end, desc = "List Folders (LSP)" },
 					{
 						"<leader>cwp",
 						function()
@@ -284,61 +255,25 @@ return {
 						end,
 						desc = "Populate Diagnostics (LSP)",
 					},
-					{
-						"<leader>cR",
-						function()
-							Snacks.rename.rename_file()
-						end,
-						desc = "Rename File",
-					},
-					{
-						"<leader>cr",
-						function()
-							require("live-rename").rename { insert = true }
-						end,
-						desc = "Rename",
-					},
-					{
-						-- FIXME: not working
-						mode = { "n", "v" },
-						"<leader>ca",
-						function()
-							require("tiny-code-action").code_action()
-						end,
-						desc = "Code Action",
-					},
-					{
-						"<a-p>",
-						function()
-							Snacks.words.jump(-vim.v.count1)
-						end,
-						desc = "Prev Reference",
-					},
-					{
-						"<a-n>",
-						function()
-							Snacks.words.jump(vim.v.count1)
-						end,
-						desc = "Next Reference",
-					},
-					{
-						"[[",
-						function()
-							Snacks.words.jump(-vim.v.count1)
-						end,
-						desc = "Prev Reference",
-					},
-					{
-						"]]",
-						function()
-							Snacks.words.jump(vim.v.count1)
-						end,
-						desc = "Next Reference",
-					},
+					{ "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+					{ "<leader>cr", function() require("live-rename").rename { insert = true } end, desc = "Rename" },
+					{ "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
+					{ "<leader>cc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "v" } },
+					{ "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens" },
+					{ "<a-p>", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
+					{ "<a-n>", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
+					{ "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
+					{ "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
+					{ "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+					{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 				}
 
 				for _, keymap in ipairs(keymaps) do
-					vim.keymap.set("n", keymap[1], keymap[2], { desc = keymap.desc, buffer = bufnr })
+					if keymap.mode then
+						vim.keymap.set(keymap.mode, keymap[1], keymap[2], { desc = keymap.desc, buffer = bufnr })
+					else
+						vim.keymap.set("n", keymap[1], keymap[2], { desc = keymap.desc, buffer = bufnr })
+					end
 				end
 			end
 

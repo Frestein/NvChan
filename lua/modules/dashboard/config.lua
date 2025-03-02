@@ -56,34 +56,26 @@ M.themes = {
 	{ theme = "xmas", from = { month = 12, day = 28 }, to = { month = 1, day = 14 } },
 }
 
+-- stylua: ignore
 ---@type snacks.dashboard.Item[]
 M.keys = {
 	{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 	{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+	{ icon = " ", key = "p", desc = "Projects", action = ":lua Snacks.picker.projects()" },
 	{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
 	{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
 	{ icon = " ", key = "s", desc = "Select Session", action = ":lua require('persistence').select()" },
-	{
-		icon = "󰦛 ",
-		key = "l",
-		desc = "Restore Session",
-		action = ":lua require('persistence').load { last = true }",
-	},
-	{
-		icon = " ",
-		key = "c",
-		desc = "Config",
-		action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
-	},
+	{ icon = "󰦛 ", key = "l", desc = "Restore Session", action = ":lua require('persistence').load { last = true }" },
+	{ icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })" },
 	{ icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-	{ icon = "󱐁 ", key = "z", desc = "Zoxide", action = ":Telescope zoxide list" },
+	{ icon = "󱐁 ", key = "z", desc = "Zoxide", action = ":lua Snacks.picker.zoxide()" },
 	{ icon = " ", key = "k", desc = "Keymaps", action = ":lua Snacks.dashboard.pick('keymaps')" },
 	{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 }
 
 M.startup = function()
 	local stats = require("lazy").stats()
-	local ms = math.floor(stats.startuptime) .. " ms"
+	local ms = math.floor(stats.startuptime)
 
 	return {
 		align = "center",
