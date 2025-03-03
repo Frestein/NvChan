@@ -46,9 +46,9 @@ local options = {
 
 	--- Indents, Spaces, Tabulation ---
 	smartindent = true,
-	expandtab = false,
+	expandtab = true,
 	shiftwidth = 4,
-	tabstop = 4,
+	tabstop = 2,
 	softtabstop = 4,
 
 	--- Search ---
