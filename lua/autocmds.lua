@@ -152,3 +152,18 @@ autocmd({ "BufNewFile", "BufRead" }, {
 		o.shada = ""
 	end,
 })
+
+-- Autogenerate spell files
+autocmd("VimEnter", {
+	callback = function()
+		for _, file in ipairs(vim.fn.glob("~/.config/nvim/spell/*.add", true, 1)) do
+			local spl_file = file .. ".spl"
+			if
+				vim.fn.filereadable(file)
+				and (not vim.fn.filereadable(spl_file) or vim.fn.getftime(file) > vim.fn.getftime(spl_file))
+			then
+				vim.cmd("mkspell! " .. vim.fn.fnameescape(file))
+			end
+		end
+	end,
+})

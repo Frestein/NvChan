@@ -48,7 +48,7 @@ local options = {
 	smartindent = true,
 	expandtab = true,
 	shiftwidth = 4,
-	tabstop = 2,
+	tabstop = 4,
 	softtabstop = 4,
 
 	--- Search ---
@@ -71,7 +71,7 @@ local options = {
 	updatetime = 250,
 
 	--- Spell Checking ---
-	spelllang = "en_us",
+	spelllang = "en_us,ru_ru",
 	spellfile = os.getenv "HOME" .. "/.config/nvim/spell/en.utf-8.add",
 
 	--- Other ---
